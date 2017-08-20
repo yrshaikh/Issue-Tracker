@@ -1,26 +1,14 @@
 ﻿@model WebApplication.ViewModels.SignUpViewModel
 
 @{
-	ViewBag.Title = "Sign Up in seconds.";
+	ViewBag.Title = "Sign In";
 	Layout = "~/Views/Shared/Layout-UnAuthenticated.cshtml";
 }
 
 <div class="container">
 	<form class="col-sm-6" action="/account/signup" method="POST">
-		<h3>Sign Up</h3>
+		<h3>Sign In</h3>
 		<hr />
-		<div class="form-group row">
-			<label for="firstname" class="col-sm-3 col-form-label">First Name</label>
-			<div class="col-sm-9">
-				<input type="text" class="form-control" id="firstname" name="firstname" placeholder="Jon">
-			</div>
-		</div>
-		<div class="form-group row">
-			<label for="lastname" class="col-sm-3 col-form-label">Last Name</label>
-			<div class="col-sm-9">
-				<input type="text" class="form-control" id="lastname" name="lastname" placeholder="Doe">
-			</div>
-		</div>
 		<div class="form-group row">
 			<label for="email" class="col-sm-3 col-form-label">Email</label>
 			<div class="col-sm-9">
@@ -33,12 +21,22 @@
 				<input type="password" class="form-control" id="password" name="password" placeholder="*********">
 			</div>
 		</div>
+		<div class="form-group row">
+			<label class="col-sm-3"></label>
+			<div class="col-sm-9">
+				<div class="form-check">
+					<label class="form-check-label">
+						<input class="form-check-input" type="checkbox"> Remember me on this machine
+					</label>
+				</div>
+			</div>
+		</div>
 		<div class="text-danger">
 			@Html.ValidationSummary("Please correct the following errors and try again -")
 		</div>
 		<div class="form-group row">
 			<div class="offset-sm-3 col-sm-9">
-				<button type="submit" class="btn btn-primary">Sign Up</button>
+				<button type="submit" class="btn btn-primary">Sign in</button>
 			</div>
 		</div>
 	</form>

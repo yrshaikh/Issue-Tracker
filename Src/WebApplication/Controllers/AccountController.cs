@@ -15,7 +15,21 @@ namespace WebApplication.Controllers
 	    {
 		    if (ModelState.IsValid)
 		    {
-				ModelState.AddModelError("key", "message"); 
+		    }
+		    return View(model);
+	    }
+
+	    public IActionResult SignIn()
+	    {
+		    return View();
+	    }
+
+	    [HttpPost]
+	    public IActionResult SignIn(SignInViewModel model)
+	    {
+		    if (ModelState.IsValid)
+		    {
+			    ModelState.AddModelError("key", "message");
 		    }
 		    return View(model);
 	    }
