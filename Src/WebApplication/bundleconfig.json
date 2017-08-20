@@ -1,0 +1,27 @@
+﻿[
+  {
+    "outputFileName": "wwwroot/css/third-party-libs.min.css",
+				"inputFiles": [
+						"bower_components/bootstrap/dist/css/bootstrap.css"
+				]
+  },
+  {
+    "outputFileName": "wwwroot/css/common.min.css",
+				"inputFiles": [
+						"wwwroot/css/layout.css",
+						"wwwroot/css/buttons.css"
+				]
+  },
+  {
+    "outputFileName": "wwwroot/js/core.min.js",
+				"inputFiles": [
+						"bower_components/jquery/dist/jquery.js",
+						"bower_components/bootstrap/dist/js/bootstrap.js"
+				],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]
