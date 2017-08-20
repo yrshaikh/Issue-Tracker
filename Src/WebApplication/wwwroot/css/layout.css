@@ -1,3 +1,20 @@
-﻿.body-content {}
-body {font-family: 'Source Sans Pro', sans-serif;}
-#main-content { margin-left: 15px;margin-right: 15px;}
+﻿.body-content {
+}
+
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+#main-content {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+#unauthenticated-navbar form a.login {
+	color: #fff;
+	margin-left: 15px;
+}
+
+.validation-summary-valid {
+	display:none;
+}

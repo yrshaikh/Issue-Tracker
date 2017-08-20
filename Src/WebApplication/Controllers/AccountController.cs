@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApplication.ViewModels;
 
 namespace WebApplication.Controllers
 {
@@ -8,5 +9,15 @@ namespace WebApplication.Controllers
         {
             return View();
         }
-    }
+
+		[HttpPost]
+	    public IActionResult SignUp(SignUpViewModel model)
+	    {
+		    if (ModelState.IsValid)
+		    {
+				ModelState.AddModelError("key", "message"); 
+		    }
+		    return View(model);
+	    }
+	}
 }
