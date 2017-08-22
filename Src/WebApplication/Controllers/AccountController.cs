@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApplication.ViewModels;
+using Service.Services.UserService;
+using Service.ViewModels;
 
 namespace WebApplication.Controllers
 {
@@ -15,6 +16,7 @@ namespace WebApplication.Controllers
 	    {
 		    if (ModelState.IsValid)
 		    {
+			    new UserService().Create(model);
 		    }
 		    return View(model);
 	    }

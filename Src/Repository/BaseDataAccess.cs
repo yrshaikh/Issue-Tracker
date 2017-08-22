@@ -8,16 +8,16 @@ namespace Repository
 {
 	public class BaseDataAccess
 	{
-		protected string ConnectionString { get; set; }
+		protected string ConnectionString => "Data Source=65BHVF2;Initial Catalog=app;UID=sa;Password=pass@123;Trusted_Connection=True;MultipleActiveResultSets=true;";
 
 		public BaseDataAccess()
 		{
 		}
 
-		public BaseDataAccess(string connectionString)
-		{
-			this.ConnectionString = connectionString;
-		}
+		//public BaseDataAccess(string connectionString)
+		//{
+		//	this.ConnectionString = connectionString;
+		//}
 
 		private SqlConnection GetConnection()
 		{
