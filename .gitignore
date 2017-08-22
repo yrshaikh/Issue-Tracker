@@ -3,5 +3,9 @@ Src/WebApplication/bin
 Src/WebApplication/obj
 Src/Service/bin
 Src/Service/obj
+Src/Database/bin
+Src/Database/obj
 Src/WebApplication/Repository/bin
 Src/WebApplication/Repository/obj*
+*.csproj.user
+*.sqlproj.user
