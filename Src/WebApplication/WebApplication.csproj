@@ -405,5 +405,8 @@
     <None Include="bower_components\jquery\src\var\toString.js" />
     <None Include="bower_components\jquery\src\wrap.js" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Service\Service.csproj" />
+  </ItemGroup>
 
 </Project>

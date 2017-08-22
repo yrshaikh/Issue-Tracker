@@ -58,4 +58,9 @@
   <ItemGroup>
     <Folder Include="Properties" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="app.Database.sql" />
+    <Build Include="dbo.user_insert.StoredProcedure.sql" />
+    <Build Include="dbo.Users.Table.sql" />
+  </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@ Src/Service/bin
 Src/Service/obj
 Src/Database/bin
 Src/Database/obj
-Src/WebApplication/Repository/bin
-Src/WebApplication/Repository/obj*
+Src/Repository/bin
+Src/Repository/obj*
 *.csproj.user
 *.sqlproj.user
