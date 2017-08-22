@@ -1,7 +1,7 @@
 # Issue-Tracker
 
 # Steps to run the project
-1. Clone or download the project.
-2. Run `ng build`.
-3. Run `dotnet run`, after this you should get a prompt such as this one - Now listening on: http://localhost:53175.
-4. Open the given url on a browser.
+1. Download Visual Studio 2017 Community Edition
+2. Run the SQL scripts present in the Database project
+3. Update the connection strings of your local database
+4. Run
