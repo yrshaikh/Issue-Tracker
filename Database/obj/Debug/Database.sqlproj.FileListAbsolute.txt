@@ -1,0 +1,7 @@
+C:\Yasser\Issue-Tracker\Database\bin\Debug\Database.dacpac
+C:\Yasser\Issue-Tracker\Database\obj\Debug\Model.xml
+C:\Yasser\Issue-Tracker\Database\obj\Debug\refactor.xml
+C:\Yasser\Issue-Tracker\Database\obj\Debug\postdeploy.sql
+C:\Yasser\Issue-Tracker\Database\obj\Debug\predeploy.sql
+C:\Yasser\Issue-Tracker\Database\obj\Debug\Database.dll
+C:\Yasser\Issue-Tracker\Database\obj\Debug\Database.pdb

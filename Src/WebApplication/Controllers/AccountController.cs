@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Service.Services.UserService;
 using Service.ViewModels;
+using WebApplication.Security;
 
 namespace WebApplication.Controllers
 {
@@ -15,32 +17,47 @@ namespace WebApplication.Controllers
 
 	    public IActionResult SignUp()
         {
-            return View();
+	        if (User.Identity.IsAuthenticated)
+		        return RedirectToAction("index", "home");
+			return View();
         }
 
 		[HttpPost]
-	    public IActionResult SignUp(SignUpViewModel model)
+	    public async Task<IActionResult> SignUp(SignUpViewModel model)
 	    {
 		    if (ModelState.IsValid)
 		    {
 			    var user = _userService.Create(model);
+			    await new CustomAuthentication().SignIn(HttpContext, user);
+				  return RedirectToAction("index", "home");
 		    }
 		    return View(model);
 	    }
 
 	    public IActionResult SignIn()
 	    {
+		    if (User.Identity.IsAuthenticated)
+			    return RedirectToAction("Index", "Home");
 		    return View();
 	    }
 
 	    [HttpPost]
-	    public IActionResult SignIn(SignInViewModel model)
+	    public async Task<IActionResult> SignIn(SignInViewModel model)
 	    {
-		    if (ModelState.IsValid)
+		    if (ModelState.IsValid
+				&& _userService.Authenticate(model.Email, model.Password))
 		    {
-			    ModelState.AddModelError("key", "message");
+			    var  user = _userService.Get(model.Email);
+			    await new CustomAuthentication().SignIn(HttpContext, user);
+			    return RedirectToAction("Index", "Home");
 		    }
 		    return View(model);
+	    }
+
+	    public async Task<IActionResult> SignOut()
+	    {
+		    await new CustomAuthentication().SignOut(HttpContext);
+		    return RedirectToAction("signin");
 	    }
 	}
 }

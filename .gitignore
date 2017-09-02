@@ -9,3 +9,5 @@ Src/Repository/bin
 Src/Repository/obj*
 *.csproj.user
 *.sqlproj.user
+Database/Database.dbmdl
+Database/Database.jfm

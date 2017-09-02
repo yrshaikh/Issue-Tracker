@@ -1,0 +1,16 @@
+﻿@using System.Security.Claims
+@model object
+
+@{
+	ViewBag.Title = "Dashboard";
+	Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Congratulations you are authenticated.
+	
+	<h1>@User.Claims.First(x => x.Type == ClaimTypes.Email).Value;</h1>
+	@foreach (var item in User.Claims)
+{
+	<h2>@item.Value</h2>
+}
+</h2>

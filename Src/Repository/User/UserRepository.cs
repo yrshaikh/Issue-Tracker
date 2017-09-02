@@ -11,6 +11,7 @@ namespace Repository.User
 	{
 		public const string Insert = "User_Insert";
 		public const string Get = "User_Get_By_Email";
+		public const string Authenticate = "User_Authenticate";
 	}
 
 	public class UserRepository : BaseDataAccess, IUserRepository
@@ -65,6 +66,27 @@ namespace Repository.User
 			}
 
 			return user;
+		}
+    
+		public bool Authenticate(string email, string password)
+		{
+			List<DbParameter> parameterList = new List<DbParameter>
+			{
+				new SqlParameter("@email", SqlDbType.VarChar) {Value = email},
+				new SqlParameter("@password", SqlDbType.VarChar) {Value = password},
+			};
+
+			bool valid = false;
+
+			using (DbDataReader dataReader = base.GetDataReader(UserStoredProcedures.Authenticate, parameterList, CommandType.StoredProcedure))
+			{
+				if (dataReader != null && dataReader.HasRows)
+				{
+					valid = true;
+				}
+			}
+
+			return valid;
 		}
 	}
 }

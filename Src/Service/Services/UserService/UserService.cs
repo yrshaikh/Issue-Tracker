@@ -19,6 +19,9 @@ namespace Service.Services.UserService
 
 		public UserViewModel Create(SignUpViewModel user)
 		{
+
+		public UserViewModel Create(SignUpViewModel user)
+		{
 			int createdUserId = _userRepository.Create(
 				user.Email,
 				user.Password,
@@ -26,8 +29,22 @@ namespace Service.Services.UserService
 				user.LastName
 			);
 
-			// getting from repo and not constructing model from above, to make this service future proof.
-			var userModel = _userRepository.Get(user.Email);
+			return GetUserByEmail(user.Email);
+		}
+
+		public bool Authenticate(string email, string password)
+		{
+			return _userRepository.Authenticate(email, password);
+		}
+
+		public UserViewModel Get(string email)
+		{
+			return GetUserByEmail(email);
+		}
+
+		private UserViewModel GetUserByEmail(string email)
+		{
+			var userModel = _userRepository.Get(email);
 			return _mapper.Map<UserModel, UserViewModel>(userModel);
 		}
 	}
