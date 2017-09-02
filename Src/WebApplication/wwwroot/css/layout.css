@@ -10,11 +10,17 @@ body {
 	margin-right: 15px;
 }
 
-#unauthenticated-navbar form a.login {
+#unauthenticated-navbar form a.login, #unauthenticated-navbar form a.name {
 	color: #fff;
 	margin-left: 15px;
+}
+
+#unauthenticated-navbar form a.name {
+	margin-right: 15px;
 }
 
 .validation-summary-valid {
 	display:none;
 }
+
+.app { margin-top: 10px;}
