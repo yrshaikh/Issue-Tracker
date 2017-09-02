@@ -6,7 +6,14 @@ namespace WebApplication.Controllers
 {
     public class AccountController : Controller
     {
-        public IActionResult SignUp()
+	    private readonly IUserService _userService;
+
+		public AccountController(IUserService userService)
+	    {
+		    _userService = userService;
+	    }
+
+	    public IActionResult SignUp()
         {
             return View();
         }
@@ -16,7 +23,7 @@ namespace WebApplication.Controllers
 	    {
 		    if (ModelState.IsValid)
 		    {
-			    new UserService().Create(model);
+			    var user = _userService.Create(model);
 		    }
 		    return View(model);
 	    }
