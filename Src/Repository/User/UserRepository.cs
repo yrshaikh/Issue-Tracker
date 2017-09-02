@@ -67,7 +67,7 @@ namespace Repository.User
 
 			return user;
 		}
-
+    
 		public bool Authenticate(string email, string password)
 		{
 			List<DbParameter> parameterList = new List<DbParameter>

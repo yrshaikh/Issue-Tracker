@@ -19,6 +19,9 @@ namespace Service.Services.UserService
 
 		public UserViewModel Create(SignUpViewModel user)
 		{
+
+		public UserViewModel Create(SignUpViewModel user)
+		{
 			int createdUserId = _userRepository.Create(
 				user.Email,
 				user.Password,

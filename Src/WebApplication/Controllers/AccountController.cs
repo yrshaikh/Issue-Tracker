@@ -28,9 +28,8 @@ namespace WebApplication.Controllers
 		    if (ModelState.IsValid)
 		    {
 			    var user = _userService.Create(model);
-
 			    await new CustomAuthentication().SignIn(HttpContext, user);
-				return RedirectToAction("index", "home");
+				  return RedirectToAction("index", "home");
 		    }
 		    return View(model);
 	    }
