@@ -1,10 +1,15 @@
 ﻿using System.IO;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Repository.Models.User;
+using Repository.User;
+using Service.Services.UserService;
+using Service.ViewModels.User;
 
 namespace WebApplication
 {
@@ -27,7 +32,10 @@ namespace WebApplication
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddMvc();
+			services.AddAutoMapper();
 			services.AddSingleton<IConfiguration>(Configuration);
+			services.AddTransient<IUserService, UserService>();
+			services.AddTransient<IUserRepository, UserRepository>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,6 +71,14 @@ namespace WebApplication
 					name: "default",
 					template: "{controller=Home}/{action=Index}/{id?}");
 			});
+		}
+	}
+
+	public class MappingProfile : Profile
+	{
+		public MappingProfile()
+		{
+			CreateMap<UserModel, UserViewModel>();
 		}
 	}
 }

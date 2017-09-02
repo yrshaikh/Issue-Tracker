@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
-using System.Reflection.Metadata;
+using Repository.Models.User;
 
 namespace Repository.User
 {
 	public sealed class UserStoredProcedures
 	{
-		public const string INSERT = "User_Insert";
+		public const string Insert = "User_Insert";
+		public const string Get = "User_Get_By_Email";
 	}
 
 	public class UserRepository : BaseDataAccess, IUserRepository
@@ -27,7 +28,7 @@ namespace Repository.User
 
 			int createdUserId = -1;
 
-			using (DbDataReader dataReader = base.GetDataReader(UserStoredProcedures.INSERT, parameterList, CommandType.StoredProcedure))
+			using (DbDataReader dataReader = base.GetDataReader(UserStoredProcedures.Insert, parameterList, CommandType.StoredProcedure))
 			{
 				if (dataReader != null && dataReader.HasRows)
 				{
@@ -39,6 +40,31 @@ namespace Repository.User
 			}
 
 			return createdUserId;
+		}
+
+		public UserModel Get(string email)
+		{
+			List<DbParameter> parameterList = new List<DbParameter>
+			{
+				new SqlParameter("@email", SqlDbType.VarChar) {Value = email}
+			};
+			
+			var user = new UserModel();
+			using (DbDataReader dataReader = base.GetDataReader(UserStoredProcedures.Get, parameterList, CommandType.StoredProcedure))
+			{
+				if (dataReader != null && dataReader.HasRows)
+				{
+					while (dataReader.Read())
+					{
+						user.Id = (int)dataReader["id"];
+						user.Email = (string)dataReader["email"];
+						user.FirstName = (string)dataReader["first_name"];
+						user.LastName = (string)dataReader["last_name"];
+					}
+				}
+			}
+
+			return user;
 		}
 	}
 }

@@ -1,9 +1,10 @@
 ﻿using Service.ViewModels;
+using Service.ViewModels.User;
 
 namespace Service.Services.UserService
 {
 	public interface IUserService
 	{
-		SignUpViewModel Create(SignUpViewModel user);
+		UserViewModel Create(SignUpViewModel user);
 	}
 }
