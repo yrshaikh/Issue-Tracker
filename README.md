@@ -7,7 +7,7 @@
 4. Run
 
 # How to contribute 
-Looking for contributors with experience or wanting to learn in any of the following
+Looking for contributors with experience or wanting to learn any of the following -
 1. Angular 4
 2. .NET Core
 3. SQL
