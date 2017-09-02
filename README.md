@@ -6,7 +6,8 @@
 3. Update the connection strings of your local database
 4. Run
 
-# Looking for contributors with experience or wanting to learn in any of the following
+# How to contribute 
+Looking for contributors with experience or wanting to learn in any of the following
 1. Angular 4
 2. .NET Core
 3. SQL
