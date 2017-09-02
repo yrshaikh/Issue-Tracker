@@ -6,5 +6,6 @@ namespace Repository.User
     {
 	    int Create(string email, string password, string firstname, string lastname);
 	    UserModel Get(string email);
+	    bool Authenticate(string email, string password);
     }
 }
