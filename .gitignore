@@ -11,3 +11,4 @@ Src/Repository/obj*
 *.sqlproj.user
 Database/Database.dbmdl
 Database/Database.jfm
+/Src/WebApplication/*.user

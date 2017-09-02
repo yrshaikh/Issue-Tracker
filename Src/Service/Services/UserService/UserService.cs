@@ -16,10 +16,7 @@ namespace Service.Services.UserService
 			_userRepository = userRepository;
 			_mapper = mapper;
 		}
-
-		public UserViewModel Create(SignUpViewModel user)
-		{
-
+		
 		public UserViewModel Create(SignUpViewModel user)
 		{
 			int createdUserId = _userRepository.Create(

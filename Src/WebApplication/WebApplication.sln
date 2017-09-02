@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication", "WebApplic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "..\Service\Service.csproj", "{2F4C8990-E082-4F18-BAD1-8AD49487DD1D}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "..\..\Database\Database.sqlproj", "{378231C8-3AE6-4DF2-983F-C7C3DF85C342}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "..\Repository\Repository.csproj", "{797FF1DF-43CD-47CF-AAD7-A8A73D0C994D}"
 EndProject
 Global
