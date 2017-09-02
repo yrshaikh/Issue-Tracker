@@ -39,14 +39,14 @@ namespace WebApplication
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 		{
-			app.UseDefaultFiles();
+			//app.UseDefaultFiles();
 			app.UseStaticFiles();
 
 			app.UseCookieAuthentication(new CookieAuthenticationOptions()
 			{
 				AutomaticAuthenticate = true,
 				AutomaticChallenge = true,
-				LoginPath = "/Account/Login"
+				LoginPath = "/account/signin"
 			});
 
 			if (env.IsDevelopment())
