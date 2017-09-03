@@ -15,7 +15,8 @@
 						"wwwroot/css/navbar.css",
 						"wwwroot/css/buttons.css",
 						"wwwroot/css/base.css",
-						"wwwroot/css/project.css"
+						"wwwroot/css/project.css",
+						"wwwroot/css/issues.css"
 				]
   },
   {
