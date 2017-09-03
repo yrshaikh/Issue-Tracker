@@ -1,1 +1,6 @@
-﻿.btn { cursor: pointer;}
+﻿.btn {
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 1.5;
+	padding: .5rem 2.75rem;
+}
