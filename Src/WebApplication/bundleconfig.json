@@ -9,7 +9,13 @@
     "outputFileName": "wwwroot/css/common.min.css",
 				"inputFiles": [
 						"wwwroot/css/layout.css",
-						"wwwroot/css/buttons.css"
+						"wwwroot/css/components.css",
+						"wwwroot/css/form.css",
+						"wwwroot/css/theme.css",
+						"wwwroot/css/navbar.css",
+						"wwwroot/css/buttons.css",
+						"wwwroot/css/base.css",
+						"wwwroot/css/project.css"
 				]
   },
   {

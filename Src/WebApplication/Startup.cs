@@ -5,11 +5,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Repository.Models.Project;
 using Repository.Models.User;
 using Repository.Project;
 using Repository.User;
 using Service.Services.Project;
 using Service.Services.User;
+using Service.ViewModels.Project;
 using Service.ViewModels.User;
 
 namespace WebApplication
@@ -76,6 +78,7 @@ namespace WebApplication
 		public MappingProfile()
 		{
 			CreateMap<UserModel, UserViewModel>();
+			CreateMap<ProjectListModel, ProjectListViewModel>();
 		}
 	}
 }

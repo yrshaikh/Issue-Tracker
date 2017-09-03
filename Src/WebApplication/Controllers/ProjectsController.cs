@@ -15,8 +15,9 @@ namespace WebApplication.Controllers
 	    }
 
 	    public IActionResult Index()
-        {
-            return View();
+		{
+			var projects = _projectService.Get(AuthenticatedUser.UserId(User));
+			return View(projects);
         }
 
         public IActionResult New()

@@ -100,10 +100,30 @@
     <Content Include="bower_components\popper.js\packages\test\package.json" />
     <Content Include="bower_components\popper.js\packages\tooltip\package.json" />
     <Content Include="bower_components\popper.js\popperjs.png" />
+    <Content Include="wwwroot\css\form.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\css\navbar.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\css\buttons - Copy.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="wwwroot\css\buttons.css">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+    <Content Include="wwwroot\css\components.css" />
     <Content Include="wwwroot\css\layout.css" />
+    <Content Include="wwwroot\css\base.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\css\theme - Copy.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\css\theme.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\css\project.css" />
     <Content Include="wwwroot\js\core.min.js" />
   </ItemGroup>
   <ItemGroup>
