@@ -6,15 +6,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Repository.Models.User;
+using Repository.Project;
 using Repository.User;
-using Service.Services.UserService;
+using Service.Services.Project;
+using Service.Services.User;
 using Service.ViewModels.User;
 
 namespace WebApplication
 {
 	public class Startup
 	{
-
 		public Startup(IHostingEnvironment env)
 		{
 			var builder = new ConfigurationBuilder()
@@ -35,6 +36,8 @@ namespace WebApplication
 			services.AddSingleton<IConfiguration>(Configuration);
 			services.AddTransient<IUserService, UserService>();
 			services.AddTransient<IUserRepository, UserRepository>();
+			services.AddTransient<IProjectService, ProjectService>();
+			services.AddTransient<IProjectRepository, ProjectRepository>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

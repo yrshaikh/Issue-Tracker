@@ -7,7 +7,7 @@ using Repository.Models.User;
 
 namespace Repository.User
 {
-	public sealed class UserStoredProcedures
+	sealed class UserStoredProcedures
 	{
 		public const string Insert = "User_Insert";
 		public const string Get = "User_Get_By_Email";

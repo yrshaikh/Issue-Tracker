@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Service.Services.UserService;
+using Service.Services.User;
 using Service.ViewModels;
 using WebApplication.Security;
 

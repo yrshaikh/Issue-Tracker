@@ -19,6 +19,7 @@ namespace WebApplication.Security
 			var claims = new List<Claim>()
 		    {
 			    new Claim(ClaimTypes.Name, string.Format("{0} {1}", user.FirstName, user.LastName)),
+			    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
 			    new Claim(ClaimTypes.Role, RoleConstants.Admin),
 			    new Claim(ClaimTypes.Email, user.Email)
 		    };

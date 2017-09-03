@@ -1,7 +1,7 @@
 ﻿using Service.ViewModels;
 using Service.ViewModels.User;
 
-namespace Service.Services.UserService
+namespace Service.Services.User
 {
 	public interface IUserService
 	{
