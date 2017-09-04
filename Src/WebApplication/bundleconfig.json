@@ -22,8 +22,6 @@
   {
     "outputFileName": "wwwroot/js/core.min.js",
 				"inputFiles": [
-						"bower_components/jquery/dist/jquery.js",
-						"bower_components/bootstrap/dist/js/bootstrap.js"
 				],
     "minify": {
       "enabled": true,

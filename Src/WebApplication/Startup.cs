@@ -1,5 +1,4 @@
-﻿using System.IO;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +12,8 @@ using Service.Services.Project;
 using Service.Services.User;
 using Service.ViewModels.Project;
 using Service.ViewModels.User;
+using Microsoft.AspNetCore.Http;
+using React.AspNet;
 
 namespace WebApplication
 {
@@ -33,6 +34,9 @@ namespace WebApplication
 		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+			services.AddReact();
+
 			services.AddMvc();
 			services.AddAutoMapper();
 			services.AddSingleton<IConfiguration>(Configuration);
@@ -46,6 +50,33 @@ namespace WebApplication
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 		{
 			//app.UseDefaultFiles();
+
+			if (env.IsDevelopment())
+			{
+				app.UseDeveloperExceptionPage();
+				app.UseBrowserLink();
+			}
+
+			// Initialise ReactJS.NET. Must be before static files.
+			app.UseReact(config =>
+			{
+				// If you want to use server-side rendering of React components,
+				// add all the necessary JavaScript files here. This includes
+				// your components as well as all of their dependencies.
+				// See http://reactjs.net/ for more information. Example:
+				//config
+				//  .AddScript("~/Scripts/First.jsx")
+				//  .AddScript("~/Scripts/Second.jsx");
+
+				// If you use an external build too (for example, Babel, Webpack,
+				// Browserify or Gulp), you can improve performance by disabling
+				// ReactJS.NET's version of Babel and loading the pre-transpiled
+				// scripts. Example:
+				//config
+				//  .SetLoadBabel(false)
+				//  .AddScriptWithoutTransform("~/Scripts/bundle.server.js");
+			});
+
 			app.UseStaticFiles();
 
 			app.UseCookieAuthentication(new CookieAuthenticationOptions()
