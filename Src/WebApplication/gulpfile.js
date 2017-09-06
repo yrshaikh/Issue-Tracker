@@ -7,7 +7,11 @@ var gulp = require("gulp"),
     uglify = require("gulp-uglify"),
     merge = require("merge-stream"),
     del = require("del"),
-    bundleconfig = require("./bundleconfig.json");
+	bundleconfig = require("./bundleconfig.json");
+
+var browserify = require('browserify');
+var babelify = require('babelify');
+var source = require('vinyl-source-stream');
 
 var regex = {
     css: /\.css$/,
@@ -66,7 +70,9 @@ gulp.task("watch", function () {
 
     getBundles(regex.html).forEach(function (bundle) {
         gulp.watch(bundle.inputFiles, ["min:html"]);
-    });
+	});
+
+	gulp.watch('./clientapp/**/*{.js,.jsx}', ['build']);
 });
 
 function getBundles(regexPattern) {
@@ -75,4 +81,12 @@ function getBundles(regexPattern) {
     });
 }
 
-gulp.task("default", ["clean", "min:js", "min:css", "min:html"]);
+gulp.task('react', function () {
+	return browserify({ entries: './clientapp/root', extensions: ['.jsx', '.js'], debug: true })
+		.transform('babelify', { presets: ['es2015', 'react'] })
+		.bundle()
+		.pipe(source('index.js'))
+		.pipe(gulp.dest('./wwwroot/'));
+});
+
+gulp.task("default", ["clean", "min:js", "react", "min:css", "min:html"]);

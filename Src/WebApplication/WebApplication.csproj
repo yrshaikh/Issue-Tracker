@@ -100,6 +100,10 @@
     <Content Include="bower_components\popper.js\packages\test\package.json" />
     <Content Include="bower_components\popper.js\packages\tooltip\package.json" />
     <Content Include="bower_components\popper.js\popperjs.png" />
+    <Content Include="clientapp\app.jsx" />
+    <Content Include="clientapp\components\body.jsx" />
+    <Content Include="clientapp\root.jsx" />
+    <Content Include="clientapp\components\header.jsx" />
     <Content Include="wwwroot\css\form.css">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
@@ -121,8 +125,8 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="wwwroot\css\project.css" />
-    <Content Include="wwwroot\js\core.min.js" />
-    <Content Include="wwwroot\js\tutorial.jsx" />
+    <Content Include="react-app\app.jsx" />
+    <Content Include="react-app\header.jsx" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.0.2" />
@@ -138,7 +142,6 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink.Loader" Version="14.0.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.1" />
-    <PackageReference Include="React.AspNet" Version="3.0.1" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
