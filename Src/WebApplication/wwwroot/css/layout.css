@@ -17,15 +17,3 @@ body {
 	margin-top: -35px;
 	padding-bottom: 80px;
 }
-
-.hero-banner {
-	background: #9da3a5;
-	color: #fff;
-}
-
-.hero-banner-inner {
-	position: relative;
-	max-width: 1100px;
-	margin: 0 auto;
-	padding: 18px 0 60px 0;
-}

@@ -11,6 +11,11 @@ class Header extends Component {
 					<div className="hero-banner-title">
 						<h1>Issues v2</h1>
 					</div>
+					<div className="hero-banner-buttons">
+						<button className="btn btn-transparent">Something</button>
+						<button className="btn btn-transparent">Something</button>
+						<button className="btn btn-transparent">Something</button>
+					</div>
 				</div>
 			</div>
 		);

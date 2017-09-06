@@ -1,0 +1,24 @@
+﻿.hero-banner {
+	background: #9da3a5;
+	color: #fff;
+}
+
+.hero-banner-inner {
+	position: relative;
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 18px 0 60px 0;
+}
+
+	.hero-banner-inner .hero-banner-title {
+		display: inline-block;
+		width: 50%;
+	}
+
+	.hero-banner-inner .hero-banner-buttons {
+		display: inline-block;
+		float: right;
+	}
+	.hero-banner-inner .hero-banner-buttons .btn {
+		margin-left: 15px;
+	}
