@@ -10,6 +10,7 @@
 	padding: 18px 0 60px 0;
 }
 
+
 	.hero-banner-inner .hero-banner-title {
 		display: inline-block;
 		width: 50%;
@@ -19,6 +20,9 @@
 		display: inline-block;
 		float: right;
 	}
-	.hero-banner-inner .hero-banner-buttons .btn {
-		margin-left: 15px;
-	}
+
+		.hero-banner-inner .hero-banner-buttons .btn {
+			margin-left: 15px;
+			padding: .3rem 1.75rem;
+			box-shadow: 0 2px 0 rgba(0,0,0,0.3);
+		}
