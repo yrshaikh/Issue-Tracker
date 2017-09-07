@@ -1,12 +1,9 @@
-﻿#issues.body {
-	width: 98%;
-}
+#issues.body {
+  width: 98%; }
 
 #issues {
-	margin-top: -18px;
-}
+  margin-top: -18px; }
 
 #hero-issues .hero-banner-inner {
-	padding: 18px 0 18px;
-	max-width: 98%;
-}
+  padding: 18px 0 18px;
+  max-width: 98%; }

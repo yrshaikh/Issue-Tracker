@@ -1,0 +1,22 @@
+﻿.bg-dark {
+	background: #333333 !important;
+
+	.fa {
+		font-size: 20px;
+		margin-left: 25px;
+		color: #ddd;
+	}
+
+	.fa.fa-plus {
+		margin-right: 25px;
+	}
+}
+
+#unauthenticated-navbar form a.login, #unauthenticated-navbar form a.name {
+	color: #fff;
+	margin-left: 15px;
+}
+
+#unauthenticated-navbar form a.name {
+	margin-right: 15px;
+}

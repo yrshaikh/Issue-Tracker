@@ -1,4 +1,5 @@
-﻿"use strict";
+﻿/// <binding BeforeBuild='clean, default' />
+"use strict";
 
 var gulp = require("gulp"),
     concat = require("gulp-concat"),
@@ -9,78 +10,19 @@ var gulp = require("gulp"),
     del = require("del"),
 	bundleconfig = require("./bundleconfig.json");
 
+var sass = require('gulp-sass');
+
 var browserify = require('browserify');
 var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 
-var regex = {
-    css: /\.css$/,
-    html: /\.(html|htm)$/,
-    js: /\.js$/
+var webroot = "./wwwroot/";
+var paths = {
+	scss: webroot + "sass/**/*.scss",
+	scssDest: webroot + "css/"
 };
 
-gulp.task("min", ["min:js", "min:css", "min:html"]);
-
-gulp.task("min:js", function () {
-    var tasks = getBundles(regex.js).map(function (bundle) {
-        return gulp.src(bundle.inputFiles, { base: "." })
-            .pipe(concat(bundle.outputFileName))
-            .pipe(uglify())
-            .pipe(gulp.dest("."));
-    });
-    return merge(tasks);
-});
-
-gulp.task("min:css", function () {
-    var tasks = getBundles(regex.css).map(function (bundle) {
-        return gulp.src(bundle.inputFiles, { base: "." })
-            .pipe(concat(bundle.outputFileName))
-            .pipe(cssmin())
-            .pipe(gulp.dest("."));
-    });
-    return merge(tasks);
-});
-
-gulp.task("min:html", function () {
-    var tasks = getBundles(regex.html).map(function (bundle) {
-        return gulp.src(bundle.inputFiles, { base: "." })
-            .pipe(concat(bundle.outputFileName))
-            .pipe(htmlmin({ collapseWhitespace: true, minifyCSS: true, minifyJS: true }))
-            .pipe(gulp.dest("."));
-    });
-    return merge(tasks);
-});
-
-gulp.task("clean", function () {
-    var files = bundleconfig.map(function (bundle) {
-        return bundle.outputFileName;
-    });
-
-    return del(files);
-});
-
-gulp.task("watch", function () {
-    getBundles(regex.js).forEach(function (bundle) {
-        gulp.watch(bundle.inputFiles, ["min:js"]);
-    });
-
-    getBundles(regex.css).forEach(function (bundle) {
-        gulp.watch(bundle.inputFiles, ["min:css"]);
-    });
-
-    getBundles(regex.html).forEach(function (bundle) {
-        gulp.watch(bundle.inputFiles, ["min:html"]);
-	});
-
-	gulp.watch('./clientapp/**/*{.js,.jsx}', ['build']);
-});
-
-function getBundles(regexPattern) {
-    return bundleconfig.filter(function (bundle) {
-        return regexPattern.test(bundle.outputFileName);
-    });
-}
-
+// 1. react
 gulp.task('react', function () {
 	return browserify({ entries: './clientapp/root', extensions: ['.jsx', '.js'], debug: true })
 		.transform('babelify', { presets: ['es2015', 'react'] })
@@ -89,4 +31,37 @@ gulp.task('react', function () {
 		.pipe(gulp.dest('./wwwroot/'));
 });
 
-gulp.task("default", ["clean", "min:js", "react", "min:css", "min:html"]);
+// 2. sass
+gulp.task('compile:sass', function () {
+	gulp.src(paths.scss)
+		.pipe(sass())
+		.pipe(gulp.dest(paths.scssDest));
+});
+gulp.task("compile", ["compile:sass"]);
+
+// minify sass output
+function getBundles(regexPattern) {
+	return bundleconfig.filter(function (bundle) {
+		return regexPattern.test(bundle.outputFileName);
+	});
+}
+gulp.task("min:css", function () {
+	var tasks = getBundles(/\.css$/).map(function (bundle) {
+		return gulp.src(bundle.inputFiles, { base: "." })
+			.pipe(concat(bundle.outputFileName))
+			.pipe(cssmin())
+			.pipe(gulp.dest("."));
+	});
+	return merge(tasks);
+});
+
+gulp.task("clean", function () {
+	// nothing for now.
+});
+
+gulp.task("watch", function () {
+	gulp.watch('./clientapp/**/*{.js,.jsx}', ['build']);
+	gulp.watch(paths.scss, ['compile:sass']);
+});
+
+gulp.task("default", ["clean", "react", "compile", "min:css"]);

@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="react-app\**" />
+    <Compile Remove="wwwroot\sass\**" />
+    <Content Remove="react-app\**" />
+    <Content Remove="wwwroot\sass\**" />
+    <EmbeddedResource Remove="react-app\**" />
+    <EmbeddedResource Remove="wwwroot\sass\**" />
+    <None Remove="react-app\**" />
+    <None Remove="wwwroot\sass\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="bower_components\bootstrap\.bower.json" />
     <Content Include="bower_components\bootstrap\apple-touch-icon.png" />
     <Content Include="bower_components\bootstrap\bower.json" />
@@ -128,8 +139,6 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="wwwroot\css\project.css" />
-    <Content Include="react-app\app.jsx" />
-    <Content Include="react-app\header.jsx" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.0.2" />
@@ -150,9 +159,6 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
 	  <DotNetCliToolReference Include="BundlerMinifier.Core" Version="2.2.281" />
   </ItemGroup>
-	<Target Name="MyPreCompileTarget" BeforeTargets="Build">
-		<Exec Command="gulp min" />
-	</Target>
   <ItemGroup>
     <None Include="bower_components\bootstrap\build\.htmllintrc" />
     <None Include="bower_components\bootstrap\build\change-version.js" />
@@ -432,6 +438,16 @@
     <None Include="bower_components\jquery\src\var\support.js" />
     <None Include="bower_components\jquery\src\var\toString.js" />
     <None Include="bower_components\jquery\src\wrap.js" />
+    <None Include="wwwroot\sass\base.scss" />
+    <None Include="wwwroot\sass\buttons.scss" />
+    <None Include="wwwroot\sass\components.scss" />
+    <None Include="wwwroot\sass\form.scss" />
+    <None Include="wwwroot\sass\herobanner.scss" />
+    <None Include="wwwroot\sass\issues.scss" />
+    <None Include="wwwroot\sass\layout.scss" />
+    <None Include="wwwroot\sass\navbar.scss" />
+    <None Include="wwwroot\sass\project.scss" />
+    <None Include="wwwroot\sass\theme.scss" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Service\Service.csproj" />

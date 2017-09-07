@@ -1,11 +1,8 @@
-﻿.btn {
-	cursor: pointer;
-	font-size: 14px;
-	line-height: 1.5;
-	padding: .5rem 2.75rem;
-}
-
-.btn-transparent {
-	background-color: rgba(0,0,0,0.15);
-	color: #fff;
-}
+.btn {
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: .5rem 2.75rem; }
+  .btn .btn-transparent {
+    background-color: rgba(0, 0, 0, 0.15);
+    color: #fff; }
