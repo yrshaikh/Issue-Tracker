@@ -9,6 +9,8 @@ var gulp = require("gulp"),
 	bundleconfig = require("./bundleconfig.json"),
 	runSequence = require('run-sequence');
 
+var runSequence = require('run-sequence');
+
 var sass = require('gulp-sass');
 
 var browserify = require('browserify');
@@ -58,4 +60,10 @@ gulp.task("clean", function () {
 	return del(['wwwroot/css/*', 'wwwroot/index.js']);
 });
 
-//gulp.task("default", ["clean", "sass", "react", "css"]);
+gulp.task("default", function (cb) {
+	runSequence(
+		['clean', 'sass'],
+		['react'],
+		['css'],
+		cb);
+});
