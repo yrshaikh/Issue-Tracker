@@ -9,6 +9,7 @@ class IssueCreateForm extends Component {
 			, validations: {
 				title: true
 			}
+			, submittedOnce: false
 		};
 	
 		this.handleChange = this.handleChange.bind(this);
@@ -20,20 +21,27 @@ class IssueCreateForm extends Component {
 		this.setState({[name]: event.target.value});
 	}
 	
-	fireValidations(identifier) {
-		var valid = false;
+	validate(identifier) {
+
+		//if(!this.state.submittedOnce)
+		//	return;
+		
+		var validations = this.state.validations;
+		
 		switch(identifier){
 			case 'title': {
-				valid = this.state.title > 4;
+				validations[identifier] = this.state.title.length > 10;
+				break;
 			}
-			default: valid = true;
+			default: break;
 		}
-		return valid;
+		
+		this.setState({ validations : validations });
 	}
 
 	handleSubmit(event) {
-		alert('boom');
-		this.state.validations.title = this.fireValidations('title');
+		//this.setState({ submittedOnce : true });
+		this.validate('title');	
 		event.preventDefault();
 	}
 	
@@ -50,7 +58,9 @@ class IssueCreateForm extends Component {
 							value={this.state.title }
 							onChange={this.handleChange}>
 						</input>
-						{ !this.state.validations.title ? 'Title should atleast be of 10 characters' : '' }
+						{ !this.state.validations.title ? 
+							<span className='form-text text-danger'>Title should atleast be of 10 characters</span>
+							: '' }
 					</div>
 					<div className='form-group'>
 						<label>Description</label>
