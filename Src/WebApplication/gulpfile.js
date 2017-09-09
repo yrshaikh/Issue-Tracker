@@ -44,7 +44,7 @@ function getBundles(regexPattern) {
 		return regexPattern.test(bundle.outputFileName);
 	});
 }
-gulp.task("css", ['sass'],  function () {
+gulp.task("css",  function () {
 	var tasks = getBundles(/\.css$/).map(function (bundle) {
 		return gulp.src(bundle.inputFiles, { base: "." })
 			.pipe(concat(bundle.outputFileName))
@@ -58,4 +58,4 @@ gulp.task("clean", function () {
 	return del(['wwwroot/css/*', 'wwwroot/index.js']);
 });
 
-gulp.task("default", ["clean", "sass", "react", "css"]);
+//gulp.task("default", ["clean", "sass", "react", "css"]);
