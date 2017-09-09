@@ -1,8 +1,8 @@
-﻿import Header from './components/header';
-import Body from './components/body';
+﻿import Header from './issue-list/header';
+import Body from './issue-list/body';
 import React, { Component } from 'react';
 
-class App extends Component {
+class IssueListApp extends Component {
 	constructor(props) {
 		super(props);
 	}
@@ -16,4 +16,4 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default IssueListApp;

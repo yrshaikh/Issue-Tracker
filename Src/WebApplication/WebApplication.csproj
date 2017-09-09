@@ -111,10 +111,13 @@
     <Content Include="bower_components\popper.js\packages\test\package.json" />
     <Content Include="bower_components\popper.js\packages\tooltip\package.json" />
     <Content Include="bower_components\popper.js\popperjs.png" />
-    <Content Include="clientapp\app.jsx" />
-    <Content Include="clientapp\components\body.jsx" />
-    <Content Include="clientapp\root.jsx" />
-    <Content Include="clientapp\components\header.jsx" />
+    <Content Include="wwwroot\clientapp\issue-create\body.jsx" />
+    <Content Include="wwwroot\clientapp\issue-create\header.jsx" />
+    <Content Include="wwwroot\clientapp\issue-create-app.jsx" />
+    <Content Include="wwwroot\clientapp\issue-list-app.jsx" />
+    <Content Include="wwwroot\clientapp\issue-list\body.jsx" />
+    <Content Include="wwwroot\clientapp\root.jsx" />
+    <Content Include="wwwroot\clientapp\issue-list\header.jsx" />
     <Content Include="wwwroot\css\form.css">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
@@ -438,6 +441,14 @@
     <None Include="bower_components\jquery\src\var\support.js" />
     <None Include="bower_components\jquery\src\var\toString.js" />
     <None Include="bower_components\jquery\src\wrap.js" />
+    <None Include="wwwroot\clientapp\issue-create-app.jsx" />
+    <None Include="wwwroot\clientapp\issue-create\body.jsx" />
+    <None Include="wwwroot\clientapp\issue-create\header.jsx" />
+    <None Include="wwwroot\clientapp\issue-create\issue-create-form.jsx" />
+    <None Include="wwwroot\clientapp\issue-list-app.jsx" />
+    <None Include="wwwroot\clientapp\issue-list\body.jsx" />
+    <None Include="wwwroot\clientapp\issue-list\header.jsx" />
+    <None Include="wwwroot\clientapp\root.jsx" />
     <None Include="wwwroot\sass\base.scss" />
     <None Include="wwwroot\sass\buttons.scss" />
     <None Include="wwwroot\sass\components.scss" />

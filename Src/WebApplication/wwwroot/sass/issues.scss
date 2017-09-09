@@ -10,3 +10,17 @@
 	padding: 18px 0 18px;
 	max-width: 98%;
 }
+
+.hero-banner-issue-create {
+	.fa-long-arrow-left {
+		margin-right:10px;
+	}
+}
+
+#issue-create-form {
+	label {
+		color: #555;
+		font-size: 14px;
+		margin-bottom: 5px;
+	}
+}

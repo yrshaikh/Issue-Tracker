@@ -24,7 +24,7 @@ var paths = {
 
 // 1. react
 gulp.task('react', function () {
-	return browserify({ entries: './clientapp/root', extensions: ['.jsx', '.js'], debug: true })
+	return browserify({ entries: './wwwroot/clientapp/root', extensions: ['.jsx', '.js'], debug: true })
 		.transform('babelify', { presets: ['es2015', 'react'] })
 		.bundle()
 		.pipe(source('index.js'))
@@ -37,6 +37,7 @@ gulp.task('compile:sass', function () {
 		.pipe(sass())
 		.pipe(gulp.dest(paths.scssDest));
 });
+
 gulp.task("compile", ["compile:sass"]);
 
 // minify sass output
@@ -45,7 +46,7 @@ function getBundles(regexPattern) {
 		return regexPattern.test(bundle.outputFileName);
 	});
 }
-gulp.task("min:css", function () {
+gulp.task("mincss", function () {
 	var tasks = getBundles(/\.css$/).map(function (bundle) {
 		return gulp.src(bundle.inputFiles, { base: "." })
 			.pipe(concat(bundle.outputFileName))
@@ -56,12 +57,12 @@ gulp.task("min:css", function () {
 });
 
 gulp.task("clean", function () {
-	// nothing for now.
+	return del(['wwwroot/css/*', 'wwwroot/index.js']);
 });
 
-gulp.task("watch", function () {
-	gulp.watch('./clientapp/**/*{.js,.jsx}', ['build']);
-	gulp.watch(paths.scss, ['compile:sass']);
-});
+//gulp.task("watch", function () {
+//	gulp.watch('./wwwroot/clientapp/**/*{.js,.jsx}', ['build']);
+//	gulp.watch(paths.scss, ['compile:sass']);
+//});
 
-gulp.task("default", ["clean", "react", "compile", "min:css"]);
+gulp.task("default", ["clean", "react", "compile", "mincss"]);

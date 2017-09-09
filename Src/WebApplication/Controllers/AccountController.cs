@@ -18,7 +18,7 @@ namespace WebApplication.Controllers
 	    public IActionResult SignUp()
         {
 	        if (User.Identity.IsAuthenticated)
-		        return RedirectToAction("index", "home");
+		        return Redirect("/");
 			return View();
         }
 
@@ -29,16 +29,17 @@ namespace WebApplication.Controllers
 		    {
 			    var user = _userService.Create(model);
 			    await new CustomAuthentication().SignIn(HttpContext, user);
-				  return RedirectToAction("index", "home");
-		    }
+					return Redirect("/");
+			}
 		    return View(model);
 	    }
 
 	    public IActionResult SignIn()
 	    {
 		    if (User.Identity.IsAuthenticated)
-			    return RedirectToAction("Index", "Home");
-		    return View();
+				return Redirect("/");
+
+			return View();
 	    }
 
 	    [HttpPost]
@@ -49,8 +50,8 @@ namespace WebApplication.Controllers
 		    {
 			    var  user = _userService.Get(model.Email);
 			    await new CustomAuthentication().SignIn(HttpContext, user);
-			    return RedirectToAction("Index", "Home");
-		    }
+				return Redirect("/");
+			}
 		    return View(model);
 	    }
 
