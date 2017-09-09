@@ -14,6 +14,7 @@ class IssueCreateForm extends Component {
 	
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleBlur = this.handleBlur.bind(this);
 	  }
 	
 	handleChange(event) {
@@ -21,27 +22,31 @@ class IssueCreateForm extends Component {
 		this.setState({[name]: event.target.value});
 	}
 	
+	
+	handleBlur(event) {
+		var name = event.target.name;
+		this.validate({[name]: event.target.value});
+	}
+	
 	validate(identifier) {
-
-		//if(!this.state.submittedOnce)
-		//	return;
-		
+		var isValid = true;
 		var validations = this.state.validations;
-		
 		switch(identifier){
 			case 'title': {
-				validations[identifier] = this.state.title.length > 10;
+				validations[identifier] = isValid = this.state.title.length > 10;
 				break;
 			}
 			default: break;
 		}
-		
 		this.setState({ validations : validations });
+		return isValid;
 	}
 
 	handleSubmit(event) {
-		//this.setState({ submittedOnce : true });
-		this.validate('title');	
+		if(this.validate('title')) {
+			// send for save.
+			alert('can be saved');
+		}
 		event.preventDefault();
 	}
 	
@@ -56,7 +61,8 @@ class IssueCreateForm extends Component {
 							className='form-control text-box' 
 							placeholder='Enter a one-line summary of the issue.'
 							value={this.state.title }
-							onChange={this.handleChange}>
+							onChange={this.handleChange}
+							onBlur={this.handleBlur}>
 						</input>
 						{ !this.state.validations.title ? 
 							<span className='form-text text-danger'>Title should atleast be of 10 characters</span>
