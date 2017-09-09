@@ -15,3 +15,6 @@
   color: #555;
   font-size: 14px;
   margin-bottom: 5px; }
+
+#issue-create-form #create {
+  margin-right: 15px; }

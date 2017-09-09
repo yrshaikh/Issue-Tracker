@@ -12,10 +12,12 @@
 	.hero-banner-title {
 		display: inline-block;
 		width: 50%;
+		.hero-banner-message {
+			color: #fff;
+		}
 	}
 
 	.hero-banner-buttons {
-		display: inline-block;
 		float: right;
 
 		.btn {

@@ -4,11 +4,10 @@
 var gulp = require("gulp"),
     concat = require("gulp-concat"),
     cssmin = require("gulp-cssmin"),
-    htmlmin = require("gulp-htmlmin"),
-    uglify = require("gulp-uglify"),
-    merge = require("merge-stream"),
+	merge = require("merge-stream"),
     del = require("del"),
-	bundleconfig = require("./bundleconfig.json");
+	bundleconfig = require("./bundleconfig.json"),
+	runSequence = require('run-sequence');
 
 var sass = require('gulp-sass');
 
@@ -37,8 +36,7 @@ gulp.task('compile:sass', function () {
 		.pipe(sass())
 		.pipe(gulp.dest(paths.scssDest));
 });
-
-gulp.task("compile", ["compile:sass"]);
+gulp.task("sass", ["compile:sass"]);
 
 // minify sass output
 function getBundles(regexPattern) {
@@ -46,7 +44,7 @@ function getBundles(regexPattern) {
 		return regexPattern.test(bundle.outputFileName);
 	});
 }
-gulp.task("mincss", function () {
+gulp.task("css", ['sass'],  function () {
 	var tasks = getBundles(/\.css$/).map(function (bundle) {
 		return gulp.src(bundle.inputFiles, { base: "." })
 			.pipe(concat(bundle.outputFileName))
@@ -60,9 +58,4 @@ gulp.task("clean", function () {
 	return del(['wwwroot/css/*', 'wwwroot/index.js']);
 });
 
-//gulp.task("watch", function () {
-//	gulp.watch('./wwwroot/clientapp/**/*{.js,.jsx}', ['build']);
-//	gulp.watch(paths.scss, ['compile:sass']);
-//});
-
-gulp.task("default", ["clean", "react", "compile", "mincss"]);
+gulp.task("default", ["clean", "sass", "react", "css"]);

@@ -10,8 +10,9 @@
   .hero-banner-inner .hero-banner-title {
     display: inline-block;
     width: 50%; }
+    .hero-banner-inner .hero-banner-title .hero-banner-message {
+      color: #fff; }
   .hero-banner-inner .hero-banner-buttons {
-    display: inline-block;
     float: right; }
     .hero-banner-inner .hero-banner-buttons .btn {
       margin-left: 15px;
