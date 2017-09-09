@@ -18,3 +18,7 @@
 
 #issue-create-form #create {
   margin-right: 15px; }
+
+#issue-create-form .title {
+  font-size: 20px;
+  font-weight: bold; }

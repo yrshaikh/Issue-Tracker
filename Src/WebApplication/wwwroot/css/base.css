@@ -22,5 +22,14 @@
 .fc-white {
   color: #fff; }
 
+.pt-10 {
+  padding-bottom: 20px; }
+
 .pb-20 {
   padding-bottom: 20px; }
+
+.mt-10 {
+  margin-top: 10px; }
+
+.mb-10 {
+  margin-bottom: 10px; }

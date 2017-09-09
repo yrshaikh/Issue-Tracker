@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+const axios = require('axios');
 
 class IssueCreateForm extends Component {
 	constructor(props) {
@@ -10,6 +11,9 @@ class IssueCreateForm extends Component {
 				title: true
 			}
 			, submittedOnce: false
+			, firstLoad: false
+			, submitting: false
+			, error: false
 		};
 	
 		this.handleChange = this.handleChange.bind(this);
@@ -20,12 +24,13 @@ class IssueCreateForm extends Component {
 	handleChange(event) {
 		var name = event.target.name;
 		this.setState({[name]: event.target.value});
+		this.setState({ firstLoad: true });
 	}
-	
 	
 	handleBlur(event) {
 		var name = event.target.name;
 		this.validate({[name]: event.target.value});
+		this.setState({ firstLoad: true });
 	}
 	
 	validate(identifier) {
@@ -44,22 +49,39 @@ class IssueCreateForm extends Component {
 
 	handleSubmit(event) {
 		if(this.validate('title')) {
-			// send for save.
-			alert('can be saved');
+			this.setState({ submitting : true });
+			this.setState({ error : false });
+			this.save();
 		}
 		event.preventDefault();
+	}
+
+	save() {
+		var self = this;
+		axios.post('/issues/new', {
+			title : this.state.title
+			, description: this.state.description
+		})
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (error) {
+			self.setState({ submitting : false });
+			self.setState({ error : true });
+			console.log(error);
+		});
 	}
 	
 	render() {
 		return (
 			<form id='issue-create-form' className='row custom-form'>
-				<div className='col-md-9'>
+				<div className='col-md-12'>
 					<div className='form-group'>
-						<label>Title</label>
-						<input type='text'
+						<input type='text' autoFocus
 							name='title'
-							className='form-control text-box' 
+							className='form-control text-box title' 
 							placeholder='Enter a one-line summary of the issue.'
+							ref={input => input && !this.state.firstLoad && input.focus()}
 							value={this.state.title }
 							onChange={this.handleChange}
 							onBlur={this.handleBlur}>
@@ -68,6 +90,8 @@ class IssueCreateForm extends Component {
 							<span className='form-text text-danger'>Title should atleast be of 10 characters</span>
 							: '' }
 					</div>
+				</div>
+				<div className='col-md-9'>
 					<div className='form-group'>
 						<label>Description</label>
 						<textarea 
@@ -95,12 +119,40 @@ class IssueCreateForm extends Component {
 					</div>
 				</div>
 
+				{ this.renderButtons() }
+				{ this.renderError() }
+			</form>
+		);
+	}
+
+	renderButtons() {
+		if(this.state.submitting) {			
+			return (
+				<div className='col-md-12'>
+					<button type='button' id='create' className='btn btn-default' disabled='disabled'>Submitting</button>
+				</div>
+			);
+		}
+		else {
+			return (
 				<div className='col-md-12'>
 					<button type='button' id='create' className='btn btn-success' onClick={this.handleSubmit}>Create Issue</button>
 					<button type='button' className='btn btn-outline-dark' onClick={this.handleSubmit}>Create and Add Another</button>
 				</div>
-			</form>
-		);
+			);
+		}		
+	}
+
+	renderError() {
+		if(this.state.error){
+			return (
+				<div className='col-md-9 mt-10'>
+					<div className='alert alert-danger' role='alert'>
+						Whoops! Something went wrong. Please try again.
+					</div>
+				</div>
+			);
+		}
 	}
 }
 
