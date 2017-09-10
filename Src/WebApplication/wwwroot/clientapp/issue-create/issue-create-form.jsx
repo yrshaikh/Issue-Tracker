@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import PubSub from 'pubsub-js';   
 const axios = require('axios');
 
 class IssueCreateForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			projectId: 'two'
+			projectId: window.app.defaultProjectId
 			, title: ''
 			, description: ''
 			, validations: {
@@ -16,11 +17,22 @@ class IssueCreateForm extends Component {
 			, submitting: false
 			, error: false
 		};
-	
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleBlur = this.handleBlur.bind(this);
-	  }
+	}
+
+	componentWillMount(){
+		this.state.projectId = PubSub.subscribe('PROJECT_CHANGED', this.handleProjectChange.bind(this));
+	}
+	componentWillUnmount(){
+		PubSub.unsubscribe(this.state.projectId);
+	}
+	
+	handleProjectChange(event, projectId){
+		alert('handleProjectChanged');
+		this.setState({ projectId: projectId });
+	}
 	
 	handleChange(event) {
 		var name = event.target.name;

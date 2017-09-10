@@ -8,12 +8,14 @@
 
 @{
 	var projects = (List<ProjectListViewModel>)ViewBag.Projects;
+	var defaultProjectId = projects.FirstOrDefault()?.Id;
 }
 
 <script type="text/javascript">
 	window.app = {};
 	window.app.projects = [];
 	window.app.projects = @(Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(projects)));
+	window.app.defaultProjectId = @defaultProjectId;
 </script>
 
 <div id="app-issue-create-root"></div>

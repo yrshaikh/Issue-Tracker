@@ -48,6 +48,7 @@
     "merge-stream": "^1.0.1",
     "minifycss": "^1.0.1",
     "protractor": "~5.1.2",
+    "pubsub-js": "^1.5.7",
     "run-sequence": "^2.1.0",
     "ts-node": "~3.2.0",
     "tslint": "~5.3.2",
