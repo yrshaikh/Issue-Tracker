@@ -58,7 +58,7 @@ class IssueCreateForm extends Component {
 
 	save() {
 		var self = this;
-		axios.post('/issues/new', {
+		axios.post('/issue/new', {
 			title : this.state.title
 			, description: this.state.description
 		})

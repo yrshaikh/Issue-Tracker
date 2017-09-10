@@ -13,6 +13,8 @@ using Service.Services.User;
 using Service.ViewModels.Project;
 using Service.ViewModels.User;
 using Microsoft.AspNetCore.Http;
+using Repository.Issue;
+using Service.Services.Issue;
 
 namespace WebApplication
 {
@@ -40,6 +42,8 @@ namespace WebApplication
 			services.AddTransient<IUserRepository, UserRepository>();
 			services.AddTransient<IProjectService, ProjectService>();
 			services.AddTransient<IProjectRepository, ProjectRepository>();
+			services.AddTransient<IIssueService, IssueService>();
+			services.AddTransient<IIssueRepository, IssueRepository>();
 
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 		}
