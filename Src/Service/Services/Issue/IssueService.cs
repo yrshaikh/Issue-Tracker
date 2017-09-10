@@ -12,9 +12,9 @@ namespace Service.Services.Issue
 		    _issueRepository = issueRepository;
 	    }
 
-	    public int Create(CreateIssueViewModel issue)
+	    public int Create(CreateIssueViewModel issue, int userId)
 	    {
-		    return _issueRepository.Create(issue.Title, issue.Description);
+		    return _issueRepository.Create(issue.ProjectId, issue.Title, issue.Description, userId);
 	    }
     }
 }

@@ -35,7 +35,7 @@ namespace WebApplication.Controllers
 		[HttpPost]
 		public IActionResult New([FromBody] CreateIssueViewModel model)
 		{
-			_issueService.Create(model);
+			_issueService.Create(model, AuthenticatedUser.UserId(User));
 			return View();
 		}
 	}

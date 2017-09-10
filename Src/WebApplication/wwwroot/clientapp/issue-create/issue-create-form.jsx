@@ -6,7 +6,7 @@ class IssueCreateForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			projectId: window.app.defaultProjectId
+			projectId: ''
 			, title: ''
 			, description: ''
 			, validations: {
@@ -24,6 +24,9 @@ class IssueCreateForm extends Component {
 
 	componentWillMount(){
 		this.state.projectId = PubSub.subscribe('PROJECT_CHANGED', this.handleProjectChange.bind(this));
+	}
+	componentDidMount(){
+		this.setState({ projectId: window.app.defaultProjectId });
 	}
 	componentWillUnmount(){
 		PubSub.unsubscribe(this.state.projectId);
@@ -72,11 +75,13 @@ class IssueCreateForm extends Component {
 	save() {
 		var self = this;
 		axios.post('/issue/new', {
-			title : this.state.title
+			projectId: this.state.projectId
+			, title : this.state.title
 			, description: this.state.description
 		})
 		.then(function (response) {
 			console.log(response);
+			window.location.href = '/';
 		})
 		.catch(function (error) {
 			self.setState({ submitting : false });

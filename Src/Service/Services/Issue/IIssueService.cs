@@ -4,6 +4,6 @@ namespace Service.Services.Issue
 {
 	public interface IIssueService
 	{
-		int Create(CreateIssueViewModel issue);
+		int Create(CreateIssueViewModel issue, int userId);
 	}
 }

@@ -2,6 +2,6 @@
 {
 	public interface IIssueRepository
 	{
-		int Create(string title, string description);
+		int Create(int projectId, string title, string description, int createdBy);
 	}
 }
