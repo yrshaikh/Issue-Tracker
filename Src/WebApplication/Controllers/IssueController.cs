@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Services.Issue;
+using Service.Services.Project;
 using Service.ViewModels.Issue;
+using WebApplication.Security;
 
 namespace WebApplication.Controllers
 {
@@ -10,10 +12,12 @@ namespace WebApplication.Controllers
 	public class IssueController : Controller
 	{
 		private readonly IIssueService _issueService;
+		private readonly IProjectService _projectService;
 
-		public IssueController(IIssueService issueService)
+		public IssueController(IIssueService issueService, IProjectService projectService)
 		{
 			this._issueService = issueService;
+			_projectService = projectService;
 		}
 
 		public IActionResult Index()
@@ -24,6 +28,7 @@ namespace WebApplication.Controllers
 		[HttpGet("issue/new")]
 		public IActionResult New()
 		{
+			ViewBag.Projects = _projectService.Get(AuthenticatedUser.UserId(User));
 			return View();
 		}
 		

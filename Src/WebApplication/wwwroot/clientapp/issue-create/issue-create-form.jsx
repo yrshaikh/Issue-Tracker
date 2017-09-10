@@ -5,7 +5,8 @@ class IssueCreateForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			title: ''
+			projectId: 'two'
+			, title: ''
 			, description: ''
 			, validations: {
 				title: true
@@ -76,7 +77,8 @@ class IssueCreateForm extends Component {
 		return (
 			<form id='issue-create-form' className='row custom-form'>
 				<div className='col-md-12'>
-					<div className='form-group'>
+					<div className='form-group'>						
+						<label>Subject</label>
 						<input type='text' autoFocus
 							name='title'
 							className='form-control text-box title' 

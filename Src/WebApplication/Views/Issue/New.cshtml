@@ -1,8 +1,20 @@
-﻿@model object
+﻿@using Service.ViewModels.Project
+@model object
 
 @{
 	ViewBag.Title = "Dashboard";
 	Layout = "~/Views/Shared/Layout.cshtml";
 }
+
+@{
+	var projects = (List<ProjectListViewModel>)ViewBag.Projects;
+}
+
+<script type="text/javascript">
+	window.app = {};
+	window.app.projects = [];
+	window.app.projects = @(Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(projects)));
+</script>
+
 <div id="app-issue-create-root"></div>
 @Html.Partial("_ReactJs")

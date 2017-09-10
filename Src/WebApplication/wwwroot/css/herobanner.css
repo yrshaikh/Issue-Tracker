@@ -12,6 +12,10 @@
     width: 50%; }
     .hero-banner-inner .hero-banner-title .hero-banner-message {
       color: #fff; }
+    .hero-banner-inner .hero-banner-title .select-project {
+      margin-left: -10px; }
+      .hero-banner-inner .hero-banner-title .select-project label {
+        color: #fff; }
   .hero-banner-inner .hero-banner-buttons {
     float: right; }
     .hero-banner-inner .hero-banner-buttons .btn {
