@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Services.Issue;
@@ -38,5 +40,28 @@ namespace WebApplication.Controllers
 			_issueService.Create(model, AuthenticatedUser.UserId(User));
 			return View();
 		}
+
+	    [HttpGet]
+	    public IActionResult Get()
+	    {
+	        var issues = new List<IssueSummaryViewModel>
+	        {
+	            new IssueSummaryViewModel
+	            {
+	                IssueId = 336,
+	                Title = "Login does not work as expected on IE 6 and 7 with emulation mode ON.",
+	                CreatedBy = "Yasser Shaikh",
+	                CreatedOn = DateTime.Now.AddHours(-3)
+	            },
+	            new IssueSummaryViewModel
+	            {
+	                IssueId = 23,
+	                Title = "Change the font to Lato everywhere and adjust the font size if required.",
+	                CreatedBy = "Harrison Wells",
+	                CreatedOn = DateTime.Now.AddDays(-23)
+	            }
+	        };
+	        return Json(issues);
+	    }
 	}
 }
