@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PubSub from 'pubsub-js';   
+import PubSub from 'pubsub-js';
 const axios = require('axios');
 
 class IssueCreateForm extends Component {
