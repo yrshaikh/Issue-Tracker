@@ -10,9 +10,8 @@ class IssueRow extends Component{
                 </div>
                 <div className='col-md-11 row'>
                     <a href={slug} className='title col-md-12'>#{issue.issueId} {issue.title}</a>
-                    <span>{dateToFormat}</span>
                     <span className='col-md-12 gray'>
-                        Created by {issue.createdBy} on 
+                        Created by {issue.createdBy} on {issue.createdOn}
                     </span>
                 </div>
             </div>

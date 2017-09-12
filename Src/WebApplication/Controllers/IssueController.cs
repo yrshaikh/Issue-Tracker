@@ -51,14 +51,28 @@ namespace WebApplication.Controllers
 	                IssueId = 336,
 	                Title = "Login does not work as expected on IE 6 and 7 with emulation mode ON.",
 	                CreatedBy = "Yasser Shaikh",
-	                CreatedOn = DateTime.Now.AddHours(-3)
+	                CreatedOn = "23rd Aug 2017 4:30 PM"
 	            },
 	            new IssueSummaryViewModel
 	            {
 	                IssueId = 23,
 	                Title = "Change the font to Lato everywhere and adjust the font size if required.",
 	                CreatedBy = "Harrison Wells",
-	                CreatedOn = DateTime.Now.AddDays(-23)
+	                CreatedOn = "Today 2:45 PM"
+	            },
+	            new IssueSummaryViewModel
+	            {
+	                IssueId = 336,
+	                Title = "Login does not work as expected on IE 6 and 7 with emulation mode ON.",
+	                CreatedBy = "Yasser Shaikh",
+	                CreatedOn = "23rd Aug 2017 4:30 PM"
+	            },
+	            new IssueSummaryViewModel
+	            {
+	                IssueId = 23,
+	                Title = "Change the font to Lato everywhere and adjust the font size if required.",
+	                CreatedBy = "Harrison Wells",
+	                CreatedOn = "Today 2:45 PM"
 	            }
 	        };
 	        return Json(issues);
