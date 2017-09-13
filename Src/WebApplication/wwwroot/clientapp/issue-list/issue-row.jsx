@@ -5,12 +5,12 @@ class IssueRow extends Component{
         var slug = '/issue/' + issue.issueId + '/' + 'this-is-some-slug-123';
         return (
             <div className='row issue-row'>
-                <div className='col-md-1'>
-                    OPEN
-                </div>
                 <div className='col-md-11 row'>
-                    <a href={slug} className='title col-md-12'>#{issue.issueId} {issue.title}</a>
-                    <span className='col-md-12 gray'>
+                    <a href={slug} className='title dark-gray col-md-12'>
+                        <i className='status fa fa-circle green'></i>                        
+                        #{issue.issueId} {issue.title}
+                    </a>
+                    <span className='subtitle col-md-12 gray'>
                         Created by {issue.createdBy} on {issue.createdOn}
                     </span>
                 </div>

@@ -32,14 +32,26 @@
     border: 1px solid #e1e4e8;
     border-top: 0px; }
     #issue-list .issue-row .title {
-      font-size: 20px;
-      color: #07C; }
+      font-size: 16px;
+      font-weight: bold; }
+    #issue-list .issue-row .status {
+      margin-right: 10px; }
+    #issue-list .issue-row .subtitle {
+      margin-left: 25px;
+      text-transform: lowercase; }
   #issue-list .filter {
     border: 1px solid #e1e4e8;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
     border-top: 1px solid #e1e4e8;
     background: #F6F8FA;
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     padding-left: 15px; }
+    #issue-list .filter .separator {
+      margin-left: 10px;
+      margin-right: 10px; }
+    #issue-list .filter .fa {
+      color: #666;
+      margin-top: 8px;
+      font-size: 10px; }

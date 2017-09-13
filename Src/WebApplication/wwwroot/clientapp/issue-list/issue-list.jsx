@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import IssueRow from './issue-row';
+import IssueAppliedFilters from './issue-applied-filters';
 const axios = require('axios');
 
 class IssueList extends Component{
@@ -47,10 +48,7 @@ class IssueList extends Component{
         return(
             <div id='issue-list' className='row'>
                 <div className='col-md-12'>
-                    <div className='row issue-row filter'>
-                        <b>Filtered by :&nbsp;</b>
-                        <i>Status:Open,Resolved - Assignee: Yasser Shaikh - Tags: feature, bugs, support.</i>
-                    </div>
+                    <IssueAppliedFilters />
                     {issues}
                 </div>
             </div>

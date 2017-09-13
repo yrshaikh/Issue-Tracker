@@ -42,19 +42,35 @@ $border-color: #e1e4e8;
 		border: 1px solid $border-color;
 		border-top: 0px;
 		.title {
-			font-size: 20px;
-			color: #07C;
+			font-size: 16px;
+			font-weight: bold;
+		}
+		.status {
+			margin-right: 10px;
+		}
+		.subtitle {
+			margin-left: 25px;
+			text-transform: lowercase;
 		}
 	}
 	
 	.filter {
 		border: 1px solid $border-color;
-		font-size: 16px;
+		font-size: 14px;
 		text-align: center;
 		border-top: 1px solid $border-color;
 		background: #F6F8FA;
 		border-top-left-radius: 2px;
 		border-top-right-radius: 2px;
 		padding-left: 15px;
+		.separator {
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+		.fa {
+			color: #666;
+			margin-top: 8px;
+			font-size: 10px;
+		}
 	}
 }
