@@ -1,0 +1,20 @@
+﻿@using System.Collections.Generic
+@using System.Linq
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using Service.ViewModels.Project
+@model object
+
+@{
+	ViewBag.Title = "Dashboard";
+	Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<script type="text/javascript">
+	window.app = {};
+	@*window.app.projects = [];
+	window.app.projects = @(Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(projects)));
+	window.app.defaultProjectId = @defaultProjectId;*@
+</script>
+<h2>Issue</h2>
+<div id="app-issue-view-root"></div>
+@Html.Partial("_ReactJs")

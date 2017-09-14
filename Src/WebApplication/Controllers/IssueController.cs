@@ -41,6 +41,12 @@ namespace WebApplication.Controllers
 			return View();
 		}
 
+        [HttpGet("issue/{id}/{slug}")]
+	    public IActionResult Issue(int id, string slug)
+        {
+            return View();
+        }
+
 	    [HttpGet]
 	    public IActionResult Get()
 	    {
