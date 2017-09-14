@@ -44,37 +44,7 @@ namespace WebApplication.Controllers
 	    [HttpGet]
 	    public IActionResult Get()
 	    {
-	        var issues = new List<IssueSummaryViewModel>
-	        {
-	            new IssueSummaryViewModel
-	            {
-	                IssueId = 336,
-	                Title = "Login does not work as expected on IE 6 and 7 with emulation mode ON.",
-	                CreatedBy = "Yasser Shaikh",
-	                CreatedOn = "23rd Aug 2017 4:30 PM"
-	            },
-	            new IssueSummaryViewModel
-	            {
-	                IssueId = 23,
-	                Title = "Change the font to Lato everywhere and adjust the font size if required.",
-	                CreatedBy = "Harrison Wells",
-	                CreatedOn = "Today 2:45 PM"
-	            },
-	            new IssueSummaryViewModel
-	            {
-	                IssueId = 336,
-	                Title = "Login does not work as expected on IE 6 and 7 with emulation mode ON.",
-	                CreatedBy = "Yasser Shaikh",
-	                CreatedOn = "23rd Aug 2017 4:30 PM"
-	            },
-	            new IssueSummaryViewModel
-	            {
-	                IssueId = 23,
-	                Title = "Change the font to Lato everywhere and adjust the font size if required.",
-	                CreatedBy = "Harrison Wells",
-	                CreatedOn = "Today 2:45 PM"
-	            }
-	        };
+	        var issues = _issueService.Get(AuthenticatedUser.UserId(User));
 	        return Json(issues);
 	    }
 	}

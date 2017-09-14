@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using Repository.Models.Issue;
 
 namespace Repository.Issue
 {
 	public sealed class IssueStoredProcedure
 	{
 		public const string Insert = "Issue_Insert";
+		public const string Get = "Issue_Get";
 	}
 
     public class IssueRepository : BaseDataAccess, IIssueRepository
@@ -39,5 +41,34 @@ namespace Repository.Issue
 
 			return issueId;
 		}
+
+	    public List<IssueSummaryModel> Get(int userId)
+	    {
+
+	        List<DbParameter> parameterList = new List<DbParameter>
+	        {
+	            new SqlParameter("@user_id", SqlDbType.Int) {Value = userId}
+	        };
+	        var issues = new List<IssueSummaryModel>();
+	        using (DbDataReader dataReader = base.GetDataReader(IssueStoredProcedure.Get, parameterList, CommandType.StoredProcedure))
+	        {
+	            if (dataReader != null && dataReader.HasRows)
+	            {
+	                while (dataReader.Read())
+	                {
+	                    var issue = new IssueSummaryModel
+                        {
+	                        IssueId = (int)dataReader["id"],
+	                        Title = (string)dataReader["title"],
+	                        CreatedOn = (DateTime)dataReader["created_on"],
+	                        CreatedBy = (string)dataReader["created_by"]
+	                    };
+	                    issues.Add(issue);
+	                }
+	            }
+	        }
+
+	        return issues;
+        }
 	}
 }

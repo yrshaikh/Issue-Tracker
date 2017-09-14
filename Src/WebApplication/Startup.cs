@@ -14,7 +14,9 @@ using Service.ViewModels.Project;
 using Service.ViewModels.User;
 using Microsoft.AspNetCore.Http;
 using Repository.Issue;
+using Repository.Models.Issue;
 using Service.Services.Issue;
+using Service.ViewModels.Issue;
 
 namespace WebApplication
 {
@@ -91,6 +93,7 @@ namespace WebApplication
 		{
 			CreateMap<UserModel, UserViewModel>();
 			CreateMap<ProjectListModel, ProjectListViewModel>();
+		    CreateMap<IssueSummaryModel, IssueSummaryViewModel>();
 		}
 	}
 }
