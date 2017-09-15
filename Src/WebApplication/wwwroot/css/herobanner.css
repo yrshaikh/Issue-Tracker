@@ -1,6 +1,6 @@
 .hero-banner {
-  background: #9da3a5;
-  color: #fff; }
+  background: #313436;
+  color: #eee; }
 
 .hero-banner-inner {
   position: relative;
@@ -10,6 +10,8 @@
   .hero-banner-inner .hero-banner-title {
     display: inline-block;
     width: 50%; }
+    .hero-banner-inner .hero-banner-title h1 {
+      font-size: 34px; }
     .hero-banner-inner .hero-banner-title .hero-banner-message {
       color: #fff; }
     .hero-banner-inner .hero-banner-title .select-project {
@@ -20,5 +22,20 @@
     float: right; }
     .hero-banner-inner .hero-banner-buttons .btn {
       margin-left: 15px;
-      padding: .3rem 1.75rem;
       box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3); }
+
+#hero-issues-view .hero-banner-inner {
+  display: block;
+  height: 120px; }
+  #hero-issues-view .hero-banner-inner .hero-banner-summary {
+    float: left; }
+    #hero-issues-view .hero-banner-inner .hero-banner-summary .summary, #hero-issues-view .hero-banner-inner .hero-banner-summary .image {
+      display: inline-block; }
+    #hero-issues-view .hero-banner-inner .hero-banner-summary .summary span {
+      display: block; }
+    #hero-issues-view .hero-banner-inner .hero-banner-summary .image {
+      margin-right: 15px;
+      float: left; }
+      #hero-issues-view .hero-banner-inner .hero-banner-summary .image img {
+        height: 48px;
+        border-radius: 3px; }

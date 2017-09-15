@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Repository.Models.Issue;
 using Service.Services.Issue;
 using Service.Services.Project;
 using Service.ViewModels.Issue;
@@ -44,6 +45,17 @@ namespace WebApplication.Controllers
         [HttpGet("issue/{id}/{slug}")]
 	    public IActionResult Issue(int id, string slug)
         {
+            var issue = new SingleIssueViewModel
+            {
+                ProjectId = 1,
+                ProjectName = "dummy project",
+                IssueId = 321,
+                Title = "How do you pay electricity bill using the mobile app?",
+                Description = "Use scb app to pay.",
+                CreatedBy = "John Cena",
+                CreatedOn = DateTime.Now
+            };
+            ViewBag.Issue = issue;
             return View();
         }
 

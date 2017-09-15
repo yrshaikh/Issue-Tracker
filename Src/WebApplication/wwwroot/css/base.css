@@ -4,6 +4,9 @@
 .dark-gray {
   color: #24292e; }
 
+.light-gray {
+  color: #777; }
+
 .help {
   color: #999; }
 
@@ -22,8 +25,14 @@
 .fs-20 {
   font-size: 20px; }
 
+.fs-34 {
+  font-size: 34px; }
+
 .fw-500 {
   font-weight: 500; }
+
+.fw-700 {
+  font-weight: 700; }
 
 .fc-white {
   color: #fff; }
@@ -46,8 +55,23 @@
 .ml-10 {
   margin-left: 10px; }
 
+.ml-15 {
+  margin-left: 15px; }
+
+.mt-15 {
+  margin-top: 15px; }
+
+.mb-15 {
+  margin-bottom: 15px; }
+
+.mr-15 {
+  margin-right: 15px; }
+
 .green {
   color: #28a745; }
 
 .red {
   color: #cb2431; }
+
+.width-100-percent {
+  width: 100%; }

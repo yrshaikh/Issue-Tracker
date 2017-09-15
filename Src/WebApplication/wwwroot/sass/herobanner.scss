@@ -1,6 +1,6 @@
 ﻿.hero-banner {
-	background: #9da3a5;
-	color: #fff;
+	background: #313436;
+	color: #eee;
 }
 
 .hero-banner-inner {
@@ -8,10 +8,12 @@
 	max-width: 1100px;
 	margin: 0 auto;
 	padding: 18px 0 60px 0;
-
 	.hero-banner-title {
 		display: inline-block;
 		width: 50%;
+		h1{
+			font-size: 34px;
+		}
 		.hero-banner-message {
 			color: #fff;
 		}
@@ -28,8 +30,34 @@
 
 		.btn {
 			margin-left: 15px;
-			padding: .3rem 1.75rem;
+			//padding: .3rem 1.75rem;
 			box-shadow: 0 2px 0 rgba(0,0,0,0.3);
+		}
+	}
+}
+
+#hero-issues-view {
+	.hero-banner-inner{
+		display: block;
+		height: 120px;
+		.hero-banner-summary{
+			float: left;
+			.summary, .image{
+				display: inline-block;
+			}
+			.summary{
+				span{
+					display: block;
+				}
+			}
+			.image {
+				margin-right: 15px;
+				float: left;
+				img {
+					height: 48px;
+					border-radius: 3px;
+				}
+			}
 		}
 	}
 }

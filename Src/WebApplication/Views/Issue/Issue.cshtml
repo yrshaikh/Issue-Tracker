@@ -1,6 +1,7 @@
 ﻿@using System.Collections.Generic
 @using System.Linq
 @using Microsoft.AspNetCore.Mvc.Rendering
+@using Repository.Models.Issue
 @using Service.ViewModels.Project
 @model object
 
@@ -9,12 +10,14 @@
 	Layout = "~/Views/Shared/Layout.cshtml";
 }
 
+@{
+    var issue = (SingleIssueViewModel) ViewBag.Issue;
+}
+
 <script type="text/javascript">
 	window.app = {};
-	@*window.app.projects = [];
-	window.app.projects = @(Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(projects)));
-	window.app.defaultProjectId = @defaultProjectId;*@
+	window.app.issue = {}
+    window.app.issue = @(Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(issue)));
 </script>
-<h2>Issue</h2>
 <div id="app-issue-view-root"></div>
 @Html.Partial("_ReactJs")

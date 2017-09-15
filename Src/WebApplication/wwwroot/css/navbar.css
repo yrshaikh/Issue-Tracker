@@ -1,5 +1,6 @@
 .bg-dark {
-  background: #333333 !important; }
+  background: #1D8CC6 !important;
+  border-bottom: 3px solid #1A84BC; }
   .bg-dark .fa {
     font-size: 20px;
     margin-left: 25px;
