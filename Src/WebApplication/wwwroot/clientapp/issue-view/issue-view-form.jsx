@@ -22,11 +22,11 @@ class IssueViewForm extends Component {
 				</div>
 				<div className='col-md-9'>
 					<div className='form-group'>
-						<span className='fs-34'>{this.state.title}</span>
-						<span className='ml-10 gray fs-34'>#{this.state.issueId}</span>
+						<span className='fs-28 fw-700'>{this.state.title}</span>
+						<span className='ml-10 gray fs-28 fw-700'>#{this.state.issueId}</span>
 					</div>
 					<div className='form-group'>
-						<div>{this.state.description}</div>
+						<div className='dark-gray'>{this.state.description}</div>
 					</div>
 				</div>
 				<div className='col-md-3'>
