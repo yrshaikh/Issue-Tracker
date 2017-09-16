@@ -11,13 +11,19 @@ class Sidebar extends Component {
 	}
 	render() {
 		return (
-            <div className='col-md-3'>
-                <div className='form-group'>
-                    <label>Priority</label>
+            <div className='col-md-3 sidebar'>
+                <div className='form-group item'>
+                    <span>
+                        <label>Priority</label>
+                        <i className='fa fa-cog pull-right cursor-hand' />
+                    </span>
                     <div>Normal</div>
                 </div>
-                <div className='form-group'>
-                    <label>Assignee</label>
+                <div className='form-group item'>
+                    <span>
+                        <label>Assignee</label>
+                        <i className='fa fa-cog pull-right cursor-hand' />
+                    </span>
                     <div>John Cena</div>
                 </div>
             </div>

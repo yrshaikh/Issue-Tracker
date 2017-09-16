@@ -50,7 +50,7 @@ class IssueViewForm extends Component {
 						<span className='badge badge-success fs-16'>{this.state.status}</span>
 					</div>
 				</div>
-				<div className='col-md-9'>
+				<div className='col-md-9 main'>
 					{titleAndDescription}
 				</div>
 				<SideBar />

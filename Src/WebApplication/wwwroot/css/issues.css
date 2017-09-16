@@ -60,3 +60,17 @@
   padding: 8px 15px;
   background: #EBF3F8;
   border-radius: 3px; }
+
+#issue-view-form .main {
+  border-right: 1px solid #e9e9e9; }
+
+.sidebar {
+  color: #586069; }
+  .sidebar .item {
+    width: 80%;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e9e9e9; }
+    .sidebar .item label {
+      font-weight: bold; }
+    .sidebar .item i {
+      color: #c3c8cf; }
