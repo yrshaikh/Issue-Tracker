@@ -78,3 +78,12 @@
 
 .width-100-percent {
   width: 100%; }
+
+.title-case {
+  text-transform: capitalize; }
+
+.ta-right {
+  text-align: right; }
+
+.ta-left {
+  text-align: left; }

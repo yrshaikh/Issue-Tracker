@@ -55,3 +55,8 @@
       color: #666;
       margin-top: 8px;
       font-size: 10px; }
+
+#issue-view-form .description, #issue-view-form .comment {
+  padding: 8px 15px;
+  background: #EBF3F8;
+  border-radius: 3px; }
