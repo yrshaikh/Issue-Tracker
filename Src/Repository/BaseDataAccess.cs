@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -6,12 +7,13 @@ using System.Data.SqlClient;
 
 namespace Repository
 {
-	public class BaseDataAccess
+    public class BaseDataAccess
 	{
-		protected string ConnectionString => "Data Source=65BHVF2;Initial Catalog=app;UID=sa;Password=pass@123;Trusted_Connection=True;MultipleActiveResultSets=true;";
+		protected string ConnectionString;
 
-		public BaseDataAccess()
+		public BaseDataAccess(IConfiguration config)
 		{
+			ConnectionString = config.GetSection("ConnectionStrings").GetSection("DefaultConnection").Value;
 		}
 
 		//public BaseDataAccess(string connectionString)
@@ -21,7 +23,7 @@ namespace Repository
 
 		private SqlConnection GetConnection()
 		{
-			SqlConnection connection = new SqlConnection(this.ConnectionString);
+			SqlConnection connection = new SqlConnection(ConnectionString);
 			if (connection.State != ConnectionState.Open)
 				connection.Open();
 			return connection;
@@ -36,14 +38,16 @@ namespace Repository
 
 		protected SqlParameter GetParameter(string parameter, object value)
 		{
-			SqlParameter parameterObject = new SqlParameter(parameter, value != null ? value : DBNull.Value);
-			parameterObject.Direction = ParameterDirection.Input;
-			return parameterObject;
+		    SqlParameter parameterObject = new SqlParameter(parameter, value ?? DBNull.Value)
+		    {
+		        Direction = ParameterDirection.Input
+		    };
+		    return parameterObject;
 		}
 
 		protected SqlParameter GetParameterOut(string parameter, SqlDbType type, object value = null, ParameterDirection parameterDirection = ParameterDirection.InputOutput)
 		{
-			SqlParameter parameterObject = new SqlParameter(parameter, type); ;
+			SqlParameter parameterObject = new SqlParameter(parameter, type);
 
 			if (type == SqlDbType.NVarChar || type == SqlDbType.VarChar || type == SqlDbType.NText || type == SqlDbType.Text)
 			{
@@ -52,14 +56,7 @@ namespace Repository
 
 			parameterObject.Direction = parameterDirection;
 
-			if (value != null)
-			{
-				parameterObject.Value = value;
-			}
-			else
-			{
-				parameterObject.Value = DBNull.Value;
-			}
+			parameterObject.Value = value ?? DBNull.Value;
 
 			return parameterObject;
 		}
@@ -70,9 +67,9 @@ namespace Repository
 
 			try
 			{
-				using (SqlConnection connection = this.GetConnection())
+				using (SqlConnection connection = GetConnection())
 				{
-					DbCommand cmd = this.GetCommand(connection, procedureName, commandType);
+					DbCommand cmd = GetCommand(connection, procedureName, commandType);
 
 					if (parameters != null && parameters.Count > 0)
 					{
@@ -93,7 +90,7 @@ namespace Repository
 
 		protected object ExecuteScalar(string procedureName, List<SqlParameter> parameters)
 		{
-			object returnValue = null;
+			object returnValue;
 
 			try
 			{

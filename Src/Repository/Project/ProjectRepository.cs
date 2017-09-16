@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using Repository.Models.Project;
 
 namespace Repository.Project
@@ -53,5 +54,9 @@ namespace Repository.Project
 
 			return projects;
 		}
+
+	    public ProjectRepository(IConfiguration config) : base(config)
+	    {
+	    }
 	}
 }

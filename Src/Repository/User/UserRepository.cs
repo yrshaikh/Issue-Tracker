@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using Repository.Models.User;
 
 namespace Repository.User
@@ -88,5 +89,9 @@ namespace Repository.User
 
 			return valid;
 		}
+
+	    public UserRepository(IConfiguration config) : base(config)
+	    {
+	    }
 	}
 }

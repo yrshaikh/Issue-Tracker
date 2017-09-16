@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using Repository.Models.Issue;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
-using Repository.Models.Issue;
 
 namespace Repository.Issue
 {
-	public sealed class IssueStoredProcedure
+    public sealed class IssueStoredProcedure
 	{
 		public const string Insert = "Issue_Insert";
 		public const string Get = "Issue_Get";
@@ -70,5 +71,9 @@ namespace Repository.Issue
 
 	        return issues;
         }
+
+	    public IssueRepository(IConfiguration config) : base(config)
+	    {
+	    }
 	}
 }
