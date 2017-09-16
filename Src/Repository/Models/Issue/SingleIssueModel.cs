@@ -2,7 +2,7 @@
 
 namespace Repository.Models.Issue
 {
-    public class SingleIssueViewModel
+    public class SingleIssueModel
     {
         public int ProjectId { get; set; }
         public string ProjectName { get; set; }

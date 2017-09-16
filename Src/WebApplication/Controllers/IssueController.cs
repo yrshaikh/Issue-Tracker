@@ -45,16 +45,7 @@ namespace WebApplication.Controllers
         [HttpGet("issue/{id}/{slug}")]
 	    public IActionResult Issue(int id, string slug)
         {
-            var issue = new SingleIssueViewModel
-            {
-                ProjectId = 1,
-                ProjectName = "dummy project",
-                IssueId = 321,
-                Title = "How do you pay electricity bill using the mobile app?",
-                Description = "Use scb app to pay.",
-                CreatedBy = "John Cena",
-                CreatedOn = DateTime.Now
-            };
+            SingleIssueViewModel issue = _issueService.Get(id);
             ViewBag.Issue = issue;
             return View();
         }
@@ -62,7 +53,7 @@ namespace WebApplication.Controllers
 	    [HttpGet]
 	    public IActionResult Get()
 	    {
-	        var issues = _issueService.Get(AuthenticatedUser.UserId(User));
+	        var issues = _issueService.GetByFilters(AuthenticatedUser.UserId(User));
 	        return Json(issues);
 	    }
 	}

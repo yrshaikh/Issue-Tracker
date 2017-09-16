@@ -12,6 +12,7 @@ namespace Repository.Issue
 	{
 		public const string Insert = "Issue_Insert";
 		public const string Get = "Issue_Get";
+		public const string GetSingle = "Issue_Get_Single";
 	}
 
     public class IssueRepository : BaseDataAccess, IIssueRepository
@@ -43,9 +44,8 @@ namespace Repository.Issue
 			return issueId;
 		}
 
-	    public List<IssueSummaryModel> Get(int userId)
+	    public List<IssueSummaryModel> GetByFilters(int userId)
 	    {
-
 	        List<DbParameter> parameterList = new List<DbParameter>
 	        {
 	            new SqlParameter("@user_id", SqlDbType.Int) {Value = userId}
@@ -70,6 +70,36 @@ namespace Repository.Issue
 	        }
 
 	        return issues;
+        }
+
+	    public SingleIssueModel Get(int issueId)
+	    {
+	        List<DbParameter> parameterList = new List<DbParameter>
+	        {
+	            new SqlParameter("@issue_id", SqlDbType.Int) {Value = issueId}
+	        };
+	        SingleIssueModel issue = null;
+            using (DbDataReader dataReader = base.GetDataReader(IssueStoredProcedure.GetSingle, parameterList, CommandType.StoredProcedure))
+	        {
+	            if (dataReader != null && dataReader.HasRows)
+	            {
+	                while (dataReader.Read())
+	                {
+	                    issue = new SingleIssueModel()
+	                    {
+	                        IssueId = (int)dataReader["issue_id"],
+	                        Title = (string)dataReader["title"],
+	                        Description = (string)dataReader["description"],
+	                        CreatedOn = (DateTime)dataReader["created_on"],
+	                        CreatedBy = (string)dataReader["created_by"],
+                            ProjectId = (int)dataReader["project_id"],
+                            ProjectName = (string)dataReader["project_name"]
+                        };
+	                }
+	            }
+	        }
+
+	        return issue;
         }
 
 	    public IssueRepository(IConfiguration config) : base(config)

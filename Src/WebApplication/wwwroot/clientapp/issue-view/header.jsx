@@ -19,8 +19,8 @@ class Header extends Component {
 							<img src='https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-2-48.png' />
 						</div>
 						<div className='summary'>
-							<span className='fs-16'>Yasser Shaikh</span>
-							<span className='fs-16 light-gray'>Opened this issue on September 3, 2018</span>
+							<span className='fs-16'>{this.state.createdBy}</span>
+							<span className='fs-16 light-gray'>Opened this issue on {this.state.createdOn}</span>
 						</div>							
 					</div>
 					<div className='hero-banner-buttons'>
