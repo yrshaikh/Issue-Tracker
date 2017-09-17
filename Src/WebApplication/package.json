@@ -18,6 +18,7 @@
     "react-bootstrap-select": "^0.14.0",
     "react-dom": "^15.0.1",
     "react-select": "^1.0.0-rc.6",
+    "react-sliding-pane": "^1.2.3",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },

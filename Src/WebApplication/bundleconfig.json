@@ -1,10 +1,11 @@
 ﻿[
 	{
 		"outputFileName": "wwwroot/css/third-party-libs.min.css",
-		"inputFiles": [
-			"bower_components/bootstrap/dist/css/bootstrap.css",
-			"node_modules/react-select/dist/react-select.css"
-		]
+        "inputFiles": [
+            "bower_components/bootstrap/dist/css/bootstrap.css",
+            "node_modules/react-select/dist/react-select.css",
+            "node_modules/react-sliding-pane/dist/react-sliding-pane.css"
+        ]
 	},
 	{
 		"outputFileName": "wwwroot/css/common.min.css",
