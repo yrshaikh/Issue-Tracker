@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Net;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Repository.Models.Issue;
@@ -56,5 +57,13 @@ namespace WebApplication.Controllers
 	        var issues = _issueService.GetByFilters(AuthenticatedUser.UserId(User));
 	        return Json(issues);
 	    }
-	}
+
+
+	    [HttpPost]
+	    public IActionResult UpdateTitleDescription([FromBody] UpdateTitleDescriptionModel model)
+	    {
+	        _issueService.UpdateTitleDescription(model, AuthenticatedUser.UserId(User));
+	        return Json(HttpStatusCode.OK);
+	    }
+    }
 }

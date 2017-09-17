@@ -7,6 +7,7 @@ namespace Service.Services.Issue
 	{
 		int Create(CreateIssueViewModel issue, int userId);
 	    List<IssueSummaryViewModel> GetByFilters(int userId);
-        SingleIssueViewModel Get(int issueId); 
-    }
+        SingleIssueViewModel Get(int issueId);
+	    void UpdateTitleDescription(UpdateTitleDescriptionModel model, int userId);
+	}
 }

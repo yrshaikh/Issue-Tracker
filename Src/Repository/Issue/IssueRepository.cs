@@ -13,6 +13,7 @@ namespace Repository.Issue
 		public const string Insert = "Issue_Insert";
 		public const string Get = "Issue_Get";
 		public const string GetSingle = "Issue_Get_Single";
+		public const string UpdateTitleDescription = "Issue_Update_Title_Description";
 	}
 
     public class IssueRepository : BaseDataAccess, IIssueRepository
@@ -102,8 +103,23 @@ namespace Repository.Issue
 	        return issue;
         }
 
+	    public void UpdateTitleDescription(int issueId, string title, string description, int updatedBy)
+	    {
+	        List<DbParameter> parameterList = new List<DbParameter>
+	        {
+	            new SqlParameter("@issue_id", SqlDbType.VarChar) {Value = issueId},
+	            new SqlParameter("@title", SqlDbType.VarChar) {Value = title},
+	            new SqlParameter("@description", SqlDbType.VarChar) {Value = description},
+	            new SqlParameter("@updated_by", SqlDbType.Int) {Value = updatedBy},
+	            new SqlParameter("@updated_on", SqlDbType.DateTime) {Value = DateTime.Now}
+	        };
+
+	        base.ExecuteNonQuery(IssueStoredProcedure.UpdateTitleDescription, parameterList, CommandType.StoredProcedure);
+        }
+
 	    public IssueRepository(IConfiguration config) : base(config)
 	    {
-	    }
+	        
+        }
 	}
 }

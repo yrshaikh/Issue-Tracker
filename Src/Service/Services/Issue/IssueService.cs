@@ -30,6 +30,11 @@ namespace Service.Services.Issue
             return _mapper.Map<SingleIssueModel, SingleIssueViewModel>(issues);
         }
 
+        public void UpdateTitleDescription(UpdateTitleDescriptionModel model, int userId)
+        {
+            _issueRepository.UpdateTitleDescription(model.IssueId, model.Title, model.Description, userId);
+        }
+
         public List<IssueSummaryViewModel> GetByFilters(int userId)
         {
             var issues = _issueRepository.GetByFilters(userId);
