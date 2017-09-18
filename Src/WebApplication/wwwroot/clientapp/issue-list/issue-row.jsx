@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import IssueStatus from './../shared/issue-status';
+
 class IssueRow extends Component{
     slugify(text)
     {
@@ -16,8 +18,8 @@ class IssueRow extends Component{
             <div className='row issue-row'>
                 <div className='col-md-11 row'>
                     <a href={url} className='title dark-gray col-md-12'>
-                        <i className='status fa fa-circle green'></i>                        
-                        #{issue.issueId} {issue.title}
+                        <span className='mr-10'>#{issue.issueId} {issue.title}</span>
+                        <IssueStatus status={issue.status} />
                     </a>
                     <span className='subtitle col-md-12 gray'>
                         Created by {issue.createdBy} on {issue.createdOn}

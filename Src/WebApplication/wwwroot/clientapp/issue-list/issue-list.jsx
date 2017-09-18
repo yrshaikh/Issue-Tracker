@@ -52,6 +52,7 @@ class IssueList extends Component{
                 </div>
                 <div className='col-md-12'>
                     <IssueAppliedFilters />
+                    <IssueAppliedFilters />
                     {issues}
                 </div>
             </div>

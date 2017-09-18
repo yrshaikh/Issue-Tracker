@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
 import TitleDescription from './title-description';
 import SideBar from './sidebar';
+import IssueStatus from './../shared/issue-status';
 const axios = require('axios');
 
 class IssueViewForm extends Component {
@@ -9,7 +10,7 @@ class IssueViewForm extends Component {
 		super(props);
 		this.state = {
 			issueId: window.app.issue.IssueId,
-			status: 'open'
+			status: window.app.issue.Status
 		};
 		this.titleAndDescriptionState = {
 			issueId: window.app.issue.IssueId,	
@@ -29,7 +30,7 @@ class IssueViewForm extends Component {
 			<form id='issue-view-form' className='row custom-form'>
 				<div className='col-md-12'>
 					<div className='form-group'>
-						<span className='badge badge-success fs-16'>{this.state.status}</span>
+						<IssueStatus additionalClasses='fs-16' status={this.state.status} />
 					</div>
 				</div>
 				<div className='col-md-9 main'>

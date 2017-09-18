@@ -63,7 +63,8 @@ namespace Repository.Issue
 	                        IssueId = (int)dataReader["id"],
 	                        Title = (string)dataReader["title"],
 	                        CreatedOn = (DateTime)dataReader["created_on"],
-	                        CreatedBy = (string)dataReader["created_by"]
+	                        CreatedBy = (string)dataReader["created_by"],
+	                        Status = (string)dataReader["status"]
 	                    };
 	                    issues.Add(issue);
 	                }
@@ -94,7 +95,8 @@ namespace Repository.Issue
 	                        CreatedOn = (DateTime)dataReader["created_on"],
 	                        CreatedBy = (string)dataReader["created_by"],
                             ProjectId = (int)dataReader["project_id"],
-                            ProjectName = (string)dataReader["project_name"]
+                            ProjectName = (string)dataReader["project_name"],
+	                        Status = (string)dataReader["status"]
                         };
 	                }
 	            }
