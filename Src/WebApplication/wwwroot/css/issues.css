@@ -1,12 +1,12 @@
 #issues.body {
-  width: 98%; }
+  /*width: 98%;*/ }
 
 #issues {
   margin-top: -18px; }
 
 #hero-issues .hero-banner-inner {
   padding: 18px 0 18px;
-  max-width: 98%; }
+  /*max-width: 98%;*/ }
 
 .hero-banner-issue-create .fa-long-arrow-left {
   margin-right: 10px; }
@@ -34,8 +34,6 @@
     #issue-list .issue-row .title {
       font-size: 16px;
       font-weight: bold; }
-    #issue-list .issue-row .status {
-      margin-right: 10px; }
     #issue-list .issue-row .subtitle {
       margin-left: 25px;
       text-transform: lowercase; }
@@ -59,13 +57,15 @@
 #issue-view-form .description, #issue-view-form .comment {
   padding: 8px 15px;
   background: #EBF3F8;
-  border-radius: 3px; }
+  border-radius: 3px;
+  font-size: 14px; }
 
 #issue-view-form .main {
   border-right: 1px solid #e9e9e9; }
 
 .sidebar {
-  color: #586069; }
+  color: #586069;
+  font-size: 14px; }
   .sidebar .item {
     width: 80%;
     padding-bottom: 20px;

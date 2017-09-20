@@ -1,6 +1,9 @@
 ﻿.hero-banner {
-	background: #313436;
-	color: #eee;
+	background: #E1E4E8;
+	color: #777;
+	letter-spacing: .01em;
+	border-top: 1px solid #d7dbdf;
+    border-bottom: 1px solid #d7dbdf;
 }
 
 .hero-banner-inner {
@@ -15,12 +18,12 @@
 			font-size: 34px;
 		}
 		.hero-banner-message {
-			color: #fff;
+			color: inherit;
 		}
 		.select-project {
 			margin-left: -10px;
 			label {
-				color:#fff;
+				color:inherit;
 			}
 		}
 	}
@@ -30,9 +33,12 @@
 
 		.btn {
 			margin-left: 15px;
-			//padding: .3rem 1.75rem;
 			padding: 8px 12px;
-			box-shadow: 0 2px 0 rgba(0,0,0,0.3);
+			background:#9FA6AB;	
+			color:#fff;		
+		}
+		.btn:hover  {
+			background: rgba(0,0,0,0.5);
 		}
 	}
 }
@@ -47,16 +53,18 @@
 				display: inline-block;
 			}
 			.summary{
+				margin-right: 25px;
 				span{
 					display: block;
 				}
 			}
 			.image {
 				margin-right: 15px;
-				float: left;
+				position: relative;
+				top: -20px;
 				img {
-					height: 48px;
-					border-radius: 3px;
+					height: 50px;
+					border-radius: 4px;
 				}
 			}
 		}

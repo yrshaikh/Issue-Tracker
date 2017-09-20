@@ -1,15 +1,30 @@
 ﻿.bg-dark {
-	background: #1D8CC6 !important;
-	border-bottom: 3px solid #1A84BC;
+	background: #333333 !important;
+	
+	padding: 0px;
+    padding-left: 82px;
+    padding-right: 75px;
 
 	.fa {
 		font-size: 20px;
 		margin-left: 25px;
-		color: #ddd;
+		color: #999;
 	}
 
 	.fa.fa-plus {
 		margin-right: 25px;
+	}
+
+	.form-control {
+		font-size: 10px;
+		border: 0px;
+	}
+	
+	a {
+		color: #999;
+	}
+	a:hover {
+		color: #fff;
 	}
 }
 
