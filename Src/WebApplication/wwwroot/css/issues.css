@@ -37,6 +37,8 @@
     #issue-list .issue-row .subtitle {
       margin-left: 25px;
       text-transform: lowercase; }
+    #issue-list .issue-row .status {
+      margin-right: 10px; }
   #issue-list .filter {
     border: 1px solid #e1e4e8;
     font-size: 14px;

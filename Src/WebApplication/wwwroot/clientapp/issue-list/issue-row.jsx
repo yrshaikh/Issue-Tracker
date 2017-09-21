@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import IssueStatus from './../shared/issue-status';
-
 class IssueRow extends Component{
     slugify(text)
     {
@@ -18,14 +16,28 @@ class IssueRow extends Component{
             <div className='row issue-row'>
                 <div className='col-md-11 row'>
                     <a href={url} className='title dark-gray col-md-12'>
+                        {this.renderStatusIcon(issue.status)}
                         <span className='mr-10'>#{issue.issueId} {issue.title}</span>
-                        <IssueStatus status={issue.status} />
                     </a>
                     <span className='subtitle col-md-12 gray'>
                         Created by {issue.createdBy} on {issue.createdOn}
                     </span>
                 </div>
             </div>
+        );
+    }
+
+    renderStatusIcon(status){
+        var classes =  'status fa ';
+        if(status === 'open' || status === 'reopened')
+            classes += 'green fa-circle';
+        else  if(status === 'closed')
+            classes += 'red fa-circle';
+        else  if(status === 'closed')
+            classes += 'yellow fa-dot-circle-o';
+                
+        return(
+            <i className={classes}></i>
         );
     }
 }

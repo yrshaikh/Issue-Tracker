@@ -46,14 +46,33 @@
 #hero-issues-view {
 	.hero-banner-inner{
 		display: block;
-		height: 120px;
+		height: 130px;
 		.hero-banner-summary{
 			float: left;
+			.info {
+				float: left;
+				width: 150px;
+				margin-right: 15px;
+				border-right: 1px solid #ccc;
+				text-align: center;
+				.id {
+					font-size: 24px;
+					width: 100%;
+					display: block;
+				}
+				.badge {
+					font-size: 14px;
+					margin-top: 3px;
+					font-weight: normal;
+				}
+			}
 			.summary, .image{
 				display: inline-block;
 			}
 			.summary{
-				margin-right: 25px;
+				margin-right: 15px;
+				padding-right: 15px;
+				border-right: 1px solid #ccc;
 				span{
 					display: block;
 				}

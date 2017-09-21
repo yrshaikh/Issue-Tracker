@@ -33,13 +33,29 @@
 
 #hero-issues-view .hero-banner-inner {
   display: block;
-  height: 120px; }
+  height: 130px; }
   #hero-issues-view .hero-banner-inner .hero-banner-summary {
     float: left; }
+    #hero-issues-view .hero-banner-inner .hero-banner-summary .info {
+      float: left;
+      width: 150px;
+      margin-right: 15px;
+      border-right: 1px solid #ccc;
+      text-align: center; }
+      #hero-issues-view .hero-banner-inner .hero-banner-summary .info .id {
+        font-size: 24px;
+        width: 100%;
+        display: block; }
+      #hero-issues-view .hero-banner-inner .hero-banner-summary .info .badge {
+        font-size: 14px;
+        margin-top: 3px;
+        font-weight: normal; }
     #hero-issues-view .hero-banner-inner .hero-banner-summary .summary, #hero-issues-view .hero-banner-inner .hero-banner-summary .image {
       display: inline-block; }
     #hero-issues-view .hero-banner-inner .hero-banner-summary .summary {
-      margin-right: 25px; }
+      margin-right: 15px;
+      padding-right: 15px;
+      border-right: 1px solid #ccc; }
       #hero-issues-view .hero-banner-inner .hero-banner-summary .summary span {
         display: block; }
     #hero-issues-view .hero-banner-inner .hero-banner-summary .image {

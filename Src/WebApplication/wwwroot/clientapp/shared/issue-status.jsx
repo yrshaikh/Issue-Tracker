@@ -23,9 +23,9 @@ class IssueStatus extends Component {
 	render() {
         var classes = this.getStyle();
 		return (
-            <div className={classes}>
+            <span className={classes}>
                 {this.state.status}
-            </div>
+            </span>
 		);
 	}
 }
