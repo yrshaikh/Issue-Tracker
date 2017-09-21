@@ -9,8 +9,10 @@
     background-color: rgba(0, 0, 0, 0.15);
     color: #fff; }
 
+.btn-success, .badge-success {
+  background-color: #53c68c; }
+
 .btn-success {
-  background-color: #46AA85;
   border: 0px; }
 
 .btn-big {

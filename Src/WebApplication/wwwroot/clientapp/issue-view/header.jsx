@@ -30,27 +30,27 @@ class Header extends Component {
 							<IssueStatus additionalClasses='fs-16' status={this.state.status} />
 						</div>
 						<div className='image'>
-							<img src='https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-2-48.png' />
+							<img src='https://scontent.fbkk13-1.fna.fbcdn.net/v/t1.0-1/p240x240/11260946_10155580742070721_4308858417834234853_n.jpg?oh=9fd7911aca168077dfc44f7ca4e03f68&oe=5A5CD86F' />
 						</div>
 						<div className='summary'>
-							<span className='fs-14 title-case fw-bold'>Reported By</span>
+							<span className='fs-14 title-case fw-bold'>Opened By</span>
 							<span className='fs-14 title-case'>{this.state.createdBy}</span>
 							<span className='fs-14'>{this.state.createdOn}</span>
 						</div>
 						<div className='image'>
-							<img src='https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman1-2-48.png' />
+							<img src='https://avatars1.githubusercontent.com/u/7765721?v=4&s=460' />
 						</div>
 						<div className='summary'>
-							<span className='fs-14 title-case fw-bold'>Updated By</span>
-							<span className='fs-14 title-case'>{this.state.createdBy}</span>
-							<span className='fs-14'>{this.state.createdOn}</span>
+							<span className='fs-14 title-case fw-bold'>Assigned To</span>
+							<span className='fs-14 title-case'>No one</span>
+							<a href='/' className='fs-14 link'>assign to me</a>
 						</div>						
 						<div className='image'>
-							<img src='https://cdn0.iconfinder.com/data/icons/user-pictures/100/girl-2-48.png' />
+							<img src='https://avatars2.githubusercontent.com/u/15892023?v=4&s=460' />
 						</div>
 						<div className='summary'>
 							<span className='fs-14 title-case fw-bold'>Closed By</span>
-							<span className='fs-14 title-case'>{this.state.createdBy}</span>
+							<span className='fs-14 title-case'>Ali Rizvi</span>
 							<span className='fs-14'>{this.state.createdOn}</span>
 						</div>
 					</div>
