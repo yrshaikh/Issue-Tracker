@@ -67,4 +67,5 @@
       top: -22px; }
       #hero-issues-view .hero-banner-inner .hero-banner-summary .image img {
         height: 55px;
-        border-radius: 4px; }
+        border-radius: 4px;
+        box-shadow: 0 2px 0 #bbb; }

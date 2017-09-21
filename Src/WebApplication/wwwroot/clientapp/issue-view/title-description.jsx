@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
+import Gravatar from 'react-gravatar'
 const axios = require('axios');
 
 class TitleDescription extends Component {
@@ -72,8 +73,18 @@ class TitleDescription extends Component {
 				<div className='form-group'>
 					<span className='fs-34 fw-700'>{this.state.title}</span>					
 				</div>
-				<div className='form-group'>
-					<div className='description'>{this.state.description}</div>
+				<div className='form-group comment-box'>
+					<div className='avatar'>
+						<Gravatar email='yrshaikh.mail@gmail.com' size={55} rating='pg' default='wavatar' />
+					</div>
+					<div className='comment'>
+						<div className='comment-head'>
+							<b>Yasser Shaikh</b> opened this issue on Aug 14
+						</div>
+						<div className='comment-body'>
+							{this.state.description}
+						</div>
+					</div>
 				</div>
 			</div>
 		);	

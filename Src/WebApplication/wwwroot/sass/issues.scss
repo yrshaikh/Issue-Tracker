@@ -76,14 +76,42 @@ $border-color: #e1e4e8;
 }
 
 #issue-view-form{
-	.description, .comment{
-		padding: 8px 15px;
-		background: #EBF3F8;
-		border-radius: 3px;
-		font-size: 14px;
+	.comment-box{
+		display: flex;
+		.avatar{
+			margin-right: 15px;
+			img{
+				border-radius: 4px;
+			}
+		}
+		.comment{
+			position: relative;
+			line-height: 1.5;
+			font-size: 14px;
+			color:#24292e;
+			width: 100%;
+			.comment-header, .comment-body{
+				padding: 15px;
+			}
+			.comment-head {
+				padding-right: 15px;
+				padding-left: 15px;
+				color: #586069;
+				background-color: #f6f8fa;
+				border: 1px solid #d1d5da;
+				border-bottom: 0px;
+				border-top-left-radius: 3px;
+				border-top-right-radius: 3px;
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+			.comment-body {
+				border: 1px solid #d1d5da;
+			}			
+		}		
 	}
+	
 	.main {
-		border-right:1px solid #e9e9e9;
 	}
 }
 
