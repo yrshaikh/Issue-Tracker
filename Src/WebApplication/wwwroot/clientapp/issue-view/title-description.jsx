@@ -71,7 +71,7 @@ class TitleDescription extends Component {
 		return (
 			<div>
 				<div className='form-group'>
-					<span className='fs-34 fw-700'>{this.state.title}</span>					
+					<span className='issue-header'>{this.state.title}</span>					
 				</div>
 				<div className='form-group comment-box'>
 					<div className='avatar'>

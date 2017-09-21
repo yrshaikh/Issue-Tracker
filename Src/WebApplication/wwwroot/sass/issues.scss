@@ -76,6 +76,10 @@ $border-color: #e1e4e8;
 }
 
 #issue-view-form{
+	.issue-header{
+		font-size: 24px;
+		font-weight: bold;
+	}
 	.comment-box{
 		display: flex;
 		.avatar{

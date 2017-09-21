@@ -56,6 +56,10 @@
       margin-top: 8px;
       font-size: 10px; }
 
+#issue-view-form .issue-header {
+  font-size: 24px;
+  font-weight: bold; }
+
 #issue-view-form .comment-box {
   display: flex; }
   #issue-view-form .comment-box .avatar {
