@@ -37,7 +37,7 @@ class Header extends Component {
 				<div className='hero-banner-inner'>
 					<div className='hero-banner-summary'>
 						<div className='info'>
-							<span className='id'>#{this.state.issueId}</span>
+							<span className='id fw-light'>#{this.state.issueId}</span>
 							<IssueStatus additionalClasses='fs-16' status={this.state.status} />
 						</div>
 						<div className='image'>
@@ -45,24 +45,24 @@ class Header extends Component {
 						</div>
 						<div className='summary'>
 							<span className='fs-14 title-case fw-bold'>Opened By</span>
-							<span className='fs-14 title-case'>{this.state.createdBy}</span>
-							<span className='fs-14'>{this.state.createdOn}</span>
+							<span className='fs-14 title-case fw-light'>{this.state.createdBy}</span>
+							<span className='fs-14 fw-light'>{this.state.createdOn}</span>
 						</div>
 						<div className='image'>
 							<Gravatar email="andupandu@thondu.com" size={55} rating="pg" default="wavatar" />
 						</div>
 						<div className='summary'>
 							<span className='fs-14 title-case fw-bold'>Assigned To</span>
-							<span className='fs-14 title-case'>No one</span>
-							<a href='/' className='fs-14 link'>assign to me</a>
+							<span className='fs-14 title-case fw-light'>No one</span>
+							<a href='/' className='fs-14 link fw-light'>assign to me</a>
 						</div>						
 						<div className='image'>
 							<Gravatar email={this.state.createdBy} size={55} rating="pg" default="wavatar" />
 						</div>
 						<div className='summary'>
 							<span className='fs-14 title-case fw-bold'>Closed By</span>
-							<span className='fs-14 title-case'>Ali Rizvi</span>
-							<span className='fs-14'>{this.state.createdOn}</span>
+							<span className='fs-14 title-case fw-light'>Ali Rizvi</span>
+							<span className='fs-14 fw-light'>{this.state.createdOn}</span>
 						</div>
 					</div>
 					<div className='hero-banner-buttons'>

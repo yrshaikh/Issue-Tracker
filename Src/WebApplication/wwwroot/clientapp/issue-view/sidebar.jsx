@@ -14,14 +14,14 @@ class Sidebar extends Component {
             <div className='col-md-3 sidebar'>
                 <div className='form-group item'>
                     <span>
-                        <label>Priority</label>
+                        <label className='fw-bold'>Priority</label>
                         <i className='fa fa-cog pull-right cursor-hand' />
                     </span>
                     <div>Normal</div>
                 </div>
                 <div className='form-group item'>
                     <span>
-                        <label>Assignee</label>
+                        <label className='fw-bold'>Assignee</label>
                         <i className='fa fa-cog pull-right cursor-hand' />
                     </span>
                     <div>John Cena</div>

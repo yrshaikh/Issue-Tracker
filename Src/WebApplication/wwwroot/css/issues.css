@@ -70,7 +70,7 @@
     position: relative;
     line-height: 1.5;
     font-size: 14px;
-    color: #24292e;
+    color: #444;
     width: 100%; }
     #issue-view-form .comment-box .comment .comment-header, #issue-view-form .comment-box .comment .comment-body {
       padding: 15px; }

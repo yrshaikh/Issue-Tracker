@@ -1,7 +1,31 @@
+@font-face {
+  font-family: "Circular-Pro-Book";
+  src: url("../fonts/lineto-circular-pro-book.ttf");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Circular-Pro-Bold";
+  src: url("../fonts/lineto-circular-pro-bold.ttf");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Circular-Pro-Medium";
+  src: url("../fonts/lineto-circular-pro-medium.ttf");
+  font-weight: normal;
+  font-style: normal; }
+
 body {
-  font-family: 'Source Sans Pro', 'Lato', 'Montserrat', gu sans-serif;
+  font-family: 'Circular-Pro-Medium', 'Source Sans Pro', 'Lato', 'Montserrat', gu sans-serif;
   background: #F4F4F4;
   font-size: 14px; }
+
+h1, h2, h3, h4, h5, h6, b, .fw-bold, .fw-500, .fw-700 {
+  font-family: 'Circular-Pro-Bold'; }
+
+.fw-light {
+  font-family: 'Circular-Pro-Book'; }
 
 .body {
   padding: 26px 20px 10px;
