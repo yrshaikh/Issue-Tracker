@@ -9,6 +9,9 @@ class IssueStatus extends Component {
 			status: props.status
 		};
     }
+    componentWillReceiveProps(nextProps){
+        this.setState({ status: nextProps.status }); 
+    }
     getStyle(){
         var classes = 'badge badge-';
         if(this.state.status === 'open' || this.state.status === 'reopened')

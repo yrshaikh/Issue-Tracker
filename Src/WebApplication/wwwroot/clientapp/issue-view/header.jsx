@@ -12,13 +12,23 @@ class Header extends Component {
 			status: window.app.issue.Status,
 			createdBy: window.app.issue.CreatedBy,
 			createdOn: 'Aug 15, 2017'
-		}
-		//window.app.issue.CreatedOn
+		};
+		this.updateIssueStatus = this.updateIssueStatus.bind(this);
+	}
+	updateIssueStatus(){
+		if(this.state.status === 'open' || this.state.status === 'reopened')
+			this.closeIssue();
+		if(this.state.status === 'closed')
+			this.reOpenIssue();	
 	}
 	closeIssue(){
-		alert('Are you sure you want to close this issue?');
+		//PubSub.publish('ISSUE_CLOSE');
+		this.setState({status: 'closed'});
 	}
-	editIssue(){		
+	reOpenIssue(){
+		this.setState({status: 'reopened'});
+	}
+	editIssue(){
 		PubSub.publish('ISSUE_EDIT');
 	}
 	render () {
@@ -56,15 +66,25 @@ class Header extends Component {
 						</div>
 					</div>
 					<div className='hero-banner-buttons'>
-						<button className='btn btn-transparent' onClick={() => this.closeIssue()}>
-							Close Issue
-						</button>
-						<button className='btn btn-transparent' onClick={() => this.editIssue()}>
+						{this.renderActionButton()}
+						<button className='btn btn-transparent' onClick={() => this.actionButton()}>
 							Edit Issue
 						</button>
 					</div>
 				</div>
 			</div>
+		);
+	}
+	renderActionButton(){
+		var text;
+		if(this.state.status === 'open' || this.state.status === 'reopened')
+			text = 'Close Issue';
+		if(this.state.status === 'closed')
+			text = 'Re-Open Issue';
+		return(
+			<button className='btn btn-transparent' onClick={() => this.updateIssueStatus()}>
+				{text}
+			</button>
 		);
 	}
 }
