@@ -18,7 +18,7 @@
 <div id="projects" class="body">
 	<div class="inner-projects row">
 		<div class="col-md-6">
-			<input type="text" class="form-control" placeholsder="search..."/>
+			<input type="text" class="form-control" placeholder="search by project name here"/>
 		</div>
 		<div class="col-md-6">
 			<a href="/projects/new" class="pull-right btn btn-success">New Project</a>
@@ -30,8 +30,8 @@
 					{
 						<li class="list-group-item">
 							<div class="row">
-								<span class="col-md-5 fw-700 fs-16">@item.Name</span>
-								<span class="col-md-2 help fs-16">
+								<span class="col-md-5 fw-700 fs-14">@item.Name</span>
+								<span class="col-md-2 help fs-14 fw-light">
 									@if (item.UserCount == 1)
 									{
 										<span>Only you.</span>
@@ -42,10 +42,10 @@
 										<span>Members</span>	
 									}
 								</span>
-								<span class="col-md-2 help fs-16">
+								<span class="col-md-2 help fs-14 fw-light">
 									<a href="/">52 Open Issues</a>
 								</span>
-								<span class="col-md-2 help fs-16">
+								<span class="col-md-2 help fs-14 fw-light">
 									<i class="fa fa-clock-o"></i> @item.CreatedOn.ToTimeAgo()
 								</span>
 							</div>

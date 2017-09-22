@@ -67,7 +67,7 @@ class Header extends Component {
 					</div>
 					<div className='hero-banner-buttons'>
 						{this.renderActionButton()}
-						<button className='btn btn-transparent' onClick={() => this.actionButton()}>
+						<button className='btn btn-transparent' onClick={() => this.editIssue()}>
 							Edit Issue
 						</button>
 					</div>
