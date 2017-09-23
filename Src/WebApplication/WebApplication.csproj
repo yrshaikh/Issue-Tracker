@@ -111,31 +111,7 @@
     <Content Include="bower_components\popper.js\packages\test\package.json" />
     <Content Include="bower_components\popper.js\packages\tooltip\package.json" />
     <Content Include="bower_components\popper.js\popperjs.png" />
-    <Content Include="wwwroot\clientapp\root.jsx" />
-    <Content Include="wwwroot\css\form.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="wwwroot\css\herobanner.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="wwwroot\css\navbar.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="wwwroot\css\buttons.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="wwwroot\css\components.css" />
-    <Content Include="wwwroot\css\layout.css" />
-    <Content Include="wwwroot\css\base.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="wwwroot\css\issues.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="wwwroot\css\theme.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="wwwroot\css\project.css" />
+    <Content Include="wwwroot\clientapp\root.jsx" />    
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.0.2" />
@@ -442,7 +418,6 @@
     <None Include="wwwroot\clientapp\issue-list-app.jsx" />
     <None Include="wwwroot\clientapp\issue-list\body.jsx" />
     <None Include="wwwroot\clientapp\issue-list\header.jsx" />
-    <None Include="wwwroot\clientapp\root.jsx" />
     <None Include="wwwroot\sass\base.scss" />
     <None Include="wwwroot\sass\buttons.scss" />
     <None Include="wwwroot\sass\components.scss" />
