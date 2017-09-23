@@ -463,5 +463,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Service\Service.csproj" />
   </ItemGroup>
-
+    <PropertyGroup>
+        <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    </PropertyGroup>
 </Project>
