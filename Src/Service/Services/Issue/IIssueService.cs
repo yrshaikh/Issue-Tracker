@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Service.Constants;
 using Service.ViewModels.Issue;
 
 namespace Service.Services.Issue
@@ -9,5 +10,6 @@ namespace Service.Services.Issue
 	    List<IssueSummaryViewModel> GetByFilters(int userId);
         SingleIssueViewModel Get(int issueId);
 	    void UpdateTitleDescription(UpdateTitleDescriptionModel model, int userId);
+	    void UpdateStatus(UpdateStatusModel model, int userId);
 	}
 }

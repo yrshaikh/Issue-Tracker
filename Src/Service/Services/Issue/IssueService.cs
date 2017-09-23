@@ -4,6 +4,7 @@ using System.Linq;
 using AutoMapper;
 using Repository.Issue;
 using Repository.Models.Issue;
+using Service.Constants;
 using Service.ViewModels.Issue;
 
 namespace Service.Services.Issue
@@ -33,6 +34,11 @@ namespace Service.Services.Issue
         public void UpdateTitleDescription(UpdateTitleDescriptionModel model, int userId)
         {
             _issueRepository.UpdateTitleDescription(model.IssueId, model.Title, model.Description, userId);
+        }
+
+        public void UpdateStatus(UpdateStatusModel model, int userId)
+        {
+            _issueRepository.UpdateStatus(model.IssueId, (int)model.Status, userId);
         }
 
         public List<IssueSummaryViewModel> GetByFilters(int userId)

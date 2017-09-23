@@ -5,6 +5,7 @@ using System.Net;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Repository.Models.Issue;
+using Service.Constants;
 using Service.Services.Issue;
 using Service.Services.Project;
 using Service.ViewModels.Issue;
@@ -58,12 +59,18 @@ namespace WebApplication.Controllers
 	        return Json(issues);
 	    }
 
-
 	    [HttpPost]
 	    public IActionResult UpdateTitleDescription([FromBody] UpdateTitleDescriptionModel model)
 	    {
 	        _issueService.UpdateTitleDescription(model, AuthenticatedUser.UserId(User));
 	        return Json(HttpStatusCode.OK);
 	    }
+
+	    [HttpPost]
+        public IActionResult UpdateStatus(UpdateStatusModel status)
+	    {
+	        _issueService.UpdateStatus(status, AuthenticatedUser.UserId(User));
+	        return Json(HttpStatusCode.OK);
+        }
     }
 }

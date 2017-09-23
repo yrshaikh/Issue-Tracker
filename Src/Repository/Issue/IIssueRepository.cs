@@ -9,5 +9,6 @@ namespace Repository.Issue
 	    List<IssueSummaryModel> GetByFilters(int userId);
 	    SingleIssueModel Get(int issueId);
 	    void UpdateTitleDescription(int issueId, string title, string description, int updatedBy);
+	    void UpdateStatus(int issueId, int status, int userId);
 	}
 }
