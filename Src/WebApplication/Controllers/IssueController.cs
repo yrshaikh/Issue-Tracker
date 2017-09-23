@@ -67,7 +67,7 @@ namespace WebApplication.Controllers
 	    }
 
 	    [HttpPost]
-        public IActionResult UpdateStatus(UpdateStatusModel status)
+        public IActionResult UpdateStatus([FromBody] UpdateStatusModel status)
 	    {
 	        _issueService.UpdateStatus(status, AuthenticatedUser.UserId(User));
 	        return Json(HttpStatusCode.OK);

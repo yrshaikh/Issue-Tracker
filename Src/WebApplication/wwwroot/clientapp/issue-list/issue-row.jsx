@@ -16,7 +16,7 @@ class IssueRow extends Component{
             <div className='row issue-row'>
                 <div className='col-md-11 row'>
                     <a href={url} className='title dark-gray col-md-12 fw-bold'>
-                        {this.renderStatusIcon(issue.status)}
+                        <span title={issue.status}>{this.renderStatusIcon(issue.status)}</span>
                         <span className='mr-10'>#{issue.issueId} {issue.title}</span>
                     </a>
                     <span className='subtitle col-md-12 gray'>

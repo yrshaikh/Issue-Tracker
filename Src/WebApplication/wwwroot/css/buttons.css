@@ -10,7 +10,10 @@
     color: #fff; }
 
 .btn-success, .badge-success {
-  background-color: #53c68c; }
+  background-color: #5C9232; }
+
+.btn-danger, .badge-danger {
+  background-color: #CE3B2B; }
 
 .btn-success {
   border: 0px; }

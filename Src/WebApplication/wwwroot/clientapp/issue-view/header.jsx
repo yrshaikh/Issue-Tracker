@@ -2,7 +2,7 @@
 import PubSub from 'pubsub-js';
 import IssueStatus from './../shared/issue-status';
 import Gravatar from 'react-gravatar'
-const Select = require('react-select/dist/react-select.js');
+const axios = require('axios');
 
 class Header extends Component {
 	constructor(props) {
@@ -15,18 +15,28 @@ class Header extends Component {
 		};
 		this.updateIssueStatus = this.updateIssueStatus.bind(this);
 	}
-	updateIssueStatus(){
-		if(this.state.status === 'open' || this.state.status === 'reopened')
-			this.closeIssue();
-		if(this.state.status === 'closed')
-			this.reOpenIssue();	
-	}
-	closeIssue(){
+	updateIssueStatus(statusId, statusValue){
 		//PubSub.publish('ISSUE_CLOSE');
-		this.setState({status: 'closed'});
-	}
-	reOpenIssue(){
-		this.setState({status: 'reopened'});
+		if(!confirm('Are you sure you want to change the status of the issue?'))
+			return;
+
+		this.setState({status: statusValue});
+
+		var self = this;
+        this.setState({editIssue: false});
+		axios.post('/issue/updatestatus', {
+			issueId: this.state.issueId
+			, status : statusId
+		})
+		.then(function (response) {
+			// do nothing.			
+		})
+		.catch(function (error) {
+			self.setState({ submitting : false });
+            self.setState({ error : true });
+            self.setState({editIssue: true});
+		});
+		this.setState({editIssue: false});
 	}
 	editIssue(){
 		PubSub.publish('ISSUE_EDIT');
@@ -76,16 +86,24 @@ class Header extends Component {
 		);
 	}
 	renderActionButton(){
-		var text;
-		if(this.state.status === 'open' || this.state.status === 'reopened')
-			text = 'Close Issue';
-		if(this.state.status === 'closed')
-			text = 'Re-Open Issue';
-		return(
-			<button className='btn btn-transparent' onClick={() => this.updateIssueStatus()}>
-				{text}
-			</button>
-		);
+		if(this.state.status === 'open'){
+			return(
+			<button className='btn btn-transparent' onClick={() => this.updateIssueStatus(2, 'closed')}>
+				Close Issue
+			</button>);
+		}
+		else if(this.state.status === 'closed'){
+			return(
+			<button className='btn btn-transparent' onClick={() => this.updateIssueStatus(3, 're-opened')}>
+				Re-Open Issue
+			</button>);
+		}
+		else if(this.state.status === 'reopened'){
+			return(		
+			<button className='btn btn-transparent' onClick={() => this.updateIssueStatus(2, 'closed')}>
+				Close Issue
+			</button>);
+		}
 	}
 }
 
