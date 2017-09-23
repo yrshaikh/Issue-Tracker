@@ -111,13 +111,7 @@
     <Content Include="bower_components\popper.js\packages\test\package.json" />
     <Content Include="bower_components\popper.js\packages\tooltip\package.json" />
     <Content Include="bower_components\popper.js\popperjs.png" />
-    <Content Include="wwwroot\clientapp\issue-create\body.jsx" />
-    <Content Include="wwwroot\clientapp\issue-create\header.jsx" />
-    <Content Include="wwwroot\clientapp\issue-create-app.jsx" />
-    <Content Include="wwwroot\clientapp\issue-list-app.jsx" />
-    <Content Include="wwwroot\clientapp\issue-list\body.jsx" />
     <Content Include="wwwroot\clientapp\root.jsx" />
-    <Content Include="wwwroot\clientapp\issue-list\header.jsx" />
     <Content Include="wwwroot\css\form.css">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
@@ -463,7 +457,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Service\Service.csproj" />
   </ItemGroup>
-    <PropertyGroup>
-        <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-    </PropertyGroup>
 </Project>
