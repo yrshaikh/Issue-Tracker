@@ -1,7 +1,8 @@
 ﻿import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
 import IssueStatus from './../shared/issue-status';
-import Gravatar from 'react-gravatar'
+import GravatarWithUserInfo from './shared/gravatar-with-user-info';
+const NotificationSystem = require('react-notification-system');
 const axios = require('axios');
 
 class Header extends Component {
@@ -13,7 +14,11 @@ class Header extends Component {
 			createdBy: window.app.issue.CreatedBy,
 			createdOn: 'Aug 15, 2017'
 		};
+		this._notificationSystem = null;
 		this.updateIssueStatus = this.updateIssueStatus.bind(this);
+	}
+	componentDidMount() {
+		this._notificationSystem = this.refs.notificationSystem;
 	}
 	updateIssueStatus(statusId, statusValue){
 		//PubSub.publish('ISSUE_CLOSE');
@@ -29,7 +34,13 @@ class Header extends Component {
 			, status : statusId
 		})
 		.then(function (response) {
-			// do nothing.			
+			self._notificationSystem.addNotification({
+				title: '#' + self.state.issueId + ' Issue Updated',
+				message: 'This issue has been ' + statusValue + '.',
+				level: 'success',
+				position: 'br',
+				autoDismiss: 3
+			});			
 		})
 		.catch(function (error) {
 			self.setState({ submitting : false });
@@ -50,30 +61,16 @@ class Header extends Component {
 							<span className='id fw-light'>#{this.state.issueId}</span>
 							<IssueStatus additionalClasses='fs-16' status={this.state.status} />
 						</div>
-						<div className='image'>
-							<Gravatar email={this.state.createdBy} size={55} rating="pg" default="wavatar" />
-						</div>
-						<div className='summary'>
-							<span className='fs-14 title-case fw-bold'>Opened By</span>
-							<span className='fs-14 title-case fw-light'>{this.state.createdBy}</span>
-							<span className='fs-14 fw-light'>{this.state.createdOn}</span>
-						</div>
-						<div className='image'>
-							<Gravatar email="andupandu@thondu.com" size={55} rating="pg" default="wavatar" />
-						</div>
-						<div className='summary'>
-							<span className='fs-14 title-case fw-bold'>Assigned To</span>
-							<span className='fs-14 title-case fw-light'>No one</span>
-							<a href='/' className='fs-14 link fw-light'>assign to me</a>
-						</div>						
-						<div className='image'>
-							<Gravatar email={this.state.createdBy} size={55} rating="pg" default="wavatar" />
-						</div>
-						<div className='summary'>
-							<span className='fs-14 title-case fw-bold'>Closed By</span>
-							<span className='fs-14 title-case fw-light'>Ali Rizvi</span>
-							<span className='fs-14 fw-light'>{this.state.createdOn}</span>
-						</div>
+						<GravatarWithUserInfo 
+							createdBy={this.state.createdBy}
+							createdOn={this.state.createdOn}
+							size="35"
+							 />
+						<GravatarWithUserInfo 
+							createdBy={this.state.createdBy}
+							createdOn={this.state.createdOn}
+							size="35"
+							 />
 					</div>
 					<div className='hero-banner-buttons'>
 						{this.renderActionButton()}
@@ -82,6 +79,7 @@ class Header extends Component {
 						</button>
 					</div>
 				</div>
+				<NotificationSystem ref="notificationSystem" />
 			</div>
 		);
 	}
@@ -94,7 +92,7 @@ class Header extends Component {
 		}
 		else if(this.state.status === 'closed'){
 			return(
-			<button className='btn btn-transparent' onClick={() => this.updateIssueStatus(3, 're-opened')}>
+			<button className='btn btn-transparent' onClick={() => this.updateIssueStatus(3, 'reopened')}>
 				Re-Open Issue
 			</button>);
 		}

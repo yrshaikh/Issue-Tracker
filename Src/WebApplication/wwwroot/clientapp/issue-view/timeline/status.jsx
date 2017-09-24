@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
-import Status from './timeline/status';
-const axios = require('axios');
+import Gravatar from 'react-gravatar';
 
-class IssueTimeline extends Component {
+class Status extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			gravatarImageSize : 16,
 			issueId: props.IssueId
 		};
 	}
@@ -17,10 +17,11 @@ class IssueTimeline extends Component {
 	render() {
 		return (
 			<div>
-				<Status issueId={this.state.issueId} />
+				<Gravatar email='Yasser Shaikh' size={this.state.gravatarImageSize} default='retro' />
+				Yasser Shaikh reopened this issue.
 			</div>
 		);
 	}
 }
 
-export default IssueTimeline;
+export default Status;

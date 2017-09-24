@@ -51,6 +51,7 @@
     "minifycss": "^1.0.1",
     "protractor": "~5.1.2",
     "pubsub-js": "^1.5.7",
+    "react-notification-system": "^0.2.15",
     "run-sequence": "^2.1.0",
     "ts-node": "~3.2.0",
     "tslint": "~5.3.2",

@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
-import Gravatar from 'react-gravatar'
+import Gravatar from 'react-gravatar';
+const NotificationSystem = require('react-notification-system');
 const axios = require('axios');
 
 class TitleDescription extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-            issueId: props.issueId,
-            title: props.title,
-            description: props.description,            
+			issueId: props.issueId,
+			title: props.title,
+			description: props.description,
+			createdBy: props.createdBy,
             editIssue: false,
             submitting: false,
             error: false
         };
-        
+		this._notificationSystem = null;
+		
 		this.cancelTitleDescriptionEdit = this.cancelTitleDescriptionEdit.bind(this);
         this.updateTitleDescription = this.updateTitleDescription.bind(this);
 		this.handleChange = this.handleChange.bind(this);
@@ -23,6 +26,7 @@ class TitleDescription extends Component {
 		PubSub.subscribe('ISSUE_EDIT', this.handleIssueEdit.bind(this));
 	}
 	componentDidMount(){
+		this._notificationSystem = this.refs.notificationSystem;
     }
     handleIssueEdit(){
 		this.setState({editIssue: true});
@@ -40,6 +44,13 @@ class TitleDescription extends Component {
 		})
 		.then(function (response) {
 			// do nothing.
+			self._notificationSystem.addNotification({
+				title: '#' + self.state.issueId + ' Issue Updated',
+				message: 'You updated title and description of this issue.',
+				level: 'success',
+				position: 'br',
+				autoDismiss: 5
+			});	
 		})
 		.catch(function (error) {
 			self.setState({ submitting : false });
@@ -63,6 +74,7 @@ class TitleDescription extends Component {
             <div>
             </div>
                 {renderError}
+				<NotificationSystem ref="notificationSystem" />
             </div>
 		);
     }
@@ -75,7 +87,7 @@ class TitleDescription extends Component {
 				</div>
 				<div className='form-group comment-box'>
 					<div className='avatar'>
-						<Gravatar email='yrshaikh.mail@gmail.com' size={55} rating='pg' default='wavatar' />
+						<Gravatar email={this.state.createdBy} size={35} default='retro' />
 					</div>
 					<div className='comment'>
 						<div className='comment-head'>

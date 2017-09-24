@@ -48,11 +48,29 @@
 		display: block;
 		height: 130px;
 		.hero-banner-summary{
-			float: left;
+			.gravy {
+				float: left;
+				margin-left: 15px;
+				border-right: 1px solid #cfcfcf;
+				padding-right: 15px;
+				height: 60px;
+				.image {
+					margin-right: 12px;
+					position: relative;
+					top: -12px;
+					img {
+						border-radius: 4px;
+					}
+				}				
+				.summary{					
+					span{
+						display: block;
+					}
+				}
+			}
 			.info {
 				float: left;
 				width: 150px;
-				margin-right: 15px;
 				border-right: 1px solid #cfcfcf;
 				text-align: center;
 				.id {
@@ -71,24 +89,6 @@
 			}
 			.summary, .image{
 				display: inline-block;
-			}
-			.summary{
-				margin-right: 15px;
-				padding-right: 15px;
-				border-right: 1px solid #cfcfcf;
-				span{
-					display: block;
-				}
-			}
-			.image {
-				margin-right: 15px;
-				position: relative;
-				top: -22px;
-				img {
-					height: 55px;
-					border-radius: 4px;
-					box-shadow: 0 2px 0 #bbb;
-				}
 			}
 		}
 	}

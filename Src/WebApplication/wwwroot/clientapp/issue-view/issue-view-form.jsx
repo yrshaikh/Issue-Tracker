@@ -14,7 +14,8 @@ class IssueViewForm extends Component {
 		this.titleAndDescriptionState = {
 			issueId: window.app.issue.IssueId,	
 			title: window.app.issue.Title,			
-			description: window.app.issue.Description
+			description: window.app.issue.Description,
+			createdBy: window.app.issue.CreatedBy
 		}
 	}
 	componentWillMount(){
@@ -32,6 +33,7 @@ class IssueViewForm extends Component {
 						issueId={this.titleAndDescriptionState.issueId}
 						title={this.titleAndDescriptionState.title}
 						description={this.titleAndDescriptionState.description}
+						createdBy={this.titleAndDescriptionState.createdBy}
 						 />
 				</div>
 				<SideBar />
