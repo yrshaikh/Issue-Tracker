@@ -14,10 +14,12 @@
   "dependencies": {
     "axios": "0.16.2",
     "core-js": "^2.4.1",
+    "moment": "^2.18.1",
     "react": "^15.0.2",
     "react-bootstrap-select": "^0.14.0",
     "react-dom": "^15.0.1",
     "react-gravatar": "^2.6.3",
+    "react-moment": "^0.6.5",
     "react-select": "^1.0.0-rc.6",
     "react-sliding-pane": "^1.2.3",
     "rxjs": "^5.4.2",

@@ -7,7 +7,7 @@ class IssueTimeline extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			issueId: props.IssueId
+			timeline: props.timeline
 		};
 	}
 	componentWillMount(){
@@ -16,9 +16,7 @@ class IssueTimeline extends Component {
 	}
 	render() {
 		return (
-			<div>
-				<Status issueId={this.state.issueId} />
-			</div>
+			<Status data={this.state.timeline} />
 		);
 	}
 }

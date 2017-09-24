@@ -11,5 +11,6 @@ namespace Service.Services.Issue
         SingleIssueViewModel Get(int issueId);
 	    void UpdateTitleDescription(UpdateTitleDescriptionModel model, int userId);
 	    void UpdateStatus(UpdateStatusModel model, int userId);
+	    List<TimelineViewModel> GetTimeline(int id);
 	}
 }

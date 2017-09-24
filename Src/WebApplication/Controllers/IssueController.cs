@@ -58,8 +58,15 @@ namespace WebApplication.Controllers
 	        var issues = _issueService.GetByFilters(AuthenticatedUser.UserId(User));
 	        return Json(issues);
 	    }
+        
+	    [HttpGet("issue/{id}/timeline")]
+        public IActionResult GetTimeline(int id)
+	    {
+	        var timeline = _issueService.GetTimeline(id);
+	        return Json(timeline);
+	    }
 
-	    [HttpPost]
+        [HttpPost]
 	    public IActionResult UpdateTitleDescription([FromBody] UpdateTitleDescriptionModel model)
 	    {
 	        _issueService.UpdateTitleDescription(model, AuthenticatedUser.UserId(User));

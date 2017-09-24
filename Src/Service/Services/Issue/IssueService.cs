@@ -41,6 +41,16 @@ namespace Service.Services.Issue
             _issueRepository.UpdateStatus(model.IssueId, (int)model.Status, userId);
         }
 
+        public List<TimelineViewModel> GetTimeline(int id)
+        {
+            return new List<TimelineViewModel>()
+            {
+                new TimelineViewModel { Type = "status", CreatedBy = "Yasser Shaikh", CreatedByEmail = "yasser.s@outlook.com", CreatedOn = DateTime.Now, Content = "closed"},
+                new TimelineViewModel { Type = "status", CreatedBy = "Ali Rizvi", CreatedByEmail = "ali.s@outlook.com", CreatedOn = DateTime.Now, Content = "reopened"},
+                new TimelineViewModel { Type = "status", CreatedBy = "Yasser Shaikh", CreatedByEmail = "yasser.s@outlook.com", CreatedOn = DateTime.Now, Content = "closed"},
+            };
+        }
+
         public List<IssueSummaryViewModel> GetByFilters(int userId)
         {
             var issues = _issueRepository.GetByFilters(userId);

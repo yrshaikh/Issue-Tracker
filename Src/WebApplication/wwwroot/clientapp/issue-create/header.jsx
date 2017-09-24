@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import PubSub from 'pubsub-js';  
+import PubSub from 'pubsub-js';
 const Select = require('react-select/dist/react-select.js');
 
 class Header extends Component {

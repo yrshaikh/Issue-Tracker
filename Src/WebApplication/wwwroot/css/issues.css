@@ -99,3 +99,7 @@
       font-weight: bold; }
     .sidebar .item i {
       color: #c3c8cf; }
+
+#issues-view .timeline-item {
+  margin-bottom: 10px;
+  margin-left: 50px; }

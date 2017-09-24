@@ -64,12 +64,12 @@ class Header extends Component {
 						<GravatarWithUserInfo 
 							createdBy={this.state.createdBy}
 							createdOn={this.state.createdOn}
-							size="35"
+							size={35}
 							 />
 						<GravatarWithUserInfo 
 							createdBy={this.state.createdBy}
 							createdOn={this.state.createdOn}
-							size="35"
+							size={35}
 							 />
 					</div>
 					<div className='hero-banner-buttons'>
