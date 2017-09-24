@@ -4,7 +4,7 @@ using System.Linq;
 using AutoMapper;
 using Repository.Issue;
 using Repository.Models.Issue;
-using Service.Constants;
+using System.Linq;
 using Service.ViewModels.Issue;
 
 namespace Service.Services.Issue
@@ -43,12 +43,8 @@ namespace Service.Services.Issue
 
         public List<TimelineViewModel> GetTimeline(int id)
         {
-            return new List<TimelineViewModel>()
-            {
-                new TimelineViewModel { Type = "status", CreatedBy = "Yasser Shaikh", CreatedByEmail = "yasser.s@outlook.com", CreatedOn = DateTime.Now, Content = "closed"},
-                new TimelineViewModel { Type = "status", CreatedBy = "Ali Rizvi", CreatedByEmail = "ali.s@outlook.com", CreatedOn = DateTime.Now, Content = "reopened"},
-                new TimelineViewModel { Type = "status", CreatedBy = "Yasser Shaikh", CreatedByEmail = "yasser.s@outlook.com", CreatedOn = DateTime.Now, Content = "closed"},
-            };
+            var timeline = _issueRepository.GetTimeline(id);
+            return _mapper.Map<List<TimelineModel>, List<TimelineViewModel>>(timeline).ToList();
         }
 
         public List<IssueSummaryViewModel> GetByFilters(int userId)

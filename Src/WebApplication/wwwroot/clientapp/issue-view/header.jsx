@@ -11,8 +11,14 @@ class Header extends Component {
 		this.state = {
 			issueId: window.app.issue.IssueId,
 			status: window.app.issue.Status,
+			
 			createdBy: window.app.issue.CreatedBy,
-			createdOn: 'Aug 15, 2017'
+			createdByEmail: window.app.issue.CreatedByEmail,
+			createdOn: window.app.issue.CreatedOn,
+			
+			closedBy: window.app.issue.ClosedBy,
+			closedByEmail: window.app.issue.ClosedByEmail,
+			closedOn: window.app.issue.ClosedOn
 		};
 		this._notificationSystem = null;
 		this.updateIssueStatus = this.updateIssueStatus.bind(this);
@@ -61,16 +67,7 @@ class Header extends Component {
 							<span className='id fw-light'>#{this.state.issueId}</span>
 							<IssueStatus additionalClasses='fs-16' status={this.state.status} />
 						</div>
-						<GravatarWithUserInfo 
-							createdBy={this.state.createdBy}
-							createdOn={this.state.createdOn}
-							size={35}
-							 />
-						<GravatarWithUserInfo 
-							createdBy={this.state.createdBy}
-							createdOn={this.state.createdOn}
-							size={35}
-							 />
+						{this.renderCreatedByAndClosedBy()}
 					</div>
 					<div className='hero-banner-buttons'>
 						{this.renderActionButton()}
@@ -82,6 +79,25 @@ class Header extends Component {
 				<NotificationSystem ref="notificationSystem" />
 			</div>
 		);
+	}
+	renderCreatedByAndClosedBy(){
+		var output = [];
+
+		output.push(<GravatarWithUserInfo 
+			createdBy={this.state.createdBy}
+			createdByEmail={this.state.createdByEmail}
+			createdOn={this.state.createdOn}
+			size={35} />);
+
+		if(this.state.closedBy){
+			output.push(<GravatarWithUserInfo 
+				createdBy={this.state.closedBy}
+				createdByEmail={this.state.closedByEmail}
+				createdOn={this.state.closedOn}
+				size={35} />);
+		}
+		
+		return(output);
 	}
 	renderActionButton(){
 		if(this.state.status === 'open'){

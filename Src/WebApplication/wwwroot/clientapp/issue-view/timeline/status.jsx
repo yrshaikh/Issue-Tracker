@@ -24,9 +24,11 @@ class Status extends Component {
 		return (
 			<div className='timeline-item'>
 				<Gravatar email={this.state.createdByEmail} size={16} default='retro' />
-				<span className='ml-15'>{this.state.createdBy} {this.state.content} this issue.</span>
-				<span className='ml-10 light-gray'>
-					<Moment fromNow>{this.state.createdOn}</Moment>					
+				<span className='ml-10'>
+					<span className='fw-medium cap'>{this.state.createdBy}</span>
+					<span className='light-gray'>
+						&nbsp;{this.state.content} this <Moment fromNow>{this.state.createdOn}</Moment>
+					</span>
 				</span>
 			</div>
 		);

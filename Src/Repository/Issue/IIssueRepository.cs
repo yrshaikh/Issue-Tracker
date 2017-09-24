@@ -10,5 +10,6 @@ namespace Repository.Issue
 	    SingleIssueModel Get(int issueId);
 	    void UpdateTitleDescription(int issueId, string title, string description, int updatedBy);
 	    void UpdateStatus(int issueId, int status, int userId);
+	    List<TimelineModel> GetTimeline(int id);
 	}
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
 import Gravatar from 'react-gravatar';
+import Moment from 'react-moment';
 const NotificationSystem = require('react-notification-system');
 const axios = require('axios');
 
@@ -12,6 +13,7 @@ class TitleDescription extends Component {
 			title: props.title,
 			description: props.description,
 			createdBy: props.createdBy,
+			createdByEmail: props.createdByEmail,
             editIssue: false,
             submitting: false,
             error: false
@@ -87,11 +89,11 @@ class TitleDescription extends Component {
 				</div>
 				<div className='form-group comment-box'>
 					<div className='avatar'>
-						<Gravatar email={this.state.createdBy} size={35} default='retro' />
+						<Gravatar email={this.state.createdByEmail} size={35} default='retro' />
 					</div>
 					<div className='comment'>
 						<div className='comment-head'>
-							<b>Yasser Shaikh</b> opened this issue on Aug 14
+							<b className='cap'>{this.state.createdBy}</b> opened this issue <Moment fromNow>{this.state.createdOn}</Moment>
 						</div>
 						<div className='comment-body'>
 							{this.state.description}

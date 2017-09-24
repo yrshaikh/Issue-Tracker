@@ -15,6 +15,7 @@ namespace Repository.Issue
 		public const string GetSingle = "Issue_Get_Single";
 		public const string UpdateTitleDescription = "Issue_Update_Title_Description";
 	    public static string UpdateStatus = "Issue_Update_Status";
+	    public static string GetTimeline = "Issue_Get_Timeline";
 	}
 
     public class IssueRepository : BaseDataAccess, IIssueRepository
@@ -91,12 +92,21 @@ namespace Repository.Issue
 	                    issue = new SingleIssueModel()
 	                    {
 	                        IssueId = (int)dataReader["issue_id"],
+
 	                        Title = (string)dataReader["title"],
 	                        Description = (string)dataReader["description"],
-	                        CreatedOn = (DateTime)dataReader["created_on"],
+
+                            CreatedOn = (DateTime)dataReader["created_on"],
 	                        CreatedBy = (string)dataReader["created_by"],
+	                        CreatedByEmail = (string)dataReader["created_by_email"],
+
+	                        ClosedOn = (DateTime)dataReader["closed_on"],
+	                        ClosedBy = (string)dataReader["closed_by"],
+	                        ClosedByEmail = (string)dataReader["closed_by_email"],
+
                             ProjectId = (int)dataReader["project_id"],
                             ProjectName = (string)dataReader["project_name"],
+
 	                        Status = (string)dataReader["status"]
                         };
 	                }
@@ -131,6 +141,35 @@ namespace Repository.Issue
 	        };
 
 	        base.ExecuteNonQuery(IssueStoredProcedure.UpdateStatus, parameterList, CommandType.StoredProcedure);
+        }
+
+	    public List<TimelineModel> GetTimeline(int id)
+	    {
+	        List<DbParameter> parameterList = new List<DbParameter>
+	        {
+	            new SqlParameter("@issue_id", SqlDbType.Int) {Value = id}
+	        };
+	        var timeline = new List<TimelineModel>();
+	        using (DbDataReader dataReader = base.GetDataReader(IssueStoredProcedure.GetTimeline, parameterList, CommandType.StoredProcedure))
+	        {
+	            if (dataReader != null && dataReader.HasRows)
+	            {
+	                while (dataReader.Read())
+	                {
+	                    var item = new TimelineModel
+                        {
+	                        Type = (string)dataReader["type"],
+	                        CreatedOn = (DateTime)dataReader["created_on"],
+	                        CreatedBy = (string)dataReader["created_by"],
+	                        CreatedByEmail = (string)dataReader["created_by_email"],
+	                        Content = (string)dataReader["content"]
+	                    };
+	                    timeline.Add(item);
+	                }
+	            }
+	        }
+
+	        return timeline;
         }
 
 	    public IssueRepository(IConfiguration config) : base(config)

@@ -95,6 +95,7 @@ namespace WebApplication
 			CreateMap<ProjectListModel, ProjectListViewModel>();
 		    CreateMap<IssueSummaryModel, IssueSummaryViewModel>();
 		    CreateMap<SingleIssueModel, SingleIssueViewModel>();
+		    CreateMap<TimelineModel, TimelineViewModel>();
 		}
 	}
 }
