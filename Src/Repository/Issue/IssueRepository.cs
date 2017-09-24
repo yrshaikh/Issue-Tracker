@@ -100,9 +100,9 @@ namespace Repository.Issue
 	                        CreatedBy = (string)dataReader["created_by"],
 	                        CreatedByEmail = (string)dataReader["created_by_email"],
 
-	                        ClosedOn = (DateTime)dataReader["closed_on"],
-	                        ClosedBy = (string)dataReader["closed_by"],
-	                        ClosedByEmail = (string)dataReader["closed_by_email"],
+	                        ClosedOn = (dataReader["closed_on"] == DBNull.Value) ? null : (DateTime?) dataReader["closed_on"],
+	                        ClosedBy = (dataReader["closed_by"] == DBNull.Value) ? null : (string)dataReader["closed_by"],
+	                        ClosedByEmail = (dataReader["closed_by_email"] == DBNull.Value) ? null : (string)dataReader["closed_by_email"],
 
                             ProjectId = (int)dataReader["project_id"],
                             ProjectName = (string)dataReader["project_name"],

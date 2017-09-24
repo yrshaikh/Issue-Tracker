@@ -15,7 +15,7 @@ namespace Repository.Models.Issue
 
         public string ClosedBy { get; set; }
         public string ClosedByEmail { get; set; }
-        public DateTime ClosedOn { get; set; }
+        public DateTime? ClosedOn { get; set; }
 
         public int ProjectId { get; set; }
         public string ProjectName { get; set; }
