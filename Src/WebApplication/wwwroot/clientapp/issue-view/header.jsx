@@ -83,18 +83,22 @@ class Header extends Component {
 	renderCreatedByAndClosedBy(){
 		var output = [];
 
-		output.push(<GravatarWithUserInfo 
+		output.push(<GravatarWithUserInfo
+			label="Opened by"
 			createdBy={this.state.createdBy}
 			createdByEmail={this.state.createdByEmail}
 			createdOn={this.state.createdOn}
-			size={35} />);
+			size={35}
+			key={1} />);
 
 		if(this.state.closedBy){
 			output.push(<GravatarWithUserInfo 
+				label="Closed by"
 				createdBy={this.state.closedBy}
 				createdByEmail={this.state.closedByEmail}
 				createdOn={this.state.closedOn}
-				size={35} />);
+				size={35} 
+				key={2} />);
 		}
 		
 		return(output);

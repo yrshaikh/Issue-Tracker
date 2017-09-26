@@ -48,6 +48,7 @@ class Header extends Component {
 								options={this.projects}
 								onChange={this.projectChanged}
 								clearable={false}
+								searchable={false}
 								/>
 							</div>
 						</div>

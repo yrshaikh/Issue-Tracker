@@ -125,7 +125,7 @@
 	cursor: pointer;
 }
 
-.link {
+.link, a {
 	color: #0056d3;
 }
 
@@ -135,4 +135,8 @@ img {
 
 .cap {
 	text-transform: capitalize;
+}
+
+.hidden {
+	display: none;
 }

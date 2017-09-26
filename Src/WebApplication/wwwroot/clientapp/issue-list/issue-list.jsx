@@ -11,7 +11,6 @@ class IssueList extends Component{
             , issues: []
         }
     }
-
     
 	componentWillMount(){
 	}
@@ -48,6 +47,7 @@ class IssueList extends Component{
         return(
             <div id='issue-list' className='row'>
                 <div className='width-100-percent mb-15'>
+                    <a className='btn btn-outline-dark pull-left'>Show Filters</a>
                     <a className='btn btn-success pull-right' href='issue/new'>New Issue</a>
                 </div>
                 <div className='col-md-12'>

@@ -15,7 +15,7 @@ class GravatarWithUserInfo extends Component {
 	render() {
 		return (
 			<div className='gravy'>
-				<div className='fs-14 title-case fw-bold'>Opened By:</div>		
+				<div className='fs-14 title-case fw-bold'>{this.props.label}:</div>		
 				<div>
 					<div className='image'>
 						<Gravatar email={this.props.createdByEmail} size={this.props.size} default="retro" />

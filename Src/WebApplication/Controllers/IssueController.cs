@@ -41,7 +41,7 @@ namespace WebApplication.Controllers
 		public IActionResult New([FromBody] CreateIssueViewModel model)
 		{
 			_issueService.Create(model, AuthenticatedUser.UserId(User));
-			return View();
+			return Json(HttpStatusCode.Created);
 		}
 
         [HttpGet("issue/{id}/{slug}")]

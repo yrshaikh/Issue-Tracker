@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
 import Gravatar from 'react-gravatar';
 import Moment from 'react-moment';
+var Remarkable = require('remarkable');
+var md = new Remarkable('full', {
+	html: true,
+	linkify: true,
+	typographer: true
+});
 const NotificationSystem = require('react-notification-system');
 const axios = require('axios');
 
@@ -21,7 +27,8 @@ class TitleDescription extends Component {
 		this._notificationSystem = null;
 		
 		this.cancelTitleDescriptionEdit = this.cancelTitleDescriptionEdit.bind(this);
-        this.updateTitleDescription = this.updateTitleDescription.bind(this);
+		this.updateTitleDescription = this.updateTitleDescription.bind(this);
+		this.onDescriptionChange = this.onDescriptionChange.bind(this);
 		this.handleChange = this.handleChange.bind(this);
     }    
 	componentWillMount(){
@@ -37,7 +44,7 @@ class TitleDescription extends Component {
 		this.setState({editIssue: false});
 	}
 	updateTitleDescription(){
-        var self = this;
+		var self = this;
         this.setState({editIssue: false});
 		axios.post('/issue/updatetitledescription', {
 			issueId: this.state.issueId
@@ -65,6 +72,9 @@ class TitleDescription extends Component {
         var name = event.target.name;
 		this.setState({[name]: event.target.value});
 	}
+	onDescriptionChange(editorState){
+		this.setState({editorState});
+	}
 	render() {
         var titleAndDescription = this.state.editIssue ? 
         this.renderTitleAndDescriptionInEditMode() :
@@ -79,8 +89,7 @@ class TitleDescription extends Component {
 				<NotificationSystem ref="notificationSystem" />
             </div>
 		);
-    }
-    
+    }    
     renderTitleAndDescription() {
 		return (
 			<div>
@@ -96,7 +105,7 @@ class TitleDescription extends Component {
 							<b className='cap'>{this.state.createdBy}</b> opened this issue <Moment fromNow>{this.state.createdOn}</Moment>
 						</div>
 						<div className='comment-body'>
-							{this.state.description}
+							<div dangerouslySetInnerHTML={{__html: md.render(this.state.description)}} />
 						</div>
 					</div>
 				</div>

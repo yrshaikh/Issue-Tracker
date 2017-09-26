@@ -33,7 +33,6 @@ class IssueCreateForm extends Component {
 	}
 	
 	handleProjectChange(event, projectId){
-		alert('handleProjectChanged');
 		this.setState({ projectId: projectId });
 	}
 	
@@ -80,7 +79,6 @@ class IssueCreateForm extends Component {
 			, description: this.state.description
 		})
 		.then(function (response) {
-			console.log(response);
 			window.location.href = '/';
 		})
 		.catch(function (error) {
