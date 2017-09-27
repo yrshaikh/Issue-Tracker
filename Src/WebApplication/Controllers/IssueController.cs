@@ -40,8 +40,8 @@ namespace WebApplication.Controllers
 		[HttpPost]
 		public IActionResult New([FromBody] CreateIssueViewModel model)
 		{
-			_issueService.Create(model, AuthenticatedUser.UserId(User));
-			return Json(HttpStatusCode.Created);
+			var issueId = _issueService.Create(model, AuthenticatedUser.UserId(User));
+			return Json(issueId);
 		}
 
         [HttpGet("issue/{id}/{slug}")]

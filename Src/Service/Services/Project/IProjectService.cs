@@ -7,5 +7,7 @@ namespace Service.Services.Project
 	{
 		void Create(NewProjectViewModel project, int createdById);
 		List<ProjectListViewModel> Get(int userId);
+	    List<ProjectAssigneesViewModel> GetProjectAssignees(int projectId);
+	    List<PrioritiesViewModel> GetPriorities();
 	}
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
+import { getSlug } from './../shared/utils';
 const axios = require('axios');
 
 class IssueCreateForm extends Component {
@@ -73,13 +74,14 @@ class IssueCreateForm extends Component {
 
 	save() {
 		var self = this;
+		var slug = getSlug(this.state.description);
 		axios.post('/issue/new', {
 			projectId: this.state.projectId
 			, title : this.state.title
 			, description: this.state.description
 		})
 		.then(function (response) {
-			window.location.href = '/';
+			window.location.href = '/issue/' + response.data + '/' + slug;
 		})
 		.catch(function (error) {
 			self.setState({ submitting : false });
@@ -96,7 +98,7 @@ class IssueCreateForm extends Component {
 						<label>Subject</label>
 						<input type='text' autoFocus
 							name='title'
-							className='form-control text-box title' 
+							className='form-control text-box title fw-bold' 
 							placeholder='Enter a one-line summary of the issue.'
 							ref={input => input && !this.state.firstLoad && input.focus()}
 							value={this.state.title }
@@ -122,7 +124,6 @@ class IssueCreateForm extends Component {
 						</textarea>
 					</div>
 				</div>
-
 				<div className='col-md-3'>
 					<div className='form-group'>
 						<label>Priority</label>
@@ -154,9 +155,9 @@ class IssueCreateForm extends Component {
 			return (
 				<div className='col-md-12'>
 					<button type='button' id='create' className='btn btn-success' onClick={this.handleSubmit}>Create Issue</button>
-					<button type='button' className='btn btn-outline-dark' onClick={this.handleSubmit}>Create and Add Another</button>
 				</div>
 			);
+			//<button type='button' className='btn btn-outline-dark' onClick={this.handleSubmit}>Create and Add Another</button>
 		}		
 	}
 

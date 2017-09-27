@@ -7,5 +7,7 @@ namespace Repository.Project
 	{
 		void Create(string name, int createdById);
 		List<ProjectListModel> Get(int userId);
+	    List<PrioritiesModel> GetPiorities();
+	    List<ProjectAssigneesModel> GetProjectAssignees(int projectId);
 	}
 }

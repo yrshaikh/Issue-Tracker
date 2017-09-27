@@ -96,6 +96,8 @@ namespace WebApplication
 		    CreateMap<IssueSummaryModel, IssueSummaryViewModel>();
 		    CreateMap<SingleIssueModel, SingleIssueViewModel>();
 		    CreateMap<TimelineModel, TimelineViewModel>();
+		    CreateMap<ProjectAssigneesModel, ProjectAssigneesViewModel>();
+		    CreateMap<PrioritiesModel, PrioritiesViewModel>();
 		}
 	}
 }

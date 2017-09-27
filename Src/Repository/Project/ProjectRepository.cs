@@ -12,6 +12,8 @@ namespace Repository.Project
 	{
 		public const string Insert = "Project_Insert";
 		public const string Get = "Project_Get";
+		public const string GetAssignees = "Project_Get_Assignees";
+		public const string GetPriorities = "Project_Get_Priorities";
 	}
 
 	public class ProjectRepository : BaseDataAccess, IProjectRepository
@@ -54,6 +56,57 @@ namespace Repository.Project
 
 			return projects;
 		}
+
+	    public List<PrioritiesModel> GetPiorities()
+	    {
+            var priorities = new List<PrioritiesModel>();
+	        using (DbDataReader dataReader = base.GetDataReader(ProjectStoredProcedures.GetPriorities, new List<DbParameter>(), CommandType.StoredProcedure))
+	        {
+	            if (dataReader != null && dataReader.HasRows)
+	            {
+	                while (dataReader.Read())
+	                {
+	                    var priority = new PrioritiesModel
+                        {
+	                        Id = (int)(byte)dataReader["id"],
+	                        Rank = (int)(byte)dataReader["rank"],
+	                        Value = (string)dataReader["value"]
+	                    };
+	                    priorities.Add(priority);
+	                }
+	            }
+	        }
+
+	        return priorities;
+        }
+
+	    public List<ProjectAssigneesModel> GetProjectAssignees(int projectId)
+	    {
+	        List<DbParameter> parameterList = new List<DbParameter>
+	        {
+	            new SqlParameter("@project_id", SqlDbType.Int) {Value = projectId}
+	        };
+            var assignees = new List<ProjectAssigneesModel>();
+	        using (DbDataReader dataReader = base.GetDataReader(ProjectStoredProcedures.GetAssignees, parameterList, CommandType.StoredProcedure))
+	        {
+	            if (dataReader != null && dataReader.HasRows)
+	            {
+	                while (dataReader.Read())
+	                {
+	                    var assignee = new ProjectAssigneesModel
+                        {
+	                        Id = (int)dataReader["id"],
+	                        FirstName = (string)dataReader["first_name"],
+	                        LastName = (string)dataReader["last_name"],
+	                        Email = (string)dataReader["email"]
+	                    };
+	                    assignees.Add(assignee);
+	                }
+	            }
+	        }
+
+	        return assignees;
+        }
 
 	    public ProjectRepository(IConfiguration config) : base(config)
 	    {

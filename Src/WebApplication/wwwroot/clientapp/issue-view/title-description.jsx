@@ -126,7 +126,7 @@ class TitleDescription extends Component {
 				</div>
 				<div className='form-group'>
 					<textarea 
-						className='form-control text-area'
+						className='form-control text-area fw-bold'
 						name='description'
 						rows='5'
 						placeholder='Steps to reproduce, what you expected to see, and what you saw it instead.'

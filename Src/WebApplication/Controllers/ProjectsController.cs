@@ -36,5 +36,19 @@ namespace WebApplication.Controllers
 		    }
 		    return View(model);
 	    }
-	}
+
+        [HttpGet("get/priorities")]
+        public IActionResult GetPriorities()
+        {
+            var priorities = _projectService.GetPriorities();
+            return Json(priorities);
+        }
+        
+        [HttpGet("get/{id}/assignees")]
+        public IActionResult GetAssignees(int id)
+        {
+            var assignees = _projectService.GetProjectAssignees(id);
+            return Json(assignees);
+        }
+    }
 }

@@ -1,17 +1,9 @@
 import React, {Component} from 'react';
+import { getSlug } from './../shared/utils';
 class IssueRow extends Component{
-    slugify(text)
-    {
-      return text.toString().toLowerCase()
-        .replace(/\s+/g, '-')           // Replace spaces with -
-        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-        .replace(/^-+/, '')             // Trim - from start of text
-        .replace(/-+$/, '');            // Trim - from end of text
-    }
     render(){
         var issue = this.props.issue;
-        var url = '/issue/' + issue.issueId + '/' + this.slugify(issue.title);
+        var url = '/issue/' + issue.issueId + '/' + getSlug(issue.title);
         return (
             <div className='row issue-row'>
                 <div className='col-md-11 row'>
