@@ -34,7 +34,7 @@ class Header extends Component {
 		this.setState({status: statusValue});
 
 		var self = this;
-        this.setState({editIssue: false});
+		this.setState({editIssue: false});
 		axios.post('/issue/updatestatus', {
 			issueId: this.state.issueId
 			, status : statusId
@@ -50,8 +50,8 @@ class Header extends Component {
 		})
 		.catch(function (error) {
 			self.setState({ submitting : false });
-            self.setState({ error : true });
-            self.setState({editIssue: true});
+			self.setState({ error : true });
+			self.setState({editIssue: true});
 		});
 		this.setState({editIssue: false});
 	}
