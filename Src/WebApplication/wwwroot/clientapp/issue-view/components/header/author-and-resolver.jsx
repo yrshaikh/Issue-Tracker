@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+﻿import React, { Component } from 'react';
 import GravatarWithUserInfo from './../../../shared/gravatar-with-user-info';
 
 class AuthorAndResolver extends Component {
@@ -7,20 +7,20 @@ class AuthorAndResolver extends Component {
 		super(props);
 		this.state = {};
 		this.state.issue = this.props.issue;
-    }
-    
-    componentDidMount() {
-        this._notificationSystem = this.refs.notificationSystem;
-    }
-    
-    render () {
+	}
+	
+	componentDidMount() {
+		this._notificationSystem = this.refs.notificationSystem;
+	}
+	
+	render () {
 		return (
-            <span>
-			    {this.renderCreatedByAndClosedBy()}
-            </span>
+			<span>
+				{this.renderCreatedByAndClosedBy()}
+			</span>
 		);
-    }
-    
+	}
+	
 	renderCreatedByAndClosedBy(){
 		var output = [];
 
@@ -32,7 +32,7 @@ class AuthorAndResolver extends Component {
 			size={35}
 			key={1} />);
 
-		if(this.state.issue.closedBy){
+		if(this.state.issue.closedBy && this.state.issue.status === "closed"){
 			output.push(<GravatarWithUserInfo 
 				label="Closed by"
 				createdBy={this.state.issue.closedBy}
