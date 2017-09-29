@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Moment from 'react-moment';
 import { getSlug } from './../shared/utils';
 class IssueRow extends Component{
     render(){
@@ -12,7 +13,7 @@ class IssueRow extends Component{
                         <span className='mr-10'>#{issue.issueId} {issue.title}</span>
                     </a>
                     <span className='subtitle col-md-12 gray'>
-                        Created by {issue.createdBy} on {issue.createdOn}
+                        Created by {issue.createdBy} <Moment fromNow>{issue.createdOn}</Moment> and is assigned to Saul Abraham.
                     </span>
                 </div>
             </div>

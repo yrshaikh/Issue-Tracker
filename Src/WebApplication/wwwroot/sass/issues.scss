@@ -8,6 +8,12 @@
 
 #hero-issues .hero-banner-inner {
 	padding: 18px 0 18px;
+	height: 150px;
+	.new-issue {
+		right: 0px;
+		position: absolute;
+		top: 18px;
+	}
 	/*max-width: 98%;*/
 }
 
@@ -36,6 +42,17 @@ $border-color: #e1e4e8;
 #issue-list {
 	margin-left: 15px;
 	margin-right: 15px;
+	#applied-filters {
+		margin-top: 10px;
+		.badge{
+			font-size: 14px;
+			font-weight: normal;
+			background: #ddd;
+			color: #777;
+			padding: 5px 9px;
+			margin-right: 10px;
+		}
+	}
 	.issue-row {
 		padding-bottom: 15px;
 		padding-top: 15px;
