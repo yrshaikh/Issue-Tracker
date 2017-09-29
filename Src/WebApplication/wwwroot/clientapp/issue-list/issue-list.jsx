@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import IssueRow from './issue-row';
 import IssueAppliedFilters from './issue-applied-filters';
-const axios = require('axios');
+import { IssuesApi } from './../apis/issues-api';
 
-class IssueList extends Component{
+class IssueList extends Component {
+
     constructor(props){
         super(props);
         this.state = {
@@ -11,39 +12,16 @@ class IssueList extends Component{
             , issues: []
         }
     }
-    
-	componentWillMount(){
-	}
-	componentDidMount(){
+
+    componentDidMount() {
         this.fetchIssues();
 	}
-	componentWillUnmount(){
-    }
-    
-    fetchIssues(){
-        var self = this;
-        axios.get('/issue/get', {
-			projectId: this.state.projectId
-			, title : this.state.title
-			, description: this.state.description
-		})
-		.then(function (response) {
-            self.setState({ fetching : false });
-            self.setState({ issues : response.data });
-		})
-		.catch(function (error) {
-			self.setState({ fetching : false });
-			self.setState({ error : true });
-			console.log(error);
-		});
-    }
 
-    render(){
+    render() {
         var issues = [];
         for(var i = 0; i < this.state.issues.length; i++){
             issues.push(<IssueRow issue={this.state.issues[i]} key={i} />);
         }
-
         return(
             <div id='issue-list' className='row'>
                 <div className='width-100-percent mb-15'>
@@ -62,6 +40,19 @@ class IssueList extends Component{
             </div>
         );
     }
-}
+    
+    fetchIssues() {
+        var self = this;
+        IssuesApi.getIssues()
+		.then(function (issues) {
+            self.setState({ fetching : false });
+            self.setState({ issues : issues });
+		})
+		.catch(function (error) {
+			self.setState({ fetching : false });
+			self.setState({ error : true });
+		})
+    }    
+};
 
 export default IssueList;
