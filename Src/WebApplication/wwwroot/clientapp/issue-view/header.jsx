@@ -1,9 +1,9 @@
 ﻿import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
 import IssueStatus from './../shared/issue-status';
-import CloseIssueButton from './components/header-components/close-issue-button';
-import EditIssueButton from './components/header-components/edit-issue-button';
-import AuthorAndResolver from './components/header-components/author-and-resolver';
+import CloseIssueButton from './components/header/close-issue-button';
+import EditIssueButton from './components/header/edit-issue-button';
+import AuthorAndResolver from './components/header/author-and-resolver';
 
 class Header extends Component {
 

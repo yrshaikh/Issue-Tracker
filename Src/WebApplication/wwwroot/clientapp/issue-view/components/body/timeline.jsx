@@ -3,7 +3,7 @@ import PubSub from 'pubsub-js';
 import Status from './timeline/status';
 const axios = require('axios');
 
-class IssueTimeline extends Component {
+class Timeline extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -42,4 +42,4 @@ class IssueTimeline extends Component {
 	}
 }
 
-export default IssueTimeline;
+export default Timeline;
