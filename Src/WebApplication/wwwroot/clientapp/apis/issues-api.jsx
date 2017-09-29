@@ -11,6 +11,24 @@ const IssuesApi = {
             .catch(function(error){
                 return error;
             });
+    },
+
+    updateStatus: function(issueId, statusId){
+        var self = this;
+        return axios.post('/issue/updatestatus', {
+                issueId: issueId
+                , status : statusId
+            })
+            .then(function(response){
+                return {
+                    error: false
+                };
+            })
+            .catch(function(error){
+                return {
+                    error: true
+                };
+            });
     }
 
 }

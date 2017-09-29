@@ -8,8 +8,7 @@ class IssueList extends Component {
     constructor(props){
         super(props);
         this.state = {
-            fetching: true
-            , issues: []
+            issues: []
         }
     }
 
@@ -45,13 +44,8 @@ class IssueList extends Component {
         var self = this;
         IssuesApi.getIssues()
 		.then(function (issues) {
-            self.setState({ fetching : false });
             self.setState({ issues : issues });
-		})
-		.catch(function (error) {
-			self.setState({ fetching : false });
-			self.setState({ error : true });
-		})
+		});
     }    
 };
 
