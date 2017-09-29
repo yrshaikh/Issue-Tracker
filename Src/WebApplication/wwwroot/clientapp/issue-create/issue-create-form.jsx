@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
 import { getSlug } from './../shared/utils';
+import { ProjectsApi } from './../apis/projects-api';
+import _ from 'lodash';
 const axios = require('axios');
 
 class IssueCreateForm extends Component {
@@ -17,6 +19,8 @@ class IssueCreateForm extends Component {
 			, firstLoad: false
 			, submitting: false
 			, error: false
+			, priorities: []
+			, assignees: []
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,9 +32,19 @@ class IssueCreateForm extends Component {
 	}
 	componentDidMount(){
 		this.setState({ projectId: window.app.defaultProjectId });
+		this.loadPriorities()
 	}
 	componentWillUnmount(){
 		PubSub.unsubscribe(this.state.projectId);
+	}
+
+	loadPriorities(){
+		var self = this;
+		ProjectsApi.getPriorities()
+			.then(function(priorities){
+				console.log('prior', priorities);
+				self.setState({priorities: priorities});
+			});
 	}
 	
 	handleProjectChange(event, projectId){
@@ -127,8 +141,7 @@ class IssueCreateForm extends Component {
 				<div className='col-md-3'>
 					<div className='form-group'>
 						<label>Priority</label>
-						<select className='form-control'>
-						</select>
+						{ this.renderPriorities() }
 					</div>
 					<div className='form-group'>
 						<label>Assignee</label>
@@ -141,6 +154,19 @@ class IssueCreateForm extends Component {
 				{ this.renderError() }
 			</form>
 		);
+	}
+
+	renderPriorities(){
+		var priorities = [];
+		_.forEach(this.state.priorities, function(p){
+			priorities.push(<option key={p.id} className='cap' value={p.id}>{p.value}</option>)
+		})
+		return (
+			<select className='form-control'>
+				{priorities}
+			</select>
+		)
+		
 	}
 
 	renderButtons() {
