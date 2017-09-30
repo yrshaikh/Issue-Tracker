@@ -5,7 +5,7 @@ namespace Repository.Issue
 {
 	public interface IIssueRepository
 	{
-		int Create(int projectId, string title, string description, int createdBy);
+		int Create(int projectId, string title, string description, int priorityId, int? assigneeId, int createdBy);
 	    List<IssueSummaryModel> GetByFilters(int userId);
 	    SingleIssueModel Get(int issueId);
 	    void UpdateTitleDescription(int issueId, string title, string description, int updatedBy);

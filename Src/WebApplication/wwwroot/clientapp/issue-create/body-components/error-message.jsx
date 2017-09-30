@@ -6,18 +6,12 @@ class ErrorMessage extends Component {
 	}
     
 	render() {
-		if(this.props.error){
-			return (
-				<div className='col-md-9 mt-10'>
-					<div className='alert alert-danger' role='alert'>
-						Whoops! Something went wrong. Please try again.
-					</div>
-				</div>
-			);
-		}
 		return (
-            <span>
-            </span>
+			<div className='col-md-9 mt-10'>
+				<div className='alert alert-danger' role='alert'>
+					Whoops! Something went wrong. Please try again.
+				</div>
+			</div>
 		);
 	}
 }

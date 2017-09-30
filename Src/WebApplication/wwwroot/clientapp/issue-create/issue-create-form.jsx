@@ -7,6 +7,7 @@ import _ from 'lodash';
 import Priority from './body-components/priority';
 import Assignee from './body-components/assignee';
 import SubmitButtons from './body-components/submit-buttons';
+import LoadingButtons from './body-components/loading-buttons';
 import ErrorMessage from './body-components/error-message';
 import Title from './body-components/title';
 import Description from './body-components/description';
@@ -25,10 +26,11 @@ class IssueCreateForm extends Component {
 			}
 			, priorities: []
 			, assignees: []
+			, error: false
+			, loading: false
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handlePriorityIdChange = this.handlePriorityIdChange.bind(this);
 	}
 
 	render(){
@@ -37,21 +39,25 @@ class IssueCreateForm extends Component {
 				<Title title={this.state.issue.title} change={this.handleChange} />
 				<Description description={this.state.issue.description} change={this.handleChange} />
 				<div className='col-md-3'>
-					<Priority priorityId={this.state.issue.priorityId} action={this.handlePriorityIdChange} />
+					<Priority priorityId={this.state.issue.priorityId} action={this.handleChange} />
 					<Assignee projectId={this.state.issue.projectId} action={this.handleChange} />
 				</div>
-				<SubmitButtons save={this.handleSubmit} />
-				<ErrorMessage show={this.state.error} />
+				{
+					(this.state.loading) ? 
+						<LoadingButtons />  : 
+						<SubmitButtons save={this.handleSubmit} />
+				}				
+				{ 
+					(this.state.error) ? 
+						<ErrorMessage /> : 
+						''
+				}
 			</form>
 		);
 	}
 	
 	handleProjectChange(event, projectId){
 		this.handleChange('projectId', projectId);
-	}
-
-	handlePriorityIdChange(priorityId){
-		this.handleChange('priorityId', priorityId);
 	}
 
 	handleChange(name, value){
@@ -62,15 +68,24 @@ class IssueCreateForm extends Component {
 	}
 
 	handleSubmit(){
-		var self = this;
+		this.setState({loading: true});
+		this.setState({error: false});
 		var slug = getSlug(this.state.issue.description);
+
+		var self = this;
 		IssuesApi.createIssue(
 			this.state.issue.projectId, 
 			this.state.issue.title, 
-			this.state.issue.description
+			this.state.issue.description,
+			this.state.issue.priorityId,
+			this.state.issue.assigneeId
 		)
-		.then(function (createdIssueId) {
-			window.location.href = '/issue/' + createdIssueId + '/' + slug;
+		.then(function (response) {
+			self.setState({loading: false});
+			if(response.error)
+				self.setState({error: true});
+			else
+				window.location.href = '/issue/' + response.issueId + '/' + slug;
 		});
 	}	
 }

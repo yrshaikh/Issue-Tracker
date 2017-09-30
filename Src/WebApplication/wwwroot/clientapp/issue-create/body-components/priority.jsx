@@ -9,6 +9,8 @@ class Priority extends Component {
             priorityId: this.props.priorityId,
             priorities: []
 		};
+
+		this.handleChange = this.handleChange.bind(this);
 	}
 
 	componentDidMount(){
@@ -29,20 +31,25 @@ class Priority extends Component {
 		_.forEach(this.state.priorities, function(p){
 			priorities.push(
                 <option key={p.id} value={p.id}>{p.value}</option>
-            )
+            );
 		})
 		return (
-			<select onChange={this.props.action} className='form-control' value={this.state.priorityId}>
+			<select onChange={this.handleChange} className='form-control' value={this.state.priorityId}>
 				{priorities}
 			</select>
 		);		
-    }
+	}
+	
+	handleChange(event){
+		var priorityId = event.target.value;
+		this.setState({priorityId: priorityId});
+		this.props.action('priorityId', priorityId);
+	}
 
 	loadPriorities(){
 		var self = this;
 		ProjectsApi.getPriorities()
 			.then(function(priorities){
-				console.log('prior', priorities);
 				self.setState({priorities: priorities});
 			});
     }

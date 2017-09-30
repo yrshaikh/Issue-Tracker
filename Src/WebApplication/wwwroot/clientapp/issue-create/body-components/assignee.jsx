@@ -40,7 +40,7 @@ class Assignee extends Component {
 
 		var assignees = [];
 		assignees.push(
-			<option key={0} value={undefined} selected='selected'></option>
+			<option key={0} value={undefined}></option>
 		);
 		_.forEach(this.state.assignees, function(p){
 			assignees.push(
@@ -48,7 +48,7 @@ class Assignee extends Component {
             )
 		});
 		return (
-			<select onChange={this.handleOnChange} className='form-control' value={this.state.assigneeId}>
+			<select defaultValue={undefined} onChange={this.handleOnChange} className='form-control' value={this.state.assigneeId}>
 				{assignees}
 			</select>
 		);

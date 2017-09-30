@@ -22,7 +22,7 @@ namespace Service.Services.Issue
 
 	    public int Create(CreateIssueViewModel issue, int userId)
 	    {
-		    return _issueRepository.Create(issue.ProjectId, issue.Title, issue.Description, userId);
+		    return _issueRepository.Create(issue.ProjectId, issue.Title, issue.Description, issue.PriorityId, issue.AssigneeId, userId);
 	    }
 
         public SingleIssueViewModel Get(int issueId)

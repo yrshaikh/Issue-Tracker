@@ -20,13 +20,15 @@ namespace Repository.Issue
 
     public class IssueRepository : BaseDataAccess, IIssueRepository
 	{
-		public int Create(int projectId, string title, string description, int createdBy)
+		public int Create(int projectId, string title, string description, int priorityId, int? assigneeId, int createdBy)
 		{
 			List<DbParameter> parameterList = new List<DbParameter>
 			{
 				new SqlParameter("@project_id", SqlDbType.VarChar) {Value = projectId},
 				new SqlParameter("@title", SqlDbType.VarChar) {Value = title},
 				new SqlParameter("@description", SqlDbType.VarChar) {Value = description},
+				new SqlParameter("@priority_id", SqlDbType.Int) {Value = priorityId},
+				new SqlParameter("@assignee_id", SqlDbType.Int) {Value = assigneeId},
 				new SqlParameter("@created_by", SqlDbType.Int) {Value = createdBy},
 				new SqlParameter("@created_on", SqlDbType.DateTime) {Value = DateTime.Now}
 			};

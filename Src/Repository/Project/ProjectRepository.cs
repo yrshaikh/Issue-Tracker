@@ -5,6 +5,7 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Repository.Models.Project;
+using Repository.Utils;
 
 namespace Repository.Project
 {
@@ -70,7 +71,7 @@ namespace Repository.Project
                         {
 	                        Id = (int)(byte)dataReader["id"],
 	                        Rank = (int)(byte)dataReader["rank"],
-	                        Value = (string)dataReader["value"]
+	                        Value = ((string)dataReader["value"]).ToTitleCase()
 	                    };
 	                    priorities.Add(priority);
 	                }
@@ -96,8 +97,8 @@ namespace Repository.Project
 	                    var assignee = new ProjectAssigneesModel
                         {
 	                        Id = (int)dataReader["id"],
-	                        FirstName = (string)dataReader["first_name"],
-	                        LastName = (string)dataReader["last_name"],
+	                        FirstName = ((string)dataReader["first_name"]).ToTitleCase(),
+	                        LastName = ((string)dataReader["last_name"]).ToTitleCase(),
 	                        Email = (string)dataReader["email"]
 	                    };
 	                    assignees.Add(assignee);

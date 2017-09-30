@@ -31,17 +31,23 @@ const IssuesApi = {
             });
     },
     
-    createIssue: function(projectId, title, description){
+    createIssue: function(projectId, title, description, priorityId, assigneeId){
         var self = this;
         return axios.post('/issue/new', {
                 projectId: projectId
                 , title : title
                 , description: description
+                , priorityId: priorityId
+                , assigneeId: assigneeId
             })
-            .then(function(response){
-                return response.data;
+            .then(function(response){                
+                return {
+                    error: false,
+                    issueId: response.data 
+                };
             })
             .catch(function(error){
+                console.log('error', error);
                 return {
                     error: true
                 };
