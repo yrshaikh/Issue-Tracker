@@ -8,7 +8,7 @@ class Body extends Component {
 	render () {
 		return (
 			<div id="issues-create" className="body">
-				<IssueCreateForm />
+				<IssueCreateForm defaultProjectId={this.props.defaultProjectId} />
 			</div>
 		);
 	}

@@ -29,6 +29,23 @@ const IssuesApi = {
                     error: true
                 };
             });
+    },
+    
+    createIssue: function(projectId, title, description){
+        var self = this;
+        return axios.post('/issue/new', {
+                projectId: projectId
+                , title : title
+                , description: description
+            })
+            .then(function(response){
+                return response.data;
+            })
+            .catch(function(error){
+                return {
+                    error: true
+                };
+            });
     }
 
 }
