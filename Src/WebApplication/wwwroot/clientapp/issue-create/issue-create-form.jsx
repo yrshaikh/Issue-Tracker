@@ -21,6 +21,7 @@ class IssueCreateForm extends Component {
 				, title: ''
 				, description: ''
 				, priorityId: 3
+				, assigneeId: null
 			}
 			, priorities: []
 			, assignees: []
@@ -30,10 +31,6 @@ class IssueCreateForm extends Component {
 		this.handlePriorityIdChange = this.handlePriorityIdChange.bind(this);
 	}
 
-	componentWillMount(){
-		this.state.projectId = PubSub.subscribe('PROJECT_CHANGED', this.handleProjectChange.bind(this));
-	}
-
 	render(){
 		return (
 			<form id='issue-create-form' className='row custom-form'>
@@ -41,7 +38,7 @@ class IssueCreateForm extends Component {
 				<Description description={this.state.issue.description} change={this.handleChange} />
 				<div className='col-md-3'>
 					<Priority priorityId={this.state.issue.priorityId} action={this.handlePriorityIdChange} />
-					<Assignee priorityId={this.state.issue.priorityId} action={this.handlePriorityIdChange} />
+					<Assignee projectId={this.state.issue.projectId} action={this.handleChange} />
 				</div>
 				<SubmitButtons save={this.handleSubmit} />
 				<ErrorMessage show={this.state.error} />
@@ -53,11 +50,12 @@ class IssueCreateForm extends Component {
 		this.handleChange('projectId', projectId);
 	}
 
-	handlePriorityIdChange(){		
-		this.handleChange('projectId', projectId);
+	handlePriorityIdChange(priorityId){
+		this.handleChange('priorityId', priorityId);
 	}
 
 	handleChange(name, value){
+		console.log(name, value);
 		var issue = this.state.issue;
 		issue[name] = value;
 		this.setState({issue: issue});
