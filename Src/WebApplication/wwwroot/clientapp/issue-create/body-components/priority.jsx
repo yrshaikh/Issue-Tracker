@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ProjectsApi } from './../../apis/projects-api';
 import _ from 'lodash';
+const Select = require('react-select/dist/react-select.js');
 
 class Priority extends Component {
 	constructor(props) {
@@ -27,21 +28,18 @@ class Priority extends Component {
 	}
 
 	renderPriorities(){
-		var priorities = [];
-		_.forEach(this.state.priorities, function(p){
-			priorities.push(
-                <option key={p.id} value={p.id}>{p.value}</option>
-            );
-		})
 		return (
-			<select onChange={this.handleChange} className='form-control' value={this.state.priorityId}>
-				{priorities}
-			</select>
-		);		
+			<Select className='priority-select'
+                        value={this.state.priorityId}
+                        options={this.state.priorities}
+                        onChange={this.handleChange}
+                        clearable={false}
+                        searchable={false} />
+		);
 	}
 	
-	handleChange(event){
-		var priorityId = event.target.value;
+	handleChange(selection){
+		var priorityId = selection.value;
 		this.setState({priorityId: priorityId});
 		this.props.action('priorityId', priorityId);
 	}

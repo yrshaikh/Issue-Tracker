@@ -27,11 +27,11 @@ namespace Repository.Issue
 				new SqlParameter("@project_id", SqlDbType.VarChar) {Value = projectId},
 				new SqlParameter("@title", SqlDbType.VarChar) {Value = title},
 				new SqlParameter("@description", SqlDbType.VarChar) {Value = description},
-				new SqlParameter("@priority_id", SqlDbType.Int) {Value = priorityId},
-				new SqlParameter("@assignee_id", SqlDbType.Int) {Value = assigneeId},
 				new SqlParameter("@created_by", SqlDbType.Int) {Value = createdBy},
-				new SqlParameter("@created_on", SqlDbType.DateTime) {Value = DateTime.Now}
-			};
+				new SqlParameter("@created_on", SqlDbType.DateTime) {Value = DateTime.Now},
+			    new SqlParameter("@priority_id", SqlDbType.Int) {Value = priorityId},
+			    new SqlParameter("@assignee_id", SqlDbType.Int) {Value = assigneeId},
+            };
 
 			int issueId = -1;
 

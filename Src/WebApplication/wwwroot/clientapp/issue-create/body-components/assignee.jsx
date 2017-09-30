@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
 import { ProjectsApi } from './../../apis/projects-api';
-import _ from 'lodash';
+const Select = require('react-select/dist/react-select.js');
 
 class Assignee extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			projectId: this.props.projectId,
-            assigneeId: undefined,
+            assigneeId: null,
             assignees: []
 		};
 
-		this.handleOnChange = this.handleOnChange.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
 	
 	componentWillMount(){
@@ -27,36 +27,25 @@ class Assignee extends Component {
 		return (
             <div className='form-group'>
                 <label>Assignee</label>
-                { this.renderPriorities() }
+                { this.renderAssignees() }
             </div>
 		);
 	}
 
-	renderPriorities(){
-		if(this.state.assignees.length === 0)
-			return(
-				<span></span>
-			);
-
-		var assignees = [];
-		assignees.push(
-			<option key={0} value={undefined}></option>
-		);
-		_.forEach(this.state.assignees, function(p){
-			assignees.push(
-                <option key={p.id} value={p.id}>{p.firstName} {p.lastName}</option>
-            )
-		});
+	renderAssignees(){
 		return (
-			<select defaultValue={undefined} onChange={this.handleOnChange} className='form-control' value={this.state.assigneeId}>
-				{assignees}
-			</select>
+			<Select className='assignees-select'
+                        value={this.state.assigneeId}
+                        options={this.state.assignees}
+                        onChange={this.handleChange}
+                        clearable={false}
+                        searchable={false} />
 		);
 	}
 	
-	handleOnChange(event){
-		var selectedAssigneedId = event.target.value;
-		this.setState({selectedAssigneedId});
+	handleChange(selection){
+		var selectedAssigneedId = selection.value;
+		this.setState({assigneeId: selectedAssigneedId});
 		this.props.action('assigneeId', selectedAssigneedId);
 	}
 
