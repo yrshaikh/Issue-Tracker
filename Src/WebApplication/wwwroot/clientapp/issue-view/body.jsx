@@ -2,6 +2,7 @@
 import TitleDescription from './components/body/title-description';
 import IssueTimeline from './components/body/timeline';
 import ManageAssignee from './components/body/manage-assignee';
+import ManagePriority from './components/body/manage-priority';
 
 class Body extends Component {
 	constructor(props) {
@@ -27,8 +28,12 @@ class Body extends Component {
 					<div className='col-md-3 sidebar'>
 						<ManageAssignee
 							projectId={this.state.issue.projectId}
-							assigneeId={this.state.issue.assigneeId}
-							assigneeName={this.state.issue.assigneeName}
+							id={this.state.issue.assigneeId}
+							label={this.state.issue.assigneeName}
+						/>
+						<ManagePriority
+							id={this.state.issue.priorityId}
+							label={this.state.issue.priorityName}
 						/>
 					</div>
 				</form>

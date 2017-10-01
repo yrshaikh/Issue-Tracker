@@ -6,8 +6,8 @@ class ManageAssignee extends Component {
 		super(props);
 		this.state = {
 			projectId: this.props.projectId,
-			assigneeId: this.props.assigneeId,
-			assigneeName: this.props.assigneeName
+			assigneeId: this.props.id,
+			assigneeName: this.props.label
 		};
 		this.handleChange = this.handleChange.bind(this);
 	}
@@ -21,7 +21,11 @@ class ManageAssignee extends Component {
             <div className='form-group sidebar-item' onMouseEnter={this.mouseOver} onMouseLeave={this.mouseLeaves}>
                 <div id='assignee-view'>
 					<label className='fw-bold'>Assignee</label>
-					<div className='cap'>{ this.state.assigneeName }</div>
+					{
+						this.state.assigneeName ? 
+						<div className='cap'>{ this.state.assigneeName }</div> :
+						<div className='gray'>Un-Assigned</div>
+					}
 				</div>
 				<div id='assignee-edit'>
 					{ this.renderAssigneeComponent() }

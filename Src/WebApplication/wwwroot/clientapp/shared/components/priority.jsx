@@ -21,7 +21,11 @@ class Priority extends Component {
 	render() {
 		return (
             <div className='form-group'>
-                <label className='fw-bold'>Priority</label>
+                <label className='fw-bold'>
+				{
+					this.props.label ? this.props.label : 'Priority'
+				}
+				</label>
                 { this.renderPriorities() }
             </div>
 		);
@@ -39,9 +43,8 @@ class Priority extends Component {
 	}
 	
 	handleChange(selection){
-		var priorityId = selection.value;
-		this.setState({priorityId: priorityId});
-		this.props.action('priorityId', priorityId);
+		this.setState({priorityId: selection.value});
+		this.props.action('priorityId', selection.value, selection.label);
 	}
 
 	loadPriorities(){
