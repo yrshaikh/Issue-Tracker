@@ -21,6 +21,10 @@ class IssueViewApp extends Component {
 				closedOn: issue.ClosedOn,
 				projectId: issue.ProjectId,
 				projectName: issue.ProjectName,
+				assigneeId: issue.AssigneeId,
+				assigneeName: issue.AssigneeName,
+				priorityId: issue.PriorityId,
+				priorityName: issue.PriorityName,
 				status: issue.Status,
 			}
 		};

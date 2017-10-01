@@ -20,6 +20,12 @@ namespace Service.ViewModels.Issue
         public int ProjectId { get; set; }
         public string ProjectName { get; set; }
 
+        public int? AssigneeId { get; set; }
+        public string AssigneeName { get; set; }
+
+        public int? PriorityId { get; set; }
+        public string PriorityName { get; set; }
+
         public string Status { get; set; }
     }
 }

@@ -139,13 +139,10 @@ $border-color: #e1e4e8;
 .sidebar {
 	color: #586069;
 	font-size: 14px;
-	.item {
+	.sidebar-item {
 		width: 80%;
 		height: 80px;
 		border-bottom: 1px solid #e9e9e9;
-		label{
-			font-weight: bold;
-		}
 		i{
 			color: #c3c8cf;
 		}

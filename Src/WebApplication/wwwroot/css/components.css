@@ -17,7 +17,7 @@
 .validation-summary-valid {
   display: none; }
 
-.Select-control .Select-value {
+.Select-control {
   cursor: pointer; }
 
 .text-area {

@@ -109,7 +109,13 @@ namespace Repository.Issue
                             ProjectId = (int)dataReader["project_id"],
                             ProjectName = (string)dataReader["project_name"],
 
-	                        Status = (string)dataReader["status"]
+                            AssigneeId = (dataReader["assignee_id"] == DBNull.Value) ? null : (int?)dataReader["assignee_id"],
+	                        AssigneeName = (dataReader["assignee_name"] == DBNull.Value) ? null : (string)dataReader["assignee_name"],
+                            
+	                        PriorityId = (dataReader["priority_id"] == DBNull.Value) ? null : (int?)(byte)dataReader["priority_id"],
+	                        PriorityName = (dataReader["priority_value"] == DBNull.Value) ? null : (string)dataReader["priority_value"],
+
+                            Status = (string)dataReader["status"]
                         };
 	                }
 	            }

@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import TitleDescription from './components/body/title-description';
-import SideBar from './components/body/sidebar';
 import IssueTimeline from './components/body/timeline';
+import ManageAssignee from './components/body/manage-assignee';
 
 class Body extends Component {
 	constructor(props) {
@@ -21,10 +21,16 @@ class Body extends Component {
 							description={this.state.issue.description}
 							createdBy={this.state.issue.createdBy}
 							createdByEmail={this.state.issue.createdByEmail}
-						/>							
+						/>
 						<IssueTimeline issueId={this.state.issue.issueId} />
 					</div>
-					<SideBar />
+					<div className='col-md-3 sidebar'>
+						<ManageAssignee
+							projectId={this.state.issue.projectId}
+							assigneeId={this.state.issue.assigneeId}
+							assigneeName={this.state.issue.assigneeName}
+						/>
+					</div>
 				</form>
 			</div>
 		);
