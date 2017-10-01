@@ -8,7 +8,7 @@ class Assignee extends Component {
 		super(props);
 		this.state = {
 			projectId: this.props.projectId,
-            assigneeId: null,
+            assigneeId: this.props.defaultValue ? this.props.defaultValue : null,
             assignees: []
 		};
 

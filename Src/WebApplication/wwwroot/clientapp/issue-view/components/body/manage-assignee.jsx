@@ -38,6 +38,7 @@ class ManageAssignee extends Component {
 		return (
 			<Assignee
 				label='Update Assignee' 
+				defaultValue={this.state.assigneeId}
 				projectId={this.state.projectId} 
 				action={this.handleChange} />
 		);

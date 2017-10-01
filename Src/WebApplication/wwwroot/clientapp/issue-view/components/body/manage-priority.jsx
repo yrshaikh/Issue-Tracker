@@ -38,13 +38,13 @@ class ManagePriority extends Component {
 	renderPriorityComponent(){
 		return (
 			<Priority
-				label='Update Priority' 
-				projectId={this.state.priorityId} 
+				label='Update Priority'
+				priorityId={this.state.priorityId}
 				action={this.handleChange} />
 		);
 	}
 
-	mouseOver(event) {        
+	mouseOver(event) {
         document.getElementById('priority-view').setAttribute('style', 'display:none;');
         document.getElementById('priority-edit').setAttribute('style', 'display:block;');
     }
