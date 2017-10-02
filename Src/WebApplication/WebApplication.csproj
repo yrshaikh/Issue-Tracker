@@ -432,4 +432,12 @@
   <ItemGroup>
     <ProjectReference Include="..\Service\Service.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Update="wwwroot/css\common.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot/css\third-party-libs.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
