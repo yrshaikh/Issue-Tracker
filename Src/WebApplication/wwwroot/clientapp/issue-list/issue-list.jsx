@@ -30,11 +30,9 @@ class IssueList extends Component {
                         <span className="badge badge-default">Milestone: 1st November 2017  &nbsp;<i className='fa fa-close' /></span>
                     </div>
                 </div>
-                <div className='row'>
-                    <div className='col-md-12'>
-                        <IssueAppliedFilters />
-                        {issues}
-                    </div>
+                <div className='col-md-12'>
+                    <IssueAppliedFilters />
+                    {issues}
                 </div>
             </div>
         );
