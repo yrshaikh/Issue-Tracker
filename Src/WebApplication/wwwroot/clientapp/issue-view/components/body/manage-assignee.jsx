@@ -5,6 +5,7 @@ class ManageAssignee extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			issueId: 0, // todo: to accept issue id as params.
 			projectId: this.props.projectId,
 			assigneeId: this.props.id,
 			assigneeName: this.props.label
@@ -54,9 +55,15 @@ class ManageAssignee extends Component {
     }
 
 	handleChange(name, value, label){
+		this.update(value, label);
 		this.setState({assigneeId: value});
 		this.setState({assigneeName: label});
 		this.mouseLeaves();
+	}
+	
+	update(value, label){
+		// todo: call to api
+		// todo: call to notification system.
 	}
 }
 
