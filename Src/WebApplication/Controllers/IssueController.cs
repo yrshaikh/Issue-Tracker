@@ -16,7 +16,7 @@ namespace WebApplication.Controllers
 
 		public IssueController(IIssueService issueService, IProjectService projectService)
 		{
-			this._issueService = issueService;
+			_issueService = issueService;
 			_projectService = projectService;
 		}
 
