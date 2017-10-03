@@ -1,5 +1,11 @@
 # Issue-Tracker
 
+# Blog
+https://medium.com/issue-tracker
+
+# Design
+
+
 # How to get started
 1. Download and run Visual Studio 2017 Community Edition
 2. Run the SQL scripts present in the DB Scripts project
