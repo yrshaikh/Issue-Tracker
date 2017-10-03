@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Net;
+﻿using System.Net;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Repository.Models.Issue;
-using Service.Constants;
 using Service.Services.Issue;
 using Service.Services.Project;
 using Service.ViewModels.Issue;
@@ -79,5 +74,19 @@ namespace WebApplication.Controllers
 	        _issueService.UpdateStatus(status, AuthenticatedUser.UserId(User));
 	        return Json(HttpStatusCode.OK);
         }
+		
+		[HttpPost]
+		public IActionResult UpdateAssignee([FromBody] UpdateAssigneeModel assignee)
+		{
+			// todo: implement service and repo.
+			return Json(HttpStatusCode.OK);
+		}
+		
+		[HttpPost]
+		public IActionResult UpdatePriority([FromBody] UpdatePriorityModel priority)
+		{
+			// todo: implement service and repo.
+			return Json(HttpStatusCode.OK);
+		}
     }
 }
