@@ -4,7 +4,8 @@
 https://medium.com/issue-tracker
 
 # Design Teaser
-![left](https://cdn.dribbble.com/users/399068/screenshots/3827142/pic2.png)
+<img src="https://cdn.dribbble.com/users/399068/screenshots/3827142/pic2.png" width="48">
+![left]()
 ![right](https://cdn.dribbble.com/users/399068/screenshots/3827146/pic1.png)
 
 # How to get started
