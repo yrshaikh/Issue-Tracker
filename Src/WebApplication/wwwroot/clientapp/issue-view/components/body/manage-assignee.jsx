@@ -1,23 +1,29 @@
 import React, { Component } from 'react';
 import Assignee from './../../../shared/components/assignee';
+import { IssuesApi } from './../../../apis/issues-api';
+const NotificationSystem = require('react-notification-system');
 
 class ManageAssignee extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			issueId: 0, // todo: to accept issue id as params.
+			issueId: this.props.issueId,
 			projectId: this.props.projectId,
 			assigneeId: this.props.id,
 			assigneeName: this.props.label
 		};
 		this.handleChange = this.handleChange.bind(this);
+        this._notificationSystem = null;
 	}
 
 	componentDidMount(){
-		this.mouseLeaves();
-	}
+        this._notificationSystem = this.refs.notificationSystem;
+    }
     
 	render() {
+	    let style = {
+	        display: 'none'
+        };
 		return (
             <div className='form-group sidebar-item' onMouseEnter={this.mouseOver} onMouseLeave={this.mouseLeaves}>
                 <div id='assignee-view'>
@@ -28,9 +34,10 @@ class ManageAssignee extends Component {
 						<div className='gray'>Un-Assigned</div>
 					}
 				</div>
-				<div id='assignee-edit'>
+				<div id='assignee-edit' style={style}>
 					{ this.renderAssigneeComponent() }
 				</div>
+                <NotificationSystem ref="notificationSystem" />
             </div>
 		);
 	}
@@ -45,13 +52,13 @@ class ManageAssignee extends Component {
 		);
 	}
 
-	mouseOver(event) {        
+    mouseOver() {        
         document.getElementById('assignee-view').setAttribute('style', 'display:none;');
         document.getElementById('assignee-edit').setAttribute('style', 'display:block;');
     }
-    mouseLeaves(event) {
+    mouseLeaves(time) {
         document.getElementById('assignee-view').setAttribute('style', 'display:block;');
-        document.getElementById('assignee-edit').setAttribute('style', 'display:none;');
+        document.getElementById('assignee-edit').setAttribute('style', 'display:none;');        
     }
 
 	handleChange(name, value, label){
@@ -62,9 +69,18 @@ class ManageAssignee extends Component {
 	}
 	
 	update(value, label){
-		// todo: call to api
-		// todo: call to notification system.
-	}
+        IssuesApi.updateAssignee(this.state.issueId, value)
+            .then(function (response) {
+                console.log('updated a', response);
+            });
+        this._notificationSystem.addNotification({
+            title: '#' + this.state.issueId + ' Issue Updated',
+            message: 'You updated title and description of this issue.',
+            level: 'success',
+            position: 'br',
+            autoDismiss: 5
+        });
+    }
 }
 
 export default ManageAssignee;

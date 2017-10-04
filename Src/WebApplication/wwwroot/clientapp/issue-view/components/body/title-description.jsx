@@ -46,6 +46,7 @@ class TitleDescription extends Component {
 	updateTitleDescription(){
 		var self = this;
         this.setState({editIssue: false});
+        // todo : move this to API.
 		axios.post('/issue/updatetitledescription', {
 			issueId: this.state.issueId
 			, title : this.state.title

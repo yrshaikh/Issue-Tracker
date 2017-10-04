@@ -52,8 +52,44 @@ const IssuesApi = {
                     error: true
                 };
             });
-    }
+    },
 
-}
+    updateAssignee: function(issueId, assigneeId){
+        var self = this;
+        return axios.post('/issue/updateassignee', {
+            issueId: issueId
+            , assigneeId : assigneeId
+        })
+            .then(function(response){
+                return {
+                    error: false
+                };
+            })
+            .catch(function(error){
+                return {
+                    error: true
+                };
+            });
+    },
+
+    updatePriority: function(issueId, priorityId){
+        var self = this;
+        return axios.post('/issue/updatepriority', {
+            issueId: issueId
+            , priorityId : priorityId
+        })
+            .then(function(response){
+                return {
+                    error: false
+                };
+            })
+            .catch(function(error){
+                return {
+                    error: true
+                };
+            });
+    },
+
+};
 
 export { IssuesApi };

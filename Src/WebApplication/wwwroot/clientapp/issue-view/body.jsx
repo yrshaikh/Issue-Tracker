@@ -27,12 +27,13 @@ class Body extends Component {
 					</div>
 					<div className='col-md-3 sidebar'>
 						<ManageAssignee
+							issueId={this.state.issue.issueId}
 							projectId={this.state.issue.projectId}
 							id={this.state.issue.assigneeId}
 							label={this.state.issue.assigneeName}
 						/>
 						<ManagePriority
-							id={this.state.issue.priorityId}
+                            issueId={this.state.issue.issueId}																   id={this.state.issue.priorityId}
 							label={this.state.issue.priorityName}
 						/>
 					</div>
