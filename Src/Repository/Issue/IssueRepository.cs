@@ -14,8 +14,10 @@ namespace Repository.Issue
 		public const string Get = "Issue_Get";
 		public const string GetSingle = "Issue_Get_Single";
 		public const string UpdateTitleDescription = "Issue_Update_Title_Description";
-	    public static string UpdateStatus = "Issue_Update_Status";
-	    public static string GetTimeline = "Issue_Get_Timeline";
+	    public const string UpdateStatus = "Issue_Update_Status";
+	    public const string GetTimeline = "Issue_Get_Timeline";
+		public const string UpdateAssignee = "Issue_Update_Assignee";
+		public const string UpdatePriority = "Issue_Update_Priority";
 	}
 
     public class IssueRepository : BaseDataAccess, IIssueRepository
@@ -180,7 +182,33 @@ namespace Repository.Issue
 	        return timeline;
         }
 
-	    public IssueRepository(IConfiguration config) : base(config)
+		public void UpdateAssignee(int issueId, int? assigneeId, int userId)
+		{
+			List<DbParameter> parameterList = new List<DbParameter>
+			{
+				new SqlParameter("@issue_id", SqlDbType.Int) {Value = issueId},
+				new SqlParameter("@assignee_id", SqlDbType.Int) {Value = assigneeId},
+				new SqlParameter("@created_by", SqlDbType.Int) {Value = userId},
+				new SqlParameter("@created_on", SqlDbType.DateTime) {Value = DateTime.Now}
+			};
+
+			base.ExecuteNonQuery(IssueStoredProcedure.UpdateAssignee, parameterList, CommandType.StoredProcedure);
+		}
+
+		public void UpdatePriority(int issueId, int priorityId, int userId)
+		{
+			List<DbParameter> parameterList = new List<DbParameter>
+			{
+				new SqlParameter("@issue_id", SqlDbType.Int) {Value = issueId},
+				new SqlParameter("@priority_id", SqlDbType.Int) {Value = priorityId},
+				new SqlParameter("@created_by", SqlDbType.Int) {Value = userId},
+				new SqlParameter("@created_on", SqlDbType.DateTime) {Value = DateTime.Now}
+			};
+
+			base.ExecuteNonQuery(IssueStoredProcedure.UpdatePriority, parameterList, CommandType.StoredProcedure);
+		}
+
+		public IssueRepository(IConfiguration config) : base(config)
 	    {
 	        
         }

@@ -78,14 +78,14 @@ namespace WebApplication.Controllers
 		[HttpPost]
 		public IActionResult UpdateAssignee([FromBody] UpdateAssigneeModel assignee)
 		{
-			// todo: implement service and repo.
+			_issueService.UpdateAssignee(assignee, AuthenticatedUser.UserId(User));
 			return Json(HttpStatusCode.OK);
 		}
 		
 		[HttpPost]
 		public IActionResult UpdatePriority([FromBody] UpdatePriorityModel priority)
 		{
-			// todo: implement service and repo.
+			_issueService.UpdatePriority(priority, AuthenticatedUser.UserId(User));
 			return Json(HttpStatusCode.OK);
 		}
     }

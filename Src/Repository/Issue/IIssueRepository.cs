@@ -11,5 +11,7 @@ namespace Repository.Issue
 	    void UpdateTitleDescription(int issueId, string title, string description, int updatedBy);
 	    void UpdateStatus(int issueId, int status, int userId);
 	    List<TimelineModel> GetTimeline(int id);
+		void UpdateAssignee(int issueId, int? assigneeId, int userId);
+		void UpdatePriority(int issueId, int priorityId, int userId);
 	}
 }

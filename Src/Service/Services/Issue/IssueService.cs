@@ -47,6 +47,16 @@ namespace Service.Services.Issue
             return _mapper.Map<List<TimelineModel>, List<TimelineViewModel>>(timeline).ToList();
         }
 
+        public void UpdateAssignee(UpdateAssigneeModel assignee, int userId)
+        {
+            _issueRepository.UpdateAssignee(assignee.IssueId, assignee.AssigneeId, userId);
+        }
+
+        public void UpdatePriority(UpdatePriorityModel priority, int userId)
+        {
+            _issueRepository.UpdatePriority(priority.IssueId, priority.Priority, userId);
+        }
+
         public List<IssueSummaryViewModel> GetByFilters(int userId)
         {
             var issues = _issueRepository.GetByFilters(userId);

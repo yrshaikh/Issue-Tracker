@@ -12,5 +12,7 @@ namespace Service.Services.Issue
 	    void UpdateTitleDescription(UpdateTitleDescriptionModel model, int userId);
 	    void UpdateStatus(UpdateStatusModel model, int userId);
 	    List<TimelineViewModel> GetTimeline(int id);
+		void UpdateAssignee(UpdateAssigneeModel assignee, int userId);
+		void UpdatePriority(UpdatePriorityModel priority, int userId);
 	}
 }
