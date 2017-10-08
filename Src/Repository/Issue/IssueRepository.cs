@@ -188,8 +188,8 @@ namespace Repository.Issue
 			{
 				new SqlParameter("@issue_id", SqlDbType.Int) {Value = issueId},
 				new SqlParameter("@assignee_id", SqlDbType.Int) {Value = assigneeId},
-				new SqlParameter("@created_by", SqlDbType.Int) {Value = userId},
-				new SqlParameter("@created_on", SqlDbType.DateTime) {Value = DateTime.Now}
+				new SqlParameter("@updated_by", SqlDbType.Int) {Value = userId},
+				new SqlParameter("@updated_on", SqlDbType.DateTime) {Value = DateTime.Now}
 			};
 
 			base.ExecuteNonQuery(IssueStoredProcedure.UpdateAssignee, parameterList, CommandType.StoredProcedure);
@@ -201,8 +201,8 @@ namespace Repository.Issue
 			{
 				new SqlParameter("@issue_id", SqlDbType.Int) {Value = issueId},
 				new SqlParameter("@priority_id", SqlDbType.Int) {Value = priorityId},
-				new SqlParameter("@created_by", SqlDbType.Int) {Value = userId},
-				new SqlParameter("@created_on", SqlDbType.DateTime) {Value = DateTime.Now}
+				new SqlParameter("@updated_by", SqlDbType.Int) {Value = userId},
+				new SqlParameter("@updated_on", SqlDbType.DateTime) {Value = DateTime.Now}
 			};
 
 			base.ExecuteNonQuery(IssueStoredProcedure.UpdatePriority, parameterList, CommandType.StoredProcedure);
