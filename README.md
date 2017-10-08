@@ -1,8 +1,10 @@
 ### How to get started
-1. Download and run Visual Studio 2017 Community Edition
-2. Run the SQL scripts present in the DB Scripts project
-3. Update the connection strings of your local database
-4. Run
+1. Run the 2 SQL scripts - table and insert script
+  a. https://github.com/yrshaikh/Issue-Tracker/blob/master/DB%20Scripts/setup-database-with-tables-and-stored-procedures-step-1.sql
+  b. https://github.com/yrshaikh/Issue-Tracker/blob/master/DB%20Scripts/insert-scripts.sql
+2. Open command prompt, and go to the 'wwwroot' folder and run `gulp` command.
+3. Make sure you have .NET CORE framework installed.
+4. Run the `dotnet run` command and open the localhost with the mentioned port number.
 
 ### Blog
 https://medium.com/issue-tracker
