@@ -54,7 +54,7 @@ namespace Service.Services.Issue
 
         public void UpdatePriority(UpdatePriorityModel priority, int userId)
         {
-            _issueRepository.UpdatePriority(priority.IssueId, priority.Priority, userId);
+            _issueRepository.UpdatePriority(priority.IssueId, priority.PriorityId, userId);
         }
 
         public List<IssueSummaryViewModel> GetByFilters(int userId)

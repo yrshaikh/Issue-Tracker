@@ -69,13 +69,13 @@ class ManagePriority extends Component {
 	}
 
     update(value, label) {
+		let self = this;
         IssuesApi.updatePriority(this.state.issueId, value)
             .then(function (response) {
                 console.log('updated p', response);
             });
-
         this._notificationSystem.addNotification({
-            title: '#' + this.state.issueId + ' Issue Updated',
+            title: '#' + self.state.issueId + ' Issue Updated',
             message: 'Priority has been changed to ' + label + '.',
             level: 'success',
             position: 'br',

@@ -69,12 +69,13 @@ class ManageAssignee extends Component {
 	}
 	
 	update(value, label){
+		let self = this;
         IssuesApi.updateAssignee(this.state.issueId, value)
             .then(function (response) {
                 console.log('updated a', response);
             });
         this._notificationSystem.addNotification({
-            title: '#' + this.state.issueId + ' Issue Updated',
+            title: '#' + self.state.issueId + ' Issue Updated',
             message: 'You updated title and description of this issue.',
             level: 'success',
             position: 'br',

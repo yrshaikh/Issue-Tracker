@@ -12,3 +12,4 @@ Src/Repository/obj*
 Database/Database.dbmdl
 Database/Database.jfm
 /Src/WebApplication/*.user
+/Src/WebApplication/_PublishedWebsites
