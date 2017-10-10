@@ -33,3 +33,17 @@
   .slide-pane .slide-pane__header .slide-pane__subtitle {
     color: #777;
     font-size: 10px; }
+  .slide-pane .slide-pane__content {
+    padding: 9pt 6px 9pt 9pt; }
+    .slide-pane .slide-pane__content ul {
+      margin-left: 0px; }
+      .slide-pane .slide-pane__content ul li {
+        list-style-type: none;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 5px;
+        -webkit-padding-start: 0px; }
+        .slide-pane .slide-pane__content ul li:hover {
+          background: #0056d3;
+          color: #fff;
+          cursor: pointer; }
