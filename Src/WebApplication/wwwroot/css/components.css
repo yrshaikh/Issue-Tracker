@@ -25,3 +25,11 @@
 
 .notifications-wrapper {
   display: inline; }
+
+.slide-pane {
+  transition: transform .2s; }
+  .slide-pane .slide-pane__header .slide-pane__close {
+    display: none; }
+  .slide-pane .slide-pane__header .slide-pane__subtitle {
+    color: #777;
+    font-size: 10px; }
