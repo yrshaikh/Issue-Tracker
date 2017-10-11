@@ -51,18 +51,18 @@
         padding: 9pt 6px 9pt 9pt;
 
         ul {
-            margin-left: 0px;
+            -webkit-padding-start: 0px;
 
             li {
                 list-style-type: none;
-                padding-top:10px;
-                padding-bottom:10px;
-                padding-left:5px;
-                -webkit-padding-start: 0px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 5px;
+                border-radius: 4px;
+
                 &:hover {
-                    background: #0056d3;
-                    color: #fff;
-                    cursor:pointer;
+                    background: #E1E4E8;
+                    cursor: pointer;
                 }
             }
         }

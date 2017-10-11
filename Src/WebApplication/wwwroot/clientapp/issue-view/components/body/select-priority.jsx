@@ -37,8 +37,12 @@ class SelectPriority extends Component {
                         this.setState({ isPaneOpen: false });
                     }}>
                     <div>
+                        <input type='text' className='form-control' placeholder='search' />
                         <ul>
-                            <li>Un-Assigned</li>
+                            <li>
+                                <span>Un-Assigned</span>
+                                <i className='fa fa-check' />
+                            </li>
                             <li>Yasser Shaikh</li>
                             <li>Cristiano Ronaldo</li>
                         </ul>
