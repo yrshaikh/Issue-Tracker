@@ -12,6 +12,8 @@ class SelectPriority extends Component {
             priorities: [],
             isPaneOpen: false
         };
+
+        this.handleChange = this.handleChange.bind(this);
     }
     componentDidMount() {
         this.loadPriorities();
@@ -21,7 +23,7 @@ class SelectPriority extends Component {
             <div className='form-group sidebar-item'>
                 <div id='assignee-view'>
                     <label className='fw-bold w-100 hover-link' onClick={() => this.setState({ isPaneOpen: true })}>
-                        Assignee
+                        Priority
                         <i className='fa fa-cog pull-right' />
                     </label>
                     {this.state.priorityName}
@@ -65,12 +67,23 @@ class SelectPriority extends Component {
     }
     loadPrioritiesItem(priority) {
         return (
-            <li key={priority.id}>
-                <span>
+            <li className={priority.value === this.state.priorityId? 'active' : ''} key={priority.value} onClick={() => this.handleChange(priority)}>
+                <span className='value'>
                     {priority.label}
+                </span>
+                <span className='selection'>
+                {
+                    priority.value === this.state.priorityId ?
+                        <i className='fa fa-check done' /> :
+                        <i className='fa fa-check done done-hidden' />
+                }
                 </span>
             </li>
         );
+    }
+    handleChange(priority) {
+        this.setState({ priorityId: priority.value });
+        this.setState({ priorityName: priority.label });
     }
 }
 
