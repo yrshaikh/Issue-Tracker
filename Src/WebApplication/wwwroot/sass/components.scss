@@ -50,6 +50,11 @@
     .slide-pane__content {
         padding: 9pt 6px 9pt 9pt;
 
+        .form-control {
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 15px;
+        }
+
         ul {
             -webkit-padding-start: 0px;
 

@@ -33,14 +33,10 @@ class Body extends Component {
                             id={this.state.issue.assigneeId}
                             label={this.state.issue.assigneeName}
                         />
-                        <ManagePriority
-                            issueId={this.state.issue.issueId}
-                            id={this.state.issue.priorityId}
-                            label={this.state.issue.priorityName}
-                        />
                         <SelectPriority
                             issueId={this.state.issue.issueId}
                             id={this.state.issue.priorityId}
+                            label={this.state.issue.priorityName}
                         />
                     </div>
                 </form>

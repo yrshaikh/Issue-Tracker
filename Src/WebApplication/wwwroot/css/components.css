@@ -35,6 +35,9 @@
     font-size: 10px; }
   .slide-pane .slide-pane__content {
     padding: 9pt 6px 9pt 9pt; }
+    .slide-pane .slide-pane__content .form-control {
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 15px; }
     .slide-pane .slide-pane__content ul {
       -webkit-padding-start: 0px; }
       .slide-pane .slide-pane__content ul li {
