@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import SlidingPane from 'react-sliding-pane';
 import _ from 'lodash';
-import { ProjectsApi } from './../../../apis/projects-api';
+import { ProjectsApi } from './../../apis/projects-api';
 class SelectPriority extends Component {
     constructor(props) {
         super(props);
@@ -9,6 +9,7 @@ class SelectPriority extends Component {
             issueId: this.props.issueId,
             priorityId: this.props.id,
             priorityName: this.props.label,
+            selectedPriorityId: this.props.id,
             priorities: [],
             isPaneOpen: false
         };
@@ -26,7 +27,7 @@ class SelectPriority extends Component {
                         Priority
                         <i className='fa fa-cog pull-right' />
                     </label>
-                    {this.state.priorityName}
+                    <span className='cap'>{this.state.priorityName}</span>
                 </div>
                 <SlidingPane
                     className='assignee-sliding-pane'
@@ -45,8 +46,8 @@ class SelectPriority extends Component {
                             {this.getPrioritiesDom()}
                         </ul>
                         <div>
-                            <button className='btn btn-success mr-10'>update</button>
-                            <button className='btn btn-default'>cancel</button>
+                            <button className='btn btn-success btn-big mr-10' onClick={() => this.update()}>Update</button>
+                            <button className='btn btn-default btn-big' onClick={() => this.cancel()}>Cancel</button>
                         </div>
                     </div>
                 </SlidingPane>
@@ -71,13 +72,13 @@ class SelectPriority extends Component {
     }
     loadPrioritiesItem(priority) {
         return (
-            <li className={priority.value === this.state.priorityId? 'active' : ''} key={priority.value} onClick={() => this.handleChange(priority)}>
+            <li className={priority.value === this.state.selectedPriorityId? 'active' : ''} key={priority.value} onClick={() => this.handleChange(priority)}>
                 <span className='value'>
                     {priority.label}
                 </span>
                 <span className='selection'>
                 {
-                    priority.value === this.state.priorityId ?
+                        priority.value === this.state.selectedPriorityId ?
                         <i className='fa fa-check done' /> :
                         <i className='fa fa-check done done-hidden' />
                 }
@@ -86,8 +87,15 @@ class SelectPriority extends Component {
         );
     }
     handleChange(priority) {
-        this.setState({ priorityId: priority.value });
-        this.setState({ priorityName: priority.label });
+        this.setState({ selectedPriorityId: priority.value });
+    }
+    cancel() {
+        var currentPriorityId = this.state.priorityId;
+        this.setState({ selectedPriorityId: currentPriorityId });
+        this.setState({ isPaneOpen: false });
+    }
+    update() {
+        alert('Are you sure you want to update?');
     }
 }
 
