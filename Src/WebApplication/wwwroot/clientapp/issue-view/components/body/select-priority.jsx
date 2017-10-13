@@ -44,6 +44,10 @@ class SelectPriority extends Component {
                         <ul>
                             {this.getPrioritiesDom()}
                         </ul>
+                        <div>
+                            <button className='btn btn-success mr-10'>update</button>
+                            <button className='btn btn-default'>cancel</button>
+                        </div>
                     </div>
                 </SlidingPane>
             </div>
