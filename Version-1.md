@@ -1,7 +1,7 @@
 ### Authentication
 1. :white_check_mark: Login :
 2. :white_check_mark: Register
-3. :white_medium_square: Forgot Password
+3. :x: Forgot Password
 
 ### Project
 
