@@ -9,7 +9,7 @@
 *Please open an issue if you are unable to run the application using the steps above*
 
 ### What's there in Version 1?
-Here is a complete list of all features planned to be released in [version 1].(https://github.com/yrshaikh/Issue-Tracker/blob/master/Version-1.md)
+Here is a complete list of all features planned to be released in [version 1](https://github.com/yrshaikh/Issue-Tracker/blob/master/Version-1.md).
 
 ### Blog
 https://medium.com/issue-tracker
