@@ -1,3 +1,5 @@
+:white_check_mark: represents all features which have been completed, and :x: indicates features which are not completed. 
+
 ### Authentication
 1. :white_check_mark: Login
 2. :white_check_mark: Register
