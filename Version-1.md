@@ -11,8 +11,14 @@
 3. :x: Edit Project Details
 
 ### Project User Management
+1. :x: Add/Remove user from project
 
 ### Issues
+1. :white_check_mark: Create/Edit Issue
+2. :x: Add/Edit Assignee to an Issue
+3. :x: Add/Edit Priority of an Issue
+4. :x: Markdown support for description & comment
+5. :x: Add comment to an Issue
 
 ### User Management
 
