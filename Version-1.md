@@ -18,8 +18,14 @@
 2. :x: Add/Edit Assignee to an Issue
 3. :x: Add/Edit Priority of an Issue
 4. :x: Markdown support for description & comment
-5. :x: Add comment to an Issue
+5. :x: Add/Edit/Delete comment to an Issue
+6. :x: Upload files
+
+### Issues Listing
+1. :white_check_mark: List
+2. :x: Filter issue by assignee, priority
+3. :x: Sorting & Grouping
 
 ### User Management
-
-### Notifications
+1. :x: User can update his basic profile details
+2. :x: User can update his gravatar email address
