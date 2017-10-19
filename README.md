@@ -14,10 +14,6 @@ Here is a complete list of all features planned to be released in [version 1](ht
 ### Blog
 https://medium.com/issue-tracker
 
-###  Design Teaser
-<img src="https://cdn.dribbble.com/users/399068/screenshots/3827142/pic2.png" width="300">
-<img src="https://cdn.dribbble.com/users/399068/screenshots/3827146/pic1.png" width="300">
-
 ### Contribute 
 Looking for contributors with experience or wanting to learn any of the following -
 1. React JS
