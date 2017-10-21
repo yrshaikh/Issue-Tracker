@@ -4,6 +4,7 @@ import IssueTimeline from './components/body/timeline';
 import ManageAssignee from './components/body/manage-assignee';
 import ManagePriority from './components/body/manage-priority';
 import SelectPriority from './../shared/components/select-priority';
+import SelectAssignee from './../shared/components/select-assignee';
 
 class Body extends Component {
     constructor(props) {
@@ -27,9 +28,9 @@ class Body extends Component {
                         <IssueTimeline issueId={this.state.issue.issueId} />
                     </div>
                     <div className='col-md-3 sidebar'>
-                        <ManageAssignee
-                            issueId={this.state.issue.issueId}
+                        <SelectAssignee
                             projectId={this.state.issue.projectId}
+                            issueId={this.state.issue.issueId}
                             id={this.state.issue.assigneeId}
                             label={this.state.issue.assigneeName}
                         />
