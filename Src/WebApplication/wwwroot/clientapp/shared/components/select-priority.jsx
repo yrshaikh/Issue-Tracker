@@ -2,6 +2,7 @@
 import SlidingPane from 'react-sliding-pane';
 import _ from 'lodash';
 import { ProjectsApi } from './../../apis/projects-api';
+import { IssuesApi } from './../../../apis/issues-api';
 class SelectPriority extends Component {
     constructor(props) {
         super(props);
@@ -72,16 +73,16 @@ class SelectPriority extends Component {
     }
     loadPrioritiesItem(priority) {
         return (
-            <li className={priority.value === this.state.selectedPriorityId? 'active' : ''} key={priority.value} onClick={() => this.handleChange(priority)}>
+            <li className={priority.value === this.state.selectedPriorityId ? 'active' : ''} key={priority.value} onClick={() => this.handleChange(priority)}>
                 <span className='value'>
                     {priority.label}
                 </span>
                 <span className='selection'>
-                {
+                    {
                         priority.value === this.state.selectedPriorityId ?
-                        <i className='fa fa-check done' /> :
-                        <i className='fa fa-check done done-hidden' />
-                }
+                            <i className='fa fa-check done' /> :
+                            <i className='fa fa-check done done-hidden' />
+                    }
                 </span>
             </li>
         );
@@ -95,7 +96,17 @@ class SelectPriority extends Component {
         this.setState({ isPaneOpen: false });
     }
     update() {
-        alert('Are you sure you want to update?');
+        IssuesApi.updatePriority(this.state.issueId, value)
+            .then(function (response) {
+                console.log('updated p', response);
+            });
+        /*this._notificationSystem.addNotification({
+            title: '#' + self.state.issueId + ' Issue Updated',
+            message: 'Priority has been changed to ' + label + '.',
+            level: 'success',
+            position: 'br',
+            autoDismiss: 5
+        });*/
     }
 }
 
