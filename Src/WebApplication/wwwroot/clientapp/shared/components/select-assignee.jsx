@@ -3,6 +3,8 @@ import SlidingPane from 'react-sliding-pane';
 import _ from 'lodash';
 import { ProjectsApi } from './../../apis/projects-api';
 import { IssuesApi } from './../../apis/issues-api';
+const NotificationSystem = require('react-notification-system');
+
 class SelectAssignee extends Component {
     constructor(props) {
         super(props);
@@ -17,8 +19,10 @@ class SelectAssignee extends Component {
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this._notificationSystem = null;
     }
     componentDidMount() {
+        this._notificationSystem = this.refs.notificationSystem;
         this.loadAssignees();
     }
     render() {
@@ -53,6 +57,7 @@ class SelectAssignee extends Component {
                         </div>
                     </div>
                 </SlidingPane>
+                <NotificationSystem ref="notificationSystem" />
             </div>
         );
     }
@@ -108,14 +113,15 @@ class SelectAssignee extends Component {
                 self.setState({ isPaneOpen: false });
                 self.setState({ assigneeId: updateAssigneeId });
                 self.setState({ assigneeName: updateAssigneeName });
+
+                self._notificationSystem.addNotification({
+                    title: '#' + self.state.issueId + ' Issue Updated',
+                    message: 'You updated assignee of this issue to ' + updateAssigneeName +  '.',
+                    level: 'success',
+                    position: 'br',
+                    autoDismiss: 3
+                });
             });
-        /*this._notificationSystem.addNotification({
-            title: '#' + self.state.issueId + ' Issue Updated',
-            message: 'Priority has been changed to ' + label + '.',
-            level: 'success',
-            position: 'br',
-            autoDismiss: 5
-        });*/
     }
 }
 
