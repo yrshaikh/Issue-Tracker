@@ -2,7 +2,7 @@
 import SlidingPane from 'react-sliding-pane';
 import _ from 'lodash';
 import { ProjectsApi } from './../../apis/projects-api';
-import { IssuesApi } from './../../../apis/issues-api';
+import { IssuesApi } from './../../apis/issues-api';
 class SelectPriority extends Component {
     constructor(props) {
         super(props);
@@ -92,13 +92,18 @@ class SelectPriority extends Component {
     }
     cancel() {
         var currentPriorityId = this.state.priorityId;
+        // resetting the existing priority id
         this.setState({ selectedPriorityId: currentPriorityId });
         this.setState({ isPaneOpen: false });
     }
     update() {
-        IssuesApi.updatePriority(this.state.issueId, value)
+        var self = this;
+        // todo: check if update required?
+        var updatedPriorityId = this.state.selectedPriorityId;
+        IssuesApi.updatePriority(this.state.issueId, updatedPriorityId)
             .then(function (response) {
-                console.log('updated p', response);
+                self.setState({ isPaneOpen: false });
+                self.setState({ priorityId: updatedPriorityId });
             });
         /*this._notificationSystem.addNotification({
             title: '#' + self.state.issueId + ' Issue Updated',
