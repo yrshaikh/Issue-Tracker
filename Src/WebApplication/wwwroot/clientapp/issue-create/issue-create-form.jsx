@@ -11,6 +11,8 @@ import LoadingButtons from './body-components/loading-buttons';
 import ErrorMessage from './body-components/error-message';
 import Title from './body-components/title';
 import Description from './body-components/description';
+import SelectPriority from './../shared/components/select-priority';
+import SelectAssignee from './../shared/components/select-assignee';
 const axios = require('axios');
 
 class IssueCreateForm extends Component {
@@ -38,9 +40,20 @@ class IssueCreateForm extends Component {
 			<form id='issue-create-form' className='row custom-form'>
 				<Title title={this.state.issue.title} change={this.handleChange} />
 				<Description description={this.state.issue.description} change={this.handleChange} />
-				<div className='col-md-3'>
-					<Priority priorityId={this.state.issue.priorityId} action={this.handleChange} />
-					<Assignee projectId={this.state.issue.projectId} action={this.handleChange} />
+				<div className='sidebar col-md-3'>					
+					<SelectAssignee
+						projectId={this.state.issue.projectId}
+						issueId={this.state.issue.issueId}
+						id={this.state.issue.assigneeId}
+						label={this.state.issue.assigneeName}
+					/>
+					<SelectPriority
+						issueId={this.state.issue.issueId}
+						id={this.state.issue.priorityId}
+						label={this.state.issue.priorityName}
+					/>
+					{/* <Priority priorityId={this.state.issue.priorityId} action={this.handleChange} />
+					<Assignee projectId={this.state.issue.projectId} action={this.handleChange} /> */}
 				</div>
 				{
 					(this.state.loading) ? 

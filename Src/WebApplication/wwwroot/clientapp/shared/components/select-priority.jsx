@@ -33,7 +33,7 @@ class SelectPriority extends Component {
                         Priority
                         <i className='fa fa-cog pull-right' />
                     </label>
-                    <span className='cap'>{this.state.priorityName}</span>
+                    <span className='cap fs-16'>{this.state.priorityName}</span>
                 </div>
                 <SlidingPane
                     className='assignee-sliding-pane'
@@ -104,20 +104,29 @@ class SelectPriority extends Component {
         this.setState({ isPaneOpen: false });
     }
     update() {
-        var self = this;
         // todo: check if update required?
         var updatedPriorityId = this.state.selectedPriorityId;
         var updatedPriorityName = this.state.selectedPriorityName;
+
+        var self = this;
+
+        if (!this.state.issueId) {
+            self.setState({ priorityId: updatedPriorityId });
+            self.setState({ priorityName: updatedPriorityName });
+            self.setState({ isPaneOpen: false });
+            return;
+        }
+
         IssuesApi.updatePriority(this.state.issueId, updatedPriorityId)
             .then(function (response) {
                 self.setState({ isPaneOpen: false });
                 self.setState({ priorityId: updatedPriorityId });
                 self.setState({ priorityName: updatedPriorityName });
 
-                
+
                 self._notificationSystem.addNotification({
                     title: '#' + self.state.issueId + ' Issue Updated',
-                    message: 'You updated priority of this issue to ' + updatedPriorityName +  '.',
+                    message: 'You updated priority of this issue to ' + updatedPriorityName + '.',
                     level: 'success',
                     position: 'br',
                     autoDismiss: 3

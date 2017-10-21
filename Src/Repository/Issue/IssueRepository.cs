@@ -31,9 +31,11 @@ namespace Repository.Issue
 				new SqlParameter("@description", SqlDbType.VarChar) {Value = description},
 				new SqlParameter("@created_by", SqlDbType.Int) {Value = createdBy},
 				new SqlParameter("@created_on", SqlDbType.DateTime) {Value = DateTime.Now},
-			    new SqlParameter("@priority_id", SqlDbType.Int) {Value = priorityId},
-			    new SqlParameter("@assignee_id", SqlDbType.Int) {Value = assigneeId},
+			    new SqlParameter("@priority_id", SqlDbType.Int) {Value = priorityId}
             };
+
+			if(assigneeId != null)
+				parameterList.Add(new SqlParameter("@assignee_id", SqlDbType.Int) {Value = assigneeId});
 
 			int issueId = -1;
 

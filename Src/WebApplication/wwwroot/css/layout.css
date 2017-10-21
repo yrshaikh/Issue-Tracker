@@ -30,6 +30,9 @@ h1, h2, h3, h4, h5, h6, b, .fw-bold, .fw-500, .fw-700, .btn {
 .fw-medium {
   font-family: 'Circular-Pro-Medium'; }
 
+.fw-bold {
+  font-family: 'Circular-Pro-Bold'; }
+
 .body {
   padding: 26px 20px 10px;
   background: #fff;

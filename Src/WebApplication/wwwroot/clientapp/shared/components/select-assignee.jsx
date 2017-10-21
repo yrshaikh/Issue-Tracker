@@ -33,7 +33,7 @@ class SelectAssignee extends Component {
                         Assignee
                         <i className='fa fa-cog pull-right' />
                     </label>
-                    <span className='cap'>{this.state.assigneeName}</span>
+                    <span className='cap fs-16'>{this.state.assigneeName}</span>
                 </div>
                 <SlidingPane
                     className='assignee-sliding-pane'
@@ -104,10 +104,20 @@ class SelectAssignee extends Component {
         this.setState({ isPaneOpen: false });
     }
     update() {
-        var self = this;
+
         // todo: check if update required?
         var updateAssigneeId = this.state.selectedAssigneeId;
         var updateAssigneeName = this.state.selectedAssigneeName;
+
+        var self = this;
+
+        if (!this.state.issueId) {
+            self.setState({ assigneeId: updateAssigneeId });
+            self.setState({ assigneeName: updateAssigneeName });
+            self.setState({ isPaneOpen: false });
+            return;
+        }
+
         IssuesApi.updateAssignee(this.state.issueId, updateAssigneeId)
             .then(function (response) {
                 self.setState({ isPaneOpen: false });
@@ -116,7 +126,7 @@ class SelectAssignee extends Component {
 
                 self._notificationSystem.addNotification({
                     title: '#' + self.state.issueId + ' Issue Updated',
-                    message: 'You updated assignee of this issue to ' + updateAssigneeName +  '.',
+                    message: 'You updated assignee of this issue to ' + updateAssigneeName + '.',
                     level: 'success',
                     position: 'br',
                     autoDismiss: 3
