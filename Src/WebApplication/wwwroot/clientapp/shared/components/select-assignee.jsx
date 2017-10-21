@@ -100,15 +100,14 @@ class SelectAssignee extends Component {
     }
     update() {
         var self = this;
-        return;
         // todo: check if update required?
-        var updatedPriorityId = this.state.selectedPriorityId;
-        var updatedPriorityName = this.state.selectedPriorityName;
-        IssuesApi.updatePriority(this.state.issueId, updatedPriorityId)
+        var updateAssigneeId = this.state.selectedAssigneeId;
+        var updateAssigneeName = this.state.selectedAssigneeName;
+        IssuesApi.updateAssignee(this.state.issueId, updateAssigneeId)
             .then(function (response) {
                 self.setState({ isPaneOpen: false });
-                self.setState({ priorityId: updatedPriorityId });
-                self.setState({ priorityName: updatedPriorityName });
+                self.setState({ assigneeId: updateAssigneeId });
+                self.setState({ assigneeName: updateAssigneeName });
             });
         /*this._notificationSystem.addNotification({
             title: '#' + self.state.issueId + ' Issue Updated',
