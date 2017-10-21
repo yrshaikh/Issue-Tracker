@@ -3,6 +3,8 @@ import SlidingPane from 'react-sliding-pane';
 import _ from 'lodash';
 import { ProjectsApi } from './../../apis/projects-api';
 import { IssuesApi } from './../../apis/issues-api';
+const NotificationSystem = require('react-notification-system');
+
 class SelectPriority extends Component {
     constructor(props) {
         super(props);
@@ -17,8 +19,10 @@ class SelectPriority extends Component {
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this._notificationSystem = null;
     }
     componentDidMount() {
+        this._notificationSystem = this.refs.notificationSystem;
         this.loadPriorities();
     }
     render() {
@@ -53,6 +57,7 @@ class SelectPriority extends Component {
                         </div>
                     </div>
                 </SlidingPane>
+                <NotificationSystem ref="notificationSystem" />
             </div>
         );
     }
@@ -108,14 +113,16 @@ class SelectPriority extends Component {
                 self.setState({ isPaneOpen: false });
                 self.setState({ priorityId: updatedPriorityId });
                 self.setState({ priorityName: updatedPriorityName });
+
+                
+                self._notificationSystem.addNotification({
+                    title: '#' + self.state.issueId + ' Issue Updated',
+                    message: 'You updated priority of this issue to ' + updatedPriorityName +  '.',
+                    level: 'success',
+                    position: 'br',
+                    autoDismiss: 3
+                });
             });
-        /*this._notificationSystem.addNotification({
-            title: '#' + self.state.issueId + ' Issue Updated',
-            message: 'Priority has been changed to ' + label + '.',
-            level: 'success',
-            position: 'br',
-            autoDismiss: 5
-        });*/
     }
 }
 
