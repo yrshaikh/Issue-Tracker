@@ -1,8 +1,6 @@
 ﻿import React, { Component } from 'react';
 import TitleDescription from './components/body/title-description';
 import IssueTimeline from './components/body/timeline';
-import ManageAssignee from './components/body/manage-assignee';
-import ManagePriority from './components/body/manage-priority';
 import SelectPriority from './../shared/components/select-priority';
 import SelectAssignee from './../shared/components/select-assignee';
 
