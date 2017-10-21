@@ -114,7 +114,7 @@
     <Content Include="bower_components\popper.js\popperjs.png" />
     <Content Include="wwwroot\clientapp\issue-view\components\body\select-assignee.jsx" />
     <Content Include="wwwroot\clientapp\issue-view\components\body\select-priority.jsx" />
-    <Content Include="wwwroot\clientapp\shared\components\select-priority.jsx" />
+    <!--<Content Include="wwwroot\clientapp\shared\components\select-priority.jsx" />-->
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.0.2" />
