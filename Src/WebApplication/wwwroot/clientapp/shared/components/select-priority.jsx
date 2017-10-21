@@ -11,6 +11,7 @@ class SelectPriority extends Component {
             priorityId: this.props.id,
             priorityName: this.props.label,
             selectedPriorityId: this.props.id,
+            selectedPriorityName: this.props.label,
             priorities: [],
             isPaneOpen: false
         };
@@ -89,6 +90,7 @@ class SelectPriority extends Component {
     }
     handleChange(priority) {
         this.setState({ selectedPriorityId: priority.value });
+        this.setState({ selectedPriorityName: priority.label });
     }
     cancel() {
         var currentPriorityId = this.state.priorityId;
@@ -100,10 +102,12 @@ class SelectPriority extends Component {
         var self = this;
         // todo: check if update required?
         var updatedPriorityId = this.state.selectedPriorityId;
+        var updatedPriorityName = this.state.selectedPriorityName;
         IssuesApi.updatePriority(this.state.issueId, updatedPriorityId)
             .then(function (response) {
                 self.setState({ isPaneOpen: false });
                 self.setState({ priorityId: updatedPriorityId });
+                self.setState({ priorityName: updatedPriorityName });
             });
         /*this._notificationSystem.addNotification({
             title: '#' + self.state.issueId + ' Issue Updated',
