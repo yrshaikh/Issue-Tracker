@@ -24,7 +24,9 @@ class IssueCreateForm extends Component {
 				, title: ''
 				, description: ''
 				, priorityId: 3
+				, priorityName: 'Normal'
 				, assigneeId: null
+				, assigneeName: 'Unassigned'
 			}
 			, priorities: []
 			, assignees: []
@@ -52,8 +54,6 @@ class IssueCreateForm extends Component {
 						id={this.state.issue.priorityId}
 						label={this.state.issue.priorityName}
 					/>
-					{/* <Priority priorityId={this.state.issue.priorityId} action={this.handleChange} />
-					<Assignee projectId={this.state.issue.projectId} action={this.handleChange} /> */}
 				</div>
 				{
 					(this.state.loading) ? 
