@@ -65,6 +65,7 @@ class SelectAssignee extends Component {
         var self = this;
         ProjectsApi.getAssignees(this.props.projectId)
             .then(function (assignees) {
+                assignees.unshift({ value: null, label: 'Unassigned' });
                 self.setState({ assignees: assignees });
             });
     }
