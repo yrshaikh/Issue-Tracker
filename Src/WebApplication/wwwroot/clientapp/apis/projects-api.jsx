@@ -28,6 +28,7 @@ const ProjectsApi = {
                 _.forEach(response.data, function(item){
                     arr.push({
                         label: item.firstName + ' ' + item.lastName,
+                        email: item.email,
                         value: item.id
                     });
                 });

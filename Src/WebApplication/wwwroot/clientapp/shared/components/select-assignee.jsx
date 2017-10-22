@@ -4,6 +4,7 @@ import _ from 'lodash';
 import { ProjectsApi } from './../../apis/projects-api';
 import { IssuesApi } from './../../apis/issues-api';
 const NotificationSystem = require('react-notification-system');
+import Gravatar from 'react-gravatar';
 
 class SelectAssignee extends Component {
     constructor(props) {
@@ -33,7 +34,10 @@ class SelectAssignee extends Component {
                         Assignee
                         <i className='fa fa-cog pull-right' />
                     </label>
-                    <span className='cap fs-16'>{this.state.assigneeName}</span>
+                    <span>
+                        <Gravatar email='test@test.com' size={16} default="retro" />
+                        <span className='ml-10 cap fs-16'>{this.state.assigneeName}</span>
+                    </span>
                 </div>
                 <SlidingPane
                     className='assignee-sliding-pane'
@@ -65,7 +69,7 @@ class SelectAssignee extends Component {
         var self = this;
         ProjectsApi.getAssignees(this.props.projectId)
             .then(function (assignees) {
-                assignees.unshift({ value: null, label: 'Unassigned' });
+                assignees.unshift({ value: null, label: 'Unassigned', email: 'unassigned@email.com' });
                 self.setState({ assignees: assignees });
             });
     }

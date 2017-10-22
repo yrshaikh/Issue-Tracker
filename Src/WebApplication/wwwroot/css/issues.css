@@ -111,6 +111,8 @@
     .sidebar .sidebar-item .hover-link:hover {
       color: #0056d3;
       cursor: pointer; }
+    .sidebar .sidebar-item #assignee-view .react-gravatar {
+      margin-bottom: 2px; }
     .sidebar .sidebar-item #assignee-view .fa-cog {
       margin-top: 3.5px; }
 

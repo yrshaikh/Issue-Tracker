@@ -171,6 +171,9 @@ $border-color: #e1e4e8;
         }
 
         #assignee-view {
+            .react-gravatar{
+                margin-bottom: 2px;
+            }
             .fa-cog {
                 margin-top: 3.5px;
             }
