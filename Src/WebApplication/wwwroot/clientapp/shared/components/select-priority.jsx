@@ -47,7 +47,7 @@ class SelectPriority extends Component {
                         this.setState({ isPaneOpen: false });
                     }}>
                     <div>
-                        <input type='text' className='form-control' placeholder='search' />
+                        {/* <input type='text' className='form-control' placeholder='search' /> */}
                         <ul>
                             {this.getPrioritiesDom()}
                         </ul>
