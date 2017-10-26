@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import TitleDescription from './components/body/title-description';
 import IssueTimeline from './components/body/timeline';
+import IssueComment from './components/body/comment';
 import SelectPriority from './../shared/components/select-priority';
 import SelectAssignee from './../shared/components/select-assignee';
 
@@ -24,6 +25,7 @@ class Body extends Component {
                             createdByEmail={this.state.issue.createdByEmail}
                         />
                         <IssueTimeline issueId={this.state.issue.issueId} />
+                        <IssueComment issueId={this.state.issue.issueId} />
                     </div>
                     <div className='col-md-3 sidebar'>
                         <SelectAssignee

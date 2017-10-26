@@ -101,6 +101,10 @@
     #issue-view-form .comment-box .comment .comment-body {
       border: 1px solid #d1d5da; }
 
+#issue-view-form #add-comment-box {
+  padding-top: 15px;
+  border-top: 2px solid #eee; }
+
 .sidebar {
   color: #586069;
   font-size: 14px; }
