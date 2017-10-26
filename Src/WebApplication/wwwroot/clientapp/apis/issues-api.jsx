@@ -2,51 +2,51 @@ const axios = require('axios');
 
 const IssuesApi = {
 
-    getIssues: function(){
+    getIssues: function () {
         var self = this;
         return axios.get('/issue/get')
-            .then(function(response){
+            .then(function (response) {
                 return response.data;
             })
-            .catch(function(error){
+            .catch(function (error) {
                 return error;
             });
     },
 
-    updateStatus: function(issueId, statusId){
+    updateStatus: function (issueId, statusId) {
         var self = this;
         return axios.post('/issue/updatestatus', {
-                issueId: issueId
-                , status : statusId
-            })
-            .then(function(response){
+            issueId: issueId
+            , status: statusId
+        })
+            .then(function (response) {
                 return {
                     error: false
                 };
             })
-            .catch(function(error){
+            .catch(function (error) {
                 return {
                     error: true
                 };
             });
     },
-    
-    createIssue: function(projectId, title, description, priorityId, assigneeId){
+
+    createIssue: function (projectId, title, description, priorityId, assigneeId) {
         var self = this;
         return axios.post('/issue/new', {
-                projectId: projectId
-                , title : title
-                , description: description
-                , priorityId: priorityId
-                , assigneeId: assigneeId
-            })
-            .then(function(response){                
+            projectId: projectId
+            , title: title
+            , description: description
+            , priorityId: priorityId
+            , assigneeId: assigneeId
+        })
+            .then(function (response) {
                 return {
                     error: false,
-                    issueId: response.data 
+                    issueId: response.data
                 };
             })
-            .catch(function(error){
+            .catch(function (error) {
                 console.log('error', error);
                 return {
                     error: true
@@ -54,36 +54,54 @@ const IssuesApi = {
             });
     },
 
-    updateAssignee: function(issueId, assigneeId){
+    updateAssignee: function (issueId, assigneeId) {
         var self = this;
         return axios.post('/issue/updateassignee', {
             issueId: issueId
-            , assigneeId : assigneeId
+            , assigneeId: assigneeId
         })
-            .then(function(response){
+            .then(function (response) {
                 return {
                     error: false
                 };
             })
-            .catch(function(error){
+            .catch(function (error) {
                 return {
                     error: true
                 };
             });
     },
 
-    updatePriority: function(issueId, priorityId){
+    updatePriority: function (issueId, priorityId) {
         var self = this;
         return axios.post('/issue/updatepriority', {
             issueId: issueId
-            , priorityId : priorityId
+            , priorityId: priorityId
         })
-            .then(function(response){
+            .then(function (response) {
                 return {
                     error: false
                 };
             })
-            .catch(function(error){
+            .catch(function (error) {
+                return {
+                    error: true
+                };
+            });
+    },
+
+    submitComment: function (issueId, comment) {
+        var self = this;
+        return axios.post('/issue/addcomment', {
+            issueId: issueId
+            , comment: comment
+        })
+            .then(function (response) {
+                return {
+                    error: false
+                };
+            })
+            .catch(function (error) {
                 return {
                     error: true
                 };
