@@ -10,22 +10,24 @@ class Comment extends Component {
     }
     render() {
         return (
-            <div id='add-comment-box' className='form-group comment-box'>
-                <div className='avatar'>
-                    <Gravatar email={this.state.authorEmail} size={35} default='retro' />
+            <div id='add-comment-box'>
+                <div className='comment-box'>
+                    <div className='avatar'>
+                        <Gravatar email={this.state.authorEmail} size={35} default='retro' />
+                    </div>
+                    <div className='comment form-group'>
+                        <textarea
+                            className='form-control text-area text-area-short'
+                            name='description'
+                            rows='5'
+                            placeholder='Leave a comment.'
+                            value={this.state.description}
+                            onChange={this.handleChange}
+                        >
+                        </textarea>
+                    </div>
                 </div>
-                <div className='comment form-group'>
-                    <textarea
-                        className='form-control text-area text-area-short'
-                        name='description'
-                        rows='5'
-                        placeholder='Leave a comment.'
-                        value={this.state.description}
-                        onChange={this.handleChange}
-                    >
-                    </textarea>
-                </div>
-                <div>
+                <div className='button-box'>
                     <button className='btn btn-success'>Comment</button>
                 </div>
             </div>

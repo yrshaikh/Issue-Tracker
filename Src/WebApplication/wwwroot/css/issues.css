@@ -104,6 +104,8 @@
 #issue-view-form #add-comment-box {
   padding-top: 15px;
   border-top: 2px solid #eee; }
+  #issue-view-form #add-comment-box .button-box {
+    margin-left: 50px; }
 
 .sidebar {
   color: #586069;
