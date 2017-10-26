@@ -20,82 +20,82 @@ class TitleDescription extends Component {
 			description: props.description,
 			createdBy: props.createdBy,
 			createdByEmail: props.createdByEmail,
-            editIssue: false,
-            submitting: false,
-            error: false
-        };
+			editIssue: false,
+			submitting: false,
+			error: false
+		};
 		this._notificationSystem = null;
-		
+
 		this.cancelTitleDescriptionEdit = this.cancelTitleDescriptionEdit.bind(this);
 		this.updateTitleDescription = this.updateTitleDescription.bind(this);
 		this.onDescriptionChange = this.onDescriptionChange.bind(this);
 		this.handleChange = this.handleChange.bind(this);
-    }    
-	componentWillMount(){
+	}
+	componentWillMount() {
 		PubSub.subscribe('ISSUE_EDIT', this.handleIssueEdit.bind(this));
 	}
-	componentDidMount(){
+	componentDidMount() {
 		this._notificationSystem = this.refs.notificationSystem;
-    }
-    handleIssueEdit(){
-		this.setState({editIssue: true});
 	}
-	cancelTitleDescriptionEdit(){
-		this.setState({editIssue: false});
+	handleIssueEdit() {
+		this.setState({ editIssue: true });
 	}
-	updateTitleDescription(){
+	cancelTitleDescriptionEdit() {
+		this.setState({ editIssue: false });
+	}
+	updateTitleDescription() {
 		var self = this;
-        this.setState({editIssue: false});
-        // todo : move this to API.
+		this.setState({ editIssue: false });
+		// todo : move this to API.
 		axios.post('/issue/updatetitledescription', {
 			issueId: this.state.issueId
-			, title : this.state.title
+			, title: this.state.title
 			, description: this.state.description
 		})
-		.then(function (response) {
-			// do nothing.
-			self._notificationSystem.addNotification({
-				title: '#' + self.state.issueId + ' Issue Updated',
-				message: 'You updated title and description of this issue.',
-				level: 'success',
-				position: 'br',
-				autoDismiss: 5
-			});	
-		})
-		.catch(function (error) {
-			self.setState({ submitting : false });
-            self.setState({ error : true });
-            self.setState({editIssue: true});
-		});
-		this.setState({editIssue: false});
+			.then(function (response) {
+				// do nothing.
+				self._notificationSystem.addNotification({
+					title: '#' + self.state.issueId + ' Issue Updated',
+					message: 'You updated title and description of this issue.',
+					level: 'success',
+					position: 'br',
+					autoDismiss: 5
+				});
+			})
+			.catch(function (error) {
+				self.setState({ submitting: false });
+				self.setState({ error: true });
+				self.setState({ editIssue: true });
+			});
+		this.setState({ editIssue: false });
 	}
-	handleChange(event){
-        var name = event.target.name;
-		this.setState({[name]: event.target.value});
+	handleChange(event) {
+		var name = event.target.name;
+		this.setState({ [name]: event.target.value });
 	}
-	onDescriptionChange(editorState){
-		this.setState({editorState});
+	onDescriptionChange(editorState) {
+		this.setState({ editorState });
 	}
 	render() {
-        var titleAndDescription = this.state.editIssue ? 
-        this.renderTitleAndDescriptionInEditMode() :
-        this.renderTitleAndDescription();
-        var renderError = this.renderError();
+		var titleAndDescription = this.state.editIssue ?
+			this.renderTitleAndDescriptionInEditMode() :
+			this.renderTitleAndDescription();
+		var renderError = this.renderError();
 		return (
-            <div>
-                {titleAndDescription}
-            <div>
-            </div>
-                {renderError}
+			<div>
+				{titleAndDescription}
+				<div>
+				</div>
+				{renderError}
 				<NotificationSystem ref="notificationSystem" />
-            </div>
+			</div>
 		);
-    }    
-    renderTitleAndDescription() {
+	}
+	renderTitleAndDescription() {
 		return (
 			<div>
 				<div className='form-group'>
-					<span className='issue-header fw-bold'>{this.state.title}</span>					
+					<span className='issue-header fw-bold'>{this.state.title}</span>
 				</div>
 				<div className='form-group comment-box'>
 					<div className='avatar'>
@@ -106,27 +106,31 @@ class TitleDescription extends Component {
 							<b className='cap'>{this.state.createdBy}</b> opened this issue <Moment fromNow>{this.state.createdOn}</Moment>
 						</div>
 						<div className='comment-body'>
-							<div dangerouslySetInnerHTML={{__html: md.render(this.state.description)}} />
+							{
+								(this.state.description) ?
+									<div dangerouslySetInnerHTML={{ __html: md.render(this.state.description) }} />
+									: <div className='light-gray'>No description provided.</div>
+							}
 						</div>
 					</div>
 				</div>
 			</div>
-		);	
+		);
 	}
 	renderTitleAndDescriptionInEditMode() {
 		return (
 			<div>
-				<div className='form-group'>						
+				<div className='form-group'>
 					<input type='text' autoFocus
 						name='title'
-						className='form-control text-box title fw-bold' 
+						className='form-control text-box title fw-bold'
 						placeholder='Enter a one-line summary of the issue.'
 						value={this.state.title}
 						onChange={this.handleChange}>
 					</input>
 				</div>
 				<div className='form-group'>
-					<textarea 
+					<textarea
 						className='form-control text-area fw-bold'
 						name='description'
 						rows='5'
@@ -138,14 +142,14 @@ class TitleDescription extends Component {
 				</div>
 				<div className='form-group ta-right'>
 					<button type='button' className='btn btn-default mr-10' onClick={this.cancelTitleDescriptionEdit}>Cancel</button>
-					<button type='button' id='create' className='btn btn-success' onClick={this.updateTitleDescription}>Update Issue</button>					
+					<button type='button' id='create' className='btn btn-success' onClick={this.updateTitleDescription}>Update Issue</button>
 				</div>
 			</div>
-		);		
-    }
-    
-    renderError() {
-		if(this.state.error){
+		);
+	}
+
+	renderError() {
+		if (this.state.error) {
 			return (
 				<div className='mt-10'>
 					<div className='alert alert-danger' role='alert'>
@@ -153,8 +157,8 @@ class TitleDescription extends Component {
 					</div>
 				</div>
 			);
-        }
-        return '';
+		}
+		return '';
 	}
 }
 
