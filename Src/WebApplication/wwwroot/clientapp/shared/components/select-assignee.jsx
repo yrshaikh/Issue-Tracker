@@ -11,7 +11,7 @@ class SelectAssignee extends Component {
         this.state = {
             issueId: this.props.issueId,
             assigneeId: this.props.id,
-            assigneeName: this.props.label,
+            assigneeName: this.props.label ? this.props.label : 'Unassigned',
             selectedAssigneeId: this.props.id,
             selectedAssigneeName: this.props.label,
             assignees: [],
@@ -34,7 +34,7 @@ class SelectAssignee extends Component {
                         <i className='fa fa-cog pull-right' />
                     </label>
                     <span>
-                        <span className='ml-10 cap fs-16'>{this.state.assigneeName}</span>
+                        <span className='cap fs-16'>{this.state.assigneeName}</span>
                     </span>
                 </div>
                 <SlidingPane
