@@ -106,6 +106,8 @@
   border-top: 2px solid #eee; }
   #issue-view-form #add-comment-box .button-box {
     margin-left: 50px; }
+    #issue-view-form #add-comment-box .button-box .btn {
+      font-size: 14px; }
 
 .sidebar {
   color: #586069;

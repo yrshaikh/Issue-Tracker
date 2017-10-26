@@ -150,15 +150,15 @@ $border-color: #e1e4e8;
         }
     }
 
-    .main {
-    }
-
     #add-comment-box{
         padding-top: 15px;
         border-top: 2px solid #eee;
 
         .button-box{
             margin-left: 50px;
+            .btn {
+                font-size: 14px;
+            }
         }
     }
 }

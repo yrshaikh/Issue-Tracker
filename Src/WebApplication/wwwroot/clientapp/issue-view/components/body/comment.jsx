@@ -5,8 +5,13 @@ class Comment extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            authorEmail: 'koghjy.uutr6s@outlook.com'
+            issueId: props.issueId,
+            comment: '',
+            authorEmail: 'hahah.lololol@outlook.com' // todo get this from serverside on pageload.
         };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.submitComment = this.submitComment.bind(this);
     }
     render() {
         return (
@@ -21,17 +26,23 @@ class Comment extends Component {
                             name='description'
                             rows='5'
                             placeholder='Leave a comment.'
-                            value={this.state.description}
+                            value={this.state.comment}
                             onChange={this.handleChange}
                         >
                         </textarea>
                     </div>
                 </div>
                 <div className='button-box'>
-                    <button className='btn btn-success'>Comment</button>
+                    <button type='button' className='btn btn-success' onClick={this.submitComment}>Comment</button>
                 </div>
             </div>
         )
+    }
+    handleChange(event) {
+        this.setState({ comment: event.target.value });
+    }
+    submitComment() {
+        console.log(this.state.comment, this.state.issueId);
     }
 }
 
