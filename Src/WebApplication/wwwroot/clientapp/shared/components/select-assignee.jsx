@@ -4,7 +4,6 @@ import _ from 'lodash';
 import { ProjectsApi } from './../../apis/projects-api';
 import { IssuesApi } from './../../apis/issues-api';
 const NotificationSystem = require('react-notification-system');
-import Gravatar from 'react-gravatar';
 
 class SelectAssignee extends Component {
     constructor(props) {
@@ -35,7 +34,6 @@ class SelectAssignee extends Component {
                         <i className='fa fa-cog pull-right' />
                     </label>
                     <span>
-                        <Gravatar email='test@test.com' size={16} default="retro" />
                         <span className='ml-10 cap fs-16'>{this.state.assigneeName}</span>
                     </span>
                 </div>
