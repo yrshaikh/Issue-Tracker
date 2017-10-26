@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Gravatar from 'react-gravatar';
+import { IssuesApi } from './../../../apis/issues-api';
 
 class Comment extends Component {
     constructor(props) {
@@ -7,6 +8,8 @@ class Comment extends Component {
         this.state = {
             issueId: props.issueId,
             comment: '',
+            error: false,
+            submitting: false,
             authorEmail: 'hahah.lololol@outlook.com' // todo get this from serverside on pageload.
         };
 
@@ -42,7 +45,17 @@ class Comment extends Component {
         this.setState({ comment: event.target.value });
     }
     submitComment() {
-        console.log(this.state.comment, this.state.issueId);
+        this.setState({ error: false });
+        this.setState({ submitting: true });
+
+        var self = this;
+        IssuesApi.submitComment(this.state.issueId, this.state.comment)
+            .then(function (response) {
+                self.setState({ submitting: false });
+                if (response.error)
+                    self.setState({ error: true });
+            });;
+
     }
 }
 

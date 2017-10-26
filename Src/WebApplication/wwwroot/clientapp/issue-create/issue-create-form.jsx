@@ -81,7 +81,7 @@ class IssueCreateForm extends Component {
 	handleSubmit(){
 		this.setState({loading: true});
 		this.setState({error: false});
-		var slug = getSlug(this.state.issue.description);
+		var slug = getSlug(this.state.issue.title);
 
 		var self = this;
 		IssuesApi.createIssue(
