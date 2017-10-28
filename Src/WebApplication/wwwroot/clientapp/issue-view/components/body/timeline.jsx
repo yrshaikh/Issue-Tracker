@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
 import TimelineItem from './timeline/timeline-item';
+import TimelineComment from './timeline/timeline-comment';
 const axios = require('axios');
 
 class Timeline extends Component {
@@ -27,8 +28,11 @@ class Timeline extends Component {
 	render() {
 		var output = [];
 		var timeline = this.state.timeline;
-		for (var i = 0; i < timeline.length; i++) {
-			output.push(<TimelineItem key={i} data={timeline[i]} />);
+        for (var i = 0; i < timeline.length; i++) {
+            if(timeline[i].type === 'comment')
+                output.push(<TimelineComment key={i} data={timeline[i]} />);
+            else
+                output.push(<TimelineItem key={i} data={timeline[i]} />);
 		}
 
 		return (

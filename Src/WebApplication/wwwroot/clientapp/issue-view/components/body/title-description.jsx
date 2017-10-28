@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
 import Gravatar from 'react-gravatar';
 import Moment from 'react-moment';
-var Remarkable = require('remarkable');
-var md = new Remarkable('full', {
-	html: true,
-	linkify: true,
-	typographer: true
-});
+import CommentView from './comment-view';
+
 const NotificationSystem = require('react-notification-system');
 const axios = require('axios');
 
@@ -97,23 +93,12 @@ class TitleDescription extends Component {
 				<div className='form-group'>
 					<span className='issue-header fw-bold'>{this.state.title}</span>
 				</div>
-				<div className='form-group comment-box'>
-					<div className='avatar'>
-						<Gravatar email={this.state.createdByEmail} size={35} default='retro' />
-					</div>
-					<div className='comment'>
-						<div className='comment-head'>
-							<b className='cap'>{this.state.createdBy}</b> opened this issue <Moment fromNow>{this.state.createdOn}</Moment>
-						</div>
-						<div className='comment-body'>
-							{
-								(this.state.description) ?
-									<div dangerouslySetInnerHTML={{ __html: md.render(this.state.description) }} />
-									: <div className='light-gray'>No description provided.</div>
-							}
-						</div>
-					</div>
-				</div>
+				<CommentView 
+					description={this.state.description} 
+					createdByEmail={this.state.createdByEmail} 
+					createdBy={this.state.createdBy} 
+					createdOn={this.state.createdOn} 
+				/>
 			</div>
 		);
 	}

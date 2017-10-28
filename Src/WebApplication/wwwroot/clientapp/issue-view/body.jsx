@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import TitleDescription from './components/body/title-description';
 import IssueTimeline from './components/body/timeline';
-import IssueComment from './components/body/comment';
+import IssueComment from './components/body/add-comment';
 import SelectPriority from './../shared/components/select-priority';
 import SelectAssignee from './../shared/components/select-assignee';
 

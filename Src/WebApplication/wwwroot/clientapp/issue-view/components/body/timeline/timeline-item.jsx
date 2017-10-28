@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PubSub from 'pubsub-js';
+﻿import React, { Component } from 'react';
 import Gravatar from 'react-gravatar';
 import Moment from 'react-moment';
 
@@ -12,7 +11,6 @@ class TimelineItem extends Component {
 			createdBy: props.data.createdBy,
 			createdByEmail: props.data.createdByEmail,
 			createdOn: props.data.createdOn,
-			createdBy: props.data.createdBy,
 			content: props.data.content
 		};
 	}
@@ -21,7 +19,6 @@ class TimelineItem extends Component {
 	componentDidMount() {
 	}
 	render() {
-		const dateToFormat = '1976-04-19T12:59-0500';
 		return (
 			<div className='timeline-item'>
 				<Gravatar email={this.state.createdByEmail} size={16} default='retro' />
