@@ -36,7 +36,9 @@ class Comment extends Component {
                     </div>
                 </div>
                 <div className='button-box'>
-                    <button type='button' className='btn btn-success' onClick={this.submitComment}>Comment</button>
+                    {!this.state.submitting ?
+                        <button type='button' className='btn btn-success' onClick={this.submitComment}>Comment</button>
+                        : <button type='button' id='create' className='btn' disabled='disabled'>Submitting</button>}
                 </div>
             </div>
         )
@@ -51,6 +53,7 @@ class Comment extends Component {
         var self = this;
         IssuesApi.submitComment(this.state.issueId, this.state.comment)
             .then(function (response) {
+                self.setState({ comment: ''});
                 self.setState({ submitting: false });
                 if (response.error)
                     self.setState({ error: true });
