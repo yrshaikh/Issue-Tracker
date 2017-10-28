@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+﻿import React, { Component } from 'react';
 import TimelineItem from './timeline/timeline-item';
 const axios = require('axios');
 

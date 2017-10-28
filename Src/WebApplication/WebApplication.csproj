@@ -10,12 +10,16 @@
   <ItemGroup>
     <Compile Remove="react-app\**" />
     <Compile Remove="wwwroot\sass\**" />
+    <Compile Remove="_PublishedWebsites\**" />
     <Content Remove="react-app\**" />
     <Content Remove="wwwroot\sass\**" />
+    <Content Remove="_PublishedWebsites\**" />
     <EmbeddedResource Remove="react-app\**" />
     <EmbeddedResource Remove="wwwroot\sass\**" />
+    <EmbeddedResource Remove="_PublishedWebsites\**" />
     <None Remove="react-app\**" />
     <None Remove="wwwroot\sass\**" />
+    <None Remove="_PublishedWebsites\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -112,8 +116,7 @@
     <Content Include="bower_components\popper.js\packages\test\package.json" />
     <Content Include="bower_components\popper.js\packages\tooltip\package.json" />
     <Content Include="bower_components\popper.js\popperjs.png" />
-    <Content Include="wwwroot\clientapp\issue-view\components\body\select-assignee.jsx" />
-    <Content Include="wwwroot\clientapp\issue-view\components\body\select-priority.jsx" />
+    <Content Include="wwwroot\clientapp\issue-view\components\body\comment.jsx" />
     <!--<Content Include="wwwroot\clientapp\shared\components\select-priority.jsx" />-->
   </ItemGroup>
   <ItemGroup>

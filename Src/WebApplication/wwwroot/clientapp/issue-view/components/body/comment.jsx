@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+﻿import React, { Component } from 'react';
 import Gravatar from 'react-gravatar';
 import { IssuesApi } from './../../../apis/issues-api';
 
@@ -54,9 +54,8 @@ class Comment extends Component {
                 self.setState({ submitting: false });
                 if (response.error)
                     self.setState({ error: true });
-            });;
-
+            });
     }
 }
 
-export default Comment; 
+export default Comment;
