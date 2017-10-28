@@ -16,10 +16,11 @@ class CommentView extends Component {
 			title: props.title,
 			description: props.description,
 			createdBy: props.createdBy,
-			createdByEmail: props.createdByEmail
+			createdByEmail: props.createdByEmail,
 		};
 	}
 	render() {
+		var message = this.props.type === 'description' ? 'opened' : 'commented on';
 		return (
 			<div className='form-group comment-box'>
 				<div className='avatar'>
@@ -27,7 +28,7 @@ class CommentView extends Component {
 				</div>
 				<div className='comment'>
 					<div className='comment-head'>
-						<b className='cap'>{this.state.createdBy}</b> opened this issue <Moment fromNow>{this.state.createdOn}</Moment>
+						<b className='cap'>{this.state.createdBy}</b> {message} this issue <Moment fromNow>{this.state.createdOn}</Moment>
 					</div>
 					<div className='comment-body'>
 						{

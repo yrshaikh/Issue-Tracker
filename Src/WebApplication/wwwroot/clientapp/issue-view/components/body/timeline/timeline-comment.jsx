@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import Gravatar from 'react-gravatar';
 import Moment from 'react-moment';
-import CommentView from './../comment-view';
+import CommentView from './../shared/comment-view';
 
 class TimelineComment extends Component {
 	constructor(props) {

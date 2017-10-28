@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
 import Gravatar from 'react-gravatar';
 import Moment from 'react-moment';
-import CommentView from './comment-view';
+import CommentView from './shared/comment-view';
 
 const NotificationSystem = require('react-notification-system');
 const axios = require('axios');
@@ -94,6 +94,7 @@ class TitleDescription extends Component {
 					<span className='issue-header fw-bold'>{this.state.title}</span>
 				</div>
 				<CommentView 
+					type='description'
 					description={this.state.description} 
 					createdByEmail={this.state.createdByEmail} 
 					createdBy={this.state.createdBy} 
