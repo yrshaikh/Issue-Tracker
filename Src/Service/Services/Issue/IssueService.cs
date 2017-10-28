@@ -57,6 +57,11 @@ namespace Service.Services.Issue
             _issueRepository.UpdatePriority(priority.IssueId, priority.PriorityId, userId);
         }
 
+        public void NewComment(CreateIssueCommentModel comment, int userId)
+        {
+            _issueRepository.NewComment(comment.IssueId, comment.Comment, userId);
+        }
+
         public List<IssueSummaryViewModel> GetByFilters(int userId)
         {
             var issues = _issueRepository.GetByFilters(userId);

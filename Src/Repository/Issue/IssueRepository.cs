@@ -18,7 +18,8 @@ namespace Repository.Issue
 	    public const string GetTimeline = "Issue_Get_Timeline";
 		public const string UpdateAssignee = "Issue_Update_Assignee";
 		public const string UpdatePriority = "Issue_Update_Priority";
-	}
+	    public static string NewComment = "Issue_New_Comment";
+    }
 
     public class IssueRepository : BaseDataAccess, IIssueRepository
 	{
@@ -210,7 +211,19 @@ namespace Repository.Issue
 			base.ExecuteNonQuery(IssueStoredProcedure.UpdatePriority, parameterList, CommandType.StoredProcedure);
 		}
 
-		public IssueRepository(IConfiguration config) : base(config)
+	    public void NewComment(int issueId, string comment, int userId)
+	    {
+	        List<DbParameter> parameterList = new List<DbParameter>
+	        {
+	            new SqlParameter("@issue_id", SqlDbType.Int) {Value = issueId},
+	            new SqlParameter("@comment", SqlDbType.Int) {Value = comment},
+	            new SqlParameter("@created_by", SqlDbType.Int) {Value = userId},
+	            new SqlParameter("@created_on", SqlDbType.DateTime) {Value = DateTime.Now}
+	        };
+
+	        base.ExecuteNonQuery(IssueStoredProcedure.NewComment, parameterList, CommandType.StoredProcedure);}
+
+	    public IssueRepository(IConfiguration config) : base(config)
 	    {
 	        
         }

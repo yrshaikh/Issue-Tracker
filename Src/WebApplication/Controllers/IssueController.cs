@@ -88,5 +88,12 @@ namespace WebApplication.Controllers
 			_issueService.UpdatePriority(priority, AuthenticatedUser.UserId(User));
 			return Json(HttpStatusCode.OK);
 		}
+
+	    [HttpPost]
+	    public IActionResult NewComment([FromBody] CreateIssueCommentModel comment)
+	    {
+	        _issueService.NewComment(comment, AuthenticatedUser.UserId(User));
+	        return Json(HttpStatusCode.OK);
+	    }
     }
 }

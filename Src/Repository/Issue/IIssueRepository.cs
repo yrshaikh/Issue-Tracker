@@ -13,5 +13,6 @@ namespace Repository.Issue
 	    List<TimelineModel> GetTimeline(int id);
 		void UpdateAssignee(int issueId, int? assigneeId, int userId);
 		void UpdatePriority(int issueId, int priorityId, int userId);
+	    void NewComment(int issueId, string comment, int userId);
 	}
 }
