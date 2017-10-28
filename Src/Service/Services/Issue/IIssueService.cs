@@ -14,5 +14,6 @@ namespace Service.Services.Issue
 	    List<TimelineViewModel> GetTimeline(int id);
 		void UpdateAssignee(UpdateAssigneeModel assignee, int userId);
 		void UpdatePriority(UpdatePriorityModel priority, int userId);
+	    void NewComment(CreateIssueCommentModel comment, int userId);
 	}
 }

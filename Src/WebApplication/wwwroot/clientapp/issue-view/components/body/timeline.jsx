@@ -17,7 +17,7 @@ class Timeline extends Component {
 	}
 	getTimeline() {
 		var self = this;
-		axios.get('/issue/' + this.state.issueId + '/timeline')
+		axios.get(`/issue/${this.state.issueId}/timeline`)
 			.then(function (response) {
 				self.setState({ timeline: response.data });
 			})

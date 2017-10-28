@@ -1,4 +1,4 @@
-const axios = require('axios');
+﻿const axios = require('axios');
 
 const IssuesApi = {
 
@@ -92,7 +92,7 @@ const IssuesApi = {
 
     submitComment: function (issueId, comment) {
         var self = this;
-        return axios.post('/issue/addcomment', {
+        return axios.post('/issue/newcomment', {
             issueId: issueId
             , comment: comment
         })

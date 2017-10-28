@@ -216,7 +216,7 @@ namespace Repository.Issue
 	        List<DbParameter> parameterList = new List<DbParameter>
 	        {
 	            new SqlParameter("@issue_id", SqlDbType.Int) {Value = issueId},
-	            new SqlParameter("@comment", SqlDbType.Int) {Value = comment},
+	            new SqlParameter("@comment", SqlDbType.VarChar) {Value = comment},
 	            new SqlParameter("@created_by", SqlDbType.Int) {Value = userId},
 	            new SqlParameter("@created_on", SqlDbType.DateTime) {Value = DateTime.Now}
 	        };
