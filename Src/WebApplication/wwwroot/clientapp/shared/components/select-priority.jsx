@@ -114,6 +114,7 @@ class SelectPriority extends Component {
             self.setState({ priorityId: updatedPriorityId });
             self.setState({ priorityName: updatedPriorityName });
             self.setState({ isPaneOpen: false });
+            this.props.updateHandler(updatedPriorityId, updatedPriorityName);
             return;
         }
 

@@ -17,7 +17,6 @@ class SelectAssignee extends Component {
             assignees: [],
             isPaneOpen: false
         };
-
         this.handleChange = this.handleChange.bind(this);
         this._notificationSystem = null;
     }
@@ -118,6 +117,7 @@ class SelectAssignee extends Component {
             self.setState({ assigneeId: updateAssigneeId });
             self.setState({ assigneeName: updateAssigneeName });
             self.setState({ isPaneOpen: false });
+            this.props.updateHandler(updateAssigneeId, updateAssigneeName);
             return;
         }
 
