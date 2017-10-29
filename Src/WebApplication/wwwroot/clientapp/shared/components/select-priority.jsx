@@ -26,6 +26,8 @@ class SelectPriority extends Component {
         this.loadPriorities();
     }
     render() {
+        var title = this.state.issueId ? '#' + this.state.issueId + ' - Update Priority'
+            : 'Set Priority';
         return (
             <div className='form-group sidebar-item'>
                 <div id='assignee-view'>
@@ -39,7 +41,7 @@ class SelectPriority extends Component {
                     className='assignee-sliding-pane'
                     overlayClassName='it-overlay-class'
                     isOpen={this.state.isPaneOpen}
-                    title={'#' + this.state.issueId + ' - Update Priority'}
+                    title={title}
                     subtitle="sub title, sub title and sub title"
                     from='right'
                     width='355px'
