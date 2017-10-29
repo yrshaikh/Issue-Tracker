@@ -16,6 +16,7 @@ class TitleDescription extends Component {
 			description: props.description,
 			createdBy: props.createdBy,
 			createdByEmail: props.createdByEmail,
+			createdOn: props.createdOn,
 			editIssue: false,
 			submitting: false,
 			error: false

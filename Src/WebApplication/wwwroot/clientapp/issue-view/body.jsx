@@ -23,6 +23,7 @@ class Body extends Component {
                             description={this.state.issue.description}
                             createdBy={this.state.issue.createdBy}
                             createdByEmail={this.state.issue.createdByEmail}
+                            createdOn={this.state.issue.createdOn}
                         />
                         <IssueTimeline issueId={this.state.issue.issueId} />
                         <IssueComment issueId={this.state.issue.issueId} />

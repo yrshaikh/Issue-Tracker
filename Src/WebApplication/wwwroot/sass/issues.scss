@@ -129,6 +129,8 @@ $border-color: #e1e4e8;
 
             .comment-header, .comment-body {
                 padding: 15px;
+                padding-bottom: 0px;
+                min-height: 50px;
             }
 
             .comment-head {
@@ -192,7 +194,7 @@ $border-color: #e1e4e8;
 
 #issues-view {
     .timeline-item {
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         margin-left: 50px;
     }
 }

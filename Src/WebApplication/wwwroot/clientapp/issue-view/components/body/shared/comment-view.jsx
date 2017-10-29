@@ -17,6 +17,7 @@ class CommentView extends Component {
 			description: props.description,
 			createdBy: props.createdBy,
 			createdByEmail: props.createdByEmail,
+			createdOn: props.createdOn
 		};
 	}
 	render() {
