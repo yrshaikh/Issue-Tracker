@@ -3,12 +3,12 @@ class IssueAppliedFilters extends Component{
     render(){
         return (
             <div className='row issue-row filter'>
-                <b>Filtered by :</b>
-                <span className='ml-10 item gray'>Status: Open & Resolved</span>
-                <span className='gray separator'>|</span>
-                <span className='item gray'>Assignee: Yasser Shaikh</span>
-                <span className='gray separator'>|</span>
-                <span className='item gray'>Tags: feature, bugs & support.</span>
+                <a href='#open' className='fw-bold active'>
+                    <i className='fa fa-exclamation-triangle' /> 10 Open
+                </a>
+                <a href='#closed' className='ml-15 item inactive'>
+                    <i className='fa fa-check light-gray' /> 36 Closed
+                </a>
             </div>
         );
     }

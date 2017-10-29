@@ -8,7 +8,6 @@
 
 #hero-issues .hero-banner-inner {
     padding: 18px 0 18px;
-    height: 150px;
 
     .new-issue {
         right: 0px;
@@ -90,15 +89,25 @@ $border-color: #e1e4e8;
         border-top-right-radius: 2px;
         padding-left: 15px;
 
+        .active, .inactive {
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        .active {
+            color: #24292e;
+        }
+        .inactive {
+            color: #999;
+        }
+
         .separator {
             margin-left: 10px;
             margin-right: 10px;
         }
 
         .fa {
-            color: #666;
-            margin-top: 8px;
-            font-size: 10px;
         }
     }
 }

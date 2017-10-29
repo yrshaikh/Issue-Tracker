@@ -23,14 +23,7 @@ class IssueList extends Component {
         }
         return(
             <div id='issue-list' className='row'>
-                <div className='width-100-percent mb-15'>
-                    <div id='applied-filters'>
-                        <span className="badge badge-default">Assignee: Yasser Shaikh & Ali Rizvi &nbsp;<i className='fa fa-close' /></span>
-                        <span className="badge badge-default">Priorty: Critical  &nbsp;<i className='fa fa-close' /></span>
-                        <span className="badge badge-default">Milestone: 1st November 2017  &nbsp;<i className='fa fa-close' /></span>
-                    </div>
-                </div>
-                <div className='col-md-12'>
+                <div className='col-md-9'>
                     <IssueAppliedFilters />
                     {issues}
                 </div>

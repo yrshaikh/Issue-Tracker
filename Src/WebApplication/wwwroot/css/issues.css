@@ -6,7 +6,6 @@
 
 #hero-issues .hero-banner-inner {
   padding: 18px 0 18px;
-  height: 150px;
   /*max-width: 98%;*/ }
   #hero-issues .hero-banner-inner .new-issue {
     right: 0px;
@@ -61,13 +60,15 @@
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     padding-left: 15px; }
+    #issue-list .filter .active:hover, #issue-list .filter .inactive:hover {
+      text-decoration: none; }
+    #issue-list .filter .active {
+      color: #24292e; }
+    #issue-list .filter .inactive {
+      color: #999; }
     #issue-list .filter .separator {
       margin-left: 10px;
       margin-right: 10px; }
-    #issue-list .filter .fa {
-      color: #666;
-      margin-top: 8px;
-      font-size: 10px; }
 
 #issue-view-form .issue-header {
   font-size: 24px;
