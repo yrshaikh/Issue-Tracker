@@ -8,12 +8,12 @@ class IssueRow extends Component{
         return (
             <div className='row issue-row'>
                 <div className='col-md-11 row'>
-                    <a href={url} className='title dark-gray col-md-12 fw-bold'>
-                        <span title={issue.status}>{this.renderStatusIcon(issue.status)}</span>
-                        <span className='mr-10'>#{issue.issueId} {issue.title}</span>
+                    <a href={url} className='title dark-gray col-md-12'>
+                        {/* <span title={issue.status}>{this.renderStatusIcon(issue.status)}</span> */}
+                        <span className='mr-10'>{issue.title}</span>
                     </a>
-                    <span className='subtitle col-md-12 gray'>
-                        Created by {issue.createdBy} <Moment fromNow>{issue.createdOn}</Moment> and is assigned to Saul Abraham.
+                    <span className='subtitle col-md-12 light-gray fs-12'>
+                        #{issue.issueId} opened <Moment fromNow>{issue.createdOn}</Moment> by <span className='cap'>{issue.createdBy}</span>
                     </span>
                 </div>
             </div>
