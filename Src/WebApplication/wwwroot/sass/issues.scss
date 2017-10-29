@@ -193,6 +193,10 @@ $border-color: #e1e4e8;
 }
 
 #issues-view {
+    .loading-message{
+        margin-left: 50px;
+        margin-bottom: 15px;
+    }
     .timeline-item {
         margin-bottom: 15px;
         margin-left: 50px;

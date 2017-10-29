@@ -8,7 +8,8 @@ class Timeline extends Component {
 		super(props);
 		this.state = {
 			issueId: props.issueId,
-			timeline: []
+			timeline: [],
+			loading: true
 		};
 	}
 	componentWillMount() {
@@ -21,11 +22,19 @@ class Timeline extends Component {
 		axios.get(`/issue/${this.state.issueId}/timeline`)
 			.then(function (response) {
 				self.setState({ timeline: response.data });
+				self.setState({ loading: false });
 			})
 			.catch(function (error) {
 			});
 	}
 	render() {
+
+		if(this.state.loading){
+			return (
+				<div className='light-gray loading-message'>fetching history...</div>
+			)
+		}
+
 		var output = [];
 		var timeline = this.state.timeline;
         for (var i = 0; i < timeline.length; i++) {

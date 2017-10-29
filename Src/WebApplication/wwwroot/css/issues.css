@@ -126,6 +126,10 @@
     .sidebar .sidebar-item #assignee-view .fa-cog {
       margin-top: 3.5px; }
 
+#issues-view .loading-message {
+  margin-left: 50px;
+  margin-bottom: 15px; }
+
 #issues-view .timeline-item {
   margin-bottom: 15px;
   margin-left: 50px; }
