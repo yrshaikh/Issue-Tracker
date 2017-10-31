@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "es6",
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
+        "jsx": "preserve",
+        "allowJs": false,
+        "moduleResolution": "node",
+        "lib": [
+            "dom", 
+            "es7"
+        ]
+    }
+}
