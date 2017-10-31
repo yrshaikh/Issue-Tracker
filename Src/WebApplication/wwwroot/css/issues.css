@@ -45,6 +45,9 @@
     border-top: 0px; }
     #issue-list .issue-row .title {
       font-size: 16px; }
+      #issue-list .issue-row .title .title-text {
+        width: 90%;
+        display: inline-block; }
     #issue-list .issue-row .status {
       margin-right: 10px; }
   #issue-list .filter {

@@ -66,6 +66,10 @@ $border-color: #e1e4e8;
 
         .title {
             font-size: 16px;
+            .title-text {
+                width: 90%;
+                display: inline-block;
+            }
         }
 
         .subtitle {
