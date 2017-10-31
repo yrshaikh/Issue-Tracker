@@ -6,13 +6,22 @@ class IssueStatus extends Component {
     constructor (props) {
 
         super(props);
-        this.state = { 'status': props.status };
+        this.state = {'status': props.status};
+
+    }
+
+    static get propTypes () {
+
+        return {
+            'additionalClasses': PropTypes.string,
+            'status': PropTypes.string
+        };
 
     }
 
     componentWillReceiveProps (nextProps) {
 
-        this.setState({ 'status': nextProps.status });
+        this.setState({'status': nextProps.status});
 
     }
 
@@ -51,7 +60,5 @@ class IssueStatus extends Component {
     }
 
 }
-
-IssueStatus.PropTypes = {'additionalClasses': PropTypes.string};
 
 export default IssueStatus;
