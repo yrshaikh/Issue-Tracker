@@ -1,4 +1,4 @@
-﻿import React, { Component } from 'react';
+﻿import React, {Component} from 'react';
 import Body from './issue-view/body';
 import Header from './issue-view/header';
 

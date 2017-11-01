@@ -117,10 +117,6 @@
     <Content Include="bower_components\popper.js\packages\tooltip\package.json" />
     <Content Include="bower_components\popper.js\popperjs.png" />
     <Content Include="wwwroot\clientapp\issue-view\components\body\comment.jsx" />
-    <Content Include="wwwroot\clientapp\issue-view\components\body\timeline\timeline-comment.jsx" />
-    <Content Include="wwwroot\clientapp\issue-view\components\body\timeline\timeline-item - Copy.jsx">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
     <!--<Content Include="wwwroot\clientapp\shared\components\select-priority.jsx" />-->
   </ItemGroup>
   <ItemGroup>
