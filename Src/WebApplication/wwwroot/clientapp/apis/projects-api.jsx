@@ -1,43 +1,51 @@
+/* eslint one-var: 0 */
+/* global require */
 const axios = require('axios');
-import { capitalize } from './../shared/utils';
-import _ from 'lodash';
+import lodash from 'lodash';
 
 const ProjectsApi = {
 
-    getPriorities: function(){
-        return axios.get('/get/priorities')
-            .then(function(response){
-                var arr = [];
-                _.forEach(response.data, function(item){
-                    arr.push({
-                        label: item.value,
-                        value: item.id
-                    });
+    'getAssignees': function getAssignees (projectId) {
+
+        return axios.get(`/get/${projectId}/assignees`).then((response) => {
+
+            const arr = [];
+            lodash.forEach(response.data, (item) => {
+
+                arr.push({
+                    'email': item.email,
+                    'label': `${item.firstName} ${item.lastName}`,
+                    'value': item.id
                 });
-                return arr;
-            })
-            .catch(function(error){
-                return error;
+
             });
+            return arr;
+
+        }).
+            catch((error) => error);
+
     },
 
-    getAssignees: function(projectId){
-        return axios.get('/get/' + projectId + '/assignees')
-            .then(function(response){
-                var arr = [];
-                _.forEach(response.data, function(item){
-                    arr.push({
-                        label: item.firstName + ' ' + item.lastName,
-                        email: item.email,
-                        value: item.id
-                    });
-                });
-                return arr;
-            })
-            .catch(function(error){
-                return error;
-            });
-    },
-}
+    'getPriorities': function getPriorities () {
 
-export { ProjectsApi };
+        return axios.get('/get/priorities').then((response) => {
+
+            const arr = [];
+            lodash.forEach(response.data, (item) => {
+
+                arr.push({
+                    'label': item.value,
+                    'value': item.id
+                });
+
+            });
+            return arr;
+
+        }).
+            catch((error) => error);
+
+    }
+
+};
+
+export {ProjectsApi};
