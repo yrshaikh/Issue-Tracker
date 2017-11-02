@@ -130,7 +130,7 @@ class SelectPriority extends Component {
 
         return (
 
-            <li className={liClassName} key={priority.value} 
+            <li className={liClassName} key={priority.value}
                 onClick={() => this.handleChange(priority)}>
                 <span className="value">
                     {priority.label}
@@ -162,38 +162,28 @@ class SelectPriority extends Component {
 
     update () {
 
-        const updatedPriorityId = this.state.selectedPriorityId,
+        const that = this,
+            updatedPriorityId = this.state.selectedPriorityId,
             updatedPriorityName = this.state.selectedPriorityName;
-
-        const that = this;
 
         if (!this.state.issueId) {
 
-            self.setState({'priorityId': updatedPriorityId});
-            self.setState({'priorityName': updatedPriorityName});
-            self.setState({'isPaneOpen': false});
-            this.props.updateHandler(updatedPriorityId, updatedPriorityName);
+            that.setState({'priorityId': updatedPriorityId});
+            that.setState({'priorityName': updatedPriorityName});
+            that.setState({'isPaneOpen': false});
+            that.props.updateHandler(updatedPriorityId, updatedPriorityName);
             return;
 
         }
 
         IssuesApi.updatePriority(this.state.issueId, updatedPriorityId).
-            then((response) => {
+            then(() => {
 
-                self.setState({"isPaneOpen": false});
-                self.setState({"priorityId": updatedPriorityId});
-                self.setState({"priorityName": updatedPriorityName});
+                that.setState({'isPaneOpen': false});
+                that.setState({'priorityId': updatedPriorityId});
+                that.setState({'priorityName': updatedPriorityName});
 
-
-                self._notificationSystem.addNotification({
-                    "title": `#${  self.state.issueId  } Issue Updated`,
-                    "message": `You updated priority of this issue to ${  updatedPriorityName  }.`,
-                    "level": 'success',
-                    "position": 'br',
-                    "autoDismiss": 3
-                });
-            
-});
+            });
 
     }
 
