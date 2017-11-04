@@ -6,116 +6,75 @@ const IssuesApi = {
     // eslint-disable-next-line max-params, max-len
     'createIssue': function createIssue (projectId, title, description, priorityId, assigneeId) {
 
-        var self = this;
         return axios.post('/issue/new', {
-            projectId: projectId
-            , title: title
-            , description: description
-            , priorityId: priorityId
-            , assigneeId: assigneeId
-        })
-            .then(function (response) {
-                return {
-                    error: false,
-                    issueId: response.data
-                };
-            })
-            .catch(function (error) {
-                console.log('error', error);
-                return {
-                    error: true
-                };
-            });
+            assigneeId,
+            description,
+            priorityId,
+            projectId,
+            title
+        }).
+            then((response) => ({
+                'error': false,
+                'issueId': response.data
+            })).
+            catch((error) => error);
 
     },
 
     'getIssues': function getIssues () {
-        var self = this;
-        return axios.get('/issue/get')
-            .then(function (response) {
-                return response.data;
-            })
-            .catch(function (error) {
-                return error;
-            });
+
+        return axios.get('/issue/get').
+            then((response) => response.data).
+            catch((error) => error);
+
     },
 
-    
-    submitComment: function (issueId, comment) {
-        var self = this;
+    'submitComment' (issueId, comment) {
+
         return axios.post('/issue/newcomment', {
-            issueId: issueId
-            , comment: comment
-        })
-            .then(function (response) {
-                return {
-                    error: false
-                };
-            })
-            .catch(function (error) {
-                return {
-                    error: true
-                };
-            });
+            comment,
+            issueId
+        }).
+            then(() => ({'error': false})).
+            catch(() => ({'error': true}));
+
     },
 
-    
-    updateAssignee: function (issueId, assigneeId) {
-        var self = this;
+
+    'updateAssignee' (issueId, assigneeId) {
+
         return axios.post('/issue/updateassignee', {
-            issueId: issueId
-            , assigneeId: assigneeId
-        })
-            .then(function (response) {
-                return {
-                    error: false
-                };
-            })
-            .catch(function (error) {
-                return {
-                    error: true
-                };
-            });
+            assigneeId,
+            issueId
+        }).
+            then(() => ({'error': false})).
+            catch(() => ({'error': true}));
+
     },
 
-    
-    updatePriority: function (issueId, priorityId) {
-        var self = this;
+
+    'updatePriority' (issueId, priorityId) {
+
         return axios.post('/issue/updatepriority', {
-            issueId: issueId
-            , priorityId: priorityId
-        })
-            .then(function (response) {
-                return {
-                    error: false
-                };
-            })
-            .catch(function (error) {
-                return {
-                    error: true
-                };
-            });
+            issueId,
+            priorityId
+        }).
+            then(() => ({'error': false})).
+            catch(() => ({'error': true}));
+
     },
 
-    updateStatus: function (issueId, statusId) {
-        var self = this;
+    'updateStatus' (issueId, statusId) {
+
         return axios.post('/issue/updatestatus', {
-            issueId: issueId
-            , status: statusId
-        })
-            .then(function (response) {
-                return {
-                    error: false
-                };
-            })
-            .catch(function (error) {
-                return {
-                    error: true
-                };
-            });
-    },
+            issueId,
+            'status': statusId
+        }).
+            then(() => ({'error': false})).
+            catch(() => ({'error': true}));
 
+    }
 
 };
 
-export { IssuesApi };
+export {IssuesApi};
