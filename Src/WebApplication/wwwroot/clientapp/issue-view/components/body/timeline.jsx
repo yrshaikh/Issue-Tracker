@@ -1,55 +1,97 @@
-﻿import React, { Component } from 'react';
-import TimelineItem from './timeline/timeline-item';
+﻿/* global require */
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import TimelineComment from './timeline/timeline-comment';
+import TimelineItem from './timeline/timeline-item';
 const axios = require('axios');
 
 class Timeline extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			issueId: props.issueId,
-			timeline: [],
-			loading: true
-		};
-	}
-	componentWillMount() {
-	}
-	componentDidMount() {
-		this.getTimeline();
-	}
-	getTimeline() {
-		var self = this;
-		axios.get(`/issue/${this.state.issueId}/timeline`)
-			.then(function (response) {
-				self.setState({ timeline: response.data });
-				self.setState({ loading: false });
-			})
-			.catch(function (error) {
-			});
-	}
-	render() {
 
-		if(this.state.loading){
-			return (
-				<div className='light-gray loading-message'>fetching history...</div>
-			)
-		}
+    constructor (props) {
 
-		var output = [];
-		var timeline = this.state.timeline;
-        for (var i = 0; i < timeline.length; i++) {
-            if(timeline[i].type === 'comment')
-                output.push(<TimelineComment key={i} data={timeline[i]} />);
-            else
-                output.push(<TimelineItem key={i} data={timeline[i]} />);
-		}
+        super(props);
+        this.state = {
+            'issueId': props.issueId,
+            'loading': true,
+            'timeline': []
+        };
 
-		return (
-			<div className='fs-14'>
-				{output}
-			</div>
-		);
-	}
+    }
+
+    static get propTypes () {
+
+        return {'issueId': PropTypes.number};
+
+    }
+
+    componentDidMount () {
+
+        this.getTimeline();
+
+    }
+
+    getTimeline () {
+
+        const that = this;
+        axios.get(`/issue/${this.state.issueId}/timeline`).
+            then((response) => {
+
+                that.setState({'timeline': response.data});
+                that.setState({'loading': false});
+
+            }).
+            catch((error) => error);
+
+    }
+
+    render () {
+
+        if (this.state.loading) {
+
+            return (
+                <div className="light-gray loading-message">
+                    fetching history...
+                </div>
+            );
+
+        }
+
+        const incrementValue = 1,
+            output = [],
+            timeline = this.state.timeline;
+
+        for (let index = 0; index < timeline.length; index += incrementValue) {
+
+            if (timeline[index].type === 'comment') {
+
+                output.push(<TimelineComment key={index}
+                    content={timeline[index].content}
+                    createdBy={timeline[index].createdBy}
+                    createdByEmail={timeline[index].createdByEmail}
+                    createdOn={timeline[index].createdOn}
+                />);
+
+            } else {
+
+                output.push(<TimelineItem key={index}
+                    content={timeline[index].content}
+                    createdBy={timeline[index].createdBy}
+                    createdByEmail={timeline[index].createdByEmail}
+                    createdOn={timeline[index].createdOn}
+                />);
+
+            }
+
+        }
+
+        return (
+            <div className="fs-14">
+                {output}
+            </div>
+        );
+
+    }
+
 }
 
 export default Timeline;
