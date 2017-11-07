@@ -49,11 +49,30 @@ class AddComment extends Component {
                     </div>
                 </div>
                 <div className="button-box">
-                    {!this.state.submitting
-                        ? <button type="button" className="btn btn-success" onClick={this.submitComment}>Comment</button>
-                        : <button type="button" id="create" className="btn" disabled="disabled">Submitting</button>}
+
                 </div>
             </div>
+        );
+
+    }
+
+    renderButtons () {
+
+        if (this.state.submitting) {
+
+            return (
+                <button type="button" id="create" className="btn"
+                    disabled="disabled">
+                    Submitting
+                </button>
+            );
+
+        }
+
+        return (
+            <button type="button" className="btn btn-success"
+                onClick={this.submitComment}>Comment
+            </button>
         );
 
     }
@@ -69,15 +88,19 @@ class AddComment extends Component {
         this.setState({'error': false});
         this.setState({'submitting': true});
 
-        const self = this;
+        const that = this;
         IssuesApi.submitComment(this.state.issueId, this.state.comment).
             then((response) => {
 
-                self.setState({"comment": ''});
-                self.setState({"submitting": false});
-                if (response.error) {self.setState({ error: true });}
-            
-});
+                that.setState({'comment': ''});
+                that.setState({'submitting': false});
+                if (response.error) {
+
+                    that.setState({'error': true});
+
+                }
+
+            });
 
     }
 
