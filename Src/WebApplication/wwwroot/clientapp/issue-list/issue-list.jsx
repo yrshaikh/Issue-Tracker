@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import IssueRow from './issue-row';
 import IssueAppliedFilters from './issue-applied-filters';
 import { IssuesApi } from './../apis/issues-api';
 
 class IssueList extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             issues: []
@@ -14,14 +14,14 @@ class IssueList extends Component {
 
     componentDidMount() {
         this.fetchIssues();
-	}
+    }
 
     render() {
         var issues = [];
-        for(var i = 0; i < this.state.issues.length; i++){
+        for (var i = 0; i < this.state.issues.length; i++) {
             issues.push(<IssueRow issue={this.state.issues[i]} key={i} />);
         }
-        return(
+        return (
             <div id='issue-list' className='row'>
                 <div className='col-md-9'>
                     <IssueAppliedFilters />
@@ -30,14 +30,14 @@ class IssueList extends Component {
             </div>
         );
     }
-    
+
     fetchIssues() {
         var self = this;
         IssuesApi.getIssues()
-		.then(function (issues) {
-            self.setState({ issues : issues });
-		});
-    }    
+            .then(function (issues) {
+                self.setState({ issues: issues });
+            });
+    }
 };
 
 export default IssueList;

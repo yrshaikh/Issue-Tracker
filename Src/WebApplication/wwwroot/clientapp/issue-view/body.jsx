@@ -1,11 +1,18 @@
 ﻿import React, {Component} from 'react';
 import IssueComment from './components/body/add-comment';
 import IssueTimeline from './components/body/timeline';
+import PropTypes from 'prop-types';
 import SelectAssignee from './../shared/components/select-assignee';
 import SelectPriority from './../shared/components/select-priority';
 import TitleDescription from './components/body/title-description';
 
 class Body extends Component {
+
+    static get propTypes () {
+
+        return {'issue': PropTypes.object};
+
+    }
 
     constructor (props) {
 
@@ -15,11 +22,12 @@ class Body extends Component {
 
     }
 
-    render() {
+    render () {
+
         return (
             <div id="issues-view" className="body">
-                <form id='issue-view-form' className='row custom-form'>
-                    <div className='col-md-9 main'>
+                <form id="issue-view-form" className="row custom-form">
+                    <div className="col-md-9 main">
                         <TitleDescription
                             issueId={this.state.issue.issueId}
                             title={this.state.issue.title}
@@ -31,7 +39,7 @@ class Body extends Component {
                         <IssueTimeline issueId={this.state.issue.issueId} />
                         <IssueComment issueId={this.state.issue.issueId} />
                     </div>
-                    <div className='col-md-3 sidebar'>
+                    <div className="col-md-3 sidebar">
                         <SelectAssignee
                             projectId={this.state.issue.projectId}
                             issueId={this.state.issue.issueId}
@@ -47,7 +55,9 @@ class Body extends Component {
                 </form>
             </div>
         );
+
     }
+
 }
 
 export default Body;
