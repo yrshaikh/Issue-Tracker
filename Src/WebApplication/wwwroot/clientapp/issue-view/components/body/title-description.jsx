@@ -1,24 +1,40 @@
 /* global require */
 import React, {Component} from 'react';
 import CommentView from './shared/comment-view';
+import PropTypes from 'prop-types';
 import PubSub from 'pubsub-js';
 const axios = require('axios');
 
 class TitleDescription extends Component {
 
+    static get propTypes () {
+
+        return {
+
+            'createdBy': PropTypes.string,
+            'createdByEmail': PropTypes.string,
+            'createdOn': PropTypes.string,
+            'description': PropTypes.description,
+            'issueId': PropTypes.number,
+            'title': PropTypes.string
+
+        };
+
+    }
+
     constructor (props) {
 
         super(props);
         this.state = {
-            'issueId': props.issueId,
-            'title': props.title,
-            'description': props.description,
             'createdBy': props.createdBy,
             'createdByEmail': props.createdByEmail,
             'createdOn': props.createdOn,
+            'description': props.description,
             'editIssue': false,
+            'error': false,
+            'issueId': props.issueId,
             'submitting': false,
-            'error': false
+            'title': props.title
         };
 
         this.cancelTitleDescriptionEdit = this.cancelTitleDescriptionEdit.
@@ -32,12 +48,6 @@ class TitleDescription extends Component {
     componentWillMount () {
 
         PubSub.subscribe('ISSUE_EDIT', this.handleIssueEdit.bind(this));
-
-    }
-
-    componentDidMount () {
-
-        this._notificationSystem = this.refs.notificationSystem;
 
     }
 
@@ -55,33 +65,19 @@ class TitleDescription extends Component {
 
     updateTitleDescription () {
 
-        const self = this;
         this.setState({'editIssue': false});
-        // Todo : move this to API.
         axios.post('/issue/updatetitledescription', {
+            'description': this.state.description,
             'issueId': this.state.issueId,
-            'title': this.state.title,
-            'description': this.state.description
+            'title': this.state.title
         }).
-            then((response) => {
+            catch(() => {
 
-                // Do nothing.
-                self._notificationSystem.addNotification({
-                    "title": `#${  self.state.issueId  } Issue Updated`,
-                    "message": 'You updated title and description of this issue.',
-                    "level": 'success',
-                    "position": 'br',
-                    "autoDismiss": 5
-                });
-            
-}).
-            catch((error) => {
+                self.setState({'submitting': false});
+                self.setState({'error': true});
+                self.setState({'editIssue': true});
 
-                self.setState({"submitting": false});
-                self.setState({"error": true});
-                self.setState({"editIssue": true});
-            
-});
+            });
         this.setState({'editIssue': false});
 
     }
@@ -101,9 +97,12 @@ class TitleDescription extends Component {
 
     render () {
 
-        const titleAndDescription = this.state.editIssue
-            ? this.renderTitleAndDescriptionInEditMode()
-            : this.renderTitleAndDescription();
+        let titleAndDescription = this.renderTitleAndDescription();
+        if (this.state.editIssue) {
+
+            titleAndDescription = this.renderTitleAndDescriptionInEditMode();
+
+        }
         const renderError = this.renderError();
         return (
             <div>
@@ -111,7 +110,6 @@ class TitleDescription extends Component {
                 <div>
                 </div>
                 {renderError}
-                <NotificationSystem ref="notificationSystem" />
             </div>
         );
 
@@ -122,7 +120,9 @@ class TitleDescription extends Component {
         return (
             <div>
                 <div className="form-group">
-                    <span className="issue-header fw-bold">{this.state.title}</span>
+                    <span className="issue-header fw-bold">
+                        {this.state.title}
+                    </span>
                 </div>
                 <CommentView
                     type="description"
@@ -138,6 +138,8 @@ class TitleDescription extends Component {
 
     renderTitleAndDescriptionInEditMode () {
 
+        // eslint-disable-next-line max-len
+        const placeholderText = 'Steps to reproduce, what you expected to see, and what you saw it instead.';
         return (
             <div>
                 <div className="form-group">
@@ -154,15 +156,23 @@ class TitleDescription extends Component {
                         className="form-control text-area"
                         name="description"
                         rows="5"
-                        placeholder="Steps to reproduce, what you expected to see, and what you saw it instead."
+                        placeholder={placeholderText}
                         value={this.state.description}
                         onChange={this.handleChange}
                     >
                     </textarea>
                 </div>
                 <div className="form-group ta-right">
-                    <button type="button" className="btn btn-default mr-10" onClick={this.cancelTitleDescriptionEdit}>Cancel</button>
-                    <button type="button" id="create" className="btn btn-success" onClick={this.updateTitleDescription}>Update Issue</button>
+                    <button type="button"
+                        className="btn btn-default mr-10"
+                        onClick={this.cancelTitleDescriptionEdit}>
+                        Cancel
+                    </button>
+                    <button type="button" id="create"
+                        className="btn btn-success"
+                        onClick={this.updateTitleDescription}>
+                        Update Issue
+                    </button>
                 </div>
             </div>
         );

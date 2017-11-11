@@ -1,73 +1,89 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import {IssuesApi} from './../../../apis/issues-api';
+import PropTypes from 'prop-types';
 import PubSub from 'pubsub-js';
-import { IssuesApi } from './../../../apis/issues-api';
-const NotificationSystem = require('react-notification-system');
 
 class CloseIssueButton extends Component {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-            issueId: this.props.issueId,
-            status: this.props.status
+    static get propTypes () {
+
+        return {
+
+            'issueId': PropTypes.number,
+            'status': PropTypes.string
+
         };
-		this.updateStatus = this.updateStatus.bind(this);
+
     }
-    
-    componentDidMount() {
-        this._notificationSystem = this.refs.notificationSystem;
+
+    constructor (props) {
+
+        super(props);
+        this.state = {
+            'issueId': this.props.issueId,
+            'status': this.props.status
+        };
+        this.updateStatus = this.updateStatus.bind(this);
+
     }
-    
+
     render () {
-		return (
+
+        return (
             <span>
-			    {this.renderActionButton()}
-				<NotificationSystem ref="notificationSystem" />
+                {this.renderActionButton()}
             </span>
-		);
+        );
+
     }
-    
-	renderActionButton(){
-		var status = this.state.status;
-		if(status === 'open'){
-			return(
-			<button className='btn btn-transparent' onClick={() => this.updateStatus(2, 'closed')}>
-				Close Issue
-			</button>);
-		}
-		else if(status === 'closed'){
-			return(
-			<button className='btn btn-transparent' onClick={() => this.updateStatus(3, 'reopened')}>
-				Re-Open Issue
-			</button>);
-		}
-		else if(status === 'reopened'){
-			return(
-			<button className='btn btn-transparent' onClick={() => this.updateStatus(2, 'closed')}>
-				Close Issue
-			</button>);
-		}
-	}
 
-	updateStatus(statusId, statusValue){        
-		if(!confirm('Are you sure you want to change the status of the issue?'))
-			return;
+    renderActionButton () {
 
-		this.setState({status: statusValue});
+        const closedStatusId = 2,
+            reopenedStatusId = 3;
+        if (this.state.status === 'open' || this.state.status === 'reopened') {
 
-		var self = this;
-		IssuesApi.updateStatus(this.state.issueId, statusId)
-		.then(function (response) {
-            PubSub.publish('ISSUE_STATUS_UPDATED', { id : statusId, value : statusValue});
-			self._notificationSystem.addNotification({
-				title: '#' + self.state.issueId + ' Issue Updated',
-				message: 'This issue has been ' + statusValue + '.',
-				level: 'success',
-				position: 'br',
-				autoDismiss: 3
-			});			
-		});
-    }	
+            return (
+                <button className="btn btn-transparent"
+                    onClick={
+                        () => this.updateStatus(closedStatusId, 'closed')
+                    }>
+                    Close Issue
+                </button>);
+
+        } else if (this.state.status === 'closed') {
+
+            return (
+                <button className="btn btn-transparent"
+                    onClick={
+                        () => this.updateStatus(reopenedStatusId, 'reopened')
+                    }>
+                    Re-Open Issue
+                </button>);
+
+        }
+
+        return '';
+
+    }
+
+    updateStatus (statusId, statusValue) {
+
+        this.setState({'status': statusValue});
+        IssuesApi.updateStatus(this.state.issueId, statusId).then(() => {
+
+            PubSub.publish(
+                'ISSUE_STATUS_UPDATED',
+                {
+                    'id': statusId,
+                    'value': statusValue
+                }
+            );
+
+        });
+
+    }
+
 }
 
 export default CloseIssueButton;

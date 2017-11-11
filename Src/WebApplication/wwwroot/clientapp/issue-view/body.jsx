@@ -1,15 +1,18 @@
-﻿import React, { Component } from 'react';
-import TitleDescription from './components/body/title-description';
-import IssueTimeline from './components/body/timeline';
+﻿import React, {Component} from 'react';
 import IssueComment from './components/body/add-comment';
-import SelectPriority from './../shared/components/select-priority';
+import IssueTimeline from './components/body/timeline';
 import SelectAssignee from './../shared/components/select-assignee';
+import SelectPriority from './../shared/components/select-priority';
+import TitleDescription from './components/body/title-description';
 
 class Body extends Component {
-    constructor(props) {
+
+    constructor (props) {
+
         super(props);
         this.state = {};
         this.state.issue = this.props.issue;
+
     }
 
     render() {
