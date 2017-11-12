@@ -53,19 +53,19 @@ class AuthorAndResolver extends Component {
 
         output.push(<GravatarWithUserInfo
             label={openedByLabel}
-            createdBy={this.state.issue.createdBy}
-            createdByEmail={this.state.issue.createdByEmail}
-            createdOn={this.state.issue.createdOn}
+            createdBy={this.state.createdBy}
+            createdByEmail={this.state.createdByEmail}
+            createdOn={this.state.createdOn}
             size={35}
             key={1} />);
 
-        if (this.state.issue.closedBy && this.state.issue.status === 'closed') {
+        if (this.state.closedBy && this.state.status === 'closed') {
 
             output.push(<GravatarWithUserInfo
                 label={closedByLabel}
-                createdBy={this.state.issue.closedBy}
-                createdByEmail={this.state.issue.closedByEmail}
-                createdOn={this.state.issue.closedOn}
+                createdBy={this.state.closedBy}
+                createdByEmail={this.state.closedByEmail}
+                createdOn={this.state.closedOn}
                 size={35}
                 key={2} />);
 

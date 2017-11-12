@@ -30,7 +30,7 @@ class CommentView extends Component {
 
         return {
 
-            'createdBy': PropTypes.number,
+            'createdBy': PropTypes.string,
             'createdByEmail': PropTypes.string,
             'createdOn': PropTypes.string,
             'description': PropTypes.string,

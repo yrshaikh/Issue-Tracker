@@ -103,10 +103,11 @@ class SelectPriority extends Component {
 
     getPrioritiesDom () {
 
-        const li = [];
+        const li = [],
+            that = this;
         Lodash.each(this.state.priorities, (priority) => {
 
-            const priorityDom = self.loadPrioritiesItem(priority);
+            const priorityDom = that.loadPrioritiesItem(priority);
             li.push(priorityDom);
 
         });

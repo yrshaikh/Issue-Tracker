@@ -23,7 +23,7 @@ class TimelineItem extends Component {
 
         return {
 
-            'content': PropTypes.number,
+            'content': PropTypes.string,
             'createdBy': PropTypes.string,
             'createdByEmail': PropTypes.string,
             'createdOn': PropTypes.string,

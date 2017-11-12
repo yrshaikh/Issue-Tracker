@@ -14,7 +14,7 @@ class TitleDescription extends Component {
             'createdBy': PropTypes.string,
             'createdByEmail': PropTypes.string,
             'createdOn': PropTypes.string,
-            'description': PropTypes.description,
+            'description': PropTypes.string,
             'issueId': PropTypes.number,
             'title': PropTypes.string
 

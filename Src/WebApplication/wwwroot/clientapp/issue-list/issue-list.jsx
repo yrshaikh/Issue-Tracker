@@ -1,43 +1,57 @@
-import React, { Component } from 'react';
-import IssueRow from './issue-row';
+import React, {Component} from 'react';
 import IssueAppliedFilters from './issue-applied-filters';
-import { IssuesApi } from './../apis/issues-api';
+import IssueRow from './issue-row';
+import {IssuesApi} from './../apis/issues-api';
 
 class IssueList extends Component {
 
-    constructor(props) {
+    constructor (props) {
+
         super(props);
-        this.state = {
-            issues: []
-        }
+        this.state = {'issues': []};
+
     }
 
-    componentDidMount() {
+    componentDidMount () {
+
         this.fetchIssues();
+
     }
 
-    render() {
-        var issues = [];
-        for (var i = 0; i < this.state.issues.length; i++) {
-            issues.push(<IssueRow issue={this.state.issues[i]} key={i} />);
+    render () {
+
+        const incrementValue = 1,
+            issues = [];
+        for (let index = 0; index < this.state.issues.length;
+            index += incrementValue) {
+
+            const issueRow =
+                <IssueRow issue={this.state.issues[index]} key={index} />;
+            issues.push(issueRow);
+
         }
         return (
-            <div id='issue-list' className='row'>
-                <div className='col-md-9'>
+            <div id="issue-list" className="row">
+                <div className="col-md-9">
                     <IssueAppliedFilters />
                     {issues}
                 </div>
             </div>
         );
+
     }
 
-    fetchIssues() {
-        var self = this;
-        IssuesApi.getIssues()
-            .then(function (issues) {
-                self.setState({ issues: issues });
-            });
+    fetchIssues () {
+
+        const that = this;
+        IssuesApi.getIssues().then((issues) => {
+
+            that.setState({issues});
+
+        });
+
     }
-};
+
+}
 
 export default IssueList;
