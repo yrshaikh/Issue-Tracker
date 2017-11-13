@@ -55,12 +55,12 @@ class CommentView extends Component {
                     <Gravatar email={this.state.createdByEmail} size={35}
                         default="retro" />
                 </div>
-                <div className="comment">
+                <div className="comment ml-5">
                     <div className="comment-head">
                         <b className="cap">
                             {this.state.createdBy}
                         </b>
-                        <span>
+                        <span className="ml-5 mr-5">
                             {message} this issue
                         </span>
                         <Moment fromNow>{this.state.createdOn}</Moment>

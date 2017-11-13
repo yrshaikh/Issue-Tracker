@@ -11,9 +11,13 @@ class Header extends Component {
 
         this.state = {'projectId': -1};
 
-        this.loadProjects();
-
         this.projectChanged = this.projectChanged.bind(this);
+
+    }
+
+    componentDidMount () {
+
+        this.loadProjects();
 
     }
 

@@ -49,7 +49,7 @@ class AddComment extends Component {
                     </div>
                 </div>
                 <div className="button-box">
-
+                    {this.renderButtons()}
                 </div>
             </div>
         );

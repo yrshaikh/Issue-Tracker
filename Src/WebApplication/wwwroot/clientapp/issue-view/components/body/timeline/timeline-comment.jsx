@@ -21,7 +21,7 @@ class TimelineComment extends Component {
         return {
 
             'content': PropTypes.string,
-            'createdBy': PropTypes.number,
+            'createdBy': PropTypes.string,
             'createdByEmail': PropTypes.string,
             'createdOn': PropTypes.string
 
