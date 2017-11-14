@@ -5,6 +5,17 @@ import PropTypes from 'prop-types';
 
 class AddComment extends Component {
 
+    static get propTypes () {
+
+        return {
+
+            'commentAddedCallback': PropTypes.func,
+            'issueId': PropTypes.number
+
+        };
+
+    }
+
     constructor (props) {
 
         super(props);
@@ -18,12 +29,6 @@ class AddComment extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.submitComment = this.submitComment.bind(this);
-
-    }
-
-    static get propTypes () {
-
-        return {'issueId': PropTypes.number};
 
     }
 
@@ -87,6 +92,12 @@ class AddComment extends Component {
 
         this.setState({'error': false});
         this.setState({'submitting': true});
+        return;
+
+        // todo continue;
+
+        this.props.commentAddedCallback(this.state.comment);
+        return;
 
         const that = this;
         IssuesApi.submitComment(this.state.issueId, this.state.comment).

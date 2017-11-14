@@ -92,6 +92,14 @@ class Timeline extends Component {
 
     }
 
+    updateTimeline (data) {
+
+        const timeline = this.state.timeline;
+        timeline.push(data);
+        this.setState('timeline', timeline);
+
+    }
+
 }
 
 export default Timeline;

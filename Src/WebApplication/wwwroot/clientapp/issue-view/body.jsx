@@ -1,5 +1,5 @@
 ﻿import React, {Component} from 'react';
-import IssueComment from './components/body/add-comment';
+import AddComment from './components/body/add-comment';
 import IssueTimeline from './components/body/timeline';
 import PropTypes from 'prop-types';
 import SelectAssignee from './../shared/components/select-assignee';
@@ -36,8 +36,18 @@ class Body extends Component {
                             createdByEmail={this.state.issue.createdByEmail}
                             createdOn={this.state.issue.createdOn}
                         />
-                        <IssueTimeline issueId={this.state.issue.issueId} />
-                        <IssueComment issueId={this.state.issue.issueId} />
+                        <IssueTimeline
+                            issueId={this.state.issue.issueId}
+                            ref={(ref) => {
+
+                                this.timeline = ref;
+
+                            }}
+                        />
+                        <AddComment
+                            issueId={this.state.issue.issueId}
+                            commentAddedCallback={this.commentAddedCallback}
+                        />
                     </div>
                     <div className="col-md-3 sidebar">
                         <SelectAssignee
@@ -55,6 +65,19 @@ class Body extends Component {
                 </form>
             </div>
         );
+
+    }
+
+    commentAddedCallback (comment) {
+
+        const data = {
+            'content': comment,
+            'createdBy': 'You',
+            'createdByEmail': 'dummy@dummy.com',
+            'createdOn': new Date(),
+            'type': 'comment'
+        };
+        this.timeline.updateTimeline(data);
 
     }
 
