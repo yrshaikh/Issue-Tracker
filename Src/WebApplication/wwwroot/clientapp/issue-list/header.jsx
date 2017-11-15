@@ -1,9 +1,7 @@
-﻿import React, {Component} from 'react';
+﻿import React, { Component } from 'react';
 
 class Header extends Component {
-
-    render () {
-
+    render() {
         return (
             <div id="hero-issues" className="hero-banner">
                 <div className="hero-banner-inner issue-list">
@@ -15,9 +13,7 @@ class Header extends Component {
                 </div>
             </div>
         );
-
     }
-
 }
 
 export default Header;

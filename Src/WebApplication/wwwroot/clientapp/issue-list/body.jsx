@@ -1,10 +1,7 @@
 ﻿import React, { Component } from 'react';
-import IssueList from './issue-list';
+import IssueList from './issue-list.jsx';
 
 class Body extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <div id="issues" className="body">

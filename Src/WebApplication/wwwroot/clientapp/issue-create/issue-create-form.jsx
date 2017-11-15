@@ -1,50 +1,44 @@
-import React, {Component} from 'react';
-import Description from './body-components/description';
-import ErrorMessage from './body-components/error-message';
-import {IssuesApi} from './../apis/issues-api';
-import LoadingButtons from './body-components/loading-buttons';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SelectAssignee from './../shared/components/select-assignee';
-import SelectPriority from './../shared/components/select-priority';
-import SubmitButtons from './body-components/submit-buttons';
-import Title from './body-components/title';
-import {getSlug} from './../shared/utils';
+import Description from './body-components/description.jsx';
+import ErrorMessage from './body-components/error-message.jsx';
+import { IssuesApi } from './../apis/issues-api.jsx';
+import LoadingButtons from './body-components/loading-buttons.jsx';
+import SelectAssignee from './../shared/components/select-assignee.jsx';
+import SelectPriority from './../shared/components/select-priority.jsx';
+import SubmitButtons from './body-components/submit-buttons.jsx';
+import Title from './body-components/title.jsx';
+import { getSlug } from './../shared/utils.jsx';
 
 class IssueCreateForm extends Component {
-
-    constructor (props) {
-
+    constructor(props) {
         super(props);
         this.state = {
-            'assignees': [],
-            'error': false,
-            'issue': {
-                'assigneeId': null,
-                'assigneeName': 'Unassigned',
-                'description': '',
-                'priorityId': 3,
-                'priorityName': 'Normal',
-                'projectId': this.props.defaultProjectId,
-                'title': ''
+            assignees: [],
+            error: false,
+            issue: {
+                assigneeId: null,
+                assigneeName: 'Unassigned',
+                description: '',
+                priorityId: 3,
+                priorityName: 'Normal',
+                projectId: this.props.defaultProjectId,
+                title: '',
             },
-            'loading': false,
-            'priorities': []
+            loading: false,
+            priorities: [],
         };
         this.handleChange = this.handleChange.bind(this);
         this.updatePriorityHandler = this.updatePriorityHandler.bind(this);
         this.updateAssigneeHandler = this.updateAssigneeHandler.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-
     }
 
-    static get propTypes () {
-
-        return {'defaultProjectId': PropTypes.number};
-
+    static get propTypes() {
+        return { defaultProjectId: PropTypes.number };
     }
 
-    render () {
-
+    render() {
         return (
             <form id="issue-create-form" className="row custom-form">
                 <Title title={this.state.issue.title}
@@ -70,101 +64,75 @@ class IssueCreateForm extends Component {
                 {this.renderErrorMessage()}
             </form>
         );
-
     }
 
-    renderButtons () {
-
+    renderButtons() {
         if (this.state.loading) {
-
             return (
                 <LoadingButtons />
             );
-
         }
 
         return (
             <SubmitButtons save={this.handleSubmit} />
         );
-
     }
 
-    renderErrorMessage () {
-
+    renderErrorMessage() {
         if (this.state.error) {
-
             return (
                 <ErrorMessage />
             );
-
         }
 
         return '';
-
     }
 
-    handleProjectChange (event, projectId) {
-
+    handleProjectChange(event, projectId) {
         this.handleChange('projectId', projectId);
-
     }
 
-    handleChange (name, value) {
-
+    handleChange(name, value) {
         const issue = this.state.issue;
         issue[name] = value;
-        this.setState({issue});
-
+        this.setState({ issue });
     }
 
-    handleSubmit () {
-
-        this.setState({'loading': true});
-        this.setState({'error': false});
-        const slug = getSlug(this.state.issue.title),
-            that = this;
+    handleSubmit() {
+        this.setState({ loading: true });
+        this.setState({ error: false });
+        const slug = getSlug(this.state.issue.title);
+        const that = this;
         IssuesApi.createIssue(
             this.state.issue.projectId,
             this.state.issue.title,
             this.state.issue.description,
             this.state.issue.priorityId,
-            this.state.issue.assigneeId
-        ).
-            then((response) => {
-
-                that.setState({'loading': false});
+            this.state.issue.assigneeId,
+        )
+            .then((response) => {
+                that.setState({ loading: false });
                 if (response.error) {
-
-                    that.setState({'error': true});
-
+                    that.setState({ error: true });
                 } else {
-
                     window.location.href = `/issue/${response.issueId}/${slug}`;
-
                 }
-
             });
-
     }
 
-    updateAssigneeHandler (id, value) {
-
+    updateAssigneeHandler(id, value) {
         const issue = this.state.issue;
         issue.assigneeId = id;
         issue.assigneeName = value;
-        this.setState({issue});
-
+        this.setState({ issue });
     }
 
-    updatePriorityHandler (id, value) {
-
+    updatePriorityHandler(id, value) {
         const issue = this.state.issue;
         issue.priorityId = id;
         issue.priorityName = value;
-        this.setState({issue});
-
+        this.setState({ issue });
     }
-
 }
 
 export default IssueCreateForm;

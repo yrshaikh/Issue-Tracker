@@ -1,34 +1,24 @@
-import React, {Component} from 'react';
-import IssueAppliedFilters from './issue-applied-filters';
-import IssueRow from './issue-row';
-import {IssuesApi} from './../apis/issues-api';
+import React, { Component } from 'react';
+import IssueAppliedFilters from './issue-applied-filters.jsx';
+import IssueRow from './issue-row.jsx';
+import { IssuesApi } from './../apis/issues-api.jsx';
 
 class IssueList extends Component {
-
-    constructor (props) {
-
+    constructor(props) {
         super(props);
-        this.state = {'issues': []};
-
+        this.state = { issues: [] };
     }
 
-    componentDidMount () {
-
+    componentDidMount() {
         this.fetchIssues();
-
     }
 
-    render () {
-
-        const incrementValue = 1,
-            issues = [];
-        for (let index = 0; index < this.state.issues.length;
-            index += incrementValue) {
-
+    render() {
+        const issues = [];
+        for (let index = 0; index < this.state.issues.length; index += 1) {
             const issueRow =
                 <IssueRow issue={this.state.issues[index]} key={index} />;
             issues.push(issueRow);
-
         }
         return (
             <div id="issue-list" className="row">
@@ -38,20 +28,14 @@ class IssueList extends Component {
                 </div>
             </div>
         );
-
     }
 
-    fetchIssues () {
-
+    fetchIssues() {
         const that = this;
         IssuesApi.getIssues().then((issues) => {
-
-            that.setState({issues});
-
+            that.setState({ issues });
         });
-
     }
-
 }
 
 export default IssueList;

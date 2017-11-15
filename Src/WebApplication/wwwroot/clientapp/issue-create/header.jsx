@@ -1,57 +1,40 @@
-﻿import React, {Component} from 'react';
-// eslint-disable-next-line no-undef
-const Select = require('react-select/dist/react-select.js');
+﻿import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
 
+const Select = require('react-select/dist/react-select.js');
+
 class Header extends Component {
-
-    constructor (props) {
-
+    constructor(props) {
         super(props);
 
-        this.state = {'projectId': -1};
+        this.state = { projectId: -1 };
 
         this.projectChanged = this.projectChanged.bind(this);
-
     }
 
-    componentDidMount () {
-
+    componentDidMount() {
         this.loadProjects();
-
     }
 
-    loadProjects () {
-
+    loadProjects() {
         this.projects = [];
-        const first = 0,
-            incrementValue = 1;
-        for (let index = 0; index < window.app.projects.length;
-            index += incrementValue) {
-
-            if (index === first) {
-
-                this.setState({'projectId': window.app.defaultProjectId});
-
+        for (let index = 0; index < window.app.projects.length; index += 1) {
+            if (index === 0) {
+                this.setState({ projectId: window.app.defaultProjectId });
             }
             this.projects.push({
-                'label': window.app.projects[index].Name,
-                'value': window.app.projects[index].Id
+                label: window.app.projects[index].Name,
+                value: window.app.projects[index].Id,
             });
-
         }
-
     }
 
-    projectChanged (selection) {
-
-        this.setState({'projectId': selection.value});
+    projectChanged(selection) {
+        this.setState({ projectId: selection.value });
         PubSub.publish('PROJECT_CHANGED', selection.value);
-
     }
 
-    render () {
-
+    render() {
         return (
             <div id="hero-issues-create"
                 className="hero-banner hero-banner-issue-create">
@@ -83,9 +66,7 @@ class Header extends Component {
                 </div>
             </div>
         );
-
     }
-
 }
 
 export default Header;

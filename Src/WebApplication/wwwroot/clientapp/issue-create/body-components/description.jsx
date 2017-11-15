@@ -1,26 +1,20 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class Description extends Component {
-
-    constructor (props) {
-
+    constructor(props) {
         super(props);
-        this.state = {'description': ''};
+        this.state = { description: '' };
         this.handleChange = this.handleChange.bind(this);
-
     }
 
-    handleChange (event) {
-
+    handleChange(event) {
         const value = event.target.value;
-        this.setState({'description': value});
+        this.setState({ description: value });
         // eslint-disable-next-line react/prop-types
         this.props.change('description', value);
-
     }
 
-    render () {
-
+    render() {
         // eslint-disable-next-line max-len
         const placeholderText = 'Steps to reproduce, what you expected to see, and what you saw it instead.';
         return (
@@ -38,9 +32,7 @@ class Description extends Component {
                 </div>
             </div>
         );
-
     }
-
 }
 
 export default Description;

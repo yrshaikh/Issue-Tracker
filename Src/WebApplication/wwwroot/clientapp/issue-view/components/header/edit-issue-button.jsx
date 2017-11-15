@@ -1,10 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PubSub from 'pubsub-js';
 
 class EditIssueButton extends Component {
-
-    render () {
-
+    render() {
         return (
             <span>
                 <button className="btn btn-transparent"
@@ -13,15 +11,11 @@ class EditIssueButton extends Component {
                 </button>
             </span>
         );
-
     }
 
-    editIssue () {
-
+    editIssue() {
         PubSub.publish('ISSUE_EDIT');
-
     }
-
 }
 
 export default EditIssueButton;

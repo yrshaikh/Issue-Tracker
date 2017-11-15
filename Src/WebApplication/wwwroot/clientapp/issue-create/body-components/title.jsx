@@ -1,31 +1,23 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class Title extends Component {
-
-    constructor (props) {
-
+    constructor(props) {
         super(props);
-        this.state = {'title': ''};
+        this.state = { title: '' };
         this.handleChange = this.handleChange.bind(this);
-
     }
 
-    handleChange (event) {
-
+    handleChange(event) {
         const value = event.target.value;
-        this.setState({'title': value});
+        this.setState({ title: value });
         // eslint-disable-next-line react/prop-types
         this.props.change('title', value);
-
     }
 
-    render () {
-
+    render() {
         let titleErrorMessage = '';
         if (!this.state.title) {
-
             titleErrorMessage = 'Title should atleast be of 10 characters';
-
         }
 
         return (
@@ -47,9 +39,7 @@ class Title extends Component {
                 </div>
             </div>
         );
-
     }
-
 }
 
 export default Title;

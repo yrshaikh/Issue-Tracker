@@ -1,9 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class ErrorMessage extends Component {
-
-    render () {
-
+    render() {
         return (
             <div className="col-md-9 mt-10">
                 <div className="alert alert-danger" role="alert">
@@ -11,9 +9,7 @@ class ErrorMessage extends Component {
                 </div>
             </div>
         );
-
     }
-
 }
 
 export default ErrorMessage;

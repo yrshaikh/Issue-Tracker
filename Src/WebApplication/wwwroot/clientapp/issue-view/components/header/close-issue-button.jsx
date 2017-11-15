@@ -1,48 +1,37 @@
-import React, {Component} from 'react';
-import {IssuesApi} from './../../../apis/issues-api';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import PubSub from 'pubsub-js';
+import { IssuesApi } from './../../../apis/issues-api.jsx';
 
 class CloseIssueButton extends Component {
-
-    static get propTypes () {
-
+    static get propTypes() {
         return {
-
-            'issueId': PropTypes.number,
-            'status': PropTypes.string
-
+            issueId: PropTypes.number,
+            status: PropTypes.string,
         };
-
     }
 
-    constructor (props) {
-
+    constructor(props) {
         super(props);
         this.state = {
-            'issueId': this.props.issueId,
-            'status': this.props.status
+            issueId: this.props.issueId,
+            status: this.props.status,
         };
         this.updateStatus = this.updateStatus.bind(this);
-
     }
 
-    render () {
-
+    render() {
         return (
             <span>
                 {this.renderActionButton()}
             </span>
         );
-
     }
 
-    renderActionButton () {
-
-        const closedStatusId = 2,
-            reopenedStatusId = 3;
+    renderActionButton() {
+        const closedStatusId = 2;
+        const reopenedStatusId = 3;
         if (this.state.status === 'open' || this.state.status === 'reopened') {
-
             return (
                 <button className="btn btn-transparent"
                     onClick={
@@ -50,9 +39,7 @@ class CloseIssueButton extends Component {
                     }>
                     Close Issue
                 </button>);
-
         } else if (this.state.status === 'closed') {
-
             return (
                 <button className="btn btn-transparent"
                     onClick={
@@ -60,30 +47,23 @@ class CloseIssueButton extends Component {
                     }>
                     Re-Open Issue
                 </button>);
-
         }
 
         return '';
-
     }
 
-    updateStatus (statusId, statusValue) {
-
-        this.setState({'status': statusValue});
+    updateStatus(statusId, statusValue) {
+        this.setState({ status: statusValue });
         IssuesApi.updateStatus(this.state.issueId, statusId).then(() => {
-
             PubSub.publish(
                 'ISSUE_STATUS_UPDATED',
                 {
-                    'id': statusId,
-                    'value': statusValue
-                }
+                    id: statusId,
+                    value: statusValue,
+                },
             );
-
         });
-
     }
-
 }
 
 export default CloseIssueButton;

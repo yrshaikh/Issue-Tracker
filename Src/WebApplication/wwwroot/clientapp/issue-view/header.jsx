@@ -1,39 +1,30 @@
-﻿import React, {Component} from 'react';
-import AuthorAndResolver from './components/header/author-and-resolver';
-import CloseIssueButton from './components/header/close-issue-button';
-import EditIssueButton from './components/header/edit-issue-button';
-import IssueStatus from './../shared/issue-status';
+﻿import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import PubSub from 'pubsub-js';
-
+import AuthorAndResolver from './components/header/author-and-resolver.jsx';
+import CloseIssueButton from './components/header/close-issue-button.jsx';
+import EditIssueButton from './components/header/edit-issue-button.jsx';
+import IssueStatus from './../shared/issue-status.jsx';
 
 class Header extends Component {
-
-    static get propTypes () {
-
-        return {'issue': PropTypes.object};
-
+    static get propTypes() {
+        return { issue: PropTypes.object };
     }
 
-    constructor (props) {
-
+    constructor(props) {
         super(props);
         this.state = {};
         this.state.issue = this.props.issue;
-
     }
 
-    componentWillMount () {
-
+    componentWillMount() {
         PubSub.subscribe(
             'ISSUE_STATUS_UPDATED',
-            this.handleIssueStatusUpdate.bind(this)
+            this.handleIssueStatusUpdate.bind(this),
         );
-
     }
 
-    render () {
-
+    render() {
         return (
             <div id="hero-issues-view"
                 className="hero-banner hero-banner-issue-view">
@@ -66,17 +57,13 @@ class Header extends Component {
                 </div>
             </div>
         );
-
     }
 
-    handleIssueStatusUpdate (msg, data) {
-
+    handleIssueStatusUpdate(msg, data) {
         const updatedIssue = this.state.issue;
         updatedIssue.status = data.value;
-        this.setState({'issue': updatedIssue});
-
+        this.setState({ issue: updatedIssue });
     }
-
 }
 
 export default Header;

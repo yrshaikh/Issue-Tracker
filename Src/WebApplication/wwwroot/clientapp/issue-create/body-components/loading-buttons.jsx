@@ -1,9 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class LoadingButtons extends Component {
-
-    render () {
-
+    render() {
         return (
             <div className="col-md-12">
                 <button type="button" id="create"
@@ -12,9 +10,7 @@ class LoadingButtons extends Component {
                 </button>
             </div>
         );
-
     }
-
 }
 
 export default LoadingButtons;

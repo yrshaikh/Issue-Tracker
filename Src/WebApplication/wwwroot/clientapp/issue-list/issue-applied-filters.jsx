@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+
 class IssueAppliedFilters extends Component {
-
-    render () {
-
+    render() {
         return (
             <div className="row issue-row filter">
                 <a href="#open" className="active">
@@ -13,9 +12,7 @@ class IssueAppliedFilters extends Component {
                 </a>
             </div>
         );
-
     }
-
 }
 
 export default IssueAppliedFilters;

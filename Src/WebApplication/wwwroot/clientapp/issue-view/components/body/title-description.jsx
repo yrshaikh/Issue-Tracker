@@ -1,107 +1,84 @@
-/* global require */
-import React, {Component} from 'react';
-import CommentView from './shared/comment-view';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import PubSub from 'pubsub-js';
+import CommentView from './shared/comment-view.jsx';
+
 const axios = require('axios');
 
 class TitleDescription extends Component {
-
-    static get propTypes () {
-
+    static get propTypes() {
         return {
-
-            'createdBy': PropTypes.string,
-            'createdByEmail': PropTypes.string,
-            'createdOn': PropTypes.string,
-            'description': PropTypes.string,
-            'issueId': PropTypes.number,
-            'title': PropTypes.string
-
+            createdBy: PropTypes.string,
+            createdByEmail: PropTypes.string,
+            createdOn: PropTypes.string,
+            description: PropTypes.string,
+            issueId: PropTypes.number,
+            title: PropTypes.string,
         };
-
     }
 
-    constructor (props) {
-
+    constructor(props) {
         super(props);
         this.state = {
-            'createdBy': props.createdBy,
-            'createdByEmail': props.createdByEmail,
-            'createdOn': props.createdOn,
-            'description': props.description,
-            'editIssue': false,
-            'error': false,
-            'issueId': props.issueId,
-            'submitting': false,
-            'title': props.title
+            createdBy: props.createdBy,
+            createdByEmail: props.createdByEmail,
+            createdOn: props.createdOn,
+            description: props.description,
+            editIssue: false,
+            error: false,
+            issueId: props.issueId,
+            submitting: false,
+            title: props.title,
         };
 
-        this.cancelTitleDescriptionEdit = this.cancelTitleDescriptionEdit.
-            bind(this);
+        this.cancelTitleDescriptionEdit = this.cancelTitleDescriptionEdit
+            .bind(this);
         this.updateTitleDescription = this.updateTitleDescription.bind(this);
         this.onDescriptionChange = this.onDescriptionChange.bind(this);
         this.handleChange = this.handleChange.bind(this);
-
     }
 
-    componentWillMount () {
-
+    componentWillMount() {
         PubSub.subscribe('ISSUE_EDIT', this.handleIssueEdit.bind(this));
-
     }
 
-    handleIssueEdit () {
-
-        this.setState({'editIssue': true});
-
+    handleIssueEdit() {
+        this.setState({ editIssue: true });
     }
 
-    cancelTitleDescriptionEdit () {
-
-        this.setState({'editIssue': false});
-
+    cancelTitleDescriptionEdit() {
+        this.setState({ editIssue: false });
     }
 
-    updateTitleDescription () {
-
-        this.setState({'editIssue': false});
+    updateTitleDescription() {
+        this.setState({ editIssue: false });
+        const that = this;
         axios.post('/issue/updatetitledescription', {
-            'description': this.state.description,
-            'issueId': this.state.issueId,
-            'title': this.state.title
-        }).
-            catch(() => {
-
-                self.setState({'submitting': false});
-                self.setState({'error': true});
-                self.setState({'editIssue': true});
-
+            description: this.state.description,
+            issueId: this.state.issueId,
+            title: this.state.title,
+        })
+            .catch(() => {
+                that.setState({ submitting: false });
+                that.setState({ error: true });
+                that.setState({ editIssue: true });
             });
-        this.setState({'editIssue': false});
-
+        this.setState({ editIssue: false });
     }
 
-    handleChange (event) {
-
+    handleChange(event) {
         const name = event.target.name;
-        this.setState({[name]: event.target.value});
-
+        this.setState({ [name]: event.target.value });
     }
 
-    onDescriptionChange (editorState) {
-
-        this.setState({editorState});
-
+    onDescriptionChange(editorState) {
+        this.setState({ editorState });
     }
 
-    render () {
-
+    render() {
         let titleAndDescription = this.renderTitleAndDescription();
         if (this.state.editIssue) {
-
             titleAndDescription = this.renderTitleAndDescriptionInEditMode();
-
         }
         const renderError = this.renderError();
         return (
@@ -112,11 +89,9 @@ class TitleDescription extends Component {
                 {renderError}
             </div>
         );
-
     }
 
-    renderTitleAndDescription () {
-
+    renderTitleAndDescription() {
         return (
             <div>
                 <div className="form-group">
@@ -133,11 +108,9 @@ class TitleDescription extends Component {
                 />
             </div>
         );
-
     }
 
-    renderTitleAndDescriptionInEditMode () {
-
+    renderTitleAndDescriptionInEditMode() {
         // eslint-disable-next-line max-len
         const placeholderText = 'Steps to reproduce, what you expected to see, and what you saw it instead.';
         return (
@@ -176,13 +149,10 @@ class TitleDescription extends Component {
                 </div>
             </div>
         );
-
     }
 
-    renderError () {
-
+    renderError() {
         if (this.state.error) {
-
             return (
                 <div className="mt-10">
                     <div className="alert alert-danger" role="alert">
@@ -190,12 +160,9 @@ class TitleDescription extends Component {
                     </div>
                 </div>
             );
-
         }
         return '';
-
     }
-
 }
 
 export default TitleDescription;

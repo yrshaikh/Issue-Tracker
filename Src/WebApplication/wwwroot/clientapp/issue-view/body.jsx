@@ -1,29 +1,23 @@
-﻿import React, {Component} from 'react';
-import AddComment from './components/body/add-comment';
-import IssueTimeline from './components/body/timeline';
+﻿import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SelectAssignee from './../shared/components/select-assignee';
-import SelectPriority from './../shared/components/select-priority';
-import TitleDescription from './components/body/title-description';
+import AddComment from './components/body/add-comment.jsx';
+import IssueTimeline from './components/body/timeline.jsx';
+import SelectAssignee from './../shared/components/select-assignee.jsx';
+import SelectPriority from './../shared/components/select-priority.jsx';
+import TitleDescription from './components/body/title-description.jsx';
 
 class Body extends Component {
-
-    static get propTypes () {
-
-        return {'issue': PropTypes.object};
-
+    static get propTypes() {
+        return { issue: PropTypes.object };
     }
 
-    constructor (props) {
-
+    constructor(props) {
         super(props);
         this.state = {};
         this.state.issue = this.props.issue;
-
     }
 
-    render () {
-
+    render() {
         return (
             <div id="issues-view" className="body">
                 <form id="issue-view-form" className="row custom-form">
@@ -39,9 +33,7 @@ class Body extends Component {
                         <IssueTimeline
                             issueId={this.state.issue.issueId}
                             ref={(ref) => {
-
                                 this.timeline = ref;
-
                             }}
                         />
                         <AddComment
@@ -65,22 +57,18 @@ class Body extends Component {
                 </form>
             </div>
         );
-
     }
 
-    commentAddedCallback (comment) {
-
+    commentAddedCallback(comment) {
         const data = {
-            'content': comment,
-            'createdBy': 'You',
-            'createdByEmail': 'dummy@dummy.com',
-            'createdOn': new Date(),
-            'type': 'comment'
+            content: comment,
+            createdBy: 'You',
+            createdByEmail: 'dummy@dummy.com',
+            createdOn: new Date(),
+            type: 'comment',
         };
         this.timeline.updateTimeline(data);
-
     }
-
 }
 
 export default Body;
