@@ -1,24 +1,20 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Gravatar from 'react-gravatar';
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 
 class GravatarWithUserInfo extends Component {
-
-    static get propTypes () {
-
+    static get propTypes() {
         return {
-            'createdBy': PropTypes.string,
-            'createdByEmail': PropTypes.string,
-            'createdOn': PropTypes.string,
-            'label': PropTypes.string,
-            'size': PropTypes.number
+            createdBy: PropTypes.string,
+            createdByEmail: PropTypes.string,
+            createdOn: PropTypes.string,
+            label: PropTypes.string,
+            size: PropTypes.number,
         };
-
     }
 
-    render () {
-
+    render() {
         return (
             <div className="gravy">
                 <div className="fs-14 title-case fw-bold">
@@ -27,8 +23,8 @@ class GravatarWithUserInfo extends Component {
                 <div>
                     <div className="image">
                         <Gravatar
-                            email={this.props.createdByEmail} 
-                            size={this.props.size} 
+                            email={this.props.createdByEmail}
+                            size={this.props.size}
                             default="retro" />
                     </div>
                     <div className="summary">
@@ -42,9 +38,7 @@ class GravatarWithUserInfo extends Component {
                 </div>
             </div>
         );
-
     }
-
 }
 
 export default GravatarWithUserInfo;

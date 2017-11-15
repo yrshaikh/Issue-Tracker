@@ -1,39 +1,31 @@
-﻿import React, {Component} from 'react';
+﻿import React, { Component } from 'react';
 import Gravatar from 'react-gravatar';
-import {IssuesApi} from './../../../apis/issues-api';
 import PropTypes from 'prop-types';
+import { IssuesApi } from './../../../apis/issues-api';
+
 
 class AddComment extends Component {
-
-    static get propTypes () {
-
+    static get propTypes() {
         return {
-
-            'commentAddedCallback': PropTypes.func,
-            'issueId': PropTypes.number
-
+            commentAddedCallback: PropTypes.func,
+            issueId: PropTypes.number,
         };
-
     }
 
-    constructor (props) {
-
+    constructor(props) {
         super(props);
         this.state = {
-            'authorEmail': 'hahah.lololol@outlook.com',
-            'comment': '',
-            'error': false,
-            'issueId': props.issueId,
-            'submitting': false
+            authorEmail: 'hahah.lololol@outlook.com',
+            comment: '',
+            error: false,
+            issueId: props.issueId,
+            submitting: false,
         };
-
         this.handleChange = this.handleChange.bind(this);
         this.submitComment = this.submitComment.bind(this);
-
     }
 
-    render () {
-
+    render() {
         return (
             <div id="add-comment-box">
                 <div className="comment-box">
@@ -58,20 +50,16 @@ class AddComment extends Component {
                 </div>
             </div>
         );
-
     }
 
-    renderButtons () {
-
+    renderButtons() {
         if (this.state.submitting) {
-
             return (
                 <button type="button" id="create" className="btn"
                     disabled="disabled">
                     Submitting
                 </button>
             );
-
         }
 
         return (
@@ -79,42 +67,32 @@ class AddComment extends Component {
                 onClick={this.submitComment}>Comment
             </button>
         );
-
     }
 
-    handleChange (event) {
-
-        this.setState({'comment': event.target.value});
-
+    handleChange(event) {
+        this.setState({ comment: event.target.value });
     }
 
-    submitComment () {
-
-        this.setState({'error': false});
-        this.setState({'submitting': true});
-        return;
-
-        // todo continue;
-
+    submitComment() {
+        this.setState({ error: false });
+        this.setState({ submitting: true });
+        // return;
+        /*
         this.props.commentAddedCallback(this.state.comment);
-        return;
-
         const that = this;
         IssuesApi.submitComment(this.state.issueId, this.state.comment).
             then((response) => {
 
-                that.setState({'comment': ''});
-                that.setState({'submitting': false});
+                that.setState({ 'comment': '' });
+                that.setState({ 'submitting': false });
                 if (response.error) {
 
-                    that.setState({'error': true});
+                    that.setState({ 'error': true });
 
                 }
 
-            });
-
+            }); */
     }
-
 }
 
 export default AddComment;

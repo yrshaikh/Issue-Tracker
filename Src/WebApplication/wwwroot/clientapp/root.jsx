@@ -1,35 +1,29 @@
-﻿import IssueCreateEditApp from './issue-create-app';
-import IssueListApp from './issue-list-app';
-import IssueViewApp from './issue-view-app';
-
-import React from 'react';
+﻿import React from 'react';
 import ReactDOM from 'react-dom';
 
-if (document.getElementById('app-issue-list-root')) {
+import IssueCreateEditApp from './issue-create-app.jsx';
+import IssueListApp from './issue-list-app.jsx';
+import IssueViewApp from './issue-view-app.jsx';
 
+if (document.getElementById('app-issue-list-root')) {
     ReactDOM.render(
         <IssueListApp />,
-        document.getElementById('app-issue-list-root')
+        document.getElementById('app-issue-list-root'),
     );
-
 }
 
 
 if (document.getElementById('app-issue-create-root')) {
-
     ReactDOM.render(
         <IssueCreateEditApp />,
-        document.getElementById('app-issue-create-root')
+        document.getElementById('app-issue-create-root'),
     );
-
 }
 
 
 if (document.getElementById('app-issue-view-root')) {
-
     ReactDOM.render(
         <IssueViewApp />,
-        document.getElementById('app-issue-view-root')
+        document.getElementById('app-issue-view-root'),
     );
-
 }

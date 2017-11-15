@@ -1,28 +1,22 @@
-﻿import React, {Component} from 'react';
-import Body from './issue-create/body';
-import Header from './issue-create/header';
+﻿import React, { Component } from 'react';
+import Body from './issue-create/body.jsx';
+import Header from './issue-create/header.jsx';
 
 
 class IssueCreateApp extends Component {
-
-    constructor (props) {
-
+    constructor(props) {
         super(props);
-        this.state = {'defaultProjectId': window.app.defaultProjectId};
-
+        this.state = { defaultProjectId: window.app.defaultProjectId };
     }
 
-    render () {
-
+    render() {
         return (
             <div>
                 <Header />
                 <Body defaultProjectId={this.state.defaultProjectId} />
             </div>
         );
-
     }
-
 }
 
 export default IssueCreateApp;
