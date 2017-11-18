@@ -36,4 +36,4 @@ const ProjectsApi = {
 
 };
 
-export default { ProjectsApi };
+export { ProjectsApi };

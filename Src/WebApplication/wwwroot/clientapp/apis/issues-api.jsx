@@ -1,9 +1,7 @@
-﻿/* eslint one-var: 0 */
-/* global require */
-const axios = require('axios');
+﻿const axios = require('axios');
 
 const IssuesApi = {
-    // eslint-disable-next-line max-params, max-len
+
     createIssue: function createIssue(projectId, title, description, priorityId, assigneeId) {
         return axios.post('/issue/new', {
             assigneeId,
@@ -65,4 +63,4 @@ const IssuesApi = {
 
 };
 
-export default { IssuesApi };
+export { IssuesApi };
