@@ -1,10 +1,12 @@
 ﻿import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AddComment from './components/body/add-comment.jsx';
-import IssueTimeline from './components/body/timeline.jsx';
+import Timeline from './components/body/timeline.jsx';
 import SelectAssignee from './../shared/components/select-assignee.jsx';
 import SelectPriority from './../shared/components/select-priority.jsx';
 import TitleDescription from './components/body/title-description.jsx';
+
+const axios = require('axios');
 
 class Body extends Component {
     static get propTypes() {
@@ -13,8 +15,15 @@ class Body extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
-        this.state.issue = this.props.issue;
+        this.state = {
+            issue: this.props.issue,
+            timeline: [],
+            timelineLoading: true,
+        };
+    }
+
+    componentDidMount() {
+        this.loadTimelineData();
     }
 
     render() {
@@ -30,15 +39,13 @@ class Body extends Component {
                             createdByEmail={this.state.issue.createdByEmail}
                             createdOn={this.state.issue.createdOn}
                         />
-                        <IssueTimeline
-                            issueId={this.state.issue.issueId}
-                            ref={(ref) => {
-                                this.timeline = ref;
-                            }}
+                        <Timeline
+                            timeline={this.state.timeline}
+                            loading={this.state.timelineLoading}
                         />
                         <AddComment
                             issueId={this.state.issue.issueId}
-                            commentAddedCallback={this.commentAddedCallback}
+                            commentAddedCallback={this.commentAddedCallback.bind(this)}
                         />
                     </div>
                     <div className="col-md-3 sidebar">
@@ -59,15 +66,28 @@ class Body extends Component {
         );
     }
 
+    loadTimelineData() {
+        const that = this;
+        axios.get(`/issue/${this.state.issueId}/timeline`)
+            .then((response) => {
+                that.setState({ timeline: response.data });
+                that.setState({ timelineLoading: false });
+            })
+            .catch(error => error);
+    }
+
     commentAddedCallback(comment) {
-        const data = {
+        const newComment = {
             content: comment,
             createdBy: 'You',
             createdByEmail: 'dummy@dummy.com',
             createdOn: new Date(),
             type: 'comment',
         };
-        this.timeline.updateTimeline(data);
+        const timeline = this.state.timeline;
+        timeline.push(newComment);
+        this.setState(timeline);
+        console.log("new timeline", this.state.timeline);
     }
 }
 

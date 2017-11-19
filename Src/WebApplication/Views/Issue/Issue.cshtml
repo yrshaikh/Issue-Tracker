@@ -3,18 +3,22 @@
 @model object
 
 @{
-	ViewBag.Title = "Dashboard";
-	Layout = "~/Views/Shared/Layout.cshtml";
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 @{
-    var issue = (SingleIssueViewModel) ViewBag.Issue;
+    var issue = (SingleIssueViewModel)ViewBag.Issue;
 }
 
 <script type="text/javascript">
-	window.app = {};
-	window.app.issue = {}
+    window.app = {};
+    window.app.issue = {}
     window.app.issue = @(Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(issue)));
+    window.app.loggedInUser = {
+        fullName: "@Html.Raw(ViewBag.LoggedInUserFullName)",
+        emailAddress: "@Html.Raw(ViewBag.LoggedInUserEmailAddress)"
+    }
 </script>
 <div id="app-issue-view-root"></div>
 @Html.Partial("_ReactJs")

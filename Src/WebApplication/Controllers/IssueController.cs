@@ -1,4 +1,6 @@
-﻿using System.Net;
+﻿using System.Linq;
+using System.Net;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Services.Issue;
@@ -44,6 +46,9 @@ namespace WebApplication.Controllers
         {
             SingleIssueViewModel issue = _issueService.Get(id);
             ViewBag.Issue = issue;
+
+            ViewBag.LoggedInUserFullName = User.Claims.First(x => x.Type == ClaimTypes.Name).Value;
+            ViewBag.LoggedInUserEmailAddress = User.Claims.First(x => x.Type == ClaimTypes.Email).Value;
             return View();
         }
 

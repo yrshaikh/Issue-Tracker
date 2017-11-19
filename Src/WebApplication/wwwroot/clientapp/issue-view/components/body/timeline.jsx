@@ -3,34 +3,26 @@ import PropTypes from 'prop-types';
 import TimelineComment from './timeline/timeline-comment.jsx';
 import TimelineItem from './timeline/timeline-item.jsx';
 
-const axios = require('axios');
-
 class Timeline extends Component {
+    static get propTypes() {
+        return {
+            loading: PropTypes.bool,
+            timeline: PropTypes.array,
+        };
+    }
+
     constructor(props) {
         super(props);
         this.state = {
-            issueId: props.issueId,
             loading: true,
             timeline: [],
         };
     }
 
-    static get propTypes() {
-        return { issueId: PropTypes.number };
-    }
-
-    componentDidMount() {
-        this.getTimeline();
-    }
-
-    getTimeline() {
-        const that = this;
-        axios.get(`/issue/${this.state.issueId}/timeline`)
-            .then((response) => {
-                that.setState({ timeline: response.data });
-                that.setState({ loading: false });
-            })
-            .catch(error => error);
+    componentWillReceiveProps(nextProps) {
+        console.log('something', nextProps);
+        this.setState({ loading: nextProps.loading });
+        this.setState({ timeline: nextProps.timeline });
     }
 
     render() {
@@ -68,12 +60,6 @@ class Timeline extends Component {
                 {output}
             </div>
         );
-    }
-
-    updateTimeline(data) {
-        const timeline = this.state.timeline;
-        timeline.push(data);
-        this.setState('timeline', timeline);
     }
 }
 

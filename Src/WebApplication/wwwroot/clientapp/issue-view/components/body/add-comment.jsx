@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import Gravatar from 'react-gravatar';
 import PropTypes from 'prop-types';
-import { IssuesApi } from './../../../apis/issues-api';
+import { IssuesApi } from './../../../apis/issues-api.jsx';
 
 
 class AddComment extends Component {
@@ -76,9 +76,9 @@ class AddComment extends Component {
     submitComment() {
         this.setState({ error: false });
         this.setState({ submitting: true });
+        this.props.commentAddedCallback(this.state.comment);
         // return;
         /*
-        this.props.commentAddedCallback(this.state.comment);
         const that = this;
         IssuesApi.submitComment(this.state.issueId, this.state.comment).
             then((response) => {
