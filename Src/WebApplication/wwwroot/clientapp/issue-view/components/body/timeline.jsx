@@ -20,7 +20,6 @@ class Timeline extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('something', nextProps);
         this.setState({ loading: nextProps.loading });
         this.setState({ timeline: nextProps.timeline });
     }

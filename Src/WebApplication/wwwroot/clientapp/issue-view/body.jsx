@@ -68,7 +68,7 @@ class Body extends Component {
 
     loadTimelineData() {
         const that = this;
-        axios.get(`/issue/${this.state.issueId}/timeline`)
+        axios.get(`/issue/${this.state.issue.issueId}/timeline`)
             .then((response) => {
                 that.setState({ timeline: response.data });
                 that.setState({ timelineLoading: false });
