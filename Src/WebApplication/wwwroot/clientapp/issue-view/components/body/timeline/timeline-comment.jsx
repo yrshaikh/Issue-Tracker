@@ -1,36 +1,28 @@
-﻿import React, {Component} from 'react';
-import CommentView from './../shared/comment-view';
+﻿import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import CommentView from './../shared/comment-view.jsx';
 
 class TimelineComment extends Component {
-
-    constructor (props) {
-
+    constructor(props) {
         super(props);
         this.state = {
-            'content': props.content,
-            'createdBy': props.createdBy,
-            'createdByEmail': props.createdByEmail,
-            'createdOn': props.createdOn
+            content: props.content,
+            createdBy: props.createdBy,
+            createdByEmail: props.createdByEmail,
+            createdOn: props.createdOn,
         };
-
     }
 
-    static get propTypes () {
-
+    static get propTypes() {
         return {
-
-            'content': PropTypes.string,
-            'createdBy': PropTypes.string,
-            'createdByEmail': PropTypes.string,
-            'createdOn': PropTypes.string
-
+            content: PropTypes.string,
+            createdBy: PropTypes.string,
+            createdByEmail: PropTypes.string,
+            createdOn: PropTypes.string,
         };
-
     }
 
-    render () {
-
+    render() {
         return (
             <CommentView
                 description={this.state.content}
@@ -39,9 +31,7 @@ class TimelineComment extends Component {
                 createdOn={this.state.createdOn}
             />
         );
-
     }
-
 }
 
 export default TimelineComment;

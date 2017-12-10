@@ -77,21 +77,16 @@ class AddComment extends Component {
         this.setState({ error: false });
         this.setState({ submitting: true });
         this.props.commentAddedCallback(this.state.comment);
-        // return;
-        /*
+
         const that = this;
-        IssuesApi.submitComment(this.state.issueId, this.state.comment).
-            then((response) => {
-
-                that.setState({ 'comment': '' });
-                that.setState({ 'submitting': false });
+        IssuesApi.submitComment(this.state.issueId, this.state.comment)
+            .then((response) => {
+                that.setState({ comment: '' });
+                that.setState({ submitting: false });
                 if (response.error) {
-
-                    that.setState({ 'error': true });
-
+                    that.setState({ error: true });
                 }
-
-            }); */
+            });
     }
 }
 

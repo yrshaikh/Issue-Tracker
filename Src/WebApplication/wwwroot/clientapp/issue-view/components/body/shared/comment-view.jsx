@@ -25,14 +25,12 @@ class CommentView extends Component {
 
     static get propTypes() {
         return {
-
             createdBy: PropTypes.string,
             createdByEmail: PropTypes.string,
             createdOn: PropTypes.string,
             description: PropTypes.string,
             title: PropTypes.string,
             type: PropTypes.string,
-
         };
     }
 
