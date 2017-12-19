@@ -1,6 +1,11 @@
 import lodash from 'lodash';
 
 class Filters {
+    getQueryParams() {
+        const filterObj = this.get();
+        const queryParams = `?status=${filterObj.status}`;
+        return queryParams;
+    }
     get() {
         const search = window.location.search.substr(1).split('&');
         const queryParams = {};
@@ -11,6 +16,12 @@ class Filters {
         return {
             status: queryParams.status ? queryParams.status : 'open',
         };
+    }
+    getOpenIssues() {
+        return '?status=open';
+    }
+    getClosedIssues() {
+        return '?status=closed';
     }
 }
 

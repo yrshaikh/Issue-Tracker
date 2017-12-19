@@ -35,8 +35,8 @@ class IssueList extends Component {
 
     fetchIssues() {
         const that = this;
-        const filterObj = filters.get();
-        IssuesApi.getIssues(filterObj).then((issues) => {
+        const queryParams = filters.getQueryParams();
+        IssuesApi.getIssues(queryParams).then((issues) => {
             that.setState({ issues });
         });
     }

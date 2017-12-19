@@ -17,8 +17,8 @@ const IssuesApi = {
             .catch(error => error);
     },
 
-    getIssues: function getIssues() {
-        return axios.get('/issue/get')
+    getIssues: function getIssues(queryParams) {
+        return axios.get(`/issue/get${queryParams}`)
             .then(response => response.data)
             .catch(error => error);
     },

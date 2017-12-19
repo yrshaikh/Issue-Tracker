@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Repository.Issue;
 using Repository.Models.Issue;
-using System.Linq;
 using Service.ViewModels.Issue;
+using Service.ViewModels.Constants;
 
 namespace Service.Services.Issue
 {
     public class IssueService : IIssueService
     {
-	    private readonly IIssueRepository _issueRepository;
+        private readonly IIssueRepository _issueRepository;
         private readonly IMapper _mapper;
 
         public IssueService(IIssueRepository issueRepository, IMapper mapper)
@@ -20,10 +19,10 @@ namespace Service.Services.Issue
             _mapper = mapper;
         }
 
-	    public int Create(CreateIssueViewModel issue, int userId)
-	    {
-		    return _issueRepository.Create(issue.ProjectId, issue.Title, issue.Description, issue.PriorityId, issue.AssigneeId, userId);
-	    }
+        public int Create(CreateIssueViewModel issue, int userId)
+        {
+            return _issueRepository.Create(issue.ProjectId, issue.Title, issue.Description, issue.PriorityId, issue.AssigneeId, userId);
+        }
 
         public SingleIssueViewModel Get(int issueId)
         {
@@ -62,10 +61,24 @@ namespace Service.Services.Issue
             _issueRepository.NewComment(comment.IssueId, comment.Comment, userId);
         }
 
-        public List<IssueSummaryViewModel> GetByFilters(int userId)
+        public List<IssueSummaryViewModel> GetByFilters(int userId, string status)
         {
-            var issues = _issueRepository.GetByFilters(userId);
+            var issues = _issueRepository.GetByFilters(userId, (int)GetIssueStatuses(status));
             return _mapper.Map<List<IssueSummaryModel>, List<IssueSummaryViewModel>>(issues).ToList();
+        }
+
+        private IssueStatuses GetIssueStatuses(string status)
+        {
+            IssueStatuses issueStatus = IssueStatuses.Open;
+            if(status == "open")
+            {
+                issueStatus = IssueStatuses.Open;
+            }
+            if (status == "closed")
+            {
+                issueStatus = IssueStatuses.Closed  ;
+            }
+            return issueStatus;
         }
     }
 }
