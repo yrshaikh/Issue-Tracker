@@ -28,9 +28,9 @@ class IssueRow extends Component {
                     </a>
                     <span className="subtitle col-md-12 light-gray fs-12">
                         <span>#{issue.issueId} opened</span>
+                        <span className='ml-2'>by</span>
+                        <span className="ml-2 cap mr-2">{issue.createdBy}</span>
                         <Moment fromNow>{issue.createdOn}</Moment>
-                        <span>by</span>
-                        <span className="cap">{issue.createdBy}</span>
                     </span>
                 </div>
             </div>

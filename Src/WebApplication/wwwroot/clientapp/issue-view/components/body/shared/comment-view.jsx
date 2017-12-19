@@ -50,7 +50,7 @@ class CommentView extends Component {
                         <b className="cap">
                             {this.state.createdBy}
                         </b>
-                        <span className="ml-5 mr-5">
+                        <span className="ml-2 mr-2">
                             {message} this issue
                         </span>
                         <Moment fromNow>{this.state.createdOn}</Moment>

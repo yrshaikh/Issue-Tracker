@@ -48,7 +48,9 @@ class SelectPriority extends Component {
                         Priority
                         <i className="fa fa-cog pull-right" />
                     </label>
-                    <span className="cap fs-16">{this.state.priorityName}</span>
+                    <span className="cap fs-14">
+                        {this.state.priorityName}
+                    </span>
                 </div>
                 <SlidingPane
                     className="assignee-sliding-pane"

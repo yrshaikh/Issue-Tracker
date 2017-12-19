@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import IssueAppliedFilters from './issue-applied-filters.jsx';
 import IssueRow from './issue-row.jsx';
+import Filters from './../shared/filters.jsx';
 import { IssuesApi } from './../apis/issues-api.jsx';
+
+const filters = new Filters();
 
 class IssueList extends Component {
     constructor(props) {
@@ -32,7 +35,8 @@ class IssueList extends Component {
 
     fetchIssues() {
         const that = this;
-        IssuesApi.getIssues().then((issues) => {
+        const filterObj = filters.get();
+        IssuesApi.getIssues(filterObj).then((issues) => {
             that.setState({ issues });
         });
     }

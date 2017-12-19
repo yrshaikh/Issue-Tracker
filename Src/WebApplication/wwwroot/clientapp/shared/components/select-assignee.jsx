@@ -56,7 +56,7 @@ class SelectAssignee extends Component {
                         <i className="fa fa-cog pull-right" />
                     </label>
                     <span>
-                        <span className="cap fs-16">
+                        <span className="cap fs-14">
                             {this.state.assigneeName}
                         </span>
                     </span>
