@@ -100,7 +100,7 @@ class SelectPriority extends Component {
     loadPrioritiesItem(priority) {
         let liClassName = '';
         let liFaCheckClassName = 'fa fa-check done ';
-        if (priority.value === this.state.selectedAssigneeId) {
+        if (priority.value === this.state.selectedPriorityId) {
             liClassName = 'active';
         } else {
             liFaCheckClassName += 'done-hidden';
