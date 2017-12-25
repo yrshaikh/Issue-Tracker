@@ -7,6 +7,7 @@ class IssueViewApp extends Component {
         super(props);
 
         const issue = window.app.issue;
+        const currentUser = window.app.loggedInUser;
 
         this.status = {
             issue: {
@@ -27,6 +28,10 @@ class IssueViewApp extends Component {
                 status: issue.Status,
                 title: issue.Title,
             },
+            currentUser: {
+                emailAddress: currentUser.emailAddress,
+                fullName: currentUser.fullName,
+            },
         };
     }
 
@@ -34,7 +39,10 @@ class IssueViewApp extends Component {
         return (
             <div>
                 <Header issue={this.status.issue} />
-                <Body issue={this.status.issue} />
+                <Body
+                    currentUser={this.status.currentUser}
+                    issue={this.status.issue}
+                />
             </div>
         );
     }

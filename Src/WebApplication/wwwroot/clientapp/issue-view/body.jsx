@@ -10,12 +10,16 @@ const axios = require('axios');
 
 class Body extends Component {
     static get propTypes() {
-        return { issue: PropTypes.object };
+        return {
+            currentUser: PropTypes.object,
+            issue: PropTypes.object,
+        };
     }
 
     constructor(props) {
         super(props);
         this.state = {
+            currentUser: this.props.currentUser,
             issue: this.props.issue,
             timeline: [],
             timelineLoading: true,
@@ -44,6 +48,7 @@ class Body extends Component {
                             loading={this.state.timelineLoading}
                         />
                         <AddComment
+                            currentUser={this.state.currentUser}
                             issueId={this.state.issue.issueId}
                             commentAddedCallback={this.commentAddedCallback.bind(this)}
                         />

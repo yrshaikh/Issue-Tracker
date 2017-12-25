@@ -7,6 +7,7 @@ import { IssuesApi } from './../../../apis/issues-api.jsx';
 class AddComment extends Component {
     static get propTypes() {
         return {
+            currentUser: PropTypes.object,
             commentAddedCallback: PropTypes.func,
             issueId: PropTypes.number,
         };
@@ -15,7 +16,7 @@ class AddComment extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            authorEmail: 'hahah.lololol@outlook.com',
+            authorEmail: this.props.currentUser.emailAddress,
             comment: '',
             error: false,
             issueId: props.issueId,
