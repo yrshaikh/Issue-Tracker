@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import PubSub from 'pubsub-js';
 import AddComment from './components/body/add-comment.jsx';
 import Timeline from './components/body/timeline.jsx';
 import SelectAssignee from './../shared/components/select-assignee.jsx';
@@ -92,7 +93,7 @@ class Body extends Component {
         const timeline = this.state.timeline;
         timeline.push(newComment);
         this.setState(timeline);
-        console.log("new timeline", this.state.timeline);
+        PubSub.publish('NOTIFY', 'A new comment was added');
     }
 }
 

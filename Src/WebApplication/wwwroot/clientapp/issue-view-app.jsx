@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import Body from './issue-view/body.jsx';
 import Header from './issue-view/header.jsx';
+import Notification from './shared/components/notification.jsx';
 
 class IssueViewApp extends Component {
     constructor(props) {
@@ -39,6 +40,7 @@ class IssueViewApp extends Component {
         return (
             <div>
                 <Header issue={this.status.issue} />
+                <Notification />
                 <Body
                     currentUser={this.status.currentUser}
                     issue={this.status.issue}

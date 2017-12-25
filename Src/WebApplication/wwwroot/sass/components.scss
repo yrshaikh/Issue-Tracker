@@ -8,6 +8,21 @@
     color: #444;
 }
 
+.notification{
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    background: #3d845a;
+    top: 40px;
+    padding: 8px;
+    z-index: 11;
+    color: #fff;
+    opacity: 0.9;
+}
+.notification.error{
+    background: #7c3f3c;
+}
+
 .form-control {
     border: 1.8px solid;
     border-color: #ccc #ccc #ccc #ccc;

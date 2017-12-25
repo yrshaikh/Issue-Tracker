@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import Body from './issue-create/body.jsx';
 import Header from './issue-create/header.jsx';
+import Notification from './shared/components/notification.jsx';
 
 
 class IssueCreateApp extends Component {
@@ -13,6 +14,7 @@ class IssueCreateApp extends Component {
         return (
             <div>
                 <Header />
+                <Notification />
                 <Body defaultProjectId={this.state.defaultProjectId} />
             </div>
         );

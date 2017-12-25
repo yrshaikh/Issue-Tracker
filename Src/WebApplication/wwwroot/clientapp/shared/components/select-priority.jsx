@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import Lodash from 'lodash';
 import PropTypes from 'prop-types';
+import PubSub from 'pubsub-js';
 import SlidingPane from 'react-sliding-pane';
 
 import { IssuesApi } from './../../apis/issues-api.jsx';
@@ -151,6 +152,9 @@ class SelectPriority extends Component {
                 that.setState({ isPaneOpen: false });
                 that.setState({ priorityId: updatedPriorityId });
                 that.setState({ priorityName: updatedPriorityName });
+            })
+            .then(() => {
+                PubSub.publish('NOTIFY', 'You updated priority of this issue.');
             });
     }
 }

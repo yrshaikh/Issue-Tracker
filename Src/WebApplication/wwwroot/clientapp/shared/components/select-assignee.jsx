@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import Lodash from 'lodash';
 import PropTypes from 'prop-types';
+import PubSub from 'pubsub-js';
 import SlidingPane from 'react-sliding-pane';
 
 import { IssuesApi } from './../../apis/issues-api.jsx';
@@ -167,6 +168,9 @@ class SelectAssignee extends Component {
                 that.setState({ isPaneOpen: false });
                 that.setState({ assigneeId: updateAssigneeId });
                 that.setState({ assigneeName: updateAssigneeName });
+            })
+            .then(() => {
+                PubSub.publish('NOTIFY', 'You changed assignee of this issue.');
             });
     }
 }
