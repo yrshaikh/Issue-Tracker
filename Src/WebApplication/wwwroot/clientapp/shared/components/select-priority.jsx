@@ -69,9 +69,9 @@ class SelectPriority extends Component {
                             {this.getPrioritiesDom()}
                         </ul>
                         <div>
-                            <button className="btn btn-success btn-big mr-10"
+                            <button className="btn btn-success mr-10"
                                 onClick={() => this.update()}>Update</button>
-                            <button className="btn btn-default btn-big"
+                            <button className="btn btn-default"
                                 onClick={() => this.cancel()}>Cancel</button>
                         </div>
                     </div>

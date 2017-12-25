@@ -1,31 +1,35 @@
 ﻿.btn {
-	cursor: pointer;
-	font-size: 14px;
-	line-height: 17px;
-	letter-spacing: .02em;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: .02em;
     border-radius: 4px;
 
     background-color: #eff3f6;
     border: 1px solid rgba(27,31,35,0.2);
 
-	.btn-transparent {
-		color: #fff;
-	}
+    &.btn-transparent {
+        background-color: #eff3f6;
+        color: #777;
+        &:hover{
+            background-color: #fff;
+        }
+    }
 }
 .btn-success, .badge-success {
-	background-color: #5C9232;
+    background-color: #5C9232;
 }
 .btn-danger, .badge-danger {
-	background-color: #CE3B2B;
+    background-color: #CE3B2B;
 }
 .btn-success {
-	border: 0px;
+    border: 0px;
 }
 
 .btn-big {
-	padding: 15px 30px
+    padding: 15px 30px
 }
 
 .btn-outline-dark:hover {
-	color:#fff;
+    color:#fff;
 }

@@ -25,11 +25,7 @@
     float: right; }
     .hero-banner-inner .hero-banner-buttons .btn {
       margin-left: 15px;
-      padding: 8px 12px;
-      background: #9FA6AB;
-      color: #fff; }
-    .hero-banner-inner .hero-banner-buttons .btn:hover {
-      background: rgba(0, 0, 0, 0.5); }
+      padding: 8px 12px; }
 
 #hero-issues-view .hero-banner-inner {
   display: block;
