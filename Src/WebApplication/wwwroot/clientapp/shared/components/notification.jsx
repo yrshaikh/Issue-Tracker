@@ -7,16 +7,18 @@ class Notification extends Component {
 
         this.state = {
             message: '',
-            type: 'success',
+            classes: 'success',
             visible: false,
         };
     }
 
     componentWillMount() {
-        this.token = PubSub.subscribe('NOTIFY', (topic, message, type) => {
+        this.token = PubSub.subscribe('NOTIFY', (topic, object) => {
+            const message = object.message;
+            const classes = object.classes;
             this.setState({ message });
-            if (type && (type === 'success' || type === 'error')) {
-                this.setState({ type });
+            if (classes && (classes === 'success' || classes === 'error')) {
+                this.setState({ classes });
             }
             this.setState({ visible: true });
             const that = this;
@@ -36,8 +38,9 @@ class Notification extends Component {
 
     render() {
         if (this.state.visible) {
+            const notificationStyle = `notification ${this.state.classes}`;
             return (
-                <div className="notification">
+                <div className={notificationStyle}>
                     {this.state.message}
                 </div>
             );

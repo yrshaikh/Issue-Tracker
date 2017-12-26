@@ -154,7 +154,7 @@ class SelectPriority extends Component {
                 that.setState({ priorityName: updatedPriorityName });
             })
             .then(() => {
-                PubSub.publish('NOTIFY', 'You updated priority of this issue.');
+                PubSub.publish('NOTIFY', { message: 'You updated priority of this issue.' });
             });
     }
 }

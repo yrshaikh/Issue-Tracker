@@ -94,12 +94,12 @@ class Body extends Component {
         const timeline = this.state.timeline;
         timeline.push(newComment);
         this.setState(timeline);
-        PubSub.publish('NOTIFY', 'A new comment was added');
+        PubSub.publish('NOTIFY', { message: 'A new comment was added' });
     }
 
     triggerNotificationIfNewlyCreated() {
         if (window.location.search.indexOf('?new') !== -1) {
-            PubSub.publish('NOTIFY', 'A new issue has been created.');
+            PubSub.publish('NOTIFY', { message: 'A new issue has been created.' });
         }
     }
 }

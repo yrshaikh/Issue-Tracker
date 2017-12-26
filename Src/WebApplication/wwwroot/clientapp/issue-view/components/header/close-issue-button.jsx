@@ -53,6 +53,9 @@ class CloseIssueButton extends Component {
     }
 
     updateStatus(statusId, statusValue) {
+        if (!confirm('Are you sure you want to continue with this operation?')) {
+            return;
+        }
         this.setState({ status: statusValue });
         IssuesApi.updateStatus(this.state.issueId, statusId).then(() => {
             PubSub.publish(
@@ -62,6 +65,13 @@ class CloseIssueButton extends Component {
                     value: statusValue,
                 },
             );
+        }).then(() => {
+            const message = `You just ${statusValue} this issue`;
+            let classes = 'success';
+            if (statusValue === 'closed') {
+                classes = 'error';
+            }
+            PubSub.publish('NOTIFY', { message, classes });
         });
     }
 }

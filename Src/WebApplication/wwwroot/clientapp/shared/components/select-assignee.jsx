@@ -170,7 +170,7 @@ class SelectAssignee extends Component {
                 that.setState({ assigneeName: updateAssigneeName });
             })
             .then(() => {
-                PubSub.publish('NOTIFY', 'You changed assignee of this issue.');
+                PubSub.publish('NOTIFY', { message: 'You changed assignee of this issue.' });
             });
     }
 }
