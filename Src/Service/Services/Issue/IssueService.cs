@@ -76,7 +76,7 @@ namespace Service.Services.Issue
             }
             if (status == "closed")
             {
-                issueStatus = IssueStatuses.Closed  ;
+                issueStatus = IssueStatuses.Closed;
             }
             return issueStatus;
         }

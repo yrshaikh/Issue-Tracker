@@ -29,6 +29,7 @@ class Body extends Component {
 
     componentDidMount() {
         this.loadTimelineData();
+        this.triggerNotificationIfNewlyCreated();
     }
 
     render() {
@@ -94,6 +95,12 @@ class Body extends Component {
         timeline.push(newComment);
         this.setState(timeline);
         PubSub.publish('NOTIFY', 'A new comment was added');
+    }
+
+    triggerNotificationIfNewlyCreated() {
+        if (window.location.search.indexOf('?new') !== -1) {
+            PubSub.publish('NOTIFY', 'A new issue has been created.');
+        }
     }
 }
 

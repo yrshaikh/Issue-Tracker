@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+﻿import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Description from './body-components/description.jsx';
 import ErrorMessage from './body-components/error-message.jsx';
@@ -115,7 +115,7 @@ class IssueCreateForm extends Component {
                 if (response.error) {
                     that.setState({ error: true });
                 } else {
-                    window.location.href = `/issue/${response.issueId}/${slug}`;
+                    window.location.href = `/issue/${response.issueId}/${slug}?new`;
                 }
             });
     }
