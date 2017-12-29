@@ -17,20 +17,10 @@ class IssueRow extends Component {
             <div className="row issue-row">
                 <div className="col-md-12 row">
                     <a href={url} className="title dark-gray col-md-12">
-                        <span className="title-text">{issue.title}</span>
-                        <span className="title-assignee"
-                            title={issue.createdByEmail}>
-                            <Gravatar email={issue.createdByEmail} size={16}
-                                default="retro" />
-                            <span className="light-gray ml-10 fs-14">
-                                <i className="fa fa-comment-o" /> 3</span>
-                        </span>
+                        <span>#{issue.issueId}. {issue.title}</span>
                     </a>
-                    <span className="subtitle col-md-12 light-gray fs-12">
-                        <span>#{issue.issueId} opened</span>
-                        <span className='ml-2'>by</span>
-                        <span className="ml-2 cap mr-2">{issue.createdBy}</span>
-                        <Moment fromNow>{issue.createdOn}</Moment>
+                    <span className="col-md-12 subtitle light-gray">
+                        opened <Moment fromNow>{issue.createdOn}</Moment> by {issue.createdBy}
                     </span>
                 </div>
             </div>

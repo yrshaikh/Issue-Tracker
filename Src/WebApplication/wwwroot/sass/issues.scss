@@ -66,13 +66,15 @@ $border-color: #e1e4e8;
 
         .title {
             font-size: 16px;
-            .title-text {
-                width: 90%;
-                display: inline-block;
+            font-weight: bold;
+            &:hover {
+                color:#0366d6;
             }
         }
 
         .subtitle {
+            color:#586069;
+            text-transform: lowercase;
         }
 
         .status {
@@ -109,9 +111,6 @@ $border-color: #e1e4e8;
         .separator {
             margin-left: 10px;
             margin-right: 10px;
-        }
-
-        .fa {
         }
     }
 }
