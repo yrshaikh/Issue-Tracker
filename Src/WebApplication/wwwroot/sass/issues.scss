@@ -100,7 +100,10 @@ $border-color: #e1e4e8;
             color: #24292e;
         }
         .inactive {
-            color: #999;
+            color: #aaa;
+            .fa {
+                color: #aaa;
+            }
         }
 
         .separator {

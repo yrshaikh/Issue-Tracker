@@ -64,7 +64,9 @@
     #issue-list .filter .active {
       color: #24292e; }
     #issue-list .filter .inactive {
-      color: #999; }
+      color: #aaa; }
+      #issue-list .filter .inactive .fa {
+        color: #aaa; }
     #issue-list .filter .separator {
       margin-left: 10px;
       margin-right: 10px; }

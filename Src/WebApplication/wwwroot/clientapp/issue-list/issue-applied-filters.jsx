@@ -10,8 +10,8 @@ class IssueAppliedFilters extends Component {
             openCount: PropTypes.number,
             closedCount: PropTypes.number,
         };
-    }   
-    
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -27,13 +27,16 @@ class IssueAppliedFilters extends Component {
     }
 
     render() {
+        const openTabClasses = filters.getStatus() === 'open' ? 'active' : 'inactive';
+        let closedTabClasses = 'ml-15 item';
+        closedTabClasses = filters.getStatus() === 'closed' ? `${closedTabClasses} active` : `${closedTabClasses} inactive`;
         return (
             <div className="row issue-row filter">
-                <a href={filters.getOpenIssues()} className="active">
+                <a href={filters.getOpenIssues()} className={openTabClasses}>
                     <i className="fa fa-exclamation-triangle mr-5" /> {this.props.openCount} Open
                 </a>
-                <a href={filters.getClosedIssues()} className="ml-15 item inactive">
-                    <i className="fa fa-check light-gray mr-5" /> {this.props.closedCount} Closed
+                <a href={filters.getClosedIssues()} className={closedTabClasses}>
+                    <i className="fa fa-check mr-5" /> {this.props.closedCount} Closed
                 </a>
             </div>
         );
