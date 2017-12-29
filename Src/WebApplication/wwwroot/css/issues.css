@@ -121,7 +121,8 @@
   font-size: 14px; }
   .sidebar .sidebar-item {
     width: 80%;
-    height: 80px;
+    height: 60px;
+    margin-bottom: 10px;
     border-bottom: 1px solid #e9e9e9; }
     .sidebar .sidebar-item .hover-link:hover {
       color: #0056d3;
