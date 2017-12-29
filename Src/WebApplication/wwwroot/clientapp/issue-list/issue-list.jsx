@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import IssueAppliedFilters from './issue-applied-filters.jsx';
 import IssueRow from './issue-row.jsx';
 import Filters from './../shared/filters.jsx';
@@ -9,7 +10,18 @@ const filters = new Filters();
 class IssueList extends Component {
     constructor(props) {
         super(props);
-        this.state = { issues: [] };
+        this.state = {
+            openCount: 0,
+            closedCount: 0,
+            issues: [],
+        };
+    }
+
+    static get propTypes() {
+        return {
+            openCount: PropTypes.number,
+            closedCount: PropTypes.number,
+        };
     }
 
     componentDidMount() {
@@ -26,7 +38,10 @@ class IssueList extends Component {
         return (
             <div id="issue-list" className="row">
                 <div className="col-md-9">
-                    <IssueAppliedFilters />
+                    <IssueAppliedFilters
+                        openCount={this.state.openCount}
+                        closedCount={this.state.closedCount}
+                    />
                     {issues}
                 </div>
             </div>
@@ -38,6 +53,10 @@ class IssueList extends Component {
         const queryParams = filters.getQueryParams();
         IssuesApi.getIssues(queryParams).then((issues) => {
             that.setState({ issues });
+            if (issues && issues.length > 0 && issues[0]) {
+                that.setState({ openCount: issues[0].openCount });
+                that.setState({ closedCount: issues[0].closedCount });
+            }
         });
     }
 }

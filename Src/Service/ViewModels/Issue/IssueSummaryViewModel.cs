@@ -9,5 +9,7 @@ namespace Service.ViewModels.Issue
         public string CreatedBy { get; set; }
         public string CreatedOn { get; set; }
         public string Status { get; set; }
+        public int OpenCount { get; set; }
+        public int ClosedCount { get; set; }
     }
 }

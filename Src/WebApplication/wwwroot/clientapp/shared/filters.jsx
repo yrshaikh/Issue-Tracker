@@ -23,6 +23,10 @@ class Filters {
     getClosedIssues() {
         return '?status=closed';
     }
+    getStatus() {
+        const filterObj = this.get();
+        return filterObj.status;
+    }
 }
 
 export default Filters;

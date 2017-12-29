@@ -9,5 +9,7 @@ namespace Repository.Models.Issue
         public string CreatedBy { get; set; }
         public DateTime CreatedOn { get; set; }
         public string Status { get; set; }
+        public int OpenCount { get; set; }
+        public int ClosedCount { get; set; }
     }
 }

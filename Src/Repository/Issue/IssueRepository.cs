@@ -74,7 +74,9 @@ namespace Repository.Issue
                             Title = (string)dataReader["title"],
                             CreatedOn = (DateTime)dataReader["created_on"],
                             CreatedBy = (string)dataReader["created_by"],
-                            Status = (string)dataReader["status"]
+                            Status = (string)dataReader["status"],
+                            OpenCount = (int)dataReader["open_count"],
+                            ClosedCount = (int)dataReader["closed_count"]
                         };
                         issues.Add(issue);
                     }
