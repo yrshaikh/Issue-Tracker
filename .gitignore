@@ -13,3 +13,6 @@ Database/Database.dbmdl
 Database/Database.jfm
 /Src/WebApplication/*.user
 /Src/WebApplication/_PublishedWebsites
+/Src/WebApplication/wwwroot/.vs/slnx.sqlite
+/Src/WebApplication/wwwroot/.vs/VSWorkspaceState.json
+/Src/WebApplication/wwwroot/.vs/wwwroot/v15/.suo
