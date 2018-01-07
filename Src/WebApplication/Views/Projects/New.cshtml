@@ -4,48 +4,5 @@
 	ViewBag.Title = "Create a new project";
 	Layout = "~/Views/Shared/Layout.cshtml";
 }
-
-<div class="hero-banner">
-	<div class="hero-banner-inner">
-		<div class="hero-banner-title">
-			<h1>Setup a New Project</h1>
-			<span class="hero-banner-message">Lorem ispum dispum blah bleh.</span>
-		</div>
-	</div>
-</div>
-
-<div id="projects" class="body row">
-	<form class="col-sm-6" action="/projects/new" method="POST">
-		<div class="form-group row">
-			<label for="name" class="col-sm-12 col-form-label">Project Name</label>
-			<div class="col-sm-12">
-				<input type="text" class="form-control text-box" id="name" name="name" placeholder="My Awesome Project">
-			</div>
-			<div class="col-sm-12 help">
-				Keep it short and sweet.
-			</div>
-		</div>
-		<div class="form-group row">
-			<div class="offset-sm-3 col-sm-9">
-				<button type="submit" class="btn btn-success">Create this Project</button>
-				<a href="/projects" class="btn btn-outline-dark">Cancel</a>
-			</div>
-		</div>
-	</form>
-	<div class="col-sm-6 prompt">
-		@if (!Html.ViewData.ModelState.IsValid)
-		{
-			<h5 class="text-danger">Whoops! Please correct these errors to continue</h5>
-			<div class="text-danger fw-500">
-				@Html.ValidationSummary()
-			</div>
-		}
-		else
-		{
-			<h5>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet... </h5>
-			<p>
-				Donec efficitur risus sit amet leo cursus, vitae ornare nisi feugiat. Suspendisse iaculis elit ut porttitor bibendum. Donec id lectus enim. Etiam pellentesque dolor ipsum, et congue lacus congue a. Ut pellentesque congue mollis. Duis ac neque orci. Duis lacinia, enim eget porttitor viverra, turpis turpis laoreet odio, ac hendrerit odio sapien nec purus.
-			</p>
-		}
-	</div>
-</div>
+<div id="app-project-create-root"></div>
+@Html.Partial("_ReactJs")
