@@ -116,11 +116,6 @@ $border-color: #e1e4e8;
 }
 
 #issue-view-form {
-    .issue-header {
-        font-size: 24px;
-        font-weight: bold;
-    }
-
     .comment-box {
         display: flex;
 
@@ -181,11 +176,22 @@ $border-color: #e1e4e8;
     color: #586069;
     font-size: 14px;
 
+    .button-holder {
+        border-bottom: 1px solid #e6ebf1;
+        height: 55px;
+        button, a {
+            margin-right:10px;
+        }
+    }
+
     .sidebar-item {
-        width: 80%;
         height: 60px;
         margin-bottom: 10px;
         border-bottom: 1px solid #e6ebf1;
+
+        &.people, &.dates {
+            height: 80px;
+        }
 
         .hover-link {
             &:hover {

@@ -29,30 +29,33 @@ class CloseIssueButton extends Component {
     }
 
     renderActionButton() {
-        const closedStatusId = 2;
-        const reopenedStatusId = 3;
+        let statusId;
+        let statusText;
+        let linkText;
+
         if (this.state.status === 'open' || this.state.status === 'reopened') {
-            return (
-                <button className="btn btn-transparent"
-                    onClick={
-                        () => this.updateStatus(closedStatusId, 'closed')
-                    }>
-                    Close Issue
-                </button>);
+            statusId = 2;
+            statusText = 'closed';
+            linkText = 'close issue';
         } else if (this.state.status === 'closed') {
-            return (
-                <button className="btn btn-transparent"
-                    onClick={
-                        () => this.updateStatus(reopenedStatusId, 'reopened')
-                    }>
-                    Re-Open Issue
-                </button>);
+            statusId = 3;
+            statusText = 'reopened';
+            linkText = 're-open issue';
         }
 
-        return '';
+        return (
+            <span className="ml-2 link close-link"
+                onClick={() => this.updateStatus(statusId, statusText)}>
+                {linkText}
+            </span>
+        );
     }
 
     updateStatus(statusId, statusValue) {
+        console.log(statusId);
+        if (!statusId) {
+            return;
+        }
         if (!confirm('Are you sure you want to continue with this operation?')) {
             return;
         }

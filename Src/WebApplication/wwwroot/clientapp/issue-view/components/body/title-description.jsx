@@ -94,11 +94,6 @@ class TitleDescription extends Component {
     renderTitleAndDescription() {
         return (
             <div>
-                <div className="form-group">
-                    <span className="issue-header fw-bold">
-                        {this.state.title}
-                    </span>
-                </div>
                 <CommentView
                     type="description"
                     description={this.state.description}

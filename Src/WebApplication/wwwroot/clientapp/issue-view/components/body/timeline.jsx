@@ -43,6 +43,7 @@ class Timeline extends Component {
                     createdBy={timeline[index].createdBy}
                     createdByEmail={timeline[index].createdByEmail}
                     createdOn={timeline[index].createdOn}
+                    type="comment"
                 />);
             } else {
                 output.push(<TimelineItem key={index}
@@ -50,6 +51,7 @@ class Timeline extends Component {
                     createdBy={timeline[index].createdBy}
                     createdByEmail={timeline[index].createdByEmail}
                     createdOn={timeline[index].createdOn}
+                    type={timeline[index].type}
                 />);
             }
         }

@@ -4,11 +4,8 @@ import PubSub from 'pubsub-js';
 class EditIssueButton extends Component {
     render() {
         return (
-            <span>
-                <button className="btn btn-transparent"
-                    onClick={() => this.editIssue()}>
-                    Edit Issue
-                </button>
+            <span className="link" onClick={() => this.editIssue()}>
+                edit issue
             </span>
         );
     }

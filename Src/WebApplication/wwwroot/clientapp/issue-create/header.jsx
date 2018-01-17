@@ -55,14 +55,6 @@ class Header extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="hero-banner-buttons">
-                        <a href="/" >
-                            <button className="btn btn-transparent">
-                                <i className="fa fa-long-arrow-left"></i>
-                                back to listing
-                            </button>
-                        </a>
-                    </div>
                 </div>
             </div>
         );

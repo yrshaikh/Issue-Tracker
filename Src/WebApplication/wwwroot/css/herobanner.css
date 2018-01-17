@@ -21,44 +21,28 @@
       margin-left: -10px; }
       .hero-banner-inner .hero-banner-title .select-project label {
         color: inherit; }
-  .hero-banner-inner .hero-banner-buttons {
-    float: right; }
-    .hero-banner-inner .hero-banner-buttons .btn {
-      margin-left: 15px;
-      padding: 8px 12px; }
 
-#hero-issues-view .hero-banner-inner {
-  display: block;
-  height: 130px; }
-  #hero-issues-view .hero-banner-inner .hero-banner-summary .gravy {
-    float: left;
-    margin-left: 15px;
-    border-right: 1px solid #cfcfcf;
-    padding-right: 15px;
-    height: 60px; }
-    #hero-issues-view .hero-banner-inner .hero-banner-summary .gravy .image {
-      margin-right: 12px;
-      position: relative;
-      top: -12px; }
-      #hero-issues-view .hero-banner-inner .hero-banner-summary .gravy .image img {
-        border-radius: 4px; }
-    #hero-issues-view .hero-banner-inner .hero-banner-summary .gravy .summary span {
-      display: block; }
-  #hero-issues-view .hero-banner-inner .hero-banner-summary .info {
-    float: left;
-    width: 150px;
-    border-right: 1px solid #cfcfcf;
-    text-align: center; }
-    #hero-issues-view .hero-banner-inner .hero-banner-summary .info .id {
-      font-size: 24px;
-      width: 100%;
-      display: block; }
-    #hero-issues-view .hero-banner-inner .hero-banner-summary .info .badge {
-      font-size: 14px;
-      font-weight: normal;
-      line-height: 16px;
-      padding: 4px 8px;
-      min-width: 60px;
-      text-transform: capitalize; }
-  #hero-issues-view .hero-banner-inner .hero-banner-summary .summary, #hero-issues-view .hero-banner-inner .hero-banner-summary .image {
-    display: inline-block; }
+.hero-banner-issue-view .hero-banner-inner {
+  margin-bottom: 15px; }
+
+.hero-banner-issue-view .more-details .badge {
+  margin-right: 10px;
+  font-weight: normal;
+  font-size: 12px;
+  text-transform: uppercase; }
+
+.hero-banner-issue-view .more-details .link {
+  color: #888;
+  margin-right: 10px;
+  border-left: 1px solid #aaa;
+  padding-left: 10px; }
+  .hero-banner-issue-view .more-details .link:hover {
+    color: #565;
+    text-decoration: underline;
+    cursor: pointer; }
+
+.hero-banner-issue-view .title {
+  font-size: 24px;
+  color: #444; }
+  .hero-banner-issue-view .title a {
+    color: #999; }

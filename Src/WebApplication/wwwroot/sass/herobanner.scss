@@ -26,65 +26,38 @@
 				color:inherit;
 			}
 		}
-	}
-
-	.hero-banner-buttons {
-		float: right;
-
-		.btn {
-			margin-left: 15px;
-			padding: 8px 12px;
-		}
-	}
+    }
 }
 
-#hero-issues-view {
-	.hero-banner-inner{
-		display: block;
-		height: 130px;
-		.hero-banner-summary{
-			.gravy {
-				float: left;
-				margin-left: 15px;
-				border-right: 1px solid #cfcfcf;
-				padding-right: 15px;
-				height: 60px;
-				.image {
-					margin-right: 12px;
-					position: relative;
-					top: -12px;
-					img {
-						border-radius: 4px;
-					}
-				}				
-				.summary{					
-					span{
-						display: block;
-					}
-				}
-			}
-			.info {
-				float: left;
-				width: 150px;
-				border-right: 1px solid #cfcfcf;
-				text-align: center;
-				.id {
-					font-size: 24px;
-					width: 100%;
-					display: block;
-				}
-				.badge {
-					font-size: 14px;
-					font-weight: normal;
-					line-height: 16px;
-					padding: 4px 8px;
-					min-width: 60px;
-					text-transform: capitalize;
-				}
-			}
-			.summary, .image{
-				display: inline-block;
-			}
-		}
-	}
+.hero-banner-issue-view {
+    .hero-banner-inner{
+        margin-bottom: 15px;
+    }
+    .more-details {
+        .badge {
+            margin-right: 10px;
+            font-weight: normal;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        .link {
+            color:#888;
+            margin-right: 10px;
+            border-left: 1px solid #aaa;
+            padding-left: 10px;
+            &:hover {
+                color:#565;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .title {
+        font-size: 24px;
+        color:#444;
+        a {
+            color: #999;
+        }
+    }
 }
