@@ -44,7 +44,7 @@ class CloseIssueButton extends Component {
         }
 
         return (
-            <span className="ml-2 link close-link"
+            <span className="link close-link"
                 onClick={() => this.updateStatus(statusId, statusText)}>
                 {linkText}
             </span>
@@ -52,7 +52,6 @@ class CloseIssueButton extends Component {
     }
 
     updateStatus(statusId, statusValue) {
-        console.log(statusId);
         if (!statusId) {
             return;
         }

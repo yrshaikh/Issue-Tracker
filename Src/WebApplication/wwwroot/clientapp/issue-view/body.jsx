@@ -75,7 +75,7 @@ class Body extends Component {
         const newComment = {
             content: comment,
             createdBy: 'You',
-            createdByEmail: 'dummy@dummy.com',
+            createdByEmail: this.props.currentUser.emailAddress,
             createdOn: new Date(),
             type: 'comment',
         };
