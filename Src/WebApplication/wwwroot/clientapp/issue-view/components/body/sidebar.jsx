@@ -23,10 +23,10 @@ class Sidebar extends Component {
         return (
             <div className="col-md-4 sidebar">
                 <People
-                    createdBy={this.state.issueId.createdBy}
-                    createdByEmail={this.state.issueId.createdByEmail}
-                    closedBy={this.state.issueId.closedBy}
-                    closedByEmail={this.state.issueId.closedByEmail}
+                    createdBy={this.state.issue.createdBy}
+                    createdByEmail={this.state.issue.createdByEmail}
+                    closedBy={this.state.issue.closedBy}
+                    closedByEmail={this.state.issue.closedByEmail}
                 />
                 <Dates
                     createdOn={this.state.issue.createdOn}

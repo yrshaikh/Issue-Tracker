@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Moment from 'moment';
+import Moment from 'react-moment';
 
 class People extends Component {
     static get propTypes() {
