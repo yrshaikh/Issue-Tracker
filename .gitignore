@@ -13,3 +13,4 @@ Database/Database.dbmdl
 Database/Database.jfm
 /Src/WebApplication/*.user
 /Src/WebApplication/_PublishedWebsites
+Src/WebApplication/wwwroot/index.js
