@@ -29,12 +29,16 @@ class Header extends Component {
                 className="hero-banner hero-banner-issue-view">
                 <div className="hero-banner-inner">
                     <div className="title fw-bold">
-                        <a href="/" className="issue-link mr-10">#{this.state.issue.issueId}</a>
+                        <a href="/" className="issue-link mr-10">#{this.state.issue.issueId}.</a>
                         {this.state.issue.title}
                     </div>
                     <div className="more-details">
                         <IssueStatus additionalClasses=""
                             status={this.state.issue.status} />
+                        <span className="link" onClick={this.backToIssueListing}>
+                            <i className="mr-5 fa fa-long-arrow-left"></i>
+                            return to issue listing
+                        </span>
                         <EditIssueButton
                             issueId={this.state.issue.issueId} />
                         <CloseIssueButton
@@ -50,6 +54,10 @@ class Header extends Component {
         const updatedIssue = this.state.issue;
         updatedIssue.status = data.value;
         this.setState({ issue: updatedIssue });
+    }
+
+    backToIssueListing() {
+        window.history.go(-1);
     }
 }
 

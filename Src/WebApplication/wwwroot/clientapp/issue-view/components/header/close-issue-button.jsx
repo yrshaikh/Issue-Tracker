@@ -46,6 +46,7 @@ class CloseIssueButton extends Component {
         return (
             <span className="link close-link"
                 onClick={() => this.updateStatus(statusId, statusText)}>
+                <i className="mr-5 fa fa-window-close"></i>
                 {linkText}
             </span>
         );
