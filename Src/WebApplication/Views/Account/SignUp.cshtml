@@ -1,64 +1,62 @@
 ﻿@model Service.ViewModels.SignUpViewModel
 
 @{
-	ViewBag.Title = "Sign Up in seconds.";
-	Layout = "~/Views/Shared/Layout-UnAuthenticated.cshtml";
+    ViewBag.Title = "Sign Up in seconds.";
+    Layout = "~/Views/Shared/Layout-UnAuthenticated.cshtml";
 }
 
 <div class="hero-banner">
-	<div class="hero-banner-inner">
-		<div class="hero-banner-title">
-			<h1>Sign Up</h1>
-			<span class="hero-banner-message">Join lorem ispum dispum blah bleh.</span>
-		</div>
-	</div>
+    <div class="hero-banner-inner">
+        <div class="hero-banner-title">
+            <h1>Sign Up</h1>
+            <span class="hero-banner-message">Join lorem ispum dispum blah bleh.</span>
+        </div>
+    </div>
 </div>
 <div class="body row">
-	<form class="col-sm-6" action="/account/signup" method="POST">
-		<div class="form-group row">
-			<label for="firstname" class="col-sm-12 col-form-label">First Name</label>
-			<div class="col-sm-12">
-				<input type="text" class="form-control text-box" id="firstname" name="firstname" placeholder="Jon">
-			</div>
-		</div>
-		<div class="form-group row">
-			<label for="lastname" class="col-sm-12 col-form-label">Last Name</label>
-			<div class="col-sm-12">
-				<input type="text" class="form-control text-box" id="lastname" name="lastname" placeholder="Doe">
-			</div>
-		</div>
-		<div class="form-group row">
-			<label for="email" class="col-sm-12 col-form-label" autocomplete="off">Email</label>
-			<div class="col-sm-12">
-				<input type="email" class="form-control text-box" id="email" name="email" placeholder="jondoe@example.com">
-			</div>
-		</div>
-		<div class="form-group row">
-			<label for="password" class="col-sm-12 col-form-label">Password</label>
-			<div class="col-sm-12">
-				<input type="password" class="form-control text-box" id="password" name="password" placeholder="*********">
-			</div>
-		</div>
-		<div class="form-group row">
-			<div class="offset-sm-3 col-sm-9">
-				<button type="submit" class="btn btn-success btn-big">Sign Up</button>
-			</div>
-		</div>
-	</form>
-	<div class="col-sm-6 prompt">
-		@if (!Html.ViewData.ModelState.IsValid)
-		{
-			<h5 class="text-danger">Whoops! Please correct these errors to continue</h5>
-			<div class="text-danger fw-500">
-				@Html.ValidationSummary()
-			</div>
-		}
-		else
-		{
-			<h5>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet... </h5>
-			<p>
-				Donec efficitur risus sit amet leo cursus, vitae ornare nisi feugiat. Suspendisse iaculis elit ut porttitor bibendum. Donec id lectus enim. Etiam pellentesque dolor ipsum, et congue lacus congue a. Ut pellentesque congue mollis. Duis ac neque orci. Duis lacinia, enim eget porttitor viverra, turpis turpis laoreet odio, ac hendrerit odio sapien nec purus.
-			</p>
-		}
-	</div>
+    <form class="col-sm-6" action="/account/signup" method="POST">
+        <div class="form-group row">
+            <label for="firstname" class="col-sm-12 col-form-label">First Name</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control text-box" id="firstname" name="firstname" placeholder="Jon">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="lastname" class="col-sm-12 col-form-label">Last Name</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control text-box" id="lastname" name="lastname" placeholder="Doe">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="email" class="col-sm-12 col-form-label" autocomplete="off">Email</label>
+            <div class="col-sm-12">
+                <input type="email" class="form-control text-box" id="email" name="email" placeholder="jondoe@example.com">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="password" class="col-sm-12 col-form-label">Password</label>
+            <div class="col-sm-12">
+                <input type="password" class="form-control text-box" id="password" name="password" placeholder="*********">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="offset-sm-3 col-sm-9">
+                <button type="submit" class="btn btn-success btn-big">Sign Up</button>
+            </div>
+        </div>
+    </form>
+    <div class="col-sm-6 prompt">
+        @if (!Html.ViewData.ModelState.IsValid)
+        {
+            <h5 class="text-danger">Whoops! Please correct these errors to continue</h5>
+            <div class="text-danger fw-500">
+                @Html.ValidationSummary()
+            </div>}
+        else
+        {
+            <h5>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet... </h5>
+            <p>
+                Donec efficitur risus sit amet leo cursus, vitae ornare nisi feugiat. Suspendisse iaculis elit ut porttitor bibendum. Donec id lectus enim. Etiam pellentesque dolor ipsum, et congue lacus congue a. Ut pellentesque congue mollis. Duis ac neque orci. Duis lacinia, enim eget porttitor viverra, turpis turpis laoreet odio, ac hendrerit odio sapien nec purus.
+            </p>}
+    </div>
 </div>
