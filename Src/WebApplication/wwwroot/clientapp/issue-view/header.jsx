@@ -39,6 +39,10 @@ class Header extends Component {
                             <i className="mr-5 fa fa-long-arrow-left"></i>
                             return to issue listing
                         </span>
+                        <span className="link">
+                            <i className="fa fa-comments mr-5"></i>
+                            {this.state.issue.commentsCount} comments
+                        </span>
                         <EditIssueButton
                             issueId={this.state.issue.issueId} />
                         <CloseIssueButton

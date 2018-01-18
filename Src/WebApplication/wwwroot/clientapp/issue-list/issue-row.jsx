@@ -12,16 +12,46 @@ class IssueRow extends Component {
     render() {
         const issue = this.props.issue;
         const url = `/issue/${issue.issueId}/${getSlug(issue.title)}`;
-        issue.createdByEmail = 'yasser@outlook.com';
+
+        let assignee = '';
+        let comments = '';
+        let title = '';
+
+        // todo change with assignee.
+        if (issue.createdByEmail) {
+            assignee = (
+                <span className="assignee" title={issue.createdBy}>
+                    <Gravatar email={issue.createdByEmail} size={18}
+                        default="retro" />
+                </span>
+            );
+        }
+
+        if (issue.commentsCount) {
+            comments = (
+                <span className="comments">
+                    {issue.commentsCount} <i className="fa fa-comment-o"></i>
+                </span>
+            );
+        }
+
+        title = (
+            <span className="title">
+                <a href={url}>#{issue.issueId}.</a>
+                <span className="ml-5">{issue.title}</span>
+            </span>
+        );
+
         return (
             <div className="row issue-row">
-                <div className="col-md-12 row">
-                    <a href={url} className="title dark-gray col-md-12">
-                        <span>#{issue.issueId}. {issue.title}</span>
-                    </a>
-                    <span className="col-md-12 subtitle light-gray">
-                        opened <Moment fromNow>{issue.createdOn}</Moment> by {issue.createdBy}
-                    </span>
+                <div className="single-issue">
+                    { title }
+                    { assignee }
+                    { comments }
+                    {/* <span className="col-md-12 subtitle light-gray">
+                        <span>opened <Moment fromNow>{issue.createdOn}</Moment> by </span>
+                        <span title={issue.createdByEmail}>{issue.createdBy}</span>
+                    </span> */}
                 </div>
             </div>
         );

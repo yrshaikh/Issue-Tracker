@@ -14,6 +14,7 @@ class IssueViewApp extends Component {
             issue: {
                 assigneeId: issue.AssigneeId,
                 assigneeName: issue.AssigneeName,
+                commentsCount: issue.CommentsCount,
                 closedBy: issue.ClosedBy,
                 closedByEmail: issue.ClosedByEmail,
                 closedOn: issue.ClosedOn,
@@ -27,7 +28,7 @@ class IssueViewApp extends Component {
                 projectId: issue.ProjectId,
                 projectName: issue.ProjectName,
                 status: issue.Status,
-                title: issue.Title,
+                title: issue.Title,                
             },
             currentUser: {
                 emailAddress: currentUser.emailAddress,

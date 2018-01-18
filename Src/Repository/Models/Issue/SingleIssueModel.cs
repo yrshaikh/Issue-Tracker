@@ -27,5 +27,6 @@ namespace Repository.Models.Issue
         public string PriorityName { get; set; }
 
         public string Status { get; set; }
+        public int CommentsCount { get; set; }
     }
 }

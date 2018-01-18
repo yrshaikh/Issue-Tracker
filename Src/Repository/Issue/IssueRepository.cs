@@ -74,9 +74,11 @@ namespace Repository.Issue
                             Title = (string)dataReader["title"],
                             CreatedOn = (DateTime)dataReader["created_on"],
                             CreatedBy = (string)dataReader["created_by"],
+                            CreatedByEmail = (string)dataReader["created_by_email"],
                             Status = (string)dataReader["status"],
                             OpenCount = (int)dataReader["open_count"],
-                            ClosedCount = (int)dataReader["closed_count"]
+                            ClosedCount = (int)dataReader["closed_count"],
+                            CommentsCount = (int)dataReader["comments_count"]
                         };
                         issues.Add(issue);
                     }
@@ -123,7 +125,8 @@ namespace Repository.Issue
                             PriorityId = (dataReader["priority_id"] == DBNull.Value) ? null : (int?)(byte)dataReader["priority_id"],
                             PriorityName = (dataReader["priority_value"] == DBNull.Value) ? null : (string)dataReader["priority_value"],
 
-                            Status = (string)dataReader["status"]
+                            Status = (string)dataReader["status"],
+                            CommentsCount = (int)dataReader["comments_count"]
                         };
                     }
                 }
